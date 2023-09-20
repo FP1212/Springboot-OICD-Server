@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "alias": {
+          "Constants": "./src/main/js/constants",
+          "Components": "./src/main/js/components",
+          "Styles": "./src/main/resources/static/styles",
+          "Core": "./src/main/js/core",
+          "Utils": "./src/main/js/utils",
+          "Pages": "./src/main/js/pages",
+          "Redux": "./src/main/js/redux",
+          "I18n": "./src/main/resources/static/localization"
+        }
+      },
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  ],
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}

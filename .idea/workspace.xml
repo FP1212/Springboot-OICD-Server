@@ -4,26 +4,203 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/iotwatch/IotwatchApplicationTests.java" afterDir="false" />
+    <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_dev.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_prod.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/model/GroceryItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/repository/ItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/app.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/alarmSnackbar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/buttonAddCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/card.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/customTable.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/customTablePriority.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/customToolbar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/darkLightSwitch.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayoutItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayoutUseSizeme.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/areaChart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/barometerGauge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/depthCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/headingGauge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/heaveCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/humidityCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/latlonCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/lineChart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/modelInertial3D.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/pitchrollCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/polarchart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/polarchart_antv.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/speedGauge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/statusbar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/tabpanel.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/temperatureCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/viewer3D.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/useSizeme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/drawer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/drawerHeader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/permanentDrawer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/actionCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/monitorCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/resumeTableCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/simpleListMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/simpleListSelectedMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableCell.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableHead.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableRow.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/tablePaginationActions.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/constants/routes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/core/history.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/core/nav.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/core/root.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/alarms/alarms.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/configuration/configuration.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/monitor/monitor.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/simulator/simulator.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/status/status.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/alarm/alarmSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/broker/brokerSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/configuration/configurationSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/dark/darkSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/dashboard/dashboardSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/drawer/drawerSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/monitor/monitorSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/nav/navSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/simulator/simulatorSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/status/statusSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/reducers/rootReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/store/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/utils/CardGenerator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/utils/ResourceManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/af/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/af/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/am/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/am/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ar/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ar/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/bg/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/bg/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ca/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ca/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/cs/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/cs/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/da/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/da/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/de/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/de/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/el/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/el/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/en/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/en/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/es/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/es/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/et/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/et/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fa/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fa/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fi/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fi/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fil/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fil/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fr/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/gu/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/gu/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/he/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/he/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hi/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hi/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hr/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hu/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hu/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/id/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/id/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/it/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/it/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ja/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ja/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/kn/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/kn/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ko/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ko/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lt/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lt/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lv/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lv/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ml/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ml/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/mr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/mr/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ms/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ms/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/nl/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/nl/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/no/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/no/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pl/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pl/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pt/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pt/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ro/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ro/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ru/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ru/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sk/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sk/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sr/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sv/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sv/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sw/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sw/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ta/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ta/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/te/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/te/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/th/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/th/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/tr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/tr/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/uk/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/uk/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/vi/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/vi/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/zh_CN/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/zh_CN/translation.missing.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/card.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/chart.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/drawer.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/login.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/monitor.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/root.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/routes.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -45,8 +222,20 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -66,16 +255,30 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Repositories/Java/IotWatch_Mongo_AWS&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Repositories/Java/IotWatch_Mongo_AWS/src/main/js&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\home" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\home\controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.iotwatch.home.model" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -83,21 +286,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.IotWatch_Mongo_AWS [bootRun]">
-    <configuration name="IotwatchApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.iotwatch.IotwatchApplication" />
-      <module name="iotwatch.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.iotwatch.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IotWatch_Mongo_AWS [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.IotWatch_Mongo_AWS_dev">
+    <configuration name="IotWatch_Mongo_AWS [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -108,7 +298,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootRun" />
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -119,7 +309,51 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="IotWatch_Mongo_AWS" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IotWatch_Mongo_AWS [npmInstall]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="npmInstall" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="IotWatch_Mongo_AWS [npmRunBuild]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="npmRunBuild" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="IotWatch_Mongo_AWS [npmSetup]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -129,7 +363,9 @@
           <list />
         </option>
         <option name="taskNames">
-          <list />
+          <list>
+            <option value="npmSetup" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -140,15 +376,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.IotwatchApplication" />
-      <item itemvalue="Gradle.IotWatch_Mongo_AWS" />
-      <item itemvalue="Gradle.IotWatch_Mongo_AWS [bootRun]" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS_dev" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS_prod" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS [clean]" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmRunBuild]" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmInstall]" />
+      <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmSetup]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.IotWatch_Mongo_AWS [bootRun]" />
-        <item itemvalue="Application.IotwatchApplication" />
-        <item itemvalue="Gradle.IotWatch_Mongo_AWS" />
+        <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmRunBuild]" />
+        <item itemvalue="Gradle.IotWatch_Mongo_AWS [clean]" />
+        <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmInstall]" />
+        <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmSetup]" />
       </list>
     </recent_temporary>
   </component>
@@ -161,18 +401,45 @@
       <option name="presentableId" value="Default" />
       <updated>1694306999081</updated>
     </task>
+    <task id="LOCAL-00001" summary="Spring Boot project starting">
+      <option name="closed" value="true" />
+      <created>1694309253114</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694309253114</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Spring Boot project starting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Boot project starting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

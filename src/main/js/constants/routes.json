@@ -1,0 +1,9 @@
+{
+  "LOGIN": "/",
+  "DASHBOARD": "/dashboard",
+  "STATUS": "/status",
+  "ALARMS": "/alarms",
+  "MONITOR": "/monitor",
+  "SIMULATOR": "/simulator",
+  "CONFIGURATION": "/configuration"
+}
