@@ -107,7 +107,6 @@ tasks.bootRun {
 	}
 }
 
-
 processResources {
 	dependsOn npmRunBuild
 }

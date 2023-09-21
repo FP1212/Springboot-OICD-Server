@@ -22,7 +22,8 @@
   },
   "scripts": {
     "devserver": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
+    "prod": "webpack --mode production",
     "watch": "webpack --watch -d --output ./target/classes/static/js/bundle.js"
   },
   "homepage": "https://github.com/FP1212",

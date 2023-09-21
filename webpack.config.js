@@ -6,30 +6,29 @@ const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 
 module.exports = (env, argv) => ({
   entry: './src/main/js/app.jsx',
-  cache: true,
+  cache: false,
   output: {
-    path: path.resolve(__dirname, "./src/main/resources/static/built/"), // Where all the output files get dropped after webpack is done with them
-    filename: 'js/bundle.js', // The name of the webpack bundle that's generated
+    path: path.resolve(__dirname, "./build/resources/main/static/"), // Where all the output files get dropped after webpack is done with them
+    filename: 'built/js/bundle.js', // The name of the webpack bundle that's generated
   },
     devServer: {
       port: 9091,
       open: true,
       compress: true,
       hot: true,
-      compress: true,
       watchFiles: [
         'src/main/resources/templates/**/*.html',
         'src/main/js/**/*.js',
         'src/main/resources/static/styles/**/*.scss',
         'src/main/resources/static/localization/locales/**/*.json'
       ],
-      static: {
-        directory: path.resolve(__dirname, "./src/main/resources/static/built/"), // Where we serve the local dev server's files from
-        watch: true,
-        staticOptions: {
-          ignored: /node_modules/,
-        },
-      },
+//      static: {
+//        directory: path.resolve(__dirname, "./src/main/resources/static/built/"), // Where we serve the local dev server's files from
+//        watch: true,
+//        staticOptions: {
+//          ignored: /node_modules/,
+//        },
+//      },
       proxy: {
         '**': {
           target: 'http://localhost:9090',
@@ -95,7 +94,7 @@ module.exports = (env, argv) => ({
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, "./src/main/resources/static/css"),
+          path.resolve(__dirname, "./src/main/resources/static/styles"),
           path.resolve(__dirname, "node_modules/"),
         ],
         use: [MiniCssExtractPlugin.loader, "css-loader"],

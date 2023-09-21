@@ -5,194 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_dev.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_prod.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/model/GroceryItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/repository/ItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/app.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/alarmSnackbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/buttonAddCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/card.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/customTable.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/customTablePriority.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/customToolbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/darkLightSwitch.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayoutItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayoutUseSizeme.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/areaChart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/barometerGauge.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/depthCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/headingGauge.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/heaveCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/humidityCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/latlonCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/lineChart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/modelInertial3D.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/pitchrollCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/polarchart.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/polarchart_antv.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/speedGauge.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/statusbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/tabpanel.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/temperatureCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/viewer3D.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/useSizeme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/drawer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/drawerHeader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/drawer/permanentDrawer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/actionCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/monitorCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/monitor/resumeTableCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/simpleListMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/simpleListSelectedMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableCell.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableHead.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/styledTableRow.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/tablePaginationActions.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/constants/routes.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/core/history.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/core/nav.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/core/root.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/alarms/alarms.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/configuration/configuration.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/monitor/monitor.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/simulator/simulator.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/status/status.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/alarm/alarmSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/broker/brokerSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/configuration/configurationSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/dark/darkSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/dashboard/dashboardSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/drawer/drawerSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/monitor/monitorSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/nav/navSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/simulator/simulatorSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/components/status/statusSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/reducers/rootReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/redux/store/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/CardGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/ResourceManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/af/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/af/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/am/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/am/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ar/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ar/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/bg/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/bg/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ca/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ca/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/cs/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/cs/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/da/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/da/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/de/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/de/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/el/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/el/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/en/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/en/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/es/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/es/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/et/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/et/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fa/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fa/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fi/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fi/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fil/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fil/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fr/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/fr/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/gu/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/gu/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/he/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/he/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hi/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hi/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hr/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hr/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hu/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/hu/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/id/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/id/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/it/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/it/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ja/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ja/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/kn/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/kn/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ko/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ko/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lt/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lt/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lv/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/lv/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ml/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ml/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/mr/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/mr/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ms/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ms/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/nl/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/nl/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/no/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/no/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pl/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pl/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pt/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/pt/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ro/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ro/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ru/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ru/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sk/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sk/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sr/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sr/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sv/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sv/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sw/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/sw/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ta/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/ta/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/te/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/te/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/th/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/th/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/tr/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/tr/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/uk/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/uk/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/vi/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/vi/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/zh_CN/translation.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/localization/locales/zh_CN/translation.missing.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/card.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/chart.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/drawer.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/login.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/monitor.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/root.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/routes.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/pages/registerUser/registerUser.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/722.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/737.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/LoginChunk.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/LoginChunk.bundle.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/bundle.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/vendors-node_modules_mui_icons-material_LockOutlined_js-node_modules_mui_material_Alert_Alert-77b6a5.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/js/vendors-node_modules_mui_icons-material_LockOutlined_js-node_modules_mui_material_Alert_Alert-77b6a5.bundle.js.LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_dev.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/IotWatch_Mongo_AWS_dev.run.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/css/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bundle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/js/461.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/js/461.bundle.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/737.bundle.js.LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/js/722.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/js/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/built/js/bundle.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,8 +66,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -260,7 +100,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Repositories/Java/IotWatch_Mongo_AWS/src/main/js&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Repositories/Java/IotWatch_Mongo_AWS/src/main/java/com/iotwatch/user&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -269,11 +109,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\user" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\template" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS" />
-      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\home" />
-      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\home\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.iotwatch.home.model" />
@@ -385,8 +225,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmRunBuild]" />
         <item itemvalue="Gradle.IotWatch_Mongo_AWS [clean]" />
+        <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmRunBuild]" />
         <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmInstall]" />
         <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmSetup]" />
       </list>

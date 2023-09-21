@@ -31,7 +31,8 @@ const Copyright = (props) => {
       variant="body2"
       color="text.secondary"
       align="center"
-      {...props}>
+      {...props}
+    >
       {"Copyright © "}
       Cotecmar {new Date().getFullYear()}
       {"."}
@@ -103,8 +104,6 @@ const SignIn = (props) => {
     }
   };
 
-
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -121,7 +120,8 @@ const SignIn = (props) => {
             handleSubmit(event);
           }}
           noValidate
-          sx={{ mt: 1 }}>
+          sx={{ mt: 1 }}
+        >
           <TextField
             margin="normal"
             required
@@ -137,7 +137,7 @@ const SignIn = (props) => {
             required
             fullWidth
             name="password"
-            label= {"Password"}
+            label={"Password"}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -147,11 +147,12 @@ const SignIn = (props) => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-            }}>
-            {/* <FormControlLabel
+            }}
+          >
+            <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label={t("Remember me")}
-            /> */}
+              label={"Remember me"}
+            />
             <DarkLightSwitch />
           </Box>
 
@@ -159,13 +160,14 @@ const SignIn = (props) => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}>
+            sx={{ mt: 3, mb: 2 }}
+          >
             {"Sign in"}
           </Button>
         </Box>
       </div>
       <WarningAlert status={loginState.status} />
-      <Copyright sx={{ mt: 8, mb: 4 }} />
+      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
     </Container>
   );
 };
