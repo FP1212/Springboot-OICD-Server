@@ -12,7 +12,8 @@
           "Utils": "./src/main/js/utils",
           "Pages": "./src/main/js/pages",
           "Redux": "./src/main/js/redux",
-          "I18n": "./src/main/resources/static/localization"
+          "I18n": "./src/main/js/i18n",
+          "Root": "./src/main/js"
         }
       },
       "@babel/plugin-syntax-dynamic-import"

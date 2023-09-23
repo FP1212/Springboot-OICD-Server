@@ -20,15 +20,8 @@ module.exports = (env, argv) => ({
         'src/main/resources/templates/**/*.html',
         'src/main/js/**/*.js',
         'src/main/resources/static/styles/**/*.scss',
-        'src/main/resources/static/localization/locales/**/*.json'
+        'src/main/resources/static/locales/**/*.json'
       ],
-//      static: {
-//        directory: path.resolve(__dirname, "./src/main/resources/static/built/"), // Where we serve the local dev server's files from
-//        watch: true,
-//        staticOptions: {
-//          ignored: /node_modules/,
-//        },
-//      },
       proxy: {
         '**': {
           target: 'http://localhost:9090',

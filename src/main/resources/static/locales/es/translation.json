@@ -118,5 +118,15 @@
   "OperationModes": {
     "RT": "Tiempo Real",
     "SIM": "Simulacion"
+  },
+  "common": {
+  "sign": {
+    "in" : "Iniciar Sesion",
+    "out": "Cerrar Sesion"
+  },
+  "register": {
+    "banner": "Aun no tienes una cuenta?",
+    "register": "Registrate"
   }
+}
 }

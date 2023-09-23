@@ -85,6 +85,8 @@
     "connected-react-router": "^6.9.1",
     "easy-redux-undo": "^1.0.5",
     "i18next": "^23.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-http-backend": "^2.2.2",
     "lodash": "4.17.21",
     "lodash.merge": "^4.6.2",
     "mnemonist": "^0.39.2",

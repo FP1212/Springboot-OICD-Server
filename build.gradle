@@ -9,7 +9,7 @@ plugins {
 }
 
 group = 'com'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2'
 
 java {
 	sourceCompatibility = '17'
@@ -101,11 +101,21 @@ tasks.register('npmRunBuild', NpmTask) {
 	outputs.dir("$buildDir/resources/main/static")
 }
 
+tasks.register('webpackDevServer', NpmTask) {
+	args = ['run', 'devserver']
+}
+
 tasks.bootRun {
 	configure {
 		environment "spring.profiles.active" , "production"
 	}
 }
+
+tasks.withType(JavaCompile).configureEach {
+	options.incremental = true
+}
+
+tasks.named("compileJava") { outputs.upToDateWhen { false }  }
 
 processResources {
 	dependsOn npmRunBuild

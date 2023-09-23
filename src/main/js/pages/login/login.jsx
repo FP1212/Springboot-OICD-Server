@@ -23,7 +23,7 @@ import { login, status, selectLogin } from "Redux/components/login/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import styles from "Styles/login.module.scss";
-//import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const Copyright = (props) => {
   return (
@@ -90,7 +90,7 @@ const SignIn = (props) => {
   const loginState = useSelector(selectLogin);
   const dispatch = useDispatch();
   const history = useHistory();
-  //const [t] = useTranslation();
+  const [t] = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -111,8 +111,11 @@ const SignIn = (props) => {
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          {"Sign in"}
+        <Typography component="h1" variant="h4">
+          {t("common.sign.in")}
+        </Typography>
+        <Typography component="h3" variant="h5">
+          {t("common.register.banner") + ", " + t("common.register.register")}
         </Typography>
         <Box
           component="form"
