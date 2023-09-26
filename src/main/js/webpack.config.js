@@ -5,11 +5,11 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 
 module.exports = (env, argv) => ({
-  entry: './src/main/js/app.jsx',
+  entry: './app.jsx',
   cache: false,
   output: {
-    path: path.resolve(__dirname, "./build/resources/main/static/"), // Where all the output files get dropped after webpack is done with them
-    filename: 'built/js/bundle.js', // The name of the webpack bundle that's generated
+    path: path.resolve(__dirname, "../../../build/resources/main/static/"), // Where all the output files get dropped after webpack is done with them
+    filename: 'js/bundle.js', // The name of the webpack bundle that's generated
   },
     devServer: {
       port: 9091,
@@ -19,8 +19,7 @@ module.exports = (env, argv) => ({
       watchFiles: [
         'src/main/resources/templates/**/*.html',
         'src/main/js/**/*.js',
-        'src/main/resources/static/styles/**/*.scss',
-        'src/main/resources/static/locales/**/*.json'
+        'src/main/js/styles/**/*.scss'
       ],
       proxy: {
         '**': {
@@ -49,7 +48,7 @@ module.exports = (env, argv) => ({
   ],
   resolve: {
     modules: [
-      path.resolve(__dirname, './src/main/resources'),
+      path.resolve(__dirname, './'),
       'node_modules'
     ],
   },
@@ -58,7 +57,7 @@ module.exports = (env, argv) => ({
       {
         // loads .html files
         test: /\.(html)$/,
-        include: [path.resolve(__dirname, "./src/main/resources/templates")],
+        include: [path.resolve(__dirname, "../resources/templates")],
         use: {
           loader: "html-loader",
           options: {
@@ -77,7 +76,7 @@ module.exports = (env, argv) => ({
       // loads .js/jsx files
       {
         test: /\.jsx?$/,
-        include: [path.resolve(__dirname, "./src/main/js")],
+        include: [path.resolve(__dirname, "./")],
         loader: "babel-loader",
         resolve: {
           extensions: [".js", ".jsx", ".json"],
@@ -87,8 +86,8 @@ module.exports = (env, argv) => ({
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, "./src/main/resources/static/styles"),
-          path.resolve(__dirname, "node_modules/"),
+          path.resolve(__dirname, "./styles"),
+          path.resolve(__dirname, "./node_modules/"),
         ],
         use: [MiniCssExtractPlugin.loader, "css-loader"],
         resolve: {

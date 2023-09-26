@@ -5,15 +5,15 @@
       {
         "cwd": "babelrc",
         "alias": {
-          "Constants": "./src/main/js/constants",
-          "Components": "./src/main/js/components",
-          "Styles": "./src/main/resources/static/styles",
-          "Core": "./src/main/js/core",
-          "Utils": "./src/main/js/utils",
-          "Pages": "./src/main/js/pages",
-          "Redux": "./src/main/js/redux",
-          "I18n": "./src/main/js/i18n",
-          "Root": "./src/main/js"
+          "Constants": "./constants",
+          "Components": "./components",
+          "Styles": "./styles",
+          "Core": "./core",
+          "Utils": "./utils",
+          "Pages": "./pages",
+          "Redux": "./redux",
+          "I18n": "./i18n",
+          "Root": "./"
         }
       },
       "@babel/plugin-syntax-dynamic-import"

@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/build/resources/main/static/built/js/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/card.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/card.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/chart.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/chart.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/drawer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/drawer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/login.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/monitor.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/monitor.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/root.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/routes.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/routes.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,8 +107,8 @@
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\template" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
+      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static\styles\localization" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static\styles" />
