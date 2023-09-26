@@ -33,7 +33,7 @@ node {
 	download.set(true)
 	version = '20.2.0'
 	npmInstall.args.set(['--force', '--info'])
-	workDir = file("./src/main/js")
+	nodeProjectDir.set(file("./src/main/js"));
 }
 
 dependencies {
