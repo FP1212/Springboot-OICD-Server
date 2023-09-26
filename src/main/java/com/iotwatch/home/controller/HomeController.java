@@ -12,8 +12,12 @@ import java.net.http.HttpRequest;
 public class HomeController {
 
     @RequestMapping(value = "/home")
+    public String login(Model model) {
+        return "index";
+    }
+
+    @RequestMapping(value = "/")
     public String index(Model model) {
-        model.addAttribute("isDevServer", System.getenv("spring.profiles.active").equals("dev"));
         return "index";
     }
 

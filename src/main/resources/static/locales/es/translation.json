@@ -125,8 +125,18 @@
     "out": "Cerrar Sesion"
   },
   "register": {
-    "banner": "Aun no tienes una cuenta?",
-    "register": "Registrate"
+    "banner": {
+      "account" : "Aun no tienes una cuenta?",
+      "login": "Ya tienes una cuenta?"
+    },
+    "register": "Registrate.",
+    "create": "Crear Cuenta"
+  },
+    "user": "Usuario",
+    "password": "Contraseña",
+    "remember": "Recuerdame",
+    "iotwatch": "IotWatch",
+    "name": "Nombre",
+    "email": "Correo Electronico"
   }
-}
 }

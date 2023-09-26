@@ -125,7 +125,11 @@
     },
     "register": {
       "banner": "Don't have an account?",
-      "register": "Register"
-    }
+      "register": "Register."
+    },
+    "user": "User",
+    "password": "Password",
+    "remember": "Remember me",
+    "iotwatch": "IotWatch"
   }
 }
