@@ -35,7 +35,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Autowired
     private JWTService jwtService;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
@@ -62,7 +65,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         User user = User.builder()
-                .username(signUpRequestDto.getUsername())
+                .username(signUpRequestDto.getUserName())
                 .firstName(signUpRequestDto.getFirstName())
                 .lastName(signUpRequestDto.getLastName())
                 .email(signUpRequestDto.getEmail())

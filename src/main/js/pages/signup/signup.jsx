@@ -2,12 +2,12 @@ import React,{ useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-const registerUser = () => {
+const SignUp = () => {
   return (
     <React.Fragment>
-        registerUser
+        SignUp
     </React.Fragment>
   )
 }
 
-export default registerUser;
+export default SignUp;

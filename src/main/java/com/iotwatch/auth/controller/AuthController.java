@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping(value = "/api/v1/auth")
 public class AuthController {
@@ -28,16 +29,5 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody SignInRequestDto signInRequestDto) {
         return ResponseEntity.ok(authenticationService.signin(signInRequestDto));
-    }
-
-    @GetMapping("/get/{id}")
-    public ResponseEntity getUser(@PathVariable String id) {
-        return ResponseEntity.ok(userService.get(id));
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteUser (@PathVariable String id) {
-        userService.delete(id);
-        return ResponseEntity.ok("");
     }
 }

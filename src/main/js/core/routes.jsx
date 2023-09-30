@@ -14,12 +14,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { selectLogin } from "Redux/components/login/loginSlice";
 
 // Load bundles asynchronously so that the initial render happens faster
+const Home = loadable(() =>
+  import(/* webpackChunkName: "LoginChunk" */ "Pages/home/home")
+);
+
 const Login = loadable(() =>
   import(/* webpackChunkName: "LoginChunk" */ "Pages/login/login")
 );
-// const Dashboard = loadable(() =>
-//   import(/* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard")
-// );
+const Dashboard = loadable(() =>
+  import(/* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard")
+);
 
 // const Status = loadable(() =>
 //   import(/* webpackChunkName: "StatusChunk" */ "Pages/status/status")
@@ -85,11 +89,11 @@ const Routes = (props) => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Switch>
-        <Route
-          exact
-          path={ROUTES.LOGIN}
-          component={Login}
-          history={history}></Route>
+        <Route exact path={ROUTES.LOGIN} component={Login} history={history} />
+        <Route exact path={ROUTES.INDEX} component={Home} history={history} />
+        <Route exact path={ROUTES.HOME} component={Home} history={history} />
+        <Route exact path={ROUTES.DASHBOARD} component={Dashboard} history={history} />
+
         {/* <React.Fragment>
           <Nav history={history}></Nav>
           <div component="main" className={styles.main}>

@@ -1,5 +1,9 @@
 {
-  "LOGIN": "/",
+  "INDEX": "/",
+  "HOME": "/home",
+  "LOGIN": "/login",
+  "SIGNUP": "/signup",
+  "LOGOUT": "/signout",
   "DASHBOARD": "/dashboard",
   "STATUS": "/status",
   "ALARMS": "/alarms",

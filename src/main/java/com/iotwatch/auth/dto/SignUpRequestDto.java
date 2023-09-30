@@ -19,7 +19,7 @@ import java.util.Set;
 public class SignUpRequestDto {
     @NotBlank
     @Size(max = 20)
-    private String username;
+    private String userName;
 
     @NotBlank
     private String firstName;
