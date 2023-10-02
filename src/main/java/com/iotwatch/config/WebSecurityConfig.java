@@ -28,7 +28,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class WebSecurityConfig  {
 
     @Autowired
@@ -37,33 +36,30 @@ public class WebSecurityConfig  {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                        .permitAll()
-                                .requestMatchers("/api/v1/auth/**")
+                        request.requestMatchers("/api/v1/auth/**")
                                 .permitAll()
+//                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+//                                .permitAll()
                                 .anyRequest()
                                 .authenticated())
-                .rememberMe((remember) -> remember.rememberMeServices(rememberMeServices))
-                .formLogin(form ->
-                        form.loginPage("/")
-                                .permitAll()
-                )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form ->
+                        form.loginPage("/login")
+                                .permitAll()
+                                .loginProcessingUrl("/api/v1/auth/signin")
+                )
                 .build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.debug(true);
+        return (web) -> web.debug(true);//.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
     @Bean
@@ -83,37 +79,6 @@ public class WebSecurityConfig  {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
             throws Exception {
         return config.getAuthenticationManager();
-    }
-
-    @Bean
-    RememberMeServices rememberMeServices(UserDetailsService userDetailsService) {
-        TokenBasedRememberMeServices.RememberMeTokenAlgorithm encodingAlgorithm = TokenBasedRememberMeServices.RememberMeTokenAlgorithm.SHA256;
-        TokenBasedRememberMeServices rememberMe = new TokenBasedRememberMeServices(myKey, userDetailsService, encodingAlgorithm);
-        rememberMe.setMatchingAlgorithm(TokenBasedRememberMeServices.RememberMeTokenAlgorithm.MD5);
-        return rememberMe;
-    }
-
-    @Bean
-    RememberMeAuthenticationFilter rememberMeFilter() {
-        RememberMeAuthenticationFilter rememberMeFilter = new RememberMeAuthenticationFilter();
-        rememberMeFilter.setRememberMeServices(rememberMeServices());
-        rememberMeFilter.setAuthenticationManager(authenticationManager);
-        return rememberMeFilter;
-    }
-
-    @Bean
-    TokenBasedRememberMeServices rememberMeServices() {
-        TokenBasedRememberMeServices rememberMeServices = new TokenBasedRememberMeServices();
-        rememberMeServices.setUserDetailsService(myUserDetailsService);
-        rememberMeServices.setKey("springRocks");
-        return rememberMeServices;
-    }
-
-    @Bean
-    RememberMeAuthenticationProvider rememberMeAuthenticationProvider() {
-        RememberMeAuthenticationProvider rememberMeAuthenticationProvider = new RememberMeAuthenticationProvider();
-        rememberMeAuthenticationProvider.setKey("springRocks");
-        return rememberMeAuthenticationProvider;
     }
 
 }

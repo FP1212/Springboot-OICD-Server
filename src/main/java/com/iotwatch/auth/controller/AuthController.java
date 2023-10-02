@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    UserService userService;
-
-    @Autowired
     AuthenticationService authenticationService;
 
     @PostMapping("/signup")
