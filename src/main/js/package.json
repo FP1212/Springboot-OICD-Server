@@ -24,7 +24,8 @@
     "devserver": "webpack serve --mode development",
     "build": "webpack --mode development",
     "prod": "webpack --mode production",
-    "watch": "webpack --watch -d --output ./target/classes/static/js/bundle.js"
+    "watch": "webpack --watch -d --output ./target/classes/static/js/bundle.js",
+    "hot": "webpack --hot -d"
   },
   "homepage": "https://github.com/FP1212",
   "devDependencies": {
@@ -79,6 +80,7 @@
     "@react-three/fiber": "^7.0",
     "@reduxjs/toolkit": "^1.6.1",
     "antd": "^4.23.2",
+    "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "caniuse-lite": "^1.0.30001373",

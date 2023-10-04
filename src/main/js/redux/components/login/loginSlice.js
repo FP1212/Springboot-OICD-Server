@@ -1,17 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const API_URL = "http://localhost:9090/api/v1/auth/";
 
 const loginSlice = createSlice({
   name: "login",
   initialState: { user: "", token: "", authorized: false, status: 0 },
   reducers: {
-    sign: (state, action) => {
-      state.user = action.payload.user;
-      state.authorized = action.payload.authorized;
-      state.status = action.payload.status;
+    signin: (state, { username, password } = action) => {
+      return axios
+        .post(API_URL + "signin", {}, { params: { username, password } })
+        .then((response) => {
+          if (response.data.accessToken) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+          }
+
+          return response.data;
+        });
     },
-    signout: (state, action) => {
+    signup: (state, action) => {
       //Import mysql database models
-//      db.logout(state.user);
+      //      db.logout(state.user);
       state.user = "";
       state.authorized = false;
       state.status = 0;
@@ -27,22 +36,5 @@ export const selectLogin = (state) => {
   return state.login;
 };
 
-/**
- * Async login action
- * @param {*} credentials
- * @returns
- */
-export const login = (credentials) => (dispatch, store) => {
-//  db.login(credentials.email, credentials.password).then((authorized) => {
-//    dispatch(
-//      sign({
-//        authorized: authorized,
-//        user: credentials.email,
-//        status: authorized ? 1 : 2,
-//      })
-//    );
-//  });
-};
-
 export default loginSlice.reducer;
-export const { sign, signout, status, clear   } = loginSlice.actions;
+export const { signin, signup, status, clear } = loginSlice.actions;

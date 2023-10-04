@@ -1,14 +1,13 @@
 package com.iotwatch.config;
 
-import com.iotwatch.auth.service.UserService;
-import lombok.RequiredArgsConstructor;
+import com.iotwatch.auth.service.impl.TokenService;
+import com.iotwatch.auth.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,8 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
-import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -31,29 +29,34 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class WebSecurityConfig  {
 
     @Autowired
+    TokenService tokenService;
+
+    @Autowired
     private JWTAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
-    private UserService userService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, RememberMeServices rememberMeServices) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
                         request.requestMatchers("/api/v1/auth/**")
                                 .permitAll()
-//                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-//                                .permitAll()
+                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                                .permitAll()
                                 .anyRequest()
                                 .authenticated())
+                .formLogin(form ->
+                        form.loginPage("/login")
+                                .loginProcessingUrl("/api/v1/auth/signin")
+                                .usernameParameter("username")
+                                .passwordParameter("password")
+                                .permitAll()
+                )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form ->
-                        form.loginPage("/login")
-                                .permitAll()
-                                .loginProcessingUrl("/api/v1/auth/signin")
-                )
                 .build();
     }
 
@@ -70,7 +73,7 @@ public class WebSecurityConfig  {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userService.userDetailsService());
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
@@ -81,4 +84,8 @@ public class WebSecurityConfig  {
         return config.getAuthenticationManager();
     }
 
+    @Bean
+    PersistentTokenBasedRememberMeServices rememberMeServices() {
+        return new PersistentTokenBasedRememberMeServices("myKey",userDetailsService, tokenService);
+    }
 }

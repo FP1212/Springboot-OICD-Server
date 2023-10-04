@@ -10,10 +10,8 @@ import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
-import com.iotwatch.response.MessageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,11 +52,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Set<Role> roleSet = new HashSet<>();
 
         if (Objects.isNull(enumRoleSet)) {
-            Role userRole = roleRepository.findByName(EnumRole.USER).orElseThrow(() -> new RuntimeException("Role not found"));
+            Role userRole = roleRepository.findById(EnumRole.USER.toString()).orElseThrow(() -> new RuntimeException("Role not found"));
             roleSet.add(userRole);
         } else {
             enumRoleSet.forEach(role -> {
-                Role resultRole = roleRepository.findByName(role).orElseThrow(() -> new RuntimeException("Role not found"));
+                Role resultRole = roleRepository.findById(EnumRole.USER.toString()).orElseThrow(() -> new RuntimeException("Role not found"));
                 roleSet.add(resultRole);
             });
         }
@@ -80,9 +78,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JWTAuthResponse signin(SignInRequestDto signInRequestDto) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(signInRequestDto.getEmail(), signInRequestDto.getPassword()));
-        var user = userRepository.findByEmail(signInRequestDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+                new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
+        var user = userRepository.findByName(signInRequestDto.getUsername())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid username or password"));
         var jwt = jwtService.generateToken(user);
         return JWTAuthResponse.builder().token(jwt).build();
     }

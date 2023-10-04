@@ -1,6 +1,5 @@
 package com.iotwatch.auth.model;
 
-import com.iotwatch.enums.EnumRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -55,12 +54,11 @@ public class User implements UserDetails {
     private Set<Role> enumRoles = new HashSet<>();
 
     private Date lastLogin;
+    private boolean active = true;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return enumRoles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
+        return enumRoles;
     }
 
     @Override
@@ -70,21 +68,26 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return active;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return active;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return active;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 }

@@ -19,7 +19,7 @@ import Alert from "@mui/material/Alert";
 import React, { useState, useEffect } from "react";
 import DarkLightSwitch from "Components/darkLightSwitch";
 //Import loginSlice reducers
-import { login, status, selectLogin } from "Redux/components/login/loginSlice";
+import { signin, signup, selectLogin } from "Redux/components/login/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import styles from "Styles/login.module.scss";
@@ -98,9 +98,7 @@ const SignIn = (props) => {
     const email = data.get("email");
     const password = data.get("password");
     if (email && password) {
-      dispatch(login({ email, password }));
-    } else {
-      dispatch(status({ status: 5 }));
+      dispatch(signin({ username: email, password }));
     }
   };
 

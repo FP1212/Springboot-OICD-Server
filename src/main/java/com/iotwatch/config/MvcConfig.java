@@ -16,9 +16,9 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/");
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/", "index.html");
-        registry.addRedirectViewController("/{x:^(?!api$).*$}/**", "index.html");
-    }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addRedirectViewController("/", "index.html");
+//        registry.addRedirectViewController("/{x:^(?!api$).*$}/**", "index.html");
+//    }
 }

@@ -2,9 +2,7 @@ package com.iotwatch.auth.controller;
 
 import com.iotwatch.auth.dto.SignInRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
-import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.service.AuthenticationService;
-import com.iotwatch.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
