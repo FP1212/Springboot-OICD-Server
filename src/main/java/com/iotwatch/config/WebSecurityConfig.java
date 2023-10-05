@@ -54,6 +54,7 @@ public class WebSecurityConfig  {
                                 .passwordParameter("password")
                                 .permitAll()
                 )
+                .rememberMe(remember-> remember.rememberMeServices(rememberMeServices))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

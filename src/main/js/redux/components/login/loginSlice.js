@@ -7,16 +7,20 @@ const loginSlice = createSlice({
   name: "login",
   initialState: { user: "", token: "", authorized: false, status: 0 },
   reducers: {
-    signin: (state, { username, password } = action) => {
-      return axios
-        .post(API_URL + "signin", {}, { params: { username, password } })
-        .then((response) => {
-          if (response.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(response.data));
-          }
+    signin: (state, action) => {
+      const params = new URLSearchParams();
+      params.append("username", action.payload.username);
+      params.append("password", action.payload.password);
 
-          return response.data;
-        });
+      console.log(params.toString());
+
+      return axios.post(API_URL + "signin", params).then((response) => {
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+
+        return response.data;
+      });
     },
     signup: (state, action) => {
       //Import mysql database models

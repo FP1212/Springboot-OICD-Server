@@ -13,12 +13,12 @@ module.exports = (env, argv) => ({
   },
   devServer: {
     port: 9091,
-    open: true,
     compress: true,
     hot: true,
     watchFiles: [
       "src/main/resources/templates/**/*.html",
       "src/main/js/**/*.js",
+      "src/main/js/**/*.jsx",
       "src/main/js/styles/**/*.scss",
     ],
     headers: {

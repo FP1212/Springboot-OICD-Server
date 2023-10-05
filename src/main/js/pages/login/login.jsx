@@ -18,7 +18,7 @@ import ROUTES from "Constants/routes";
 import Alert from "@mui/material/Alert";
 import React, { useState, useEffect } from "react";
 import DarkLightSwitch from "Components/darkLightSwitch";
-//Import loginSlice reducers
+// Import loginSlice reducers
 import { signin, signup, selectLogin } from "Redux/components/login/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
