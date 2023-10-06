@@ -23,18 +23,11 @@ module.exports = (env, argv) => ({
     ],
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
     },
     proxy: {
-      "**": {
+      "/**": {
         target: "http://localhost:9090",
         secure: false,
-        prependPath: false,
-        headers: {
-          "X-Devserver": "1",
-        },
       },
     },
   },

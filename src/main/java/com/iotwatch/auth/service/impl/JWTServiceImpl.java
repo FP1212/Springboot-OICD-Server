@@ -1,26 +1,26 @@
 package com.iotwatch.auth.service.impl;
 
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
 import com.iotwatch.auth.service.JWTService;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JWTServiceImpl implements JWTService {
-    @Value("${token.signing.key}")
-    private String jwtSigningKey;
+    @Autowired
+    @Qualifier("getRandomJWTSecretKey")
+    private Key secretKey;
+
     @Override
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -43,10 +43,13 @@ public class JWTServiceImpl implements JWTService {
     }
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
+        return Jwts.builder()
+                .setClaims(extraClaims)
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .signWith(SignatureAlgorithm.HS256, getSigningKey()).compact();
+                .signWith(secretKey)
+                .compact();
     }
 
     private boolean isTokenExpired(String token) {
@@ -58,12 +61,9 @@ public class JWTServiceImpl implements JWTService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(getSigningKey()).parseClaimsJws(token)
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
                 .getBody();
-    }
-
-    private Key getSigningKey() {
-        byte[] keyBytes = Base64.getDecoder().decode(this.jwtSigningKey);
-        return  Keys.hmacShaKeyFor(keyBytes);
     }
 }

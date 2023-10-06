@@ -90,8 +90,8 @@ const Routes = (props) => {
       <CssBaseline />
       <Switch>
         <Route exact path={ROUTES.LOGIN} component={Login} history={history} />
-        <Route exact path={ROUTES.INDEX} component={Login} history={history} />
-        <Route exact path={ROUTES.HOME} component={Login} history={history} />
+        <Route exact path={ROUTES.INDEX} component={Home} history={history} />
+        <Route exact path={ROUTES.HOME} component={Home} history={history} />
         <Route
           exact
           path={ROUTES.DASHBOARD}

@@ -13,14 +13,18 @@ const loginSlice = createSlice({
       params.append("password", action.payload.password);
 
       console.log(params.toString());
+      axios
+        .post(API_URL + "signin", params)
+        .then((response) => {
+          if (response.data.accessToken) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+          }
 
-      return axios.post(API_URL + "signin", params).then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-
-        return response.data;
-      });
+          return response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     signup: (state, action) => {
       //Import mysql database models

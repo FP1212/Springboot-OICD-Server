@@ -12,8 +12,10 @@ import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -84,4 +86,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var jwt = jwtService.generateToken(user);
         return JWTAuthResponse.builder().token(jwt).build();
     }
+
 }

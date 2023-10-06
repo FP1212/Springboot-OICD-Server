@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
+      <change afterPath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/ConfigurateJavaBeans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationUserFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +52,23 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iotwatch" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iotwatch" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iotwatch" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -47,8 +79,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,6 +89,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -73,31 +109,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/resources/templates&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/java/com/iotwatch/dashboard",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\dashboard" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\templates" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\templates" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\build\resources\main\static" />
-      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\java\com\iotwatch\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
@@ -107,6 +157,7 @@
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static\styles" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.iotwatch.config" />
       <recent name="com.iotwatch.response" />
       <recent name="com.iotwatch.user.dto" />
       <recent name="com.iotwatch.home.model" />
@@ -125,6 +176,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.iotwatch.IotwatchApplication" />
       <module name="iotwatch.main" />
+      <shortenClasspath name="MANIFEST" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,7 +200,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -170,7 +222,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [npmInstall]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -192,7 +244,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [npmRunBuild]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -214,7 +266,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [webpackDevServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -236,7 +288,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <list>
@@ -248,6 +300,7 @@
       <item itemvalue="Gradle.IotWatch_Mongo_AWS [clean]" />
       <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmRunBuild]" />
       <item itemvalue="Gradle.IotWatch_Mongo_AWS [npmInstall]" />
+      <item itemvalue="Spring Boot.IotwatchApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -267,6 +320,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1694306999081</updated>
+      <workItem from="1696546014908" duration="18020000" />
+      <workItem from="1696598619107" duration="8878000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
@@ -278,6 +333,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -299,29 +357,29 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/controller/AuthController.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/TokenService.java</url>
           <line>39</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/TokenService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="56" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/controller/DashboardController.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/TokenService.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationUserFilter.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/TokenService.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="58" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationFilter.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -336,5 +394,9 @@
         <watch expression="param_1" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
