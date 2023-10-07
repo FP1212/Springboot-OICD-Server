@@ -1,48 +1,55 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const API_URL = "http://localhost:9090/api/v1/auth/";
+import axios, { HttpStatusCode } from "axios";
+import API_ROUTES from "Constants/apiRoutes.js";
 
 const loginSlice = createSlice({
   name: "login",
-  initialState: { user: "", token: "", authorized: false, status: 0 },
+  initialState: { authenticate: false },
   reducers: {
-    signin: (state, action) => {
-      const params = new URLSearchParams();
-      params.append("username", action.payload.username);
-      params.append("password", action.payload.password);
-
-      console.log(params.toString());
-      axios
-        .post(API_URL + "signin", params)
-        .then((response) => {
-          if (response.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(response.data));
-          }
-
-          return response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    signing: (state, action) => {
+      state.authenticate = action.payload.authenticate;
     },
     signup: (state, action) => {
-      //Import mysql database models
-      //      db.logout(state.user);
-      state.user = "";
-      state.authorized = false;
-      state.status = 0;
+      state.authenticate = false;
     },
-    status: (state, action) => {
-      state.status = action.payload.status;
-    },
-    clear: (state, action) => {},
   },
 });
 
-export const selectLogin = (state) => {
-  return state.login;
+export const selectLogin = (state) => state.login;
+
+export const login =
+  ({ username, password, rememberMe }) =>
+  (dispatch) => {
+    const params = new URLSearchParams();
+    params.append("username", username);
+    params.append("password", password);
+
+    if (rememberMe) {
+      params.append("remember-me", rememberMe);
+    }
+
+    axios
+      .post(API_ROUTES.LOGIN, params)
+      .then((response) => {
+        dispatch(
+          signing({ authenticate: response.status === HttpStatusCode.Ok })
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+export const isValidSession = () => (dispatch) => {
+  axios
+    .get(API_ROUTES.IS_VALID_SESSION)
+    .then((response) => {
+      dispatch(signing({ authenticate: response.data.authenticate }));
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export default loginSlice.reducer;
-export const { signin, signup, status, clear } = loginSlice.actions;
+export const { signing, signup } = loginSlice.actions;

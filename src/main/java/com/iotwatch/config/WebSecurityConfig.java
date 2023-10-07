@@ -3,6 +3,7 @@ package com.iotwatch.config;
 import com.iotwatch.auth.service.JWTService;
 import com.iotwatch.auth.service.impl.TokenService;
 import com.iotwatch.auth.service.impl.UserDetailsServiceImpl;
+import com.iotwatch.enums.EnumRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -31,6 +32,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static org.springframework.security.config.http.SessionCreationPolicy.ALWAYS;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -75,10 +77,9 @@ public class WebSecurityConfig  {
                                     .permitAll()
                     )
                     .rememberMe(remember-> remember.rememberMeServices(rememberMeServices))
-                    .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+                    .sessionManagement(manager -> manager.sessionCreationPolicy(ALWAYS))
                     .authenticationProvider(authenticationProvider())
                     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                    .addFilterBefore(new JWTAuthenticationUserFilter(authManagerBuilder.getOrBuild(), jwtService, rememberMeServices), UsernamePasswordAuthenticationFilter.class)
                     .build();
     }
 

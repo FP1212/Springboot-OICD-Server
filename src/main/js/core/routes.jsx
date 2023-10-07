@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 // import { update } from "Redux/components/alarm/alarmSlice";
 // import { resuscribe, unsuscribe } from "Redux/components/broker/brokerSlice";
-import { Switch, Route } from "react-router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import ROUTES from "Constants/routes";
 import loadable from "@loadable/component";
 // import Nav from "./nav";
@@ -11,7 +12,7 @@ import loadable from "@loadable/component";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { selectDarkMode } from "Redux/components/dark/darkSlice";
 import CssBaseline from "@mui/material/CssBaseline";
-import { selectLogin } from "Redux/components/login/loginSlice";
+import { selectLogin, isValidSession } from "Redux/components/login/loginSlice";
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() =>
@@ -50,7 +51,6 @@ const Dashboard = loadable(() =>
 const Routes = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
-  const isInitialMount = useRef(true);
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
 
@@ -64,32 +64,22 @@ const Routes = (props) => {
     [darkMode]
   );
 
-  // useEffect(() => {
-  //   loginState.authorized
-  //     ? history.push(ROUTES.DASHBOARD)
-  //     : history.push(ROUTES.DASHBOARD); //ROUTES.LOGIN ojo lo desactivo para probar
-  // }, [loginState.authorized]);
-
-  // useEffect(() => {
-  //   if (isInitialMount) {
-  //     if (brokerOptions)
-  //       dispatch(
-  //         resuscribe({
-  //           ...brokerOptions,
-  //           action: update,
-  //         })
-  //       );
-  //   }
-  //   return () => {
-  //     if (brokerOptions) dispatch(unsuscribe(brokerOptions));
-  //   };
-  // }, [loginState.authorized]);
+  useEffect(() => {
+    if (!loginState.authenticate) {
+      dispatch(isValidSession());
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Switch>
-        <Route exact path={ROUTES.LOGIN} component={Login} history={history} />
+      <Router>
+        <Route
+          exact
+          path={ROUTES.SIGNING}
+          component={Login}
+          history={history}
+        />
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
         <Route
@@ -118,9 +108,13 @@ const Routes = (props) => {
             <PermanentDrawer />
           </div>
         </React.Fragment> */}
-      </Switch>
+      </Router>
     </ThemeProvider>
   );
+};
+
+Routes.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default Routes;

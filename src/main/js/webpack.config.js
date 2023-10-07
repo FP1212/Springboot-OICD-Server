@@ -30,8 +30,18 @@ module.exports = (env, argv) => ({
         secure: false,
       },
     },
+    devMiddleware: {
+      index: true,
+      mimeTypes: { phtml: "text/html" },
+      publicPath: path.resolve(
+        __dirname,
+        "../../../build/resources/main/static/"
+      ),
+      serverSideRender: true,
+      writeToDisk: true,
+    },
   },
-  devtool: argv.mode === "production" ? false : "inline-source-map",
+  devtool: argv.mode === "production" ? false : "source-map",
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],

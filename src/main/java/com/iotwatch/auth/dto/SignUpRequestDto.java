@@ -36,5 +36,6 @@ public class SignUpRequestDto {
     @Size(min = 6,max = 20)
     private String password;
 
-    private Set<EnumRole> enumRoles = new HashSet<>();
+    @Size(max = 20)
+    private Set<EnumRole> roles = new HashSet<>();
 }

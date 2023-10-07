@@ -10,12 +10,11 @@ import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
-import lombok.RequiredArgsConstructor;
+import com.iotwatch.response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,40 +40,44 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public JWTAuthResponse signup(SignUpRequestDto signUpRequestDto) {
-//        if (userRepository.existsByUsername(signUpRequestDto.getUsername())) {
-//            return ResponseEntity.badRequest().body(new MessageResponse("User already exists"));
-//        }
-//
-//        if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
-//            return ResponseEntity.badRequest().body(new MessageResponse("Email already in use"));
-//        }
+    public ResponseEntity<?> signup(SignUpRequestDto signUpRequestDto) {
+        try {
+            if (userRepository.existsByUsername(signUpRequestDto.getUserName())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("User already exists"));
+            }
 
-        Set<EnumRole> enumRoleSet = signUpRequestDto.getEnumRoles();
-        Set<Role> roleSet = new HashSet<>();
+            if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Email already in use"));
+            }
 
-        if (Objects.isNull(enumRoleSet)) {
-            Role userRole = roleRepository.findById(EnumRole.USER.toString()).orElseThrow(() -> new RuntimeException("Role not found"));
-            roleSet.add(userRole);
-        } else {
-            enumRoleSet.forEach(role -> {
-                Role resultRole = roleRepository.findById(EnumRole.USER.toString()).orElseThrow(() -> new RuntimeException("Role not found"));
-                roleSet.add(resultRole);
-            });
+            Set<EnumRole> enumRoleSet = signUpRequestDto.getRoles();
+            Set<Role> roleSet = new HashSet<>();
+
+            if (Objects.isNull(enumRoleSet)) {
+                Role userRole = roleRepository.findByRole(EnumRole.USER.name()).orElseThrow(() -> new RuntimeException("Role not found"));
+                roleSet.add(userRole);
+            } else {
+                enumRoleSet.forEach(role -> {
+                    Role resultRole = roleRepository.findByRole(role.name()).orElseThrow(() -> new RuntimeException("Role not found"));
+                    roleSet.add(resultRole);
+                });
+            }
+
+            User user = User.builder()
+                    .username(signUpRequestDto.getUserName())
+                    .firstName(signUpRequestDto.getFirstName())
+                    .lastName(signUpRequestDto.getLastName())
+                    .email(signUpRequestDto.getEmail())
+                    .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
+                    .enumRoles(roleSet)
+                    .build();
+
+            userRepository.save(user);
+            var jwt = jwtService.generateToken(user);
+            return ResponseEntity.ok(JWTAuthResponse.builder().token(jwt).build());
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
-
-        User user = User.builder()
-                .username(signUpRequestDto.getUserName())
-                .firstName(signUpRequestDto.getFirstName())
-                .lastName(signUpRequestDto.getLastName())
-                .email(signUpRequestDto.getEmail())
-                .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
-                .enumRoles(roleSet)
-                .build();
-
-        userRepository.save(user);
-        var jwt = jwtService.generateToken(user);
-        return JWTAuthResponse.builder().token(jwt).build();
     }
 
     @Override

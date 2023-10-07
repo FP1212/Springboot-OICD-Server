@@ -3,10 +3,18 @@ package com.iotwatch.auth.controller;
 import com.iotwatch.auth.dto.SignInRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
 import com.iotwatch.auth.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
@@ -18,11 +26,25 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignUpRequestDto signUpRequestDto) {
-        return ResponseEntity.ok(authenticationService.signup(signUpRequestDto));
+        return authenticationService.signup(signUpRequestDto);
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<?> signin(@RequestBody SignInRequestDto signInRequestDto) {
+    @PostMapping("/signing")
+    public ResponseEntity<?> signing(@RequestBody SignInRequestDto signInRequestDto) {
         return ResponseEntity.ok(authenticationService.signin(signInRequestDto));
+    }
+
+    @GetMapping("/authenticate")
+    public ResponseEntity<Map<String, Boolean>> isAuthenticated(HttpServletRequest request) {
+        Map<String, Boolean> response = new HashMap<>();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        boolean nonAnonymous = false;
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            nonAnonymous = authentication.getAuthorities().stream()
+                    .noneMatch(authoritiy -> authoritiy.getAuthority().equals("ROLE_ANONYMOUS"));
+        }
+        response.put("authenticate", authentication.isAuthenticated() && nonAnonymous);
+        return ResponseEntity.ok(response);
     }
 }

@@ -18,10 +18,10 @@ import ROUTES from "Constants/routes";
 import Alert from "@mui/material/Alert";
 import React, { useState, useEffect } from "react";
 import DarkLightSwitch from "Components/darkLightSwitch";
-// Import loginSlice reducers
-import { signin, signup, selectLogin } from "Redux/components/login/loginSlice";
-import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+// Import loginSlice reducers
+import { login, selectLogin } from "Redux/components/login/loginSlice";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "Styles/login.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -86,21 +86,27 @@ const WarningAlert = (props) => {
   }
 };
 
-const SignIn = (props) => {
+const SignIng = () => {
+  const history = useHistory();
   const loginState = useSelector(selectLogin);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [t] = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const email = data.get("email");
+    const username = data.get("username");
     const password = data.get("password");
-    if (email && password) {
-      dispatch(signin({ username: email, password }));
-    }
+    const rememberMe = data.get("remember");
+
+    dispatch(login({ username, password, rememberMe }));
   };
+
+  useEffect(() => {
+    if (loginState.authenticate) {
+      history.push(ROUTES.DASHBOARD);
+    }
+  }, [loginState]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -120,17 +126,16 @@ const SignIn = (props) => {
           onSubmit={(event) => {
             handleSubmit(event);
           }}
-          noValidate
           sx={{ mt: 1 }}
         >
           <TextField
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="username"
             label={"User Name"}
-            name="email"
-            autoComplete="email"
+            name="username"
+            autoComplete="Username"
             autoFocus
           />
           <TextField
@@ -151,7 +156,9 @@ const SignIn = (props) => {
             }}
           >
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={
+                <Checkbox value="true" name="remember" color="primary" />
+              }
               label={"Remember me"}
             />
             <DarkLightSwitch />
@@ -172,4 +179,4 @@ const SignIn = (props) => {
     </Container>
   );
 };
-export default SignIn;
+export default SignIng;

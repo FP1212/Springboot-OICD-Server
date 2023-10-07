@@ -1,7 +1,7 @@
 {
   "INDEX": "/",
   "HOME": "/home",
-  "LOGIN": "/login",
+  "SIGNING": "/signing",
   "SIGNUP": "/signup",
   "LOGOUT": "/signout",
   "DASHBOARD": "/dashboard",

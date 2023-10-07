@@ -147,7 +147,7 @@ const DrawerContent = ({ drawerState }) => {
       itemName: "Logout",
       action: () => {
         dispatch(signout());
-        history.push(ROUTES.LOGIN);
+        history.push(ROUTES.SIGNING);
       },
       Icon: LogoutIcon,
     },

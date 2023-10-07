@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("user")
+@Document
 public class User implements UserDetails {
 
     @Id

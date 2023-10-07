@@ -1,6 +1,8 @@
 package com.iotwatch.auth.model;
 
 import com.iotwatch.enums.EnumRole;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +20,12 @@ public class Role implements GrantedAuthority {
     @Id
     private String id;
 
+    @NotBlank
+    @Size(max = 20)
+    private String role;
+
     @Override
     public String getAuthority() {
-        return id;
+        return role;
     }
 }

@@ -28,70 +28,69 @@ import { useTranslation } from "react-i18next";
 //brokerSlice reducers
 // import { suscribe, unsuscribe } from "Redux/components/broker/brokerSlice";
 
-const TabContent = React.memo((props) => {
-  const { index, selectedTab, theme, defaultCols } = props;
-  const dispatch = useDispatch();
-  const cards = useSelector(getCards);
-  const currentBreakpoint = useSelector(selectCurrentBreakpoint(selectedTab));
-  const handleLayoutChange = useCallback((currentLayout, layouts) => {
-    //dispatch(layout({ tab: selectedTab, newLayout: layouts }));
-  }, []);
+// const TabContent = React.memo((props) => {
+//   const { index, selectedTab, theme, defaultCols } = props;
+//   const dispatch = useDispatch();
+//   const cards = useSelector(getCards);
+//   const currentBreakpoint = useSelector(selectCurrentBreakpoint(selectedTab));
+//   const handleLayoutChange = useCallback((currentLayout, layouts) => {
+//     //dispatch(layout({ tab: selectedTab, newLayout: layouts }));
+//   }, []);
 
-  const handleBreakpointChange = useCallback((newBreakpoint, newCols) => {
-    dispatch(
-      breakpoint({
-        tab: selectedTab,
-        cols: newCols,
-        breakpoint: newBreakpoint,
-      })
-    );
-  }, []);
+//   const handleBreakpointChange = useCallback((newBreakpoint, newCols) => {
+//     dispatch(
+//       breakpoint({
+//         tab: selectedTab,
+//         cols: newCols,
+//         breakpoint: newBreakpoint,
+//       })
+//     );
+//   }, []);
 
-  const memoizedContent = useMemo(
-    () =>
-      cards[selectedTab].gridlayout.cards.map((data, i) => {
-        return (
-          <GridLayoutItem
-            key={`gridlayout-${selectedTab}-${i}`}
-            data-grid={data.dimensions[currentBreakpoint]}
-          >
-            <CustomCard
-              tab={selectedTab}
-              index={i}
-              children={cardGenerator(data, theme, index)}
-            />
-          </GridLayoutItem>
-        );
-      }),
-    [selectedTab, currentBreakpoint]
-  );
+//   const memoizedContent = useMemo(
+//     () =>
+//       cards[selectedTab].gridlayout.cards.map((data, i) => {
+//         return (
+//           <GridLayoutItem
+//             key={`gridlayout-${selectedTab}-${i}`}
+//             data-grid={data.dimensions[currentBreakpoint]}
+//           >
+//             <CustomCard
+//               tab={selectedTab}
+//               index={i}
+//               children={cardGenerator(data, theme, index)}
+//             />
+//           </GridLayoutItem>
+//         );
+//       }),
+//     [selectedTab, currentBreakpoint]
+//   );
 
-  return (
-    <TabPanel
-      key={`tabpanel${index}`}
-      value={selectedTab}
-      index={selectedTab}
-      dir={theme.direction}
-    >
-      <GridLayout
-        className="layout"
-        handleLayoutChange={handleLayoutChange}
-        handleBreakpointChange={handleBreakpointChange}
-        rowHeight={60}
-        cols={defaultCols}
-      >
-        {memoizedContent}
-      </GridLayout>
-    </TabPanel>
-  );
-});
+//   return (
+//     <TabPanel
+//       key={`tabpanel${index}`}
+//       value={selectedTab}
+//       index={selectedTab}
+//       dir={theme.direction}
+//     >
+//       <GridLayout
+//         className="layout"
+//         handleLayoutChange={handleLayoutChange}
+//         handleBreakpointChange={handleBreakpointChange}
+//         rowHeight={60}
+//         cols={defaultCols}
+//       >
+//         {memoizedContent}
+//       </GridLayout>
+//     </TabPanel>
+//   );
+// });
 
 const Dashboard = () => {
   const [t] = useTranslation();
   const theme = useTheme();
 
   //Simil to DidComponentMount
-  const isInitialMount = useRef(true);
   // const dispatch = useDispatch();
   // const selectedTab = useSelector(selectDashboardTab);
   // const routingKey = useSelector(selectRoutingKey(selectedTab));
@@ -110,23 +109,23 @@ const Dashboard = () => {
   //   };
   // }, [routingKey]);
 
-  const tabsComponent = useMemo(
-    () =>
-      tabs.map((tab, index) => (
-        <Tab
-          className="tab-item"
-          key={`tab${index}`}
-          label={t(tab.title)}
-          id={`full-width-tab-${tab.id}`}
-          aria-controls={`full-width-tabpanel-${tab.id}`}
-        />
-      )),
-    []
-  );
+  // const tabsComponent = useMemo(
+  //   () =>
+  //     tabs.map((tab, index) => (
+  //       <Tab
+  //         className="tab-item"
+  //         key={`tab${index}`}
+  //         label={t(tab.title)}
+  //         id={`full-width-tab-${tab.id}`}
+  //         aria-controls={`full-width-tabpanel-${tab.id}`}
+  //       />
+  //     )),
+  //   []
+  // );
 
-  const handleOnChangeTabIndex = useCallback((event, index) => {
-    dispatch(setTab({ tab: index }));
-  }, []);
+  // const handleOnChangeTabIndex = useCallback((event, index) => {
+  //   dispatch(setTab({ tab: index }));
+  // }, []);
 
   return (
     <React.Fragment>

@@ -16,7 +16,7 @@ const Home = () => {
       <Button
         variant="outlined"
         startIcon={<PlayIcon />}
-        onClick={() => history.push(ROUTES.LOGIN)}
+        onClick={() => history.push(ROUTES.SIGNING)}
         sx={{
           width: "auto",
           textTransform: "capitalize",
