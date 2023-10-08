@@ -18,7 +18,7 @@ import ROUTES from "Constants/routes";
 import Alert from "@mui/material/Alert";
 import React, { useState, useEffect } from "react";
 import DarkLightSwitch from "Components/darkLightSwitch";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 // Import loginSlice reducers
 import { login, selectLogin } from "Redux/components/login/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -87,7 +87,6 @@ const WarningAlert = (props) => {
 };
 
 const SignIng = () => {
-  const history = useHistory();
   const loginState = useSelector(selectLogin);
   const dispatch = useDispatch();
   const [t] = useTranslation();
@@ -101,12 +100,6 @@ const SignIng = () => {
 
     dispatch(login({ username, password, rememberMe }));
   };
-
-  useEffect(() => {
-    if (loginState.authenticate) {
-      history.push(ROUTES.DASHBOARD);
-    }
-  }, [loginState]);
 
   return (
     <Container component="main" maxWidth="xs">

@@ -64,7 +64,7 @@ public class WebSecurityConfig  {
                     .cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(request ->
-                            request.requestMatchers("/api/v1/auth/**")
+                            request.requestMatchers("/api/v1/auth/**", "/")
                                     .permitAll()
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
@@ -72,7 +72,7 @@ public class WebSecurityConfig  {
                                     .authenticated())
                     .formLogin(form ->
                                 form
-                                    .loginPage("/")
+                                    .loginPage("/signing")
                                         .loginProcessingUrl("/login")
                                     .permitAll()
                     )

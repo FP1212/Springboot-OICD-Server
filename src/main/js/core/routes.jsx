@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 // import { update } from "Redux/components/alarm/alarmSlice";
 // import { resuscribe, unsuscribe } from "Redux/components/broker/brokerSlice";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import ROUTES from "Constants/routes";
 import loadable from "@loadable/component";
 // import Nav from "./nav";
@@ -13,6 +13,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { selectDarkMode } from "Redux/components/dark/darkSlice";
 import CssBaseline from "@mui/material/CssBaseline";
 import { selectLogin, isValidSession } from "Redux/components/login/loginSlice";
+import PrivateRoute from "Components/PrivateRoute";
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() =>
@@ -73,21 +74,29 @@ const Routes = (props) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Router>
-        <Route
-          exact
-          path={ROUTES.SIGNING}
-          component={Login}
-          history={history}
-        />
+      <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
         <Route
           exact
-          path={ROUTES.DASHBOARD}
-          component={Dashboard}
+          path={ROUTES.SIGNING}
+          render={(routeProps) =>
+            loginState.authenticate ? (
+              <Redirect to={ROUTES.DASHBOARD} />
+            ) : (
+              <Login {...routeProps} />
+            )
+          }
           history={history}
         />
+
+        <PrivateRoute
+          path={ROUTES.DASHBOARD}
+          auth={{ isAuthenticated: loginState.authenticate }}
+          history={history}
+        >
+          <Dashboard />
+        </PrivateRoute>
 
         {/* <React.Fragment>
           <Nav history={history}></Nav>
@@ -108,7 +117,7 @@ const Routes = (props) => {
             <PermanentDrawer />
           </div>
         </React.Fragment> */}
-      </Router>
+      </Switch>
     </ThemeProvider>
   );
 };

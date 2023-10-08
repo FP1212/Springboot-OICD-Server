@@ -26,10 +26,6 @@ const combinedReducers = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-    if (action.type === "login/signout" || action.type === "login/clear") {
-      debugger;
-      state = initialState;
-    }
   return combinedReducers(state, action);
 };
 

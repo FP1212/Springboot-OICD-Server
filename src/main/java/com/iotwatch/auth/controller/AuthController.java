@@ -38,13 +38,13 @@ public class AuthController {
     public ResponseEntity<Map<String, Boolean>> isAuthenticated(HttpServletRequest request) {
         Map<String, Boolean> response = new HashMap<>();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        boolean nonAnonymous = false;
+        boolean isUser = false;
 
         if (authentication != null && authentication.isAuthenticated()) {
-            nonAnonymous = authentication.getAuthorities().stream()
+            isUser = authentication.getAuthorities().stream()
                     .noneMatch(authoritiy -> authoritiy.getAuthority().equals("ROLE_ANONYMOUS"));
         }
-        response.put("authenticate", authentication.isAuthenticated() && nonAnonymous);
+        response.put("authenticate", authentication.isAuthenticated() && isUser);
         return ResponseEntity.ok(response);
     }
 }
