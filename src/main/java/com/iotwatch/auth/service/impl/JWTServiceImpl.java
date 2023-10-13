@@ -2,11 +2,12 @@ package com.iotwatch.auth.service.impl;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 
+import com.iotwatch.auth.details.UserDetailsImpl;
+import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.service.JWTService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 @Service
+@AllArgsConstructor
 public class JWTServiceImpl implements JWTService {
+
     @Autowired
     @Qualifier("getRandomJWTSecretKey")
     private Key secretKey;
@@ -27,8 +30,13 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetailsImpl user) {
+        return Jwts.builder()
+                .setSubject(user.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .signWith(secretKey)
+                .compact();
     }
 
     @Override
@@ -40,16 +48,6 @@ public class JWTServiceImpl implements JWTService {
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {
         final Claims claims = extractAllClaims(token);
         return claimsResolvers.apply(claims);
-    }
-
-    private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return Jwts.builder()
-                .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .signWith(secretKey)
-                .compact();
     }
 
     private boolean isTokenExpired(String token) {

@@ -11,19 +11,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
-public class User implements UserDetails {
+public class User {
 
     @Id
     private String id;
@@ -54,40 +52,4 @@ public class User implements UserDetails {
     private Set<Role> enumRoles = new HashSet<>();
 
     private Date lastLogin;
-    private boolean active = true;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return enumRoles;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return active;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return active;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return active;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return active;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
 }

@@ -1,5 +1,6 @@
 package com.iotwatch.auth.service.impl;
 
+import com.iotwatch.auth.details.UserDetailsImpl;
 import com.iotwatch.auth.model.Role;
 import com.iotwatch.auth.repository.RoleRepository;
 import com.iotwatch.enums.EnumRole;
@@ -11,39 +12,37 @@ import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
 import com.iotwatch.response.MessageResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
-    @Autowired
+
     private UserRepository userRepository;
-
-    @Autowired
     private RoleRepository roleRepository;
-
-    @Autowired
     private JWTService jwtService;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
     public ResponseEntity<?> signup(SignUpRequestDto signUpRequestDto) {
         try {
             if (userRepository.existsByUsername(signUpRequestDto.getUserName())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("User already exists"));
+                return ResponseEntity.badRequest().body(new MessageResponse("Username already in use"));
             }
 
             if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
@@ -73,21 +72,33 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .build();
 
             userRepository.save(user);
-            var jwt = jwtService.generateToken(user);
-            return ResponseEntity.ok(JWTAuthResponse.builder().token(jwt).build());
+            return ResponseEntity.ok("User successfully saved");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
     }
 
     @Override
-    public JWTAuthResponse signin(SignInRequestDto signInRequestDto) {
-        authenticationManager.authenticate(
+    public ResponseEntity<?> signin(SignInRequestDto signInRequestDto) {
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
-        var user = userRepository.findByName(signInRequestDto.getUsername())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid username or password"));
-        var jwt = jwtService.generateToken(user);
-        return JWTAuthResponse.builder().token(jwt).build();
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+
+        String jwt = jwtService.generateToken(userPrincipal);
+
+        List<String> roles = userPrincipal.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+
+        return ResponseEntity.ok(JWTAuthResponse.builder()
+                .id(userPrincipal.getId())
+                .username(userPrincipal.getUsername())
+                .email(userPrincipal.getEmail())
+                .roles(roles)
+                .token(jwt)
+                .build());
     }
 
 }

@@ -1,9 +1,7 @@
 package com.iotwatch.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import java.util.List;
 
 @Data
 @Builder
@@ -11,4 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class JWTAuthResponse {
     private String token;
+
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    private String type = "Bearer";
+    private String id;
+    private String username;
+    private String email;
+    private List<String> roles;
 }

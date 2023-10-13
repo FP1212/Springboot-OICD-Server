@@ -2,6 +2,7 @@ package com.iotwatch.auth.service.impl;
 
 import com.iotwatch.auth.model.Token;
 import com.iotwatch.auth.repository.TokenRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -10,10 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
+@AllArgsConstructor
 public class TokenService implements PersistentTokenRepository {
 
-    @Autowired
-    TokenRepository tokenRepository;
+    private TokenRepository tokenRepository;
 
     @Override
     public void createNewToken(PersistentRememberMeToken token) {
