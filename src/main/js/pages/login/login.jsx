@@ -1,93 +1,29 @@
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Container,
-  Tooltip,
-} from "@mui/material";
+import React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
+import { login } from "Redux/components/login/loginSlice";
 import ROUTES from "Constants/routes";
-import Alert from "@mui/material/Alert";
-import React, { useState, useEffect } from "react";
-import DarkLightSwitch from "Components/darkLightSwitch";
-// import { useHistory } from "react-router";
-// Import loginSlice reducers
-import { login, selectLogin } from "Redux/components/login/loginSlice";
-import { useSelector, useDispatch } from "react-redux";
-import styles from "Styles/login.module.scss";
+// import styles from "Styles/login.module.scss";
 import { useTranslation } from "react-i18next";
+import Copyright from "Components/Copyright";
 
-const Copyright = (props) => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      Cotecmar {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
+// TODO remove, this demo shouldn't need to reset the theme.
 
-const WarningAlert = (props) => {
-  switch (props.status) {
-    case 1:
-      return <Alert severity="success">Sucesfull</Alert>;
-    case 2:
-      return (
-        <Alert severity="warning">
-          Error, Usuario o contraseña incorrectos
-          {/* ,IP:
-          {params.config_connection_api.address}, PORT:
-          {params.config_connection_api.port} */}
-        </Alert>
-      );
-    case 3:
-      return (
-        <Alert severity="info">
-          Intentando conectar al servidor
-          {/* , IP:
-          {params.config_connection_api.address}, PORT:
-          {params.config_connection_api.port} */}
-        </Alert>
-      );
-    case 4:
-      return (
-        <Alert severity="error">
-          Servidor Inaccesible:
-          {/* {params.config_connection_api.address}, PORT:
-          {params.config_connection_api.port} */}
-        </Alert>
-      );
-    case 5:
-      console.log("Missing user or password");
-      return (
-        <Alert severity="error">
-          Falta uno o mas campos
-          {/* ,IP:
-          {params.config_connection_api.address}, PORT:
-          {params.config_connection_api.port} */}
-        </Alert>
-      );
+const defaultTheme = createTheme();
 
-    default:
-      return <div></div>;
-  }
-};
-
-const SignIng = () => {
-  const loginState = useSelector(selectLogin);
+const SignInSide = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
 
@@ -102,74 +38,99 @@ const SignIng = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={styles.login_box}>
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h4">
-          {t("common.sign.in")}
-        </Typography>
-        <Typography component="h3" variant="h5">
-          {t("common.register.banner") + ", " + t("common.register.register")}
-        </Typography>
-        <Box
-          component="form"
-          onSubmit={(event) => {
-            handleSubmit(event);
+    <ThemeProvider theme={defaultTheme}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage:
+              "url(https://source.unsplash.com/random?wallpapers)",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: (t) =>
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-          sx={{ mt: 1 }}
-        >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="username"
-            label={"User Name"}
-            name="username"
-            autoComplete="Username"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label={"Password"}
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
+              my: 8,
+              mx: 4,
               display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <FormControlLabel
-              control={
-                <Checkbox value="true" name="remember" color="primary" />
-              }
-              label={"Remember me"}
-            />
-            <DarkLightSwitch />
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              {t("common.sign.in")}
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="username"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember-me" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {t("common.sign.in")}
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href={ROUTES.SIGNUP} variant="body2">
+                    {t("common.register.forgot")}
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href={ROUTES.SIGNUP} variant="body2">
+                    {t("common.register.account")}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
+            </Box>
           </Box>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            {"Sign in"}
-          </Button>
-        </Box>
-      </div>
-      <WarningAlert status={loginState.status} />
-      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
-    </Container>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 };
-export default SignIng;
+
+export default SignInSide;

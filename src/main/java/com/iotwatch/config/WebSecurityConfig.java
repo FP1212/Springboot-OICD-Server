@@ -64,7 +64,7 @@ public class WebSecurityConfig  {
                     .cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(request ->
-                            request.requestMatchers("/api/v1/auth/**", "/")
+                            request.requestMatchers("/api/v1/auth/**", "/", "/signup")
                                     .permitAll()
                                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
@@ -77,7 +77,7 @@ public class WebSecurityConfig  {
                                     .permitAll()
                     )
                     .rememberMe(remember-> remember.rememberMeServices(rememberMeServices))
-                    .sessionManagement(manager -> manager.sessionCreationPolicy(ALWAYS))
+                    .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                     .authenticationProvider(authenticationProvider())
                     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                     .build();
@@ -85,7 +85,7 @@ public class WebSecurityConfig  {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.debug(true);//.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+        return (web) -> web.debug(true);
     }
 
     @Bean
@@ -115,7 +115,7 @@ public class WebSecurityConfig  {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:9091"));
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:9091")); //Webpack Devserver Proxy
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "content-type"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "content-type"));

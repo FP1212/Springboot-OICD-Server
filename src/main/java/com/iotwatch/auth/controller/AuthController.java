@@ -4,11 +4,10 @@ import com.iotwatch.auth.dto.SignInRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
 import com.iotwatch.auth.service.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,7 @@ public class AuthController {
     AuthenticationService authenticationService;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@RequestBody SignUpRequestDto signUpRequestDto) {
+    public ResponseEntity<?> signup(@Valid @RequestBody SignUpRequestDto signUpRequestDto) {
         return authenticationService.signup(signUpRequestDto);
     }
 

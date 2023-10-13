@@ -9,9 +9,6 @@ const loginSlice = createSlice({
     signing: (state, action) => {
       state.authenticate = action.payload.authenticate;
     },
-    signup: (state, action) => {
-      state.authenticate = false;
-    },
   },
 });
 
@@ -40,6 +37,25 @@ export const login =
       });
   };
 
+export const signup = (data) => (dispatch) => {
+  axios
+    .post(API_ROUTES.SIGNUP, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      //  TODO make redirect or something after succesfully register
+      // dispatch(
+      //   signing({ authenticate: response.status === HttpStatusCode.Ok })
+      // );
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const isValidSession = () => (dispatch) => {
   axios
     .get(API_ROUTES.IS_VALID_SESSION)
@@ -52,4 +68,4 @@ export const isValidSession = () => (dispatch) => {
 };
 
 export default loginSlice.reducer;
-export const { signing, signup } = loginSlice.actions;
+export const { signing } = loginSlice.actions;

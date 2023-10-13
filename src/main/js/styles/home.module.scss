@@ -1,0 +1,38 @@
+/* Home.scss */
+
+.home-container {
+  background-color: #282c37; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 20px;
+}
+
+.app-title {
+  flex-grow: 1;
+}
+
+.banner {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.banner-title {
+  font-size: 3rem;
+}
+
+.features {
+  margin: 50px 0;
+}
+
+.features-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact {
+  margin: 50px 0;
+}
+
+.contact-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}

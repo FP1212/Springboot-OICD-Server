@@ -23,6 +23,11 @@ const Home = loadable(() =>
 const Login = loadable(() =>
   import(/* webpackChunkName: "LoginChunk" */ "Pages/login/login")
 );
+
+const SignUp = loadable(() =>
+  import(/* webpackChunkName: "LoginChunk" */ "Pages/signup/signup")
+);
+
 const Dashboard = loadable(() =>
   import(/* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard")
 );
@@ -77,6 +82,12 @@ const Routes = (props) => {
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
+        <Route
+          exact
+          path={ROUTES.SIGNUP}
+          component={SignUp}
+          history={history}
+        />
         <Route
           exact
           path={ROUTES.SIGNING}

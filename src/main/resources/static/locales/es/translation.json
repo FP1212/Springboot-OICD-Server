@@ -120,23 +120,24 @@
     "SIM": "Simulacion"
   },
   "common": {
-  "sign": {
-    "in" : "Iniciar Sesion",
-    "out": "Cerrar Sesion"
-  },
-  "register": {
-    "banner": {
-      "account" : "Aun no tienes una cuenta?",
-      "login": "Ya tienes una cuenta?"
+    "sign": {
+      "in" : "Iniciar Sesion",
+      "out": "Cerrar Sesion",
+      "up": "Crea una cuenta"
     },
-    "register": "Registrate.",
-    "create": "Crear Cuenta"
-  },
-    "user": "Usuario",
-    "password": "Contraseña",
-    "remember": "Recuerdame",
-    "iotwatch": "IotWatch",
-    "name": "Nombre",
-    "email": "Correo Electronico"
+    "register": {
+      "banner": {
+        "account" : "Aun no tienes una cuenta? Registrate",
+        "login": "Ya tienes una cuenta?, Inicia Sesion"
+      },
+      "create": "Crear Cuenta",
+      "forgot": "Olvidaste tu contraseña?"
+    },
+      "user": "Usuario",
+      "password": "Contraseña",
+      "remember": "Recuerdame",
+      "iotwatch": "IotWatch",
+      "name": "Nombre",
+      "email": "Correo Electronico"
   }
 }
