@@ -1,4 +1,4 @@
-package com.iotwatch.response;
+package com.iotwatch.auth.response;
 
 import lombok.*;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class JWTAuthResponse {
     private String token;
+    private String refreshToken;
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)

@@ -10,6 +10,7 @@ import com.iotwatch.auth.service.JWTService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ import io.jsonwebtoken.Jwts;
 @Service
 @AllArgsConstructor
 public class JWTServiceImpl implements JWTService {
+
+    @Value("${iotwatch.jwtTokenExpiration}")
+    private final Long jwtExpirationMs;
 
     @Autowired
     @Qualifier("getRandomJWTSecretKey")
@@ -30,11 +34,11 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public String generateToken(UserDetailsImpl user) {
+    public String generateToken(String username) {
         return Jwts.builder()
-                .setSubject(user.getUsername())
+                .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(secretKey)
                 .compact();
     }

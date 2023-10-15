@@ -1,16 +1,21 @@
 package com.iotwatch.auth.service.impl;
 
 import com.iotwatch.auth.details.UserDetailsImpl;
+import com.iotwatch.auth.dto.TokenRefreshDto;
+import com.iotwatch.auth.model.RefreshToken;
 import com.iotwatch.auth.model.Role;
 import com.iotwatch.auth.repository.RoleRepository;
+import com.iotwatch.auth.response.RefreshTokenResponse;
+import com.iotwatch.auth.service.RefreshTokenService;
 import com.iotwatch.enums.EnumRole;
-import com.iotwatch.response.JWTAuthResponse;
+import com.iotwatch.auth.response.JWTAuthResponse;
 import com.iotwatch.auth.dto.SignInRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
 import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
+import com.iotwatch.exceptions.RefreshTokenException;
 import com.iotwatch.response.MessageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +31,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -37,9 +41,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private JWTService jwtService;
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager;
+    private RefreshTokenService refreshTokenService;
 
     @Override
-    public ResponseEntity<?> signup(SignUpRequestDto signUpRequestDto) {
+    public ResponseEntity<?> signUp(SignUpRequestDto signUpRequestDto) {
         try {
             if (userRepository.existsByUsername(signUpRequestDto.getUserName())) {
                 return ResponseEntity.badRequest().body(new MessageResponse("Username already in use"));
@@ -79,25 +84,51 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public ResponseEntity<?> signin(SignInRequestDto signInRequestDto) {
+    public ResponseEntity<?> signIn(SignInRequestDto signInRequestDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        String jwt = jwtService.generateToken(userPrincipal);
+        String jwt = jwtService.generateToken(userPrincipal.getUsername());
 
         List<String> roles = userPrincipal.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
 
+        RefreshToken refreshToken = refreshTokenService.createNewToken(userPrincipal.getId());
+
         return ResponseEntity.ok(JWTAuthResponse.builder()
                 .username(userPrincipal.getUsername())
                 .email(userPrincipal.getEmail())
+                .refreshToken(refreshToken.getToken())
                 .roles(roles)
                 .token(jwt)
                 .build());
+    }
+
+    @Override
+    public ResponseEntity<?> signOut() {
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        refreshTokenService.deleteByUserId(userPrincipal.getId());
+        return ResponseEntity.ok(new MessageResponse("Log out successful!"));
+    }
+
+    @Override
+    public ResponseEntity<?> refreshToken (TokenRefreshDto tokenRefreshDto) {
+        String requestRefreshToken = tokenRefreshDto.getRefreshToken();
+
+        return refreshTokenService.findByToken(requestRefreshToken)
+                .map(refreshTokenService::verifyExpiration)
+                .map(RefreshToken::getUser)
+                .map(user -> {
+                    String token = jwtService.generateToken(user.getUsername());
+                    return ResponseEntity.ok(new RefreshTokenResponse(token, requestRefreshToken));
+                })
+                .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,
+                        "Refresh token is not in database!")
+                );
     }
 
 }

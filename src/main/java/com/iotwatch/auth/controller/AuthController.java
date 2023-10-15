@@ -2,6 +2,7 @@ package com.iotwatch.auth.controller;
 
 import com.iotwatch.auth.dto.SignInRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
+import com.iotwatch.auth.dto.TokenRefreshDto;
 import com.iotwatch.auth.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,21 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody SignUpRequestDto signUpRequestDto) {
-        return authenticationService.signup(signUpRequestDto);
+        return authenticationService.signUp(signUpRequestDto);
     }
 
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody SignInRequestDto signInRequestDto) {
-        return authenticationService.signin(signInRequestDto);
+        return authenticationService.signIn(signInRequestDto);
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<?> signout() {
+        return authenticationService.signOut();
+    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(@Valid @RequestBody TokenRefreshDto tokenRefreshDto) {
+        return authenticationService.refreshToken(tokenRefreshDto);
     }
 }
