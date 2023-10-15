@@ -12,7 +12,7 @@ import loadable from "@loadable/component";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { selectDarkMode } from "Redux/components/dark/darkSlice";
 import CssBaseline from "@mui/material/CssBaseline";
-import { selectLogin, isValidSession } from "Redux/components/login/loginSlice";
+import { selectLogin } from "Redux/components/login/loginSlice";
 import PrivateRoute from "Components/PrivateRoute";
 
 // Load bundles asynchronously so that the initial render happens faster
@@ -56,7 +56,6 @@ const Dashboard = loadable(() =>
 
 const Routes = (props) => {
   const { history } = props;
-  const dispatch = useDispatch();
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
 
@@ -69,12 +68,6 @@ const Routes = (props) => {
       }),
     [darkMode]
   );
-
-  useEffect(() => {
-    if (!loginState.authenticate) {
-      dispatch(isValidSession());
-    }
-  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -90,7 +83,7 @@ const Routes = (props) => {
         />
         <Route
           exact
-          path={ROUTES.SIGNING}
+          path={ROUTES.SIGNIN}
           render={(routeProps) =>
             loginState.authenticate ? (
               <Redirect to={ROUTES.DASHBOARD} />

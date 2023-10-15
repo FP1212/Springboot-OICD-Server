@@ -93,7 +93,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .toList();
 
         return ResponseEntity.ok(JWTAuthResponse.builder()
-                .id(userPrincipal.getId())
                 .username(userPrincipal.getUsername())
                 .email(userPrincipal.getEmail())
                 .roles(roles)

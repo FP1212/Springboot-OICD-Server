@@ -103,7 +103,7 @@ const TemporaryDrawer = () => {
             "Log Out",
             () => {
               dispatch(signout());
-              history.push(ROUTES.SIGNING);
+              history.push(ROUTES.SIGNIN);
             },
           ],
         ].map((item, index) => (

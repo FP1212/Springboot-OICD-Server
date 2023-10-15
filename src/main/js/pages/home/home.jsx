@@ -31,7 +31,7 @@ const Home = () => {
           </Button>
           <Button
             color="inherit"
-            onClick={() => history.push(ROUTES.SIGNING)}
+            onClick={() => history.push(ROUTES.SIGNIN)}
             sx={{
               width: "auto",
               textTransform: "capitalize",

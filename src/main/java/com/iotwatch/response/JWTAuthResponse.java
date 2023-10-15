@@ -13,7 +13,6 @@ public class JWTAuthResponse {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     private String type = "Bearer";
-    private String id;
     private String username;
     private String email;
     private List<String> roles;

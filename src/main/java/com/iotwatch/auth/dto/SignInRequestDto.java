@@ -15,4 +15,5 @@ public class SignInRequestDto {
     private String username;
     @NotBlank
     private String password;
+    private boolean remember;
 }

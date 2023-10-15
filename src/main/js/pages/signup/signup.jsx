@@ -132,7 +132,7 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href={ROUTES.SIGNING} variant="body2">
+                <Link href={ROUTES.SIGNIN} variant="body2">
                   {t("common.register.login")}
                 </Link>
               </Grid>

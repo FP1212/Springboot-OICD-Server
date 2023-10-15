@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import GridLayout from "Components/dashboard/gridlayout";
 // import GridLayoutItem from "Components/dashboard/gridlayoutItem";
 import { useTheme } from "@mui/material/styles";
-import { Tab, Tabs, Box, AppBar } from "@mui/material";
+import { Tab, Tabs, Box, AppBar, Button } from "@mui/material";
 // import CustomCard from "Components/card";
 // import { tabs } from "Constants/layouts/dashboard";
 // import IPCKEYS from "Constants/ipckeys.json";
@@ -12,6 +12,9 @@ import { Tab, Tabs, Box, AppBar } from "@mui/material";
 //import ButtonAddCard from "Components/dashboard/gridlayout/subitem/buttonAddCard";
 // import { cardGenerator } from "Utils/CardGenerator";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router";
+import ROUTES from "Constants/routes";
+import { logout } from "Redux/components/login/loginSlice";
 
 //dashboardSlice reducers
 // import {
@@ -91,7 +94,7 @@ const Dashboard = () => {
   const theme = useTheme();
 
   //Simil to DidComponentMount
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const selectedTab = useSelector(selectDashboardTab);
   // const routingKey = useSelector(selectRoutingKey(selectedTab));
 
@@ -131,6 +134,18 @@ const Dashboard = () => {
     <React.Fragment>
       <Box>
         Dashboard
+        <Button
+          color="inherit"
+          onClick={() => dispatch(logout())}
+          sx={{
+            width: "auto",
+            textTransform: "capitalize",
+            fontSize: "clamp(0.5rem,1vw,1rem)",
+            fontWeight: "400",
+          }}
+        >
+          {t("common.sign.out")}
+        </Button>
         {/* <Tabs
           value={selectedTab}
           onChange={handleOnChangeTabIndex}

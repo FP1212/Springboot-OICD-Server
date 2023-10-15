@@ -43,9 +43,11 @@ public class WebSecurityConfig  {
                     .cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(request ->
-                            request.requestMatchers("/api/v1/auth/**", "/", "/signup")
+                            request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
-                                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                                    .requestMatchers( "/", "/home", "/signup","/signin","/locales/*/**")
+                                    .permitAll()
+                                    .requestMatchers("/api/v1/auth/**")
                                     .permitAll()
                                     .anyRequest()
                                     .authenticated())

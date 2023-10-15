@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, Route } from "react-router-dom";
-
-// const PrivateRoute = ({ auth: { isAuthenticated }, children }) => {
-//   return isAuthenticated ? children : <Link to="/login" />;
-// };
-
-const defaultLogin = "/login";
+import { Redirect, Route } from "react-router-dom";
+import ROUTES from "Constants/routes";
 
 const PrivateRoute = ({
   path,
@@ -24,7 +19,7 @@ const PrivateRoute = ({
             {React.cloneElement(children, { didComplete: routeProps })}
           </React.Fragment>
         ) : (
-          <Link to={defaultLogin} />
+          <Redirect to={ROUTES.SIGNIN} />
         )
       }
       history={history}
