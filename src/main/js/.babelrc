@@ -15,7 +15,7 @@
           "Redux": "./redux",
           "I18n": "./i18n",
           "Services": "./services",
-          "AxiosInstance": "./axios-config.js"
+          "AxiosInstance": "./configuration/axios-config.js"
         }
       },
       "@babel/plugin-syntax-dynamic-import"

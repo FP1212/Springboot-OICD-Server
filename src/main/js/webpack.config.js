@@ -3,6 +3,7 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const WarningsToErrorsPlugin = require("warnings-to-errors-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = (env, argv) => ({
   entry: "./app.jsx",
@@ -51,14 +52,10 @@ module.exports = (env, argv) => ({
       filename: "css/bundle.css",
     }),
     new WarningsToErrorsPlugin(),
+    new Dotenv(),
   ],
   resolve: {
     modules: [path.resolve(__dirname, "./"), "node_modules"],
-    fallback: {
-      path: require.resolve("path-browserify"),
-      os: false,
-      crypto: false,
-    },
   },
   module: {
     rules: [
