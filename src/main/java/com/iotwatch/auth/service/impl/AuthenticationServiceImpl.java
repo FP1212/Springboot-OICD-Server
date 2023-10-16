@@ -1,6 +1,7 @@
 package com.iotwatch.auth.service.impl;
 
 import com.iotwatch.auth.details.UserDetailsImpl;
+import com.iotwatch.auth.dto.SignOutRequestDto;
 import com.iotwatch.auth.dto.TokenRefreshDto;
 import com.iotwatch.auth.model.RefreshToken;
 import com.iotwatch.auth.model.Role;
@@ -18,6 +19,8 @@ import com.iotwatch.auth.service.JWTService;
 import com.iotwatch.exceptions.RefreshTokenException;
 import com.iotwatch.response.MessageResponse;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,16 +29,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private JWTService jwtService;
@@ -88,30 +90,35 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+        try {
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-        String jwt = jwtService.generateToken(userPrincipal.getUsername());
+            String jwt = jwtService.generateToken(userPrincipal.getUsername());
 
-        List<String> roles = userPrincipal.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .toList();
+            List<String> roles = userPrincipal.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .toList();
 
-        RefreshToken refreshToken = refreshTokenService.createNewToken(userPrincipal.getId());
+            RefreshToken refreshToken = refreshTokenService.createNewToken(userPrincipal.getId());
 
-        return ResponseEntity.ok(JWTAuthResponse.builder()
-                .username(userPrincipal.getUsername())
-                .email(userPrincipal.getEmail())
-                .refreshToken(refreshToken.getToken())
-                .roles(roles)
-                .token(jwt)
-                .build());
+            return ResponseEntity.ok(JWTAuthResponse.builder()
+                    .username(userPrincipal.getUsername())
+                    .email(userPrincipal.getEmail())
+                    .refreshToken(refreshToken.getToken())
+                    .roles(roles)
+                    .token(jwt)
+                    .build());
+        } catch (Exception e){
+            logger.error("SignIn Exception: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 
     @Override
-    public ResponseEntity<?> signOut() {
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        refreshTokenService.deleteByUserId(userPrincipal.getId());
+    @Transactional
+    public ResponseEntity<?> signOut(SignOutRequestDto signOutRequestDto) {
+        refreshTokenService.deleteByUsername(signOutRequestDto.getUsername());
         return ResponseEntity.ok(new MessageResponse("Log out successful!"));
     }
 
@@ -119,16 +126,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public ResponseEntity<?> refreshToken (TokenRefreshDto tokenRefreshDto) {
         String requestRefreshToken = tokenRefreshDto.getRefreshToken();
 
-        return refreshTokenService.findByToken(requestRefreshToken)
-                .map(refreshTokenService::verifyExpiration)
-                .map(RefreshToken::getUser)
-                .map(user -> {
-                    String token = jwtService.generateToken(user.getUsername());
-                    return ResponseEntity.ok(new RefreshTokenResponse(token, requestRefreshToken));
-                })
-                .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,
-                        "Refresh token is not in database!")
-                );
+        try {
+            return refreshTokenService.findByToken(requestRefreshToken)
+                    .map(refreshTokenService::verifyExpiration)
+                    .map(RefreshToken::getUser)
+                    .map(user -> {
+                        String token = jwtService.generateToken(user.getUsername());
+                        return ResponseEntity.ok(new RefreshTokenResponse(token, requestRefreshToken));
+                    })
+                    .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,
+                            "Refresh token is not in database!")
+                    );
+        } catch (Exception e){
+            logger.error("Refresh Token Exception: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+        }
     }
 
 }

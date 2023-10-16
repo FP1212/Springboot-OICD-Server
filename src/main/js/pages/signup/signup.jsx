@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Copyright from "Components/Copyright";
 import { useDispatch } from "react-redux";
-import { signup } from "Redux/components/login/loginSlice";
+import AuthService from "Services/AuthService";
 import { useTranslation } from "react-i18next";
 import ROUTES from "Constants/routes";
 
@@ -33,7 +33,9 @@ const SignUp = () => {
     const email = data.get("email");
     const password = data.get("password");
 
-    dispatch(signup({ userName, firstName, lastName, email, password }));
+    dispatch(
+      AuthService.signup({ userName, firstName, lastName, email, password })
+    );
   };
 
   return (

@@ -5,6 +5,7 @@
       {
         "cwd": "babelrc",
         "alias": {
+          "Root": "./",
           "Constants": "./constants",
           "Components": "./components",
           "Styles": "./styles",
@@ -13,7 +14,8 @@
           "Pages": "./pages",
           "Redux": "./redux",
           "I18n": "./i18n",
-          "Root": "./"
+          "Services": "./services",
+          "AxiosInstance": "./axios-config.js"
         }
       },
       "@babel/plugin-syntax-dynamic-import"

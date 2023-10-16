@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @EnableMongoRepositories
-@ConfigurationPropertiesScan("com.iotwatch.config")
 public class IotwatchApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {

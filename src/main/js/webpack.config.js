@@ -54,6 +54,11 @@ module.exports = (env, argv) => ({
   ],
   resolve: {
     modules: [path.resolve(__dirname, "./"), "node_modules"],
+    fallback: {
+      path: require.resolve("path-browserify"),
+      os: false,
+      crypto: false,
+    },
   },
   module: {
     rules: [

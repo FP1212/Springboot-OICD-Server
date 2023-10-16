@@ -48,6 +48,18 @@ const Home = () => {
           <Typography variant="h2" className="banner-title">
             Bienvenido a IotWatch
           </Typography>
+          <Button
+            color="inherit"
+            onClick={() => history.push(ROUTES.ERROR)}
+            sx={{
+              width: "auto",
+              textTransform: "capitalize",
+              fontSize: "clamp(0.5rem,1vw,1rem)",
+              fontWeight: "400",
+            }}
+          >
+            Error
+          </Button>
         </Container>
       </section>
       <section className="features">

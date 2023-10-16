@@ -9,5 +9,6 @@
   "ALARMS": "/alarms",
   "MONITOR": "/monitor",
   "SIMULATOR": "/simulator",
-  "CONFIGURATION": "/configuration"
+  "CONFIGURATION": "/configuration",
+  "ERROR": "/error"
 }

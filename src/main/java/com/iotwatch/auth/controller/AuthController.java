@@ -1,6 +1,7 @@
 package com.iotwatch.auth.controller;
 
 import com.iotwatch.auth.dto.SignInRequestDto;
+import com.iotwatch.auth.dto.SignOutRequestDto;
 import com.iotwatch.auth.dto.SignUpRequestDto;
 import com.iotwatch.auth.dto.TokenRefreshDto;
 import com.iotwatch.auth.service.AuthenticationService;
@@ -30,8 +31,8 @@ public class AuthController {
     }
 
     @PostMapping("/signout")
-    public ResponseEntity<?> signout() {
-        return authenticationService.signOut();
+    public ResponseEntity<?> signout(@RequestBody SignOutRequestDto signOutRequestDto) {
+        return authenticationService.signOut(signOutRequestDto);
     }
 
     @PostMapping("/refresh-token")

@@ -45,9 +45,9 @@ public class WebSecurityConfig  {
                     .authorizeHttpRequests(request ->
                             request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
-                                    .requestMatchers( "/", "/home", "/signup","/signin","/locales/*/**")
+                                    .requestMatchers( "/", "/home", "/signup","/signin","/locales/*/**", "/error")
                                     .permitAll()
-                                    .requestMatchers("/api/v1/auth/**")
+                                    .requestMatchers("/api/v1/auth/**", "{path:^(?!api|static|favicon\\.ico).*$}")
                                     .permitAll()
                                     .anyRequest()
                                     .authenticated())

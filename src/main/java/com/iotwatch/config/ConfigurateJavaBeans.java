@@ -2,6 +2,7 @@ package com.iotwatch.config;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 @Configuration
+@AllArgsConstructor
 public class ConfigurateJavaBeans {
     @Bean
     public Key getRandomJWTSecretKey() {

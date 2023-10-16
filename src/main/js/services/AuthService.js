@@ -1,30 +1,104 @@
-import axios from "axios";
+import axios from "AxiosInstance";
+import API_ROUTES from "Constants/apiRoutes.js";
+import { signin, signout } from "Redux/components/login/loginSlice";
+import history from "Core/history";
 
-const API_URL = "http://localhost:8080/api/auth/";
-
+/**
+ * Auth Service
+ */
 class AuthService {
-  login(username, password) {
-    return axios
-      .post(API_URL + "signin", { username, password })
-      .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
+  /**
+   * SingIn method
+   *
+   * @param {*} { username, password, rememberMe }
+   * @return {*}
+   * @memberof AuthService
+   */
+  signin({ username, password, rememberMe }) {
+    return (dispatch) => {
+      axios
+        .post(
+          API_ROUTES.SIGNIN,
+          {
+            username,
+            password,
+            rememberMe,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then(({ data, status }) => {
+          if (data.token) {
+            localStorage.setItem("user", JSON.stringify(data));
 
-        return response.data;
-      });
+            dispatch(
+              signin({
+                user: data,
+              })
+            );
+          } else {
+            throw new Exception("Null Token");
+          }
+        })
+        .catch((error) => {
+          dispatch(signout());
+          console.error(error);
+        });
+    };
   }
 
-  logout() {
-    localStorage.removeItem("user");
+  /**
+   * SingOut Method
+   *
+   * @return {*}
+   * @memberof AuthService
+   */
+  signout() {
+    return (dispatch) => {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      axios
+        .post(
+          API_ROUTES.SIGNOUT,
+          { username: user.username },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .finally(() => {
+          localStorage.removeItem("user");
+          dispatch(signout());
+        });
+    };
   }
 
-  register(username, email, password) {
-    return axios.post(API_URL + "signup", {
-      username,
-      email,
-      password,
-    });
+  /**
+   * SignUp Method
+   *
+   * @param {*} data
+   * @return {*}
+   * @memberof AuthService
+   */
+  signup(data) {
+    return (dispatch) => {
+      axios
+        .post(API_ROUTES.SIGNUP, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(({ data, status }) => {
+          history.push(Routes.SIGNIN);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
   }
 }
 

@@ -13,8 +13,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { login } from "Redux/components/login/loginSlice";
 import ROUTES from "Constants/routes";
+import AuthService from "Services/AuthService";
 // import styles from "Styles/login.module.scss";
 import { useTranslation } from "react-i18next";
 import Copyright from "Components/Copyright";
@@ -34,7 +34,7 @@ const SignInSide = () => {
     const password = data.get("password");
     const rememberMe = data.get("remember");
 
-    dispatch(login({ username, password, rememberMe }));
+    dispatch(AuthService.signin({ username, password, rememberMe }));
   };
 
   return (

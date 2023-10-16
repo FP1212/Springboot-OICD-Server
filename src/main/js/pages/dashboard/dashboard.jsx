@@ -13,8 +13,7 @@ import { Tab, Tabs, Box, AppBar, Button } from "@mui/material";
 // import { cardGenerator } from "Utils/CardGenerator";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
-import ROUTES from "Constants/routes";
-import { logout } from "Redux/components/login/loginSlice";
+import AuthService from "Services/AuthService";
 
 //dashboardSlice reducers
 // import {
@@ -136,7 +135,7 @@ const Dashboard = () => {
         Dashboard
         <Button
           color="inherit"
-          onClick={() => dispatch(logout())}
+          onClick={() => dispatch(AuthService.signout())}
           sx={{
             width: "auto",
             textTransform: "capitalize",

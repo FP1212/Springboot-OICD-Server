@@ -32,6 +32,10 @@ const Dashboard = loadable(() =>
   import(/* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard")
 );
 
+const Error = loadable(() =>
+  import(/* webpackChunkName: "StatusChunk" */ "Pages/error/error")
+);
+
 // const Status = loadable(() =>
 //   import(/* webpackChunkName: "StatusChunk" */ "Pages/status/status")
 // );
@@ -75,6 +79,7 @@ const Routes = (props) => {
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
+        <Route exact path={ROUTES.ERROR} component={Error} history={history} />
         <Route
           exact
           path={ROUTES.SIGNUP}

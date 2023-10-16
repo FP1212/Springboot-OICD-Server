@@ -1,32 +1,35 @@
 package com.iotwatch.auth.service.impl;
 
 import com.iotwatch.auth.model.RefreshToken;
+import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.repository.RefreshTokenRepository;
 import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.RefreshTokenService;
 import com.iotwatch.exceptions.RefreshTokenException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     @Value("${iotwatch.jwtExpirationRefreshToken}")
-    private final Long refreshTokenDurationMs;
+    private Long refreshTokenDurationMs;
 
-    private UserRepository userRepository;
-    private RefreshTokenRepository refreshTokenRepository;
+    private final UserRepository userRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
     @Override
     public RefreshToken createNewToken(String userId) {
         return refreshTokenRepository.save(RefreshToken.builder()
-                .user(userRepository.findById(userId).get())
+                .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found")))
                 .token(UUID.randomUUID().toString())
                 .expirationDate(Instant.now().plusMillis(refreshTokenDurationMs))
                 .build());
@@ -48,8 +51,9 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
-    public int deleteByUserId(String userId) {
-        return refreshTokenRepository.deleteByUser(userRepository.findById(userId).get());
+    public int deleteByUsername(String username) {
+        Optional<User> user = userRepository.findById(username);
+        return user.map(refreshTokenRepository::deleteByUser).orElse(0);
     }
 
 }

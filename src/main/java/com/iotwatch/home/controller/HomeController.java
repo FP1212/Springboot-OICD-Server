@@ -16,9 +16,14 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = { "/", "/{x:[\\w\\-]+}", "/{x:^(?!api$).*$}/*/{y:[\\w\\-]+}","/error"  })
-//    @RequestMapping("/")
+    @RequestMapping(value = {"/", "/home"})
     public String index(Model model) {
         return "index";
+    }
+
+    //@RequestMapping(value = { "/", "/{x:[\\w\\-]+}", "/{x:^(?!api$).*$}/*/{y:[\\w\\-]+}","/error"  })
+    @RequestMapping(value = {"{path:^(?!api|static|favicon\\.ico).*$}", "/error"})
+    public String redirect() {
+        return "forward:/";
     }
 }

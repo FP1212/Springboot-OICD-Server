@@ -4,11 +4,9 @@ import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
 
-import com.iotwatch.auth.details.UserDetailsImpl;
-import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.service.JWTService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,15 +16,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JWTServiceImpl implements JWTService {
 
-    @Value("${iotwatch.jwtTokenExpiration}")
-    private final Long jwtExpirationMs;
+    @Value("${iotwatch.jwtExpirationToken}")
+    private Long jwtExpirationMs;
 
-    @Autowired
+    @NonNull
     @Qualifier("getRandomJWTSecretKey")
-    private Key secretKey;
+    private final Key secretKey;
 
     @Override
     public String extractUserName(String token) {
