@@ -8,12 +8,11 @@ import com.iotwatch.auth.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-@Controller
+@RestController
 @AllArgsConstructor
 @RequestMapping(value = "/api/v1/auth")
 public class AuthController {

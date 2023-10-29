@@ -2,6 +2,7 @@
   "INDEX": "/",
   "HOME": "/home",
   "SIGNIN": "/signin",
+  "SIGNIN_COMPANY": "/signin_company",
   "SIGNUP": "/signup",
   "LOGOUT": "/signout",
   "DASHBOARD": "/dashboard",
