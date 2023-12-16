@@ -9,19 +9,17 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @Document
 public class Layout {
     @Id
-    private final String id;
+    private final Long id;
 
-    @NonNull
-    private String dashboardId;
-
-    @DBRef
-    private LayoutItem layoutItem;
+    private List<LayoutItem> layoutItem;
 
     @Field("isDraggable")
     private boolean isDraggable = true;

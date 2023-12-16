@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.Optional;
 
-public interface RoleRepository extends MongoRepository<Role, String> {
+public interface RoleRepository extends MongoRepository<Role, Long> {
     @Query("{role:'?0'}")
     Optional<Role> findByRole(String role);
 }

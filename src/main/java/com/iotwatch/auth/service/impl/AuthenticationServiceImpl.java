@@ -103,7 +103,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             RefreshToken refreshToken = refreshTokenService.createNewToken(userPrincipal.getId());
 
             return ResponseEntity.ok(JWTAuthResponse.builder()
-                    .username(userPrincipal.getUsername())
+                    .id(userPrincipal.getId())
                     .email(userPrincipal.getEmail())
                     .refreshToken(refreshToken.getToken())
                     .roles(roles)
@@ -118,7 +118,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     @Transactional
     public ResponseEntity<?> signOut(SignOutRequestDto signOutRequestDto) {
-        refreshTokenService.deleteByUsername(signOutRequestDto.getUsername());
+        refreshTokenService.deleteById(signOutRequestDto.getUserId());
         return ResponseEntity.ok(new MessageResponse("Log out successful!"));
     }
 

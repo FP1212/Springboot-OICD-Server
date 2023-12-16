@@ -5,7 +5,7 @@ import ROUTES from "Constants/routes";
 
 const PrivateRoute = ({
   path,
-  auth: { isAuthenticated },
+  auth: { isAuthenticated = false },
   history,
   children,
 }) => {

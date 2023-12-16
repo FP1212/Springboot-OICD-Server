@@ -21,13 +21,14 @@ import java.util.List;
 public class Dashboard {
 
     @Id
-    private final String id;
+    private final Long id;
 
     @NotBlank
     private String userId;
 
     @NotBlank
     private String companyId;
+    private Layout layout;
 
     @Field("cols")
     @NotBlank
@@ -38,6 +39,7 @@ public class Dashboard {
 
     @NotBlank
     private boolean active;
+    private boolean isDefault;
 
     @CreatedDate
     private Date createdDate;

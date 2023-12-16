@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.Optional;
 
-public interface RefreshTokenRepository extends MongoRepository<RefreshToken, String> {
+public interface RefreshTokenRepository extends MongoRepository<RefreshToken, Long> {
     @Query("{user:'?0'}")
     Optional<RefreshToken> findByUser(User user);
 

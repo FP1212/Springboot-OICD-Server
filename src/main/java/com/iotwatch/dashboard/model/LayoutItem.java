@@ -13,9 +13,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document
 public class LayoutItem {
     @Id
-    private final String id;
+    private final Long id;
 
-    private String layoutId;
+    private Long layoutId;
 
     @Field("x")
     private Integer x = 0;

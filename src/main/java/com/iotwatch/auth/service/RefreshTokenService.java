@@ -5,8 +5,8 @@ import com.iotwatch.auth.model.RefreshToken;
 import java.util.Optional;
 
 public interface RefreshTokenService {
-    RefreshToken createNewToken(String userId);
+    RefreshToken createNewToken(Long userId);
     RefreshToken verifyExpiration(RefreshToken token);
     Optional<RefreshToken> findByToken(String token);
-    int deleteByUsername(String username);
+    int deleteById(Long userId);
 }

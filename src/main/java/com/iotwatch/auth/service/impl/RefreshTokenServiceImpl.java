@@ -27,7 +27,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Override
-    public RefreshToken createNewToken(String userId) {
+    public RefreshToken createNewToken(Long userId) {
         return refreshTokenRepository.save(RefreshToken.builder()
                 .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found")))
                 .token(UUID.randomUUID().toString())
@@ -51,8 +51,8 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
-    public int deleteByUsername(String username) {
-        Optional<User> user = userRepository.findById(username);
+    public int deleteById(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
         return user.map(refreshTokenRepository::deleteByUser).orElse(0);
     }
 

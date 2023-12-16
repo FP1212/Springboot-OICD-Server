@@ -1,6 +1,8 @@
 package com.iotwatch.auth.details;
 
 import com.iotwatch.auth.model.User;
+import com.iotwatch.company.model.Company;
+import com.iotwatch.userCompany.model.UserCompany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-    private String id;
+    private Long id;
 
     @NotBlank
     @Size(max = 20)
@@ -33,9 +35,14 @@ public class UserDetailsImpl implements UserDetails {
     @Size(min = 6, max = 20)
     private String password;
 
+    private Long companyId;
+    private String companyName;
+
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserDetailsImpl build(User user) {
+    public static UserDetailsImpl build(UserCompany userCompany) {
+        User user = userCompany.getUser();
+        Company company = userCompany.getCompany();
         List<GrantedAuthority> authorities = user.getEnumRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toList());
@@ -45,6 +52,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
+                company.getId(),
+                company.getName(),
                 authorities);
     }
 

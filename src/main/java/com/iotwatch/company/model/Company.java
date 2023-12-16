@@ -19,7 +19,7 @@ import java.util.Date;
 @Document
 public class Company {
     @Id
-    private String id;
+    private Long id;
 
     @NotBlank
     private String name;

@@ -63,7 +63,7 @@ class AuthService {
       axios
         .post(
           API_ROUTES.SIGNOUT,
-          { username: user.username },
+          { userId: user.id },
           {
             headers: {
               "Content-Type": "application/json",
