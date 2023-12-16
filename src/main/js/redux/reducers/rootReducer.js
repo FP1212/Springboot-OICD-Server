@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 //import dashboardReducer from "Redux/components/dashboard/dashboardSlice";
+import globalAlertReducer from "Redux/components/globalAlert/globalAlert";
 import loginReducer from "Redux/components/login/loginSlice";
 import navReducer from "Redux/components/nav/navSlice";
 import statusReducer from "Redux/components/status/statusSlice";
@@ -23,6 +24,7 @@ const combinedReducers = combineReducers({
   status: statusReducer,
   drawer: drawerReducer,
   dark: darkReducer,
+  globalAlert: globalAlertReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -26,7 +26,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    private Long id;
+    private String id;
 
     @NotBlank
     @Size(max = 20)

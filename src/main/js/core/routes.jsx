@@ -14,6 +14,8 @@ import { selectDarkMode } from "Redux/components/dark/darkSlice";
 import CssBaseline from "@mui/material/CssBaseline";
 import { selectLogin } from "Redux/components/login/loginSlice";
 import PrivateRoute from "Components/PrivateRoute";
+import { selectGlobalAlert } from "Redux/components/globalAlert/globalAlert";
+import GlobalAlert from "../components/default/globalAlert";
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() =>
@@ -62,6 +64,7 @@ const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
+  const {open: openAlert, severity, message } = useSelector(selectGlobalAlert);
 
   const darkTheme = useMemo(
     () =>
@@ -76,6 +79,7 @@ const Routes = (props) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+        <GlobalAlert openAlert={openAlert} severity={severity} message={message}/>
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />

@@ -14,7 +14,7 @@ import java.util.List;
 public class DashboardService {
     private DashboardRepository dashboardRepository;
 
-    public ResponseEntity<List<DashboardDto>> getAllByCompanyAndUser(Long userId, Long companyId) {
+    public ResponseEntity<List<DashboardDto>> getAllByCompanyAndUser(String userId, String companyId) {
         List<DashboardDto> dashboardDtoList = dashboardRepository.findAllProjectedByUserIdAndCompanyId(companyId, userId);
         return ResponseEntity.ok(null);
     }

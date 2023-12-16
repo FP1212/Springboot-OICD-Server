@@ -87,10 +87,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public ResponseEntity<?> signIn(SignInRequestDto signInRequestDto) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
-
         try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(signInRequestDto.getUsername(), signInRequestDto.getPassword()));
+
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 

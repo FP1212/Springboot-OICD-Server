@@ -20,7 +20,7 @@ public class DashboardController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> get(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long id) {
+    public ResponseEntity<?> get(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String id) {
         return dashboardService.get(
                 DashboardRequest.builder()
                 .dashboardId(id)
@@ -45,7 +45,7 @@ public class DashboardController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long id) {
+    public ResponseEntity<?> delete(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String id) {
         return dashboardService.delete(
                 DashboardRequest.builder()
                         .dashboardId(id)

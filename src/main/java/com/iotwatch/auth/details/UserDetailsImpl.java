@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-    private Long id;
+    private String id;
 
     @NotBlank
     @Size(max = 20)
@@ -35,7 +36,7 @@ public class UserDetailsImpl implements UserDetails {
     @Size(min = 6, max = 20)
     private String password;
 
-    private Long companyId;
+    private String companyId;
     private String companyName;
 
     private Collection<? extends GrantedAuthority> authorities;
@@ -52,8 +53,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
-                company.getId(),
-                company.getName(),
+                Objects.isNull(company) ? null : company.getId(),
+                Objects.isNull(company) ? null : company.getName(),
                 authorities);
     }
 

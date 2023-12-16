@@ -8,7 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class DashboardRequest {
-    private Long dashboardId;
-    private Long userId;
-    private Long companyId;
+    private String dashboardId;
+    private String userId;
+    private String companyId;
 }

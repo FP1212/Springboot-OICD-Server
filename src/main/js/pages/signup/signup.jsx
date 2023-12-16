@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import AuthService from "Services/AuthService";
 import { useTranslation } from "react-i18next";
 import ROUTES from "Constants/routes";
+import { show } from "Redux/components/globalAlert/globalAlert";
 
 const defaultTheme = createTheme();
 
@@ -34,7 +35,7 @@ const SignUp = () => {
     const password = data.get("password");
 
     dispatch(
-      AuthService.signup({ userName, firstName, lastName, email, password })
+        AuthService.signup({ userName, firstName, lastName, email, password })
     );
   };
 

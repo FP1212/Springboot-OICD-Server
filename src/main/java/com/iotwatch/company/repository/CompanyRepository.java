@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.Optional;
 
-public interface CompanyRepository extends MongoRepository<Company, Long> {
+public interface CompanyRepository extends MongoRepository<Company, String> {
     @Query("{name:'?0'}")
     boolean existsCompanyByName(String name);
 

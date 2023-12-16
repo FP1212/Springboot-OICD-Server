@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface DashboardRepository extends MongoRepository<Dashboard, Long> {
+public interface DashboardRepository extends MongoRepository<Dashboard, String> {
     @Query("{active: 1}")
-    List<DashboardDto> findAllProjectedByUserIdAndCompanyId(Long userId, Long companyId);
+    List<DashboardDto> findAllProjectedByUserIdAndCompanyId(String userId, String companyId);
 }

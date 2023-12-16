@@ -2,6 +2,8 @@ import axios from "AxiosInstance";
 import API_ROUTES from "Constants/apiRoutes.js";
 import { signin, signout } from "Redux/components/login/loginSlice";
 import history from "Core/history";
+import {HttpStatusCode} from "axios";
+import {show} from "../redux/components/globalAlert/globalAlert";
 
 /**
  * Auth Service
@@ -40,7 +42,7 @@ class AuthService {
               })
             );
           } else {
-            throw new Exception("Null Token");
+            throw new Error("Null Token");
           }
         })
         .catch((error) => {
@@ -93,10 +95,15 @@ class AuthService {
           },
         })
         .then(({ data, status }) => {
-          history.push(Routes.SIGNIN);
+          if (status === HttpStatusCode.Created) {
+            history.push(API_ROUTES.SIGNIN);
+          } else {
+            dispatch(show({open: true, severity: "error", message: data.message }))
+          }
         })
         .catch((error) => {
           console.error(error);
+          dispatch(show({open: true, severity: "info", message: error.message }))
         });
     };
   }

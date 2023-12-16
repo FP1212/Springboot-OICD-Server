@@ -87,7 +87,7 @@ tasks.register("bootRunDev") {
 			}
 
 			doLast {
-				Desktop.desktop.browse "http://localhost:9090".toURI()
+				Desktop.desktop.browse "http://localhost:8080".toURI()
 			}
 		}
 	}

@@ -2,7 +2,7 @@ import axios from "axios";
 import API_ROUTES from "Constants/apiRoutes.js";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:9090",
+  baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:8080",
 });
 
 axiosInstance.interceptors.request.use((config) => {

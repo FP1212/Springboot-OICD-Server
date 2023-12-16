@@ -25,12 +25,12 @@ module.exports = (env, argv) => ({
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    proxy: {
-      "/**": {
-        target: "http://localhost:9090",
-        secure: false,
-      },
-    },
+    // proxy: {
+    //   "/**": {
+    //     target: "http://localhost:8080",
+    //     secure: false,
+    //   },
+    // },
     devMiddleware: {
       index: true,
       mimeTypes: { phtml: "text/html" },

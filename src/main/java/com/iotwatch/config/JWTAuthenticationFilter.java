@@ -37,7 +37,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String username;
 
-        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, "Bearer ")) {
+        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, "Bearer ") || request.getRequestURL().toString().contains("/auth/signout")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -60,5 +60,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        var requestUrl = request.getRequestURL().toString();
+        return requestUrl.contains("/auth/signout") || requestUrl.contains("/auth/signup");
     }
 }

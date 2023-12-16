@@ -42,6 +42,7 @@ public class WebSecurityConfig  {
         return http
                     .cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
+                    .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                     .authorizeHttpRequests(request ->
                             request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
@@ -54,13 +55,12 @@ public class WebSecurityConfig  {
                     .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                     .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                     .authenticationProvider(authenticationProvider())
-                    .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                     .build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.debug(true);
+        return (web) -> web.debug(false);
     }
 
     @Bean

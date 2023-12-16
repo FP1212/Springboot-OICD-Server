@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SignOutRequestDto {
     @NotBlank
-    private Long userId;
+    private String userId;
 }
