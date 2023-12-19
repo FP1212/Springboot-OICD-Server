@@ -73,7 +73,6 @@ class AuthService {
           }
         )
         .finally(() => {
-          localStorage.removeItem("user");
           dispatch(signout());
         });
     };

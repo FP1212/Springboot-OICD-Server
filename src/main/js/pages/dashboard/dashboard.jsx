@@ -14,6 +14,8 @@ import { Tab, Tabs, Box, AppBar, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import AuthService from "Services/AuthService";
+import { useApi } from "../../utils/useApi";
+import API_ROUTES from "Constants/apiRoutes";
 
 //dashboardSlice reducers
 // import {
@@ -91,6 +93,7 @@ import AuthService from "Services/AuthService";
 const Dashboard = () => {
   const [t] = useTranslation();
   const theme = useTheme();
+  const [result, loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
 
   //Simil to DidComponentMount
   const dispatch = useDispatch();

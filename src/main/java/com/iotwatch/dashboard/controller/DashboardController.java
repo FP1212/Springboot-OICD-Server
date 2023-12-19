@@ -6,16 +6,18 @@ import com.iotwatch.dashboard.service.DashboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/dashboard")
+@RequestMapping(value = "/api/v1/dashboard")
 @RequiredArgsConstructor
 public class DashboardController {
-    private DashboardService dashboardService;
+    private final DashboardService dashboardService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<?> getAll(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return dashboardService.getAllByCompanyAndUser(userDetails.getId(), userDetails.getCompanyId());
     }
 

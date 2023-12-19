@@ -42,7 +42,6 @@ public class WebSecurityConfig  {
         return http
                     .cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
-                    .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                     .authorizeHttpRequests(request ->
                             request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                     .permitAll()
@@ -52,6 +51,7 @@ public class WebSecurityConfig  {
                                     .permitAll()
                                     .anyRequest()
                                     .authenticated())
+                    .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                     .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                     .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                     .authenticationProvider(authenticationProvider())
@@ -60,7 +60,7 @@ public class WebSecurityConfig  {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.debug(false);
+        return (web) -> web.debug(true);
     }
 
     @Bean
@@ -75,7 +75,7 @@ public class WebSecurityConfig  {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider  authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());

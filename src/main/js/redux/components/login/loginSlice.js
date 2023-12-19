@@ -12,6 +12,7 @@ const loginSlice = createSlice({
       state.authenticate = true;
     },
     signout: (state, action) => {
+      localStorage.removeItem("user");
       state.user = null;
       state.authenticate = false;
     },

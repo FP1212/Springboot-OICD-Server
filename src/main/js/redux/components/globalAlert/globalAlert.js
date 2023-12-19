@@ -4,13 +4,15 @@ const globalAlert = createSlice({
   name: "globalAlert",
   initialState: {
     open: false,
-    severity: "",
+    showLoading: false,
+    severity: "info",
     message: "",
   },
   reducers: {
     show: (state, action) => {
-      const {open = false, severity = "error", message = ""} = action.payload;
+      const {open = false, showLoading = false, severity = "error", message = ""} = action.payload;
       state.open = open;
+      state.showLoading = showLoading;
       state.severity = severity;
       state.message = message;
     },

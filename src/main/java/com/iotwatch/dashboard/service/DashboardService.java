@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class DashboardService {
-    private DashboardRepository dashboardRepository;
+    private final DashboardRepository dashboardRepository;
 
     public ResponseEntity<List<DashboardDto>> getAllByCompanyAndUser(String userId, String companyId) {
         List<DashboardDto> dashboardDtoList = dashboardRepository.findAllProjectedByUserIdAndCompanyId(companyId, userId);

@@ -16,26 +16,30 @@ import { selectLogin } from "Redux/components/login/loginSlice";
 import PrivateRoute from "Components/PrivateRoute";
 import { selectGlobalAlert } from "Redux/components/globalAlert/globalAlert";
 import GlobalAlert from "../components/default/globalAlert";
+import LoadingBackdrop from "../components/default/loadingBackdrop";
 
 // Load bundles asynchronously so that the initial render happens faster
-const Home = loadable(() =>
-  import(/* webpackChunkName: "LoginChunk" */ "Pages/home/home")
+const Home = loadable(
+  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/home/home"),
 );
 
-const Login = loadable(() =>
-  import(/* webpackChunkName: "LoginChunk" */ "Pages/login/login")
+const Login = loadable(
+  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/login/login"),
 );
 
-const SignUp = loadable(() =>
-  import(/* webpackChunkName: "LoginChunk" */ "Pages/signup/signup")
+const SignUp = loadable(
+  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/signup/signup"),
 );
 
-const Dashboard = loadable(() =>
-  import(/* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard")
+const Dashboard = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard"
+    ),
 );
 
-const Error = loadable(() =>
-  import(/* webpackChunkName: "StatusChunk" */ "Pages/error/error")
+const Error = loadable(
+  () => import(/* webpackChunkName: "StatusChunk" */ "Pages/error/error"),
 );
 
 // const Status = loadable(() =>
@@ -64,7 +68,12 @@ const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
-  const {open: openAlert, severity, message } = useSelector(selectGlobalAlert);
+  const {
+    open: openAlert,
+    showLoading,
+    severity,
+    message,
+  } = useSelector(selectGlobalAlert);
 
   const darkTheme = useMemo(
     () =>
@@ -73,17 +82,21 @@ const Routes = (props) => {
           mode: darkMode,
         },
       }),
-    [darkMode]
+    [darkMode],
   );
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-        <GlobalAlert openAlert={openAlert} severity={severity} message={message}/>
+      <GlobalAlert
+        openAlert={openAlert}
+        severity={severity}
+        message={message}
+      />
+      <LoadingBackdrop open={showLoading && loginState.authenticate} />
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
-        <Route exact path={ROUTES.ERROR} component={Error} history={history} />
         <Route
           exact
           path={ROUTES.SIGNUP}
@@ -105,7 +118,7 @@ const Routes = (props) => {
 
         <PrivateRoute
           path={ROUTES.DASHBOARD}
-          auth={{ isAuthenticated: loginState.authenticate }}
+          auth={{ isAuthenticated: loginState?.authenticate || false }}
           history={history}
         >
           <Dashboard />
@@ -130,6 +143,7 @@ const Routes = (props) => {
             <PermanentDrawer />
           </div>
         </React.Fragment> */}
+        <Route component={Error} />
       </Switch>
     </ThemeProvider>
   );

@@ -20,7 +20,7 @@ const refreshAccessToken = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (user && user.refreshToken) {
-    return axiosInstance
+    return axios
       .post(API_ROUTES.REFRESH_TOKEN, {
         refreshToken: user.refreshToken,
       })
@@ -67,7 +67,7 @@ axiosInstance.interceptors.response.use(
           localStorage.setItem("user", JSON.stringify(data));
 
           // Actualizar el token en las cabeceras de Axios
-          api.defaults.headers.common[
+          axiosInstance.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${data.accessToken}`;
           originalRequest.headers[
@@ -75,11 +75,9 @@ axiosInstance.interceptors.response.use(
           ] = `Bearer ${data.accessToken}`;
 
           // Reintentar la solicitud original que falló
-          return api(originalRequest);
+          return axiosInstance(originalRequest);
         })
         .catch((refreshError) => {
-          // Manejar el error al refrescar el token
-          // Puedes redirigir al usuario a una página de inicio de sesión o manejar el error de otra manera
           return Promise.reject(refreshError);
         })
         .finally(() => {

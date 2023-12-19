@@ -18,7 +18,7 @@ import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
 import com.iotwatch.exceptions.RefreshTokenException;
 import com.iotwatch.response.MessageResponse;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -34,16 +34,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private JWTService jwtService;
-    private PasswordEncoder passwordEncoder;
-    private AuthenticationManager authenticationManager;
-    private RefreshTokenService refreshTokenService;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final JWTService jwtService;
+    private final PasswordEncoder passwordEncoder;
+    private final RefreshTokenService refreshTokenService;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public ResponseEntity<?> signUp(SignUpRequestDto signUpRequestDto) {

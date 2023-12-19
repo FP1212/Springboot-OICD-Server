@@ -1,10 +1,14 @@
 package com.iotwatch.auth.service.impl;
 
 import java.security.Key;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.function.Function;
 
 import com.iotwatch.auth.service.JWTService;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,11 +24,10 @@ import io.jsonwebtoken.Jwts;
 public class JWTServiceImpl implements JWTService {
 
     @Value("${iotwatch.jwtExpirationToken}")
-    private Long jwtExpirationMs;
+    private int jwtExpirationDays;
 
-    @NonNull
-    @Qualifier("getRandomJWTSecretKey")
-    private final Key secretKey;
+    @Value("${iotwatch.jwt.secretKey}")
+    private String secretKey;
 
     @Override
     public String extractUserName(String token) {
@@ -36,8 +39,8 @@ public class JWTServiceImpl implements JWTService {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-                .signWith(secretKey)
+                .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusDays(jwtExpirationDays)))
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
 

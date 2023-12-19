@@ -29,7 +29,7 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   path: PropTypes.string.isRequired,
-  auth: PropTypes.bool.isRequired,
+  auth: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
 };
