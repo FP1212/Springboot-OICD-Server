@@ -60,7 +60,7 @@ public class WebSecurityConfig  {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.debug(true);
+        return (web) -> web.debug(false);
     }
 
     @Bean

@@ -18,6 +18,7 @@ import AuthService from "Services/AuthService";
 // import styles from "Styles/login.module.scss";
 import { useTranslation } from "react-i18next";
 import Copyright from "Components/Copyright";
+import hashPassword from "../../utils/PasswordHash";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -31,7 +32,7 @@ const SignInSide = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const username = data.get("username");
-    const password = data.get("password");
+    const password = hashPassword(data.get("password"));
     const rememberMe = data.get("remember");
 
     dispatch(AuthService.signin({ username, password, rememberMe }));

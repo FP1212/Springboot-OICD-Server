@@ -32,7 +32,7 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
 
     @NotBlank
-    @Size(min = 6, max = 20)
+    @Size(min = 6, max = 60)
     private String password;
 
     private String companyId;

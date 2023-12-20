@@ -4,6 +4,7 @@ import { signin, signout } from "Redux/components/login/loginSlice";
 import history from "Core/history";
 import {HttpStatusCode} from "axios";
 import {show} from "../redux/components/globalAlert/globalAlert";
+import hashPassword from "../utils/PasswordHash";
 
 /**
  * Auth Service
@@ -102,7 +103,7 @@ class AuthService {
         })
         .catch((error) => {
           console.error(error);
-          dispatch(show({open: true, severity: "info", message: error.message }))
+          dispatch(show({open: true, severity: "error", message: error.message }))
         });
     };
   }

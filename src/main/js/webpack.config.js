@@ -4,6 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const WarningsToErrorsPlugin = require("warnings-to-errors-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = (env, argv) => ({
   entry: "./app.jsx",
@@ -53,6 +54,7 @@ module.exports = (env, argv) => ({
     }),
     new WarningsToErrorsPlugin(),
     new Dotenv(),
+    new NodePolyfillPlugin()
   ],
   resolve: {
     modules: [path.resolve(__dirname, "./"), "node_modules"],

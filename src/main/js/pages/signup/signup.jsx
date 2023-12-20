@@ -18,6 +18,7 @@ import AuthService from "Services/AuthService";
 import { useTranslation } from "react-i18next";
 import ROUTES from "Constants/routes";
 import { show } from "Redux/components/globalAlert/globalAlert";
+import hashPassword from "../../utils/PasswordHash";
 
 const defaultTheme = createTheme();
 
@@ -25,14 +26,14 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const userName = data.get("username");
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
     const email = data.get("email");
-    const password = data.get("password");
+    const password = await hashPassword(data.get("password"));
 
     dispatch(
         AuthService.signup({ userName, firstName, lastName, email, password })
