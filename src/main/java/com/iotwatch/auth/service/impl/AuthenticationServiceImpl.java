@@ -21,6 +21,7 @@ import com.iotwatch.response.MessageResponse;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -79,7 +80,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .build();
 
             userRepository.save(user);
-            return ResponseEntity.ok("User successfully saved");
+            return new ResponseEntity<>("User successfully saved", HttpStatus.CREATED);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
@@ -118,7 +119,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     @Transactional
     public ResponseEntity<?> signOut(SignOutRequestDto signOutRequestDto) {
-        refreshTokenService.deleteById(signOutRequestDto.getUserId());
+        refreshTokenService.deleteByUserId(signOutRequestDto.getUserId());
         return ResponseEntity.ok(new MessageResponse("Log out successful!"));
     }
 

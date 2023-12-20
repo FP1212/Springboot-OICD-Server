@@ -13,10 +13,12 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { selectDarkMode } from "Redux/components/dark/darkSlice";
 import CssBaseline from "@mui/material/CssBaseline";
 import { selectLogin } from "Redux/components/login/loginSlice";
-import PrivateRoute from "Components/PrivateRoute";
+import PrivateRoute from "../components/PrivateRoute";
 import { selectGlobalAlert } from "Redux/components/globalAlert/globalAlert";
 import GlobalAlert from "../components/default/globalAlert";
 import LoadingBackdrop from "../components/default/loadingBackdrop";
+import CustomDrawer from "../components/default/CustomDrawer";
+import CustomAppBar from "../components/default/CustomAppBar";
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(
@@ -68,6 +70,7 @@ const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
+
   const {
     open: openAlert,
     showLoading,
@@ -115,7 +118,8 @@ const Routes = (props) => {
           }
           history={history}
         />
-
+      </Switch>
+      <Switch>
         <PrivateRoute
           path={ROUTES.DASHBOARD}
           auth={{ isAuthenticated: loginState?.authenticate || false }}
@@ -123,27 +127,6 @@ const Routes = (props) => {
         >
           <Dashboard />
         </PrivateRoute>
-
-        {/* <React.Fragment>
-          <Nav history={history}></Nav>
-          <div component="main" className={styles.main}>
-            <div className={styles.container}>
-              <div className={styles.nav_space} />
-              <div className={styles.workspace}>
-                <Route path={ROUTES.DASHBOARD} component={Dashboard}></Route>
-                <Route path={ROUTES.STATUS} component={Status}></Route>
-                <Route path={ROUTES.ALARMS} component={Alarms}></Route>
-                <Route path={ROUTES.MONITOR} component={Monitor}></Route>
-                <Route path={ROUTES.SIMULATOR} component={Simulator}></Route>
-                <Route
-                  path={ROUTES.CONFIGURATION}
-                  component={Configuration}></Route>
-              </div>
-            </div>
-            <PermanentDrawer />
-          </div>
-        </React.Fragment> */}
-        <Route component={Error} />
       </Switch>
     </ThemeProvider>
   );

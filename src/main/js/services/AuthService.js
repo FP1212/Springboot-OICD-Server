@@ -1,10 +1,10 @@
 import axios from "AxiosInstance";
-import API_ROUTES from "Constants/apiRoutes.js";
-import { signin, signout } from "Redux/components/login/loginSlice";
+import API_ROUTES from "../constants/apiRoutes.js";
+import ROUTES from "../constants/routes.json";
+import { signin, signout } from "../redux/components/login/loginSlice";
 import history from "Core/history";
-import {HttpStatusCode} from "axios";
-import {show} from "../redux/components/globalAlert/globalAlert";
-import hashPassword from "../utils/PasswordHash";
+import { HttpStatusCode } from "axios";
+import { show } from "../redux/components/globalAlert/globalAlert";
 
 /**
  * Auth Service
@@ -19,6 +19,7 @@ class AuthService {
    */
   signin({ username, password, rememberMe }) {
     return (dispatch) => {
+      dispatch(show({ showLoading: true }));
       axios
         .post(
           API_ROUTES.SIGNIN,
@@ -31,7 +32,7 @@ class AuthService {
             headers: {
               "Content-Type": "application/json",
             },
-          }
+          },
         )
         .then(({ data, status }) => {
           if (data.token) {
@@ -40,15 +41,21 @@ class AuthService {
             dispatch(
               signin({
                 user: data,
-              })
+              }),
             );
           } else {
             throw new Error("Null Token");
           }
         })
         .catch((error) => {
-          dispatch(signout());
           console.error(error);
+          dispatch(
+            show({
+              open: true,
+              severity: "warning",
+              message: error.response.data.message,
+            }),
+          );
         });
     };
   }
@@ -71,7 +78,7 @@ class AuthService {
             headers: {
               "Content-Type": "application/json",
             },
-          }
+          },
         )
         .finally(() => {
           dispatch(signout());
@@ -96,14 +103,22 @@ class AuthService {
         })
         .then(({ data, status }) => {
           if (status === HttpStatusCode.Created) {
-            history.push(API_ROUTES.SIGNIN);
+            history.push(ROUTES.SIGNIN);
           } else {
-            dispatch(show({open: true, severity: "error", message: data.message }))
+            dispatch(
+              show({ open: true, severity: "error", message: data.message }),
+            );
           }
         })
         .catch((error) => {
           console.error(error);
-          dispatch(show({open: true, severity: "error", message: error.message }))
+          dispatch(
+            show({
+              open: true,
+              severity: "error",
+              message: error.response.data.message,
+            }),
+          );
         });
     };
   }

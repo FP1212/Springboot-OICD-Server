@@ -28,11 +28,11 @@ const SignInSide = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const username = data.get("username");
-    const password = hashPassword(data.get("password"));
+    const password = data.get("password");
     const rememberMe = data.get("remember");
 
     dispatch(AuthService.signin({ username, password, rememberMe }));

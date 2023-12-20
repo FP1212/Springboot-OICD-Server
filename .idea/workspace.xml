@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/PasswordHash.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/default/drawerHeader.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignUpRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignUpRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/repository/RefreshTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/RefreshTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/pages/signup/signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/signup/signup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/utils/PasswordHash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/utils/PasswordHash.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +101,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/KometSales/Documents/IotWatch",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/components/default",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -122,11 +124,11 @@
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\default" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\redux\components" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\user" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\company" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\dashboard\" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static" />
@@ -184,7 +186,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -206,7 +208,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -228,7 +230,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [npmRunBuild]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -250,7 +252,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [webpackDevServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -272,7 +274,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotwatchApplication JavaScript" type="JavascriptDebugType" uri="http://localhost:8080">
@@ -395,8 +397,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="190" />
+          <line>81</line>
+          <option name="timeStamp" value="198" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

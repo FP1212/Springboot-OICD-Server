@@ -9,6 +9,7 @@ import com.iotwatch.exceptions.RefreshTokenException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -51,9 +52,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     }
 
     @Override
-    public int deleteById(String userId) {
-        Optional<User> user = userRepository.findById(userId);
-        return user.map(refreshTokenRepository::deleteByUser).orElse(0);
+    public void deleteByUserId(String userId) {
+        userRepository.findById(userId).ifPresent(refreshTokenRepository::deleteByUser);
     }
-
 }

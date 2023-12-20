@@ -15,5 +15,5 @@ public interface RefreshTokenRepository extends MongoRepository<RefreshToken, St
     Optional<RefreshToken> findByToken(String token);
 
     @Query("{user:'?0'}")
-    int deleteByUser(User user);
+    void deleteByUser(User user);
 }

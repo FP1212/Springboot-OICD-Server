@@ -17,8 +17,6 @@ import { useDispatch } from "react-redux";
 import AuthService from "Services/AuthService";
 import { useTranslation } from "react-i18next";
 import ROUTES from "Constants/routes";
-import { show } from "Redux/components/globalAlert/globalAlert";
-import hashPassword from "../../utils/PasswordHash";
 
 const defaultTheme = createTheme();
 
@@ -33,10 +31,10 @@ const SignUp = () => {
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
     const email = data.get("email");
-    const password = await hashPassword(data.get("password"));
+    const password = data.get("password");
 
     dispatch(
-        AuthService.signup({ userName, firstName, lastName, email, password })
+      AuthService.signup({ userName, firstName, lastName, email, password }),
     );
   };
 

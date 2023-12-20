@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Redirect, Route } from "react-router-dom";
 import ROUTES from "Constants/routes";
+import CustomAppBar from "./default/CustomAppBar";
 
 const PrivateRoute = ({
   path,
@@ -16,7 +17,9 @@ const PrivateRoute = ({
       render={(routeProps) =>
         isAuthenticated ? (
           <React.Fragment>
-            {React.cloneElement(children, { didComplete: routeProps })}
+            <CustomAppBar>
+              {React.cloneElement(children, { didComplete: routeProps })}
+            </CustomAppBar>
           </React.Fragment>
         ) : (
           <Redirect to={ROUTES.SIGNIN} />
