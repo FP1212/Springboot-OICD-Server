@@ -65,6 +65,8 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
+    width: "100%",
+    height: "100%",
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -206,7 +208,9 @@ export default function CustomAppBar({ children }) {
   );
 
   return (
-    <Box sx={{ display: "flex", flexGrow: 1 }}>
+    <Box
+      sx={{ display: "flex", flexGrow: 1, width: "inherit", height: "inherit" }}
+    >
       <CssBaseline />
       <AppBar position="fixed" open={openDrawer}>
         <Toolbar>
@@ -288,7 +292,16 @@ export default function CustomAppBar({ children }) {
       <CustomDrawer isOpen={openDrawer} onClose={handleDrawerClose} />
       <Main open={openDrawer}>
         <DrawerHeader />
-        {children}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "inherit",
+            height: "calc(100% - 56px)",
+          }}
+        >
+          {children}
+        </Box>
       </Main>
     </Box>
   );

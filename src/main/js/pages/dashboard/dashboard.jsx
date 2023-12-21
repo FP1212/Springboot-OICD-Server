@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useCallback, useMemo } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import TabPanel from "Components/dashboard/subitem/tabpanel";
 // import GridLayout from "Components/dashboard/gridlayout";
@@ -16,6 +22,13 @@ import { useHistory } from "react-router";
 import AuthService from "Services/AuthService";
 import { useApi } from "../../utils/useApi";
 import API_ROUTES from "Constants/apiRoutes";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
+import { AddCircle } from "@mui/icons-material";
+import CreateDashboardModal from "../../components/dashboard/CreateDashboardModal";
 
 //dashboardSlice reducers
 // import {
@@ -40,17 +53,17 @@ import API_ROUTES from "Constants/apiRoutes";
 //   const handleLayoutChange = useCallback((currentLayout, layouts) => {
 //     //dispatch(layout({ tab: selectedTab, newLayout: layouts }));
 //   }, []);
-
+//
 //   const handleBreakpointChange = useCallback((newBreakpoint, newCols) => {
 //     dispatch(
 //       breakpoint({
 //         tab: selectedTab,
 //         cols: newCols,
 //         breakpoint: newBreakpoint,
-//       })
+//       }),
 //     );
 //   }, []);
-
+//
 //   const memoizedContent = useMemo(
 //     () =>
 //       cards[selectedTab].gridlayout.cards.map((data, i) => {
@@ -67,9 +80,9 @@ import API_ROUTES from "Constants/apiRoutes";
 //           </GridLayoutItem>
 //         );
 //       }),
-//     [selectedTab, currentBreakpoint]
+//     [selectedTab, currentBreakpoint],
 //   );
-
+//
 //   return (
 //     <TabPanel
 //       key={`tabpanel${index}`}
@@ -93,79 +106,87 @@ import API_ROUTES from "Constants/apiRoutes";
 const Dashboard = () => {
   const [t] = useTranslation();
   const theme = useTheme();
-  const [result, loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
-
-  //Simil to DidComponentMount
+  const [result = [], loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
+  const [openDashboardModal, setOpenDashboardModal] = useState(false);
   const dispatch = useDispatch();
-  // const selectedTab = useSelector(selectDashboardTab);
-  // const routingKey = useSelector(selectRoutingKey(selectedTab));
 
-  // useEffect(() => {
-  //   if (isInitialMount) {
-  //     dispatch(
-  //       resuscribe({
-  //         ...brokerOptions,
-  //         action: update,
-  //       })
-  //     );
-  //   }
-  //   return () => {
-  //     dispatch(unsuscribe(brokerOptions));
-  //   };
-  // }, [routingKey]);
+  const handleOpenDashboardModal = () => {
+    setOpenDashboardModal(true);
+  };
 
-  // const tabsComponent = useMemo(
-  //   () =>
-  //     tabs.map((tab, index) => (
-  //       <Tab
-  //         className="tab-item"
-  //         key={`tab${index}`}
-  //         label={t(tab.title)}
-  //         id={`full-width-tab-${tab.id}`}
-  //         aria-controls={`full-width-tabpanel-${tab.id}`}
-  //       />
-  //     )),
-  //   []
-  // );
+  const handleCloseDashboardModal = () => {
+    setOpenDashboardModal(false);
+  };
 
-  // const handleOnChangeTabIndex = useCallback((event, index) => {
-  //   dispatch(setTab({ tab: index }));
-  // }, []);
+  const [tabs, setTabs] = useState([{ title: "test1" }, { title: "test2" }]);
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const tabsComponent = useMemo(
+    () =>
+      tabs.map((tab, index) => (
+        <Tab
+          className="tab-item"
+          key={`tab${index}`}
+          label={t(tab.title)}
+          id={`full-width-tab-${index}`}
+          aria-controls={`full-width-tabpanel-${index}`}
+        />
+      )),
+    [tabs],
+  );
+
+  const handleOnChangeTabIndex = (event, index) => {
+    setTabIndex(index);
+  };
+
+  const handleAddTab = () => {
+    const newTabIndex = tabs.length + 1;
+    const newTab = {
+      title: `Pestaña ${newTabIndex}`,
+    };
+    setTabs([...tabs, newTab]);
+    setTabIndex(newTabIndex - 1); // Selecciona la pestaña recién creada
+  };
 
   return (
-    <React.Fragment>
-      <Box>
-        Dashboard
-        <Button
-          color="inherit"
-          onClick={() => dispatch(AuthService.signout())}
-          sx={{
-            width: "auto",
-            textTransform: "capitalize",
-            fontSize: "clamp(0.5rem,1vw,1rem)",
-            fontWeight: "400",
-          }}
-        >
-          {t("common.sign.out")}
-        </Button>
-        {/* <Tabs
-          value={selectedTab}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "inherit",
+        height: "inherit",
+      }}
+    >
+      {/*<Typography variant={"h4"} color={"inherit"}>*/}
+      {/*  Dashboard*/}
+      {/*</Typography>*/}
+      <Box display="flex" alignItems="center">
+        <Tabs
+          value={tabIndex}
           onChange={handleOnChangeTabIndex}
           indicatorColor="secondary"
           textColor="inherit"
           variant="fullWidth"
           aria-label="full width tabs example"
-          centered>
+          centered
+        >
           {tabsComponent}
-        </Tabs> */}
+        </Tabs>
+        <Button variant="contained" color="primary" onClick={handleAddTab}>
+          +
+        </Button>
       </Box>
-      {/* <TabContent
-        tabs={tabs}
-        selectedTab={selectedTab}
-        theme={theme}
-        defaultCols={defaultCols}
-      /> */}
-    </React.Fragment>
+      {/*<TabContent*/}
+      {/*  tabs={tabs}*/}
+      {/*  selectedTab={tab}*/}
+      {/*  theme={theme}*/}
+      {/*  defaultCols={defaultCols}*/}
+      {/*/>*/}
+      <CreateDashboardModal
+        open={openDashboardModal}
+        onClose={handleCloseDashboardModal}
+      />
+    </Box>
   );
 };
 

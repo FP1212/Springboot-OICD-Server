@@ -11,11 +11,15 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { styled, useTheme } from "@mui/material/styles";
 import DrawerHeader from "./drawerHeader";
+import AuthService from "../../services/AuthService";
+import { Logout } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
 
 const drawerWidth = 240;
 
 const CustomDrawer = ({ isOpen, onClose }) => {
   const theme = useTheme();
+  const dispatch = useDispatch();
 
   return (
     <Drawer
@@ -65,6 +69,17 @@ const CustomDrawer = ({ isOpen, onClose }) => {
             </ListItemButton>
           </ListItem>
         ))}
+      </List>
+      <Divider />
+      <List>
+        <ListItem key={"Log Out"} disablePadding>
+          <ListItemButton onClick={() => dispatch(AuthService.signout())}>
+            <ListItemIcon>
+              <Logout />
+            </ListItemIcon>
+            <ListItemText primary={"Log Out"} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Drawer>
   );

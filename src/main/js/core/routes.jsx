@@ -22,47 +22,47 @@ import CustomAppBar from "../components/default/CustomAppBar";
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/home/home"),
+  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/home/home"),
 );
 
 const Login = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/login/login"),
+  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/login/login"),
 );
 
 const SignUp = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "Pages/signup/signup"),
+  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/signup/signup"),
 );
 
 const Dashboard = loadable(
   () =>
     import(
-      /* webpackChunkName: "DashboardChunk" */ "Pages/dashboard/dashboard"
+      /* webpackChunkName: "DashboardChunk" */ "../pages/dashboard/dashboard"
     ),
 );
 
 const Error = loadable(
-  () => import(/* webpackChunkName: "StatusChunk" */ "Pages/error/error"),
+  () => import(/* webpackChunkName: "StatusChunk" */ "../pages/error/error"),
 );
 
 // const Status = loadable(() =>
-//   import(/* webpackChunkName: "StatusChunk" */ "Pages/status/status")
+//   import(/* webpackChunkName: "StatusChunk" */ "../pages/status/status")
 // );
 
 // const Alarms = loadable(() =>
-//   import(/* webpackChunkName: "AlarmsChunk" */ "Pages/alarms/alarms")
+//   import(/* webpackChunkName: "AlarmsChunk" */ "../pages/alarms/alarms")
 // );
 
 // const Monitor = loadable(() =>
-//   import(/* webpackChunkName: "MonitorChunk" */ "Pages/monitor/monitor")
+//   import(/* webpackChunkName: "MonitorChunk" */ "../pages/monitor/monitor")
 // );
 
 // const Simulator = loadable(() =>
-//   import(/* webpackChunkName: "SimulatorChunk" */ "Pages/simulator/simulator")
+//   import(/* webpackChunkName: "SimulatorChunk" */ "../pages/simulator/simulator")
 // );
 
 // const Configuration = loadable(() =>
 //   import(
-//     /* webpackChunkName: "ConfigurationChunk" */ "Pages/configuration/configuration"
+//     /* webpackChunkName: "ConfigurationChunk" */ "../pages/configuration/configuration"
 //   )
 // );
 
