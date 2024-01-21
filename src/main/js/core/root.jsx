@@ -2,6 +2,9 @@ import React from "react";
 import { ConnectedRouter } from "connected-react-router";
 import { Provider } from "react-redux";
 import Routes from "Core/routes";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
 
 class Root extends React.Component {
   render() {
@@ -10,7 +13,9 @@ class Root extends React.Component {
       <React.Fragment>
         <Provider store={store}>
           <ConnectedRouter history={history}>
-            <Routes history={history} />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Routes history={history} />
+            </LocalizationProvider>
           </ConnectedRouter>
         </Provider>
       </React.Fragment>
