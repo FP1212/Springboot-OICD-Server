@@ -37,5 +37,6 @@ public class SignUpRequestDto {
     private String password;
 
     @Size(max = 20)
+    @Builder.Default
     private Set<EnumRole> roles = new HashSet<>();
 }

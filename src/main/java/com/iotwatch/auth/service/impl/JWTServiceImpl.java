@@ -1,17 +1,12 @@
 package com.iotwatch.auth.service.impl;
 
-import java.security.Key;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.function.Function;
 
 import com.iotwatch.auth.service.JWTService;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

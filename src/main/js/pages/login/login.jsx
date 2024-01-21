@@ -2,7 +2,6 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -12,21 +11,23 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ROUTES from "Constants/routes";
 import AuthService from "Services/AuthService";
 // import styles from "Styles/login.module.scss";
 import { useTranslation } from "react-i18next";
 import Copyright from "Components/Copyright";
 import hashPassword from "../../utils/PasswordHash";
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import { selectLogin } from "../../redux/components/login/loginSlice";
+import responseStatus from "../../constants/responseStatus.json";
+import TextField from "@mui/material/TextField";
 
 const defaultTheme = createTheme();
 
 const SignInSide = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
+  const { status, message } = useSelector(selectLogin);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -75,12 +76,7 @@ const SignInSide = () => {
             <Typography component="h1" variant="h5">
               {t("common.sign.in")}
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -90,6 +86,7 @@ const SignInSide = () => {
                 name="username"
                 autoComplete="username"
                 autoFocus
+                helperText="username is required"
               />
               <TextField
                 margin="normal"
@@ -100,6 +97,7 @@ const SignInSide = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                helperText="password is required"
               />
               <FormControlLabel
                 control={<Checkbox value="remember-me" color="primary" />}

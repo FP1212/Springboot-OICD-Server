@@ -5,6 +5,7 @@ import { signin, signout } from "../redux/components/login/loginSlice";
 import history from "Core/history";
 import { HttpStatusCode } from "axios";
 import { show } from "../redux/components/globalAlert/globalAlert";
+import responseStatus from "../constants/responseStatus.json";
 
 /**
  * Auth Service
@@ -34,8 +35,8 @@ class AuthService {
             },
           },
         )
-        .then(({ data, status }) => {
-          if (data.token) {
+        .then(({ data, httpStatus }) => {
+          if (data.status === responseStatus.SUCCESS && data.token) {
             localStorage.setItem("user", JSON.stringify(data));
 
             dispatch(
@@ -44,7 +45,7 @@ class AuthService {
               }),
             );
           } else {
-            throw new Error("Null Token");
+            dispatch(signout(data));
           }
         })
         .catch((error) => {
@@ -101,8 +102,8 @@ class AuthService {
             "Content-Type": "application/json",
           },
         })
-        .then(({ data, status }) => {
-          if (status === HttpStatusCode.Created) {
+        .then(({ data, httpStatus }) => {
+          if (httpStatus === HttpStatusCode.Created) {
             history.push(ROUTES.SIGNIN);
           } else {
             dispatch(

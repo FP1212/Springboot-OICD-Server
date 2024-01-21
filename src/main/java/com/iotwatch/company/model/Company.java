@@ -48,6 +48,7 @@ public class Company {
 
     @Field("active")
     @NotBlank
+    @Builder.Default
     private boolean active = false;
 
     private Date activationDate;

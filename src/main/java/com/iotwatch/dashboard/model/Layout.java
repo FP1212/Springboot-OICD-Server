@@ -22,11 +22,14 @@ public class Layout {
     private List<LayoutItem> layoutItem;
 
     @Field("isDraggable")
+    @Builder.Default
     private boolean isDraggable = true;
 
     @Field("isResizable")
+    @Builder.Default
     private boolean isResizable = true;
 
     @Field("isBounded")
+    @Builder.Default
     private boolean isBounded = true;
 }

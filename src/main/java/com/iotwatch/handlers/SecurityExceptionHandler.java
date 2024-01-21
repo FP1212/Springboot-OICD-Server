@@ -18,24 +18,24 @@ public class SecurityExceptionHandler {
     @ExceptionHandler(AuthenticationException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public MessageResponse handleAuthenticationException(AuthenticationException ex) {
-        return new MessageResponse("Unauthorized: " + ex.getMessage());
+        return MessageResponse.builder().message("Unauthorized: " + ex.getMessage()).build();
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public MessageResponse handleAccessDeniedException(AccessDeniedException ex) {
-        return new MessageResponse("Access Denied: " + ex.getMessage());
+        return MessageResponse.builder().message("Access Denied: " + ex.getMessage()).build();
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public MessageResponse handleException(Exception ex) {
-        return new MessageResponse("Internal Server Error: " + ex.getMessage());
+        return MessageResponse.builder().message("Internal Server Error: " + ex.getMessage()).build();
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public MessageResponse handleNotFoundException(Exception ex) {
-        return new MessageResponse("Not Found: " + ex.getMessage());
+        return MessageResponse.builder().message("Not Found: " + ex.getMessage()).build();
     }
 }

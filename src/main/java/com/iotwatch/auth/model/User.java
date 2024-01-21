@@ -51,6 +51,7 @@ public class User {
     private String password;
 
     @DBRef
+    @Builder.Default
     private Set<Role> enumRoles = new HashSet<>();
 
     private Date lastLogin;

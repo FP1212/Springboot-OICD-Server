@@ -32,6 +32,7 @@ public class Dashboard {
 
     @Field("cols")
     @NotBlank
+    @Builder.Default
     private Integer cols = 12;
 
     @Size(max = 2)

@@ -4,6 +4,7 @@ import com.iotwatch.company.dto.CompanyDto;
 import com.iotwatch.company.model.Company;
 import com.iotwatch.company.repository.CompanyRepository;
 import com.iotwatch.dashboard.model.Dashboard;
+import com.iotwatch.enums.EnumStatusResponse;
 import com.iotwatch.response.MessageResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -18,11 +19,11 @@ public class CompanyService {
 
     public ResponseEntity<?> createCompany(CompanyDto companyDto) {
         if (companyRepository.existsCompanyByName(companyDto.getName())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Already exists a company with that name"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Already exists a company with that name" , EnumStatusResponse.ERROR.getStatus()));
         }
 
         if (companyRepository.existsCompanyByEmail(companyDto.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Already exists a company associated with that email"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Already exists a company associated with that email", EnumStatusResponse.ERROR.getStatus()));
         }
 
         Company company = Company.builder()

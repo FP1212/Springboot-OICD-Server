@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/CreateDashboardModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/enums/EnumStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/constants/responseStatus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/middleware/statusMiddleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/redux/util/createCustomSliceWithStatus.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/styles/root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/root.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignUpRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignUpRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/response/JWTAuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/response/JWTAuthResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/company/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/company/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/company/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/company/service/CompanyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Layout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/LayoutItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/LayoutItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/handlers/SecurityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/handlers/SecurityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/response/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/response/MessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/redux/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/services/AuthService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +68,7 @@
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -80,47 +97,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/components/default&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;ca81945a2241e41c33818d61c7556f78&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/constants",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\constants" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\default" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\redux\components" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\user" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\company" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static" />
@@ -334,7 +351,9 @@
       <workItem from="1702925785940" duration="21325000" />
       <workItem from="1703014582322" duration="6194000" />
       <workItem from="1703045284616" duration="184000" />
-      <workItem from="1703100368876" duration="9437000" />
+      <workItem from="1703100368876" duration="9771000" />
+      <workItem from="1703550735613" duration="32000" />
+      <workItem from="1705791327174" duration="12226000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
@@ -391,8 +410,44 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java</url>
-          <line>81</line>
+          <line>82</line>
           <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/pages/login/login.jsx</url>
+          <line>38</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/services/AuthService.js</url>
+          <line>38</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/services/AuthService.js</url>
+          <line>52</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js</url>
+          <line>16</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/redux/util/createCustomSliceWithStatus.js</url>
+          <line>12</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/js/redux/middleware/statusMiddleware.js</url>
+          <line>6</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="214" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

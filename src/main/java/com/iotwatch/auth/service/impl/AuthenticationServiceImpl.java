@@ -16,6 +16,7 @@ import com.iotwatch.auth.model.User;
 import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.auth.service.AuthenticationService;
 import com.iotwatch.auth.service.JWTService;
+import com.iotwatch.enums.EnumStatusResponse;
 import com.iotwatch.exceptions.RefreshTokenException;
 import com.iotwatch.response.MessageResponse;
 import lombok.RequiredArgsConstructor;
@@ -50,11 +51,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public ResponseEntity<?> signUp(SignUpRequestDto signUpRequestDto) {
         try {
             if (userRepository.existsByUsername(signUpRequestDto.getUserName())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Username already in use"));
+                return ResponseEntity.badRequest().body(new MessageResponse("Username already in use", EnumStatusResponse.ERROR.getStatus()));
             }
 
             if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Email already in use"));
+                return ResponseEntity.badRequest().body(new MessageResponse("Email already in use", EnumStatusResponse.ERROR.getStatus()));
             }
 
             Set<EnumRole> enumRoleSet = signUpRequestDto.getRoles();
@@ -82,7 +83,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             userRepository.save(user);
             return new ResponseEntity<>("User successfully saved", HttpStatus.CREATED);
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage(), EnumStatusResponse.ERROR.getStatus()));
         }
     }
 
@@ -112,7 +113,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .build());
         } catch (Exception e){
             logger.error("SignIn Exception: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+            return ResponseEntity.ok().body(new MessageResponse("Incorrect username or password", EnumStatusResponse.BAD_CREDENTIALS.getStatus()));
         }
     }
 
@@ -120,7 +121,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public ResponseEntity<?> signOut(SignOutRequestDto signOutRequestDto) {
         refreshTokenService.deleteByUserId(signOutRequestDto.getUserId());
-        return ResponseEntity.ok(new MessageResponse("Log out successful!"));
+        return ResponseEntity.ok(new MessageResponse("Log out successful!", EnumStatusResponse.SUCCESS.getStatus()));
     }
 
     @Override
@@ -140,7 +141,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     );
         } catch (Exception e){
             logger.error("Refresh Token Exception: {}", e.getMessage());
-            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
+            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
         }
     }
 

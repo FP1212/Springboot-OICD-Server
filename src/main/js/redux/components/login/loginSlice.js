@@ -1,23 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createCustomSliceWithStatus } from "../../util/createCustomSliceWithStatus";
 
-const loginSlice = createSlice({
-  name: "login",
-  initialState: {
+const loginSlice = createCustomSliceWithStatus(
+  "login",
+  {
     authenticate: !!localStorage.getItem("user"),
     user: localStorage.getItem("user"),
   },
-  reducers: {
-    signin: (state, action) => {
-      state.user = action.payload.user;
+  {
+    signin: (state, { payload }) => {
+      state.user = payload.user;
       state.authenticate = true;
     },
-    signout: (state, action) => {
+    signout: (state, { payload }) => {
       localStorage.removeItem("user");
       state.user = null;
       state.authenticate = false;
     },
   },
-});
+);
 
 export const selectLogin = (state) => state.login;
 export default loginSlice.reducer;
