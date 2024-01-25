@@ -10,6 +10,8 @@ const loginSlice = createCustomSliceWithStatus(
     signin: (state, { payload }) => {
       state.user = payload.user;
       state.authenticate = true;
+      state.status = null;
+      state.message = "";
     },
     signout: (state, { payload }) => {
       localStorage.removeItem("user");

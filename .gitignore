@@ -69,3 +69,4 @@ coverage
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+/node_modules/

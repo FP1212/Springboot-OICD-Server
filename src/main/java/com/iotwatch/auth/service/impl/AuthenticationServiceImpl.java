@@ -110,6 +110,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .refreshToken(refreshToken.getToken())
                     .roles(roles)
                     .token(jwt)
+                    .status(EnumStatusResponse.SUCCESS.getStatus())
                     .build());
         } catch (Exception e){
             logger.error("SignIn Exception: {}", e.getMessage());

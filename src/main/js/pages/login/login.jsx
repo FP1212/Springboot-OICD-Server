@@ -21,6 +21,8 @@ import hashPassword from "../../utils/PasswordHash";
 import { selectLogin } from "../../redux/components/login/loginSlice";
 import responseStatus from "../../constants/responseStatus.json";
 import TextField from "@mui/material/TextField";
+import { useForm, Controller } from "react-hook-form";
+import Alert from "@mui/material/Alert";
 
 const defaultTheme = createTheme();
 
@@ -29,14 +31,19 @@ const SignInSide = () => {
   const [t] = useTranslation();
   const { status, message } = useSelector(selectLogin);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const username = data.get("username");
-    const password = data.get("password");
-    const rememberMe = data.get("remember");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
 
-    dispatch(AuthService.signin({ username, password, rememberMe }));
+  const onSubmit = async ({ username, password }) => {
+    dispatch(AuthService.signin({ username, password, rememberMe: false }));
   };
 
   return (
@@ -76,29 +83,58 @@ const SignInSide = () => {
             <Typography component="h1" variant="h5">
               {t("common.sign.in")}
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
+            <Box
+              component="form"
+              onSubmit={handleSubmit(onSubmit)}
+              sx={{ mt: 1 }}
+            >
+              <Controller
                 name="username"
-                autoComplete="username"
-                autoFocus
-                helperText="username is required"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <TextField
+                    error={errors?.username}
+                    margin="normal"
+                    fullWidth
+                    id="username"
+                    label="Username"
+                    name="username"
+                    autoComplete="username"
+                    autoFocus
+                    {...field}
+                    helperText={
+                      errors?.username?.type === "required"
+                        ? "This field is required"
+                        : ""
+                    }
+                  />
+                )}
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
+              <Controller
                 name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                helperText="password is required"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <TextField
+                    error={errors?.password}
+                    margin="normal"
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    {...field}
+                    helperText={
+                      errors?.password?.type === "required"
+                        ? "This field is required"
+                        : ""
+                    }
+                  />
+                )}
               />
+
               <FormControlLabel
                 control={<Checkbox value="remember-me" color="primary" />}
                 label="Remember me"
@@ -112,6 +148,11 @@ const SignInSide = () => {
                 {t("common.sign.in")}
               </Button>
               <Grid container>
+                {status && status != responseStatus.SUCCESS && (
+                  <Grid item xs={12}>
+                    <Alert severity="error">{message}</Alert>
+                  </Grid>
+                )}
                 <Grid item xs>
                   <Link href={ROUTES.SIGNUP} variant="body2">
                     {t("common.register.forgot")}

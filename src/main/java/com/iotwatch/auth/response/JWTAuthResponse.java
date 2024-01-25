@@ -18,4 +18,5 @@ public class JWTAuthResponse {
     private String id;
     private String email;
     private List<String> roles;
+    private int status;
 }
