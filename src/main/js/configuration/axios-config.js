@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { HttpStatusCode } from "axios";
 import API_ROUTES from "Constants/apiRoutes.js";
 import store from "Redux/store/store";
 import { signout } from "../redux/components/login/loginSlice";
@@ -38,19 +38,15 @@ const refreshAccessToken = () => {
   }
 };
 
-// Variable para rastrear si ya se está refrescando el token para evitar ciclos infinitos
 let isRefreshing = false;
 let refreshSubscribers = [];
 
-// Interceptor para capturar errores de respuesta
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config;
 
-    // Verificar si el error es un error 401 (no autorizado)
-    if (error.response.status === 401) {
-      // Si ya se está refrescando el token, espera y reintenta la solicitud
+    if (error.response.status === HttpStatusCode.Unauthorized) {
       if (isRefreshing) {
         return new Promise(function (resolve) {
           refreshSubscribers.push(function (token) {
@@ -60,10 +56,8 @@ axiosInstance.interceptors.response.use(
         });
       }
 
-      // Marcar que se está refrescando el token
       isRefreshing = true;
 
-      // Realizar la solicitud para refrescar el token
       return refreshAccessToken()
         .then((data) => {
           const user = JSON.parse(
@@ -83,13 +77,11 @@ axiosInstance.interceptors.response.use(
             localStorage.setItem("user", JSON.stringify(user));
           }
 
-          // Actualizar el token en las cabeceras de Axios
           axiosInstance.defaults.headers.common["Authorization"] =
             `Bearer ${data.accessToken}`;
           originalRequest.headers["Authorization"] =
             `Bearer ${data.accessToken}`;
 
-          // Reintentar la solicitud original que falló
           return axiosInstance(originalRequest);
         })
         .catch((refreshError) => {

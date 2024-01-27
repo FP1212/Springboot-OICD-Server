@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "AxiosInstance";
+import axios from "../configuration/axios-config";
 import { useDispatch } from "react-redux";
 import { show } from "../redux/components/globalAlert/globalAlert";
 import { signout } from "../redux/components/login/loginSlice";

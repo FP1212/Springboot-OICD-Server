@@ -1,16 +1,15 @@
 package com.iotwatch.auth.service.impl;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.function.Function;
 
 import com.iotwatch.auth.service.JWTService;
+import com.iotwatch.user.service.CustomUserDetails;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -27,14 +26,14 @@ public class JWTServiceImpl implements JWTService {
     private String secretKey;
 
     @Override
-    public String extractUserName(String token) {
+    public String extractLogin(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
     @Override
-    public String generateToken(String username) {
+    public String generateToken(String email) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(Date.from(Instant.now().plus(jwtExpirationMinutes, ChronoUnit.MINUTES)))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
@@ -42,9 +41,9 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String userName = extractUserName(token);
-        return (userName.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    public boolean isTokenValid(String token, CustomUserDetails userDetails) {
+        final String email = extractLogin(token);
+        return (email.equals(userDetails.getEmail())) && !isTokenExpired(token);
     }
 
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {

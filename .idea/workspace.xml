@@ -4,22 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="">
+    <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/service/CustomUserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignInRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/dto/SignInRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/JWTService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/JWTService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/globalAlert.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/globalAlert.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/configuration/axios-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/configuration/axios-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/core/root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/root.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/login/loginSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/services/AuthService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/utils/useApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/utils/useApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +53,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -347,7 +342,8 @@
       <workItem from="1703550735613" duration="32000" />
       <workItem from="1705791327174" duration="20873000" />
       <workItem from="1706220547125" duration="631000" />
-      <workItem from="1706317152802" duration="11847000" />
+      <workItem from="1706317152802" duration="12088000" />
+      <workItem from="1706393604352" duration="4639000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
@@ -380,20 +376,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Spring Boot project starting" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/JWTServiceImpl.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="225" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="226" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.iotwatch.auth.service.impl.TokenService" memberName="tokenRepository" />

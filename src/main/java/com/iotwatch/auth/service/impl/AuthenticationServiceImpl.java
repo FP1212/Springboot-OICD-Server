@@ -97,7 +97,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-            String jwt = jwtService.generateToken(userPrincipal.getUsername());
+            String jwt = jwtService.generateToken(userPrincipal.getEmail());
 
             List<String> roles = userPrincipal.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
@@ -135,7 +135,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .map(refreshTokenService::verifyExpiration)
                     .map(RefreshToken::getUser)
                     .map(user -> {
-                        String token = jwtService.generateToken(user.getUsername());
+                        String token = jwtService.generateToken(user.getEmail());
                         return ResponseEntity.ok(new RefreshTokenResponse(token, requestRefreshToken));
                     })
                     .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,

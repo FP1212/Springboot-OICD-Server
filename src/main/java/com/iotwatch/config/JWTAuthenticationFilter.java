@@ -1,6 +1,7 @@
 package com.iotwatch.config;
 
 import com.iotwatch.auth.service.JWTService;
+import com.iotwatch.user.service.CustomUserDetails;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -14,7 +15,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.web.authentication.www.NonceExpiredException;
@@ -47,12 +47,12 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             }
 
             jwt = authHeader.substring(7);
-            username = jwtService.extractUserName(jwt);
+            username = jwtService.extractLogin(jwt);
 
             if (StringUtils.isNotEmpty(username)
                     && Objects.isNull(SecurityContextHolder.getContext().getAuthentication())) {
 
-                UserDetails userDetails = userDetailsService
+                CustomUserDetails userDetails = (CustomUserDetails) userDetailsService
                         .loadUserByUsername(username);
 
                 if (jwtService.isTokenValid(jwt, userDetails)) {

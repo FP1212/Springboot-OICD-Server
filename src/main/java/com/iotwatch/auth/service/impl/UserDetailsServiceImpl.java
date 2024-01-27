@@ -6,7 +6,6 @@ import com.iotwatch.auth.repository.UserRepository;
 import com.iotwatch.userCompany.model.UserCompany;
 import com.iotwatch.userCompany.repository.UserCompanyRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
