@@ -4,7 +4,7 @@ import Alert from "@mui/material/Alert";
 import { show } from "Redux/components/globalAlert/globalAlert";
 import { useDispatch } from "react-redux";
 
-const GlobalAlert = ({ openAlert = false, message, severity }) => {
+const GlobalAlert = ({ openAlert = false, message = "", severity }) => {
   const [open, setOpen] = useState(openAlert);
   const dispatch = useDispatch();
 

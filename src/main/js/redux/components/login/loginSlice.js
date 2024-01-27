@@ -3,8 +3,13 @@ import { createCustomSliceWithStatus } from "../../util/createCustomSliceWithSta
 const loginSlice = createCustomSliceWithStatus(
   "login",
   {
-    authenticate: !!localStorage.getItem("user"),
-    user: localStorage.getItem("user"),
+    authenticate:
+      !!localStorage.getItem("user") || !!sessionStorage.getItem("user"),
+    user: JSON.parse(
+      !!sessionStorage.getItem("user")
+        ? sessionStorage.getItem("user")
+        : localStorage.getItem("user"),
+    ),
   },
   {
     signin: (state, { payload }) => {
@@ -15,6 +20,7 @@ const loginSlice = createCustomSliceWithStatus(
     },
     signout: (state, { payload }) => {
       localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
       state.user = null;
       state.authenticate = false;
     },

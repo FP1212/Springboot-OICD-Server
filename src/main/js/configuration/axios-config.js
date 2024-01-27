@@ -1,23 +1,30 @@
 import axios from "axios";
 import API_ROUTES from "Constants/apiRoutes.js";
+import store from "Redux/store/store";
+import { signout } from "../redux/components/login/loginSlice";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:8080",
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (user && user.token) {
-    config.headers.Authorization = `Bearer ${user.token}`;
-  }
+  const user = JSON.parse(
+    !!sessionStorage.getItem("user")
+      ? sessionStorage.getItem("user")
+      : localStorage.getItem("user"),
+  );
+  config.headers.Authorization =
+    user && user.token ? `Bearer ${user.token}` : "";
 
   return config;
 });
 
-// Función para refrescar el token (debes implementarla según tu lógica)
 const refreshAccessToken = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(
+    !!sessionStorage.getItem("user")
+      ? sessionStorage.getItem("user")
+      : localStorage.getItem("user"),
+  );
 
   if (user && user.refreshToken) {
     return axios
@@ -59,25 +66,34 @@ axiosInstance.interceptors.response.use(
       // Realizar la solicitud para refrescar el token
       return refreshAccessToken()
         .then((data) => {
-          const user = JSON.parse(localStorage.getItem("user"));
+          const user = JSON.parse(
+            !!sessionStorage.getItem("user")
+              ? sessionStorage.getItem("user")
+              : localStorage.getItem("user"),
+          );
 
           user.token = data.accessToken;
           user.refreshToken = data.refreshToken;
 
-          localStorage.setItem("user", JSON.stringify(data));
+          if (sessionStorage.getItem("user") !== null) {
+            sessionStorage.setItem("user", JSON.stringify(user));
+          }
+
+          if (localStorage.getItem("user") !== null) {
+            localStorage.setItem("user", JSON.stringify(user));
+          }
 
           // Actualizar el token en las cabeceras de Axios
-          axiosInstance.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${data.accessToken}`;
-          originalRequest.headers[
-            "Authorization"
-          ] = `Bearer ${data.accessToken}`;
+          axiosInstance.defaults.headers.common["Authorization"] =
+            `Bearer ${data.accessToken}`;
+          originalRequest.headers["Authorization"] =
+            `Bearer ${data.accessToken}`;
 
           // Reintentar la solicitud original que falló
           return axiosInstance(originalRequest);
         })
         .catch((refreshError) => {
+          store.dispatch(signout());
           return Promise.reject(refreshError);
         })
         .finally(() => {
@@ -87,7 +103,7 @@ axiosInstance.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

@@ -1,6 +1,8 @@
 package com.iotwatch.auth.service.impl;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.function.Function;
 
@@ -19,7 +21,7 @@ import io.jsonwebtoken.Jwts;
 public class JWTServiceImpl implements JWTService {
 
     @Value("${iotwatch.jwtExpirationToken}")
-    private int jwtExpirationDays;
+    private int jwtExpirationMinutes;
 
     @Value("${iotwatch.jwt.secretKey}")
     private String secretKey;
@@ -34,7 +36,7 @@ public class JWTServiceImpl implements JWTService {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(java.sql.Date.valueOf(LocalDate.now().plusDays(jwtExpirationDays)))
+                .setExpiration(Date.from(Instant.now().plus(jwtExpirationMinutes, ChronoUnit.MINUTES)))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }

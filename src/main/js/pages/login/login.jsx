@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -23,6 +23,8 @@ import responseStatus from "../../constants/responseStatus.json";
 import TextField from "@mui/material/TextField";
 import { useForm, Controller } from "react-hook-form";
 import Alert from "@mui/material/Alert";
+import { show } from "../../redux/components/globalAlert/globalAlert";
+import LoadingBackdrop from "../../components/default/loadingBackdrop";
 
 const defaultTheme = createTheme();
 
@@ -30,6 +32,7 @@ const SignInSide = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
   const { status, message } = useSelector(selectLogin);
+  const [loading, setLoading] = useState(false);
 
   const {
     control,
@@ -39,15 +42,19 @@ const SignInSide = () => {
     defaultValues: {
       username: "",
       password: "",
+      rememberMe: false,
     },
   });
 
-  const onSubmit = async ({ username, password }) => {
-    dispatch(AuthService.signin({ username, password, rememberMe: false }));
+  const onSubmit = async ({ username, password, rememberMe }) => {
+    dispatch(
+      AuthService.signin({ username, password, rememberMe, setLoading }),
+    );
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <LoadingBackdrop open={loading} />
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -91,22 +98,28 @@ const SignInSide = () => {
               <Controller
                 name="username"
                 control={control}
-                rules={{ required: true }}
+                rules={{
+                  required: true,
+                  pattern:
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                }}
                 render={({ field }) => (
                   <TextField
                     error={errors?.username}
                     margin="normal"
                     fullWidth
                     id="username"
-                    label="Username"
+                    label="Email"
                     name="username"
-                    autoComplete="username"
+                    autoComplete="user@email.com"
                     autoFocus
                     {...field}
                     helperText={
                       errors?.username?.type === "required"
                         ? "This field is required"
-                        : ""
+                        : errors?.username?.type === "pattern"
+                          ? "Enter a valid email"
+                          : ""
                     }
                   />
                 )}
@@ -135,9 +148,16 @@ const SignInSide = () => {
                 )}
               />
 
-              <FormControlLabel
-                control={<Checkbox value="remember-me" color="primary" />}
-                label="Remember me"
+              <Controller
+                name="rememberMe"
+                control={control}
+                rules={{ required: false }}
+                render={({ field }) => (
+                  <FormControlLabel
+                    control={<Checkbox color="primary" {...field} />}
+                    label="Remember me"
+                  />
+                )}
               />
               <Button
                 type="submit"

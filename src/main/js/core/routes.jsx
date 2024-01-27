@@ -71,12 +71,7 @@ const Routes = (props) => {
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
 
-  const {
-    open: openAlert,
-    showLoading,
-    severity,
-    message,
-  } = useSelector(selectGlobalAlert);
+  const { open: openAlert, severity, message } = useSelector(selectGlobalAlert);
 
   const darkTheme = useMemo(
     () =>
@@ -96,7 +91,6 @@ const Routes = (props) => {
         severity={severity}
         message={message}
       />
-      <LoadingBackdrop open={showLoading && loginState.authenticate} />
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />

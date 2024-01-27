@@ -42,17 +42,15 @@ export function useApi(url, skip) {
       setResult(null);
       setLoading(false);
       setLoaded(false);
-      dispatch(show({ open: false, showLoading: false }));
     } else {
       setLoading(true);
-      dispatch(show({ open: false, showLoading: true }));
+
       axios
         .get(url)
         .then((r) => {
           if (!cancelled) {
             setResult(r.data);
             setLoading(false);
-            dispatch(show({ open: false, showLoading: false }));
             setLoaded(true);
           }
         })

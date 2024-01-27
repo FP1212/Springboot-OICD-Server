@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,7 +24,7 @@ import java.util.UUID;
 public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     @Value("${iotwatch.jwtExpirationRefreshToken}")
-    private Long refreshTokenDurationMs;
+    private Long refreshTokenDuration;
 
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -32,7 +34,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
         return refreshTokenRepository.save(RefreshToken.builder()
                 .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found")))
                 .token(UUID.randomUUID().toString())
-                .expirationDate(Instant.now().plusMillis(refreshTokenDurationMs))
+                .expirationDate(Instant.now().plus(refreshTokenDuration, ChronoUnit.DAYS))
                 .build());
     }
 

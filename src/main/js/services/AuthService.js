@@ -1,4 +1,4 @@
-import axios from "AxiosInstance";
+import axios from "../configuration/axios-config.js";
 import API_ROUTES from "../constants/apiRoutes.js";
 import ROUTES from "../constants/routes.json";
 import { signin, signout } from "../redux/components/login/loginSlice";
@@ -18,16 +18,15 @@ class AuthService {
    * @return {*}
    * @memberof AuthService
    */
-  signin({ username, password, rememberMe }) {
+  signin({ username, password, rememberMe, setLoading }) {
     return (dispatch) => {
-      dispatch(show({ showLoading: true }));
+      setLoading(true);
       axios
         .post(
           API_ROUTES.SIGNIN,
           {
             username,
             password,
-            rememberMe,
           },
           {
             headers: {
@@ -37,7 +36,11 @@ class AuthService {
         )
         .then(({ data, httpStatus }) => {
           if (data.status === responseStatus.SUCCESS && data.token) {
-            localStorage.setItem("user", JSON.stringify(data));
+            if (rememberMe) {
+              localStorage.setItem("user", JSON.stringify(data));
+            } else {
+              sessionStorage.setItem("user", JSON.stringify(data));
+            }
 
             dispatch(
               signin({
@@ -57,7 +60,8 @@ class AuthService {
               message: error.response.data.message,
             }),
           );
-        });
+        })
+        .finally(() => setLoading(false));
     };
   }
 
@@ -69,7 +73,11 @@ class AuthService {
    */
   signout() {
     return (dispatch) => {
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(
+        !!sessionStorage.getItem("user")
+          ? sessionStorage.getItem("user")
+          : localStorage.getItem("user"),
+      );
 
       axios
         .post(
