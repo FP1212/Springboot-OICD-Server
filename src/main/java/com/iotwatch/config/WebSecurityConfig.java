@@ -55,6 +55,11 @@ public class WebSecurityConfig  {
                     .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                     .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                     .authenticationProvider(authenticationProvider())
+                    .headers(httpSecurityHeadersConfigurer -> {
+                        httpSecurityHeadersConfigurer.contentSecurityPolicy(contentSecurityPolicyConfig ->
+                            contentSecurityPolicyConfig.policyDirectives("default-src 'self'")
+                    );
+                })
                     .build();
     }
 
