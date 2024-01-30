@@ -31,7 +31,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
-public class WebSecurityConfig  {
+public class WebSecurityConfig {
 
     private JWTAuthenticationFilter jwtAuthenticationFilter;
     private UserDetailsServiceImpl userDetailsService;
@@ -40,27 +40,28 @@ public class WebSecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                    .cors(Customizer.withDefaults())
-                    .csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(request ->
-                            request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-                                    .permitAll()
-                                    .requestMatchers( "/", "/home", "/signup","/signin","/locales/*/**", "/error")
-                                    .permitAll()
-                                    .requestMatchers("/api/v1/auth/**", "{path:^(?!api|static|favicon\\.ico).*$}")
-                                    .permitAll()
-                                    .anyRequest()
-                                    .authenticated())
-                    .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                    .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-                    .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-                    .authenticationProvider(authenticationProvider())
-                    .headers(httpSecurityHeadersConfigurer -> {
-                        httpSecurityHeadersConfigurer.contentSecurityPolicy(contentSecurityPolicyConfig ->
-                            contentSecurityPolicyConfig.policyDirectives("default-src 'self'")
-                    );
-                })
-                    .build();
+                .cors(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(request ->
+                        request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+                                .permitAll()
+                                .requestMatchers("/", "/home", "/signup", "/signin", "/locales/*/**", "/error")
+                                .permitAll()
+                                .requestMatchers("/api/v1/auth/**", "{path:^(?!api|static|favicon\\.ico).*$}")
+                                .permitAll()
+                                .anyRequest()
+                                .authenticated())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+                .authenticationProvider(authenticationProvider())
+                .headers(httpSecurityHeadersConfigurer ->
+                            httpSecurityHeadersConfigurer.contentSecurityPolicy(contentSecurityPolicyConfig -> {
+                                contentSecurityPolicyConfig.policyDirectives("default-src 'self'");
+                                contentSecurityPolicyConfig.policyDirectives("style-src 'unsafe-inline'");
+                            }
+                ))
+                .build();
     }
 
     @Bean
@@ -80,7 +81,7 @@ public class WebSecurityConfig  {
     }
 
     @Bean
-    public DaoAuthenticationProvider  authenticationProvider() {
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -91,7 +92,7 @@ public class WebSecurityConfig  {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("http://localhost:9091")); //Webpack Devserver Proxy
-        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "content-type"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "content-type"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

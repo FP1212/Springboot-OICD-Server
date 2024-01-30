@@ -18,7 +18,9 @@ import java.util.Date;
 public class UserCompany {
     private User user;
     private Company company;
-    private boolean active;
+
+    @Builder.Default
+    private boolean active = false;
 
     @CreatedDate
     private Date createdDate;
