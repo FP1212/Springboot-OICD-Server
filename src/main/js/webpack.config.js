@@ -4,7 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const WarningsToErrorsPlugin = require("warnings-to-errors-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = (env, argv) => ({
   entry: "./app.jsx",
@@ -14,7 +14,7 @@ module.exports = (env, argv) => ({
     filename: "js/bundle.js", // The name of the webpack bundle that's generated
   },
   devServer: {
-    port: 9091,
+    port: 8081,
     compress: true,
     hot: true,
     watchFiles: [
@@ -37,13 +37,13 @@ module.exports = (env, argv) => ({
       mimeTypes: { phtml: "text/html" },
       publicPath: path.resolve(
         __dirname,
-        "../../../build/resources/main/static/"
+        "../../../build/resources/main/static/",
       ),
       serverSideRender: true,
       writeToDisk: true,
     },
   },
-  devtool: argv.mode === "production" ? false : "source-map",
+  devtool: argv.mode === "production" ? false : "eval-source-map",
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
@@ -54,7 +54,7 @@ module.exports = (env, argv) => ({
     }),
     new WarningsToErrorsPlugin(),
     new Dotenv(),
-    new NodePolyfillPlugin()
+    new NodePolyfillPlugin(),
   ],
   resolve: {
     modules: [path.resolve(__dirname, "./"), "node_modules"],

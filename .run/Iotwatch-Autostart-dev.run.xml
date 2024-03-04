@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Iotwatch-Autostart-dev" type="CompoundRunConfigurationType">
+    <toRun name="devserver" type="js.build_tools.npm" />
+    <toRun name="IotwatchApplication" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

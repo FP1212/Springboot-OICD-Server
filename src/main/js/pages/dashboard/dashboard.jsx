@@ -6,107 +6,35 @@ import React, {
   useState,
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import TabPanel from "Components/dashboard/subitem/tabpanel";
-// import GridLayout from "Components/dashboard/gridlayout";
-// import GridLayoutItem from "Components/dashboard/gridlayoutItem";
 import { useTheme } from "@mui/material/styles";
 import { Tab, Tabs, Box, AppBar, Button } from "@mui/material";
-// import CustomCard from "Components/card";
-// import { tabs } from "Constants/layouts/dashboard";
-// import IPCKEYS from "Constants/ipckeys.json";
-// import { resuscribe } from "Redux/components/broker/brokerSlice";
-//import ButtonAddCard from "Components/dashboard/gridlayout/subitem/buttonAddCard";
-// import { cardGenerator } from "Utils/CardGenerator";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
-import AuthService from "Services/AuthService";
 import { useApi } from "../../utils/useApi";
 import API_ROUTES from "Constants/apiRoutes";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import MailIcon from "@mui/icons-material/Mail";
-import { AddCircle } from "@mui/icons-material";
 import CreateDashboardModal from "../../components/dashboard/CreateDashboardModal";
-
-//dashboardSlice reducers
-// import {
-//   selectDashboardLayouts,
-//   selectDashboardTab,
-//   update,
-//   breakpoint,
-//   setTab,
-//   selectCurrentBreakpoint,
-//   getCards,
-//   selectRoutingKey,
-// } from "Redux/components/dashboard/dashboardSlice";
+import GridLayout from "../../components/dashboard/gridlayout";
+import TabPanel from "../../components/dashboard/subitem/tabpanel";
 
 //brokerSlice reducers
 // import { suscribe, unsuscribe } from "Redux/components/broker/brokerSlice";
 
-// const TabContent = React.memo((props) => {
-//   const { index, selectedTab, theme, defaultCols } = props;
-//   const dispatch = useDispatch();
-//   const cards = useSelector(getCards);
-//   const currentBreakpoint = useSelector(selectCurrentBreakpoint(selectedTab));
-//   const handleLayoutChange = useCallback((currentLayout, layouts) => {
-//     //dispatch(layout({ tab: selectedTab, newLayout: layouts }));
-//   }, []);
-//
-//   const handleBreakpointChange = useCallback((newBreakpoint, newCols) => {
-//     dispatch(
-//       breakpoint({
-//         tab: selectedTab,
-//         cols: newCols,
-//         breakpoint: newBreakpoint,
-//       }),
-//     );
-//   }, []);
-//
-//   const memoizedContent = useMemo(
-//     () =>
-//       cards[selectedTab].gridlayout.cards.map((data, i) => {
-//         return (
-//           <GridLayoutItem
-//             key={`gridlayout-${selectedTab}-${i}`}
-//             data-grid={data.dimensions[currentBreakpoint]}
-//           >
-//             <CustomCard
-//               tab={selectedTab}
-//               index={i}
-//               children={cardGenerator(data, theme, index)}
-//             />
-//           </GridLayoutItem>
-//         );
-//       }),
-//     [selectedTab, currentBreakpoint],
-//   );
-//
-//   return (
-//     <TabPanel
-//       key={`tabpanel${index}`}
-//       value={selectedTab}
-//       index={selectedTab}
-//       dir={theme.direction}
-//     >
-//       <GridLayout
-//         className="layout"
-//         handleLayoutChange={handleLayoutChange}
-//         handleBreakpointChange={handleBreakpointChange}
-//         rowHeight={60}
-//         cols={defaultCols}
-//       >
-//         {memoizedContent}
-//       </GridLayout>
-//     </TabPanel>
-//   );
-// });
+const TabContent = React.memo(({ tabIndex, theme, data }) => {
+  return (
+    <TabPanel
+      key={`tab-panel#${tabIndex}`}
+      value={tabIndex}
+      index={tabIndex}
+      dir={theme.direction}
+    >
+      <GridLayout rowHeight={60} data={data} tabIndex={tabIndex} />
+    </TabPanel>
+  );
+});
 
 const Dashboard = () => {
   const [t] = useTranslation();
   const theme = useTheme();
-  const [result = [], loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
+  const [result = {}, loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
   const [openDashboardModal, setOpenDashboardModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -176,12 +104,7 @@ const Dashboard = () => {
           +
         </Button>
       </Box>
-      {/*<TabContent*/}
-      {/*  tabs={tabs}*/}
-      {/*  selectedTab={tab}*/}
-      {/*  theme={theme}*/}
-      {/*  defaultCols={defaultCols}*/}
-      {/*/>*/}
+      <TabContent tabIndex={tabIndex} theme={theme} data={result} />
       <CreateDashboardModal
         open={openDashboardModal}
         onClose={handleCloseDashboardModal}

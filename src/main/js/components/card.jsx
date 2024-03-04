@@ -1,6 +1,5 @@
 import React, { useState, cloneElement, useRef, useMemo } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-//import WidgetsIcon from "@mui/icons-material/Widgets";
 import { grey } from "@mui/material/colors";
 import { useTheme } from "@mui/material/styles";
 import {
@@ -14,12 +13,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "Styles/card.module.scss";
-import { getCardDataByIndex } from "Redux/components/dashboard/dashboardSlice";
 
 const menuItems = ["Cambiar Color", "Forzar Valor", "Remover"];
 
 const CustomCardHeader = React.memo(
-  ({ Icon, title, tab, index, items, date }) => {
+  ({ Icon, title = "", tab, index, items, date }) => {
     const [menu, setMenuState] = useState({
       open: false,
       anchorEl: null,
@@ -61,11 +59,12 @@ const CustomCardHeader = React.memo(
                 anchorEl: event.currentTarget,
                 selected: event.currentTarget.value,
               });
-            }}>
+            }}
+          >
             {menu}
           </MenuItem>
         )),
-      []
+      [],
     );
 
     return (
@@ -73,7 +72,12 @@ const CustomCardHeader = React.memo(
         <CardHeader
           sx={{ width: "100%" }}
           avatar={
-            <Icon sx={{ fill: theme.palette.info.dark }} aria-label="recipe" />
+            Icon && (
+              <Icon
+                sx={{ fill: theme.palette.info.dark }}
+                aria-label="recipe"
+              />
+            )
           }
           action={
             <IconButton
@@ -84,7 +88,8 @@ const CustomCardHeader = React.memo(
                   anchorEl: event.currentTarget,
                   open: Boolean(event.currentTarget),
                 });
-              }}>
+              }}
+            >
               <MoreVertIcon />
             </IconButton>
           }
@@ -108,12 +113,13 @@ const CustomCardHeader = React.memo(
               anchorEl: null,
               open: false,
             });
-          }}>
+          }}
+        >
           {menuList}
         </Menu>
       </React.Fragment>
     );
-  }
+  },
 );
 
 /**
@@ -122,7 +128,6 @@ const CustomCardHeader = React.memo(
 const CustomCard = ({ children, tab, index }) => {
   const theme = useTheme();
   const [t] = useTranslation();
-  const data = useSelector(getCardDataByIndex(index));
 
   return (
     <Card
@@ -130,21 +135,22 @@ const CustomCard = ({ children, tab, index }) => {
       className={styles.card}
       sx={{
         backgroundColor: theme.palette.mode == "dark" ? grey[900] : "#f8f9fa",
-      }}>
+      }}
+    >
       <CustomCardHeader
-        title={t(children.props.title)}
-        date={children.props.date}
+        title={children.props?.title?.()}
+        date={children.props.date?.()}
         tab={tab}
         index={index}
         items={menuItems}
-        Icon={children.props.Icon}
+        Icon={children.props.Icon?.()}
       />
       <CardContent
         className={styles.card_content}
         sx={{
           padding: "0px",
         }}
-        children={cloneElement(children, { data: data })}
+        children={children}
       />
     </Card>
   );

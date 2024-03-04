@@ -1,18 +1,11 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import defaultInitialState from "Constants/layouts/dashboard";
 import { bottom, replacer, reviver } from "Utils";
-
-//import IpcRenderer EletronStore
-const electronStore = window.api.store;
-
-import { writeConfigRequest, deleteConfigRequest } from "secure-electron-store";
-//electronStore.send(deleteConfigRequest);
 
 const initialState =
   // typeof electronStore.initial()["dashboardGridlayout"] !== "undefined"
   //   ? JSON.parse(electronStore.initial()["dashboardGridlayout"])
   //   :
-  defaultInitialState;
+  {};
 
 const dashboardSlice = createSlice({
   name: "dashboard",
@@ -57,7 +50,7 @@ const dashboardSlice = createSlice({
                   ],
                 },
               },
-            }
+            },
       );
       state.tabs = tabs;
     },
@@ -74,16 +67,16 @@ const dashboardSlice = createSlice({
                   items: tab.gridlayout.layouts.items.reduce(
                     (prev, item, index) =>
                       action.payload.index == index ? prev : { ...prev, item },
-                    {}
+                    {},
                   ),
                   cards: tab.gridlayout.layouts.cards.reduce(
                     (prev, card, index) =>
                       action.payload.index == index ? prev : { ...prev, card },
-                    {}
+                    {},
                   ),
                 },
               },
-            }
+            },
       );
       state.tabs = tabs;
     },

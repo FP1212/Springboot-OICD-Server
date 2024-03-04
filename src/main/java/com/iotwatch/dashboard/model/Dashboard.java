@@ -30,6 +30,9 @@ public class Dashboard {
     private String companyId;
     private Layout layout;
 
+    @NotBlank
+    private String name;
+
     @Field("cols")
     @NotBlank
     @Builder.Default

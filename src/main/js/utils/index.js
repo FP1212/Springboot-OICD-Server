@@ -1,4 +1,4 @@
-import { breakpoints } from "../constants/types/gridTypes";
+//import { breakpoints } from "../constants/types/gridTypes";
 
 /**
  * Calculate new layout arrange
@@ -59,18 +59,18 @@ export function createInitialItemsLayout(cards) {
 }
 
 export function buildLayout(cards) {
-  return breakpoints.reduce((prev, breakpoint) => {
-    prev[breakpoint] = cards.map((card, index, list) => ({
-      i: index.toString(),
-      ...card.dimensions[breakpoint],
-      maxW: 12,
-      maxH: 11,
-      add: index === list.length - 1,
-      static: false,
-      ...card.properties,
-    }));
-    return prev;
-  }, {});
+  // return breakpoints.reduce((prev, breakpoint) => {
+  //   prev[breakpoint] = cards.map((card, index, list) => ({
+  //     i: index.toString(),
+  //     ...card.dimensions[breakpoint],
+  //     maxW: 12,
+  //     maxH: 11,
+  //     add: index === list.length - 1,
+  //     static: false,
+  //     ...card.properties,
+  //   }));
+  //   return prev;
+  // }, {});
 }
 
 //0: "Unknow", 1:"Operative", 2:"Deprecated", 3:"Error"

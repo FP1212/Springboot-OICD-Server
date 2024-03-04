@@ -3,6 +3,7 @@ package com.iotwatch.config;
 import com.iotwatch.auth.handler.AuthEntryPointJwt;
 import com.iotwatch.auth.service.impl.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +37,9 @@ public class WebSecurityConfig  {
     private JWTAuthenticationFilter jwtAuthenticationFilter;
     private UserDetailsServiceImpl userDetailsService;
     private AuthEntryPointJwt unauthorizedHandler;
+
+    @Value("iotwatch.webpack.devserver.port")
+    private String webpackDevserverURL;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -85,7 +89,7 @@ public class WebSecurityConfig  {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:9091")); //Webpack Devserver Proxy
+        configuration.setAllowedOrigins(Collections.singletonList(webpackDevserverURL));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "content-type"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "content-type"));
