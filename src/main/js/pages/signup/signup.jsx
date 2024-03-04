@@ -15,34 +15,20 @@ import {useDispatch} from "react-redux";
 import AuthService from "Services/AuthService";
 import {useTranslation} from "react-i18next";
 import ROUTES from "Constants/routes";
-import {FormControl, Input, InputAdornment, LinearProgress, MenuItem} from "@mui/material";
+import {FormControl, Input, InputAdornment, LinearProgress, MenuItem, Step, StepLabel, Stepper} from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import Select from "@mui/material/Select";
 import PasswordStrengthBar from "react-password-strength-bar";
 import MuiPhoneNumber from "material-ui-phone-number";
+import {useForm, Controller} from "react-hook-form";
+import LoadingBackdrop from "../../components/default/loadingBackdrop";
 
 const defaultTheme = createTheme();
 
-const registerSchema = {
-    name: string()
-        .nonempty('Name is required')
-        .max(32, 'Name must be less than 100 characters'),
-    email: string().nonempty('Email is required').email('Email is invalid'),
-    password: string()
-        .nonempty('Password is required')
-        .min(8, 'Password must be more than 8 characters')
-        .max(32, 'Password must be less than 32 characters'),
-    passwordConfirm: string().nonempty('Please confirm your password'),
-    terms: literal(true, {
-        invalid_type_error: 'Accept Terms is required',
-    }),
-}.refine((data) => data.password === data.passwordConfirm, {
-    path: ['passwordConfirm'],
-    message: 'Passwords do not match',
-});
+
+const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -59,6 +45,65 @@ const SignUp = () => {
         country: 'Colombia',
     });
 
+    const [loading, setLoading] = useState(false);
+
+    const {
+        control,
+        handleSubmit,
+        formState: {errors},
+    } = useForm({
+        defaultValues: {
+            username: "",
+            password: "",
+            rememberMe: false,
+        },
+    });
+
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [skipped, setSkipped] = React.useState(new Set());
+
+    const isStepOptional = (step) => {
+        return step === 1;
+    };
+
+    const isStepSkipped = (step) => {
+        return skipped.has(step);
+    };
+
+    const handleNext = () => {
+        let newSkipped = skipped;
+        if (isStepSkipped(activeStep)) {
+            newSkipped = new Set(newSkipped.values());
+            newSkipped.delete(activeStep);
+        }
+
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped(newSkipped);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleSkip = () => {
+        if (!isStepOptional(activeStep)) {
+            // You probably want to guard against something like this,
+            // it should never occur unless someone's actively trying to break something.
+            throw new Error("You can't skip a step that isn't optional.");
+        }
+
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped((prevSkipped) => {
+            const newSkipped = new Set(prevSkipped.values());
+            newSkipped.add(activeStep);
+            return newSkipped;
+        });
+    };
+
+    const handleReset = () => {
+        setActiveStep(0);
+    };
+
     const [showPassword, setShowPassword] = useState(false);
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -72,14 +117,7 @@ const SignUp = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Realiza la lógica de envío del formulario aquí
-        // No se enviará el campo 'confirmPassword'
-        const {confirmPassword, ...formDataWithoutConfirmPassword} = formData;
-        console.log('Datos del formulario enviados:',);
-
+    const onSubmit = (e) => {
         dispatch(
             AuthService.signup(formDataWithoutConfirmPassword),
         );
@@ -87,155 +125,63 @@ const SignUp = () => {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline/>
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        {t("common.sign.up")}
-                    </Typography>
-                    <Box
-                        component="form"
-                        onSubmit={handleSubmit}
-                        sx={{mt: 3}}
-                    >
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="username"
-                                    label="Username"
-                                    name="username"
-                                    autoComplete="John Doe"
-                                    value={formData.username}
-                                    onChange={handleInputChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    autoComplete="given-name"
-                                    name="firstName"
-                                    required
-                                    fullWidth
-                                    id="firstName"
-                                    label="First Name"
-                                    autoFocus
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    autoComplete="family-name"
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
-                                />
-                            </Grid>
-                            <Grid item xs={4}>
-                                <DatePicker required fullWidth id="birthdate" name="birthdate" label="Birth Date" value={formData.birthdate}
-                                            onChange={handleInputChange}/>
-                            </Grid>
-                            <Grid item xs={8}>
-                                <InputLabel>Phone Number</InputLabel>
-                                <MuiPhoneNumber defaultCountry={'us'} onChange={handleInputChange} required fullWidth name="phoneNumber" input="phoneNumber"/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="password"
-                                    name="password"
-                                    label="Password"
-                                    variant="outlined"
-                                    type={showPassword ? "text" : "password"}
-                                    onChange={handleInputChange}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleTogglePassword}
-                                                    onMouseDown={handleTogglePassword}
-                                                >
-                                                    {showPassword ? <Visibility/> : <VisibilityOff/>}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                />
-                                <PasswordStrengthBar password={formData.password}/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    label="Confirm Password"
-                                    variant="outlined"
-                                    type={showPassword ? "text" : "password"}
-                                    onChange={handleInputChange}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleTogglePassword}
-                                                    onMouseDown={handleTogglePassword}
-                                                >
-                                                    {showPassword ? <Visibility/> : <VisibilityOff/>}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                />
-                            </Grid>
-                        </Grid>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{mt: 3, mb: 2}}
-                        >
-                            {t("common.sign.up")}
-                        </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link href={ROUTES.SIGNIN} variant="body2">
-                                    {t("common.register.login")}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                    </Box>
+            <Container maxWidth="lg" sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <Box sx={{width: '100%'}}>
+                    <Stepper activeStep={activeStep}>
+                        {steps.map((label, index) => {
+                            const stepProps = {};
+                            const labelProps = {};
+                            if (isStepOptional(index)) {
+                                labelProps.optional = (
+                                    <Typography variant="caption">Optional</Typography>
+                                );
+                            }
+                            if (isStepSkipped(index)) {
+                                stepProps.completed = false;
+                            }
+                            return (
+                                <Step key={label} {...stepProps}>
+                                    <StepLabel {...labelProps}>{label}</StepLabel>
+                                </Step>
+                            );
+                        })}
+                    </Stepper>
+                    {activeStep === steps.length ? (
+                        <React.Fragment>
+                            <Typography sx={{mt: 2, mb: 1}}>
+                                All steps completed - you&apos;re finished
+                            </Typography>
+                            <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                                <Box sx={{flex: '1 1 auto'}}/>
+                                <Button onClick={handleReset}>Reset</Button>
+                            </Box>
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment>
+                            <Typography sx={{mt: 2, mb: 1}}>Step {activeStep + 1}</Typography>
+                            <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                                <Button
+                                    color="inherit"
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                    sx={{mr: 1}}
+                                >
+                                    Back
+                                </Button>
+                                <Box sx={{flex: '1 1 auto'}}/>
+                                {isStepOptional(activeStep) && (
+                                    <Button color="inherit" onClick={handleSkip} sx={{mr: 1}}>
+                                        Skip
+                                    </Button>
+                                )}
+
+                                <Button onClick={handleNext}>
+                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                </Button>
+                            </Box>
+                        </React.Fragment>
+                    )}
                 </Box>
-                <Copyright sx={{mt: 5}}/>
             </Container>
         </ThemeProvider>
     );

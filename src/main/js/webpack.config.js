@@ -12,9 +12,10 @@ module.exports = (env, argv) => ({
   output: {
     path: path.resolve(__dirname, "../../../build/resources/main/static/"), // Where all the output files get dropped after webpack is done with them
     filename: "js/bundle.js", // The name of the webpack bundle that's generated
+    pathinfo: false,
   },
   devServer: {
-    port: 8081,
+    port: 9091,
     compress: true,
     hot: true,
     watchFiles: [
@@ -37,16 +38,20 @@ module.exports = (env, argv) => ({
       mimeTypes: { phtml: "text/html" },
       publicPath: path.resolve(
         __dirname,
-        "../../../build/resources/main/static/",
+        "../../../build/resources/main/static/"
       ),
       serverSideRender: true,
       writeToDisk: true,
     },
   },
-  devtool: argv.mode === "production" ? false : "eval-source-map",
-  optimization: {
+  devtool: argv.mode === "production" ? false : "source-map",
+  optimization: argv.mode === "production" ? {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+  } : {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -54,7 +59,7 @@ module.exports = (env, argv) => ({
     }),
     new WarningsToErrorsPlugin(),
     new Dotenv(),
-    new NodePolyfillPlugin(),
+    new NodePolyfillPlugin()
   ],
   resolve: {
     modules: [path.resolve(__dirname, "./"), "node_modules"],

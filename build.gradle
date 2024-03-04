@@ -107,7 +107,7 @@ tasks.register('npmRunBuild', NpmTask) {
 	outputs.dir("$buildDir/resources/main/static")
 }
 
-tasks.register('webpackDevServer', NpmTask) {
+tasks.register('devserver', NpmTask) {
 	args = ['run', 'devserver']
 }
 
