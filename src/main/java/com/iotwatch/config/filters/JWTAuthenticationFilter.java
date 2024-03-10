@@ -1,4 +1,4 @@
-package com.iotwatch.config;
+package com.iotwatch.config.filters;
 
 import com.iotwatch.auth.service.JWTService;
 import com.iotwatch.user.service.CustomUserDetails;

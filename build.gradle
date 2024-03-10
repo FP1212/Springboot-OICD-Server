@@ -95,17 +95,17 @@ tasks.register("bootRunDev") {
 	finalizedBy("bootRun")
 }
 
-tasks.register('npmRunBuild', NpmTask) {
-	args = ['run', 'build']
-
-	dependsOn npmInstall
-
-	inputs.files(fileTree('src/main/js/node_modules'))
-	inputs.files(fileTree('src/main/resources'))
-	inputs.file('src/main/js/package.json')
-	inputs.file('src/main/js/webpack.config.js')
-	outputs.dir("$buildDir/resources/main/static")
-}
+//tasks.register('npmRunBuild', NpmTask) {
+//	args = ['run', 'build']
+//
+//	dependsOn npmInstall
+//
+//	inputs.files(fileTree('src/main/js/node_modules'))
+//	inputs.files(fileTree('src/main/resources'))
+//	inputs.file('src/main/js/package.json')
+//	inputs.file('src/main/js/webpack.config.js')
+//	outputs.dir("$buildDir/resources/main/static")
+//}
 
 tasks.register('devserver', NpmTask) {
 	args = ['run', 'devserver']
@@ -123,6 +123,14 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.named("compileJava") { outputs.upToDateWhen { false }  }
 
-processResources {
-	dependsOn npmRunBuild
-}
+//processResources {
+//	dependsOn npmRunBuild
+//}
+
+//sourceSets {
+//	main {
+//		resources {
+//			srcDirs = ['src/main/resources', 'build/resources/main']
+//		}
+//	}
+//}

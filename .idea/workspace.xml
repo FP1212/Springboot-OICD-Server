@@ -5,19 +5,124 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/.run/Iotwatch-Autostart-dev.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/AddCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/constants/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/filters/JWTAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/MvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/model/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/card.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/dashboard/dashboardSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/dashboard/dashboardSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/home/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/android-chrome-192x192.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/android-chrome-192x192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/android-chrome-512x512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/android-chrome-512x512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/apple-touch-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/companyLogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/companyLogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/companyLogo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/companyLogo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/favicon-16x16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/favicon-32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/site.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/site.webmanifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/af/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/af/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/af/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/af/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/am/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/am/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/am/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/am/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ar/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ar/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ar/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ar/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/bg/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/bg/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/bg/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/bg/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ca/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ca/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ca/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ca/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/cs/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/cs/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/cs/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/cs/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/da/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/da/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/da/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/da/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/de/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/de/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/de/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/de/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/el/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/el/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/el/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/el/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/en/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/en/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/en/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/es/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/es/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/es/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/es/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/et/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/et/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/et/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/et/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fa/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fa/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fa/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fa/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fi/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fi/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fi/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fi/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fil/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fil/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fil/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fil/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/fr/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/fr/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/gu/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/gu/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/gu/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/gu/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/he/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/he/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/he/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/he/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hi/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hi/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hi/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hi/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hr/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hr/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hu/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hu/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/hu/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/hu/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/id/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/id/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/id/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/id/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/it/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/it/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/it/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/it/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ja/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ja/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ja/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ja/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/kn/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/kn/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/kn/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/kn/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ko/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ko/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ko/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ko/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/lt/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/lt/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/lt/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/lt/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/lv/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/lv/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/lv/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/lv/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ml/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ml/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ml/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ml/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/mr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/mr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/mr/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/mr/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ms/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ms/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ms/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ms/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/nl/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/nl/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/nl/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/nl/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/no/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/no/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/no/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/no/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/pl/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/pl/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/pl/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/pl/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/pt/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/pt/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/pt/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/pt/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ro/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ro/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ro/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ro/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ru/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ru/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ru/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ru/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sk/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sk/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sk/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sk/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sr/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sr/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sv/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sv/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sv/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sv/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sw/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sw/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/sw/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/sw/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ta/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ta/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/ta/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/ta/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/te/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/te/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/te/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/te/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/th/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/th/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/th/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/th/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/tr/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/tr/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/tr/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/tr/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/uk/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/uk/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/uk/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/uk/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/vi/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/vi/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/vi/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/vi/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/zh_CN/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/zh_CN/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/zh_CN/translation.missing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locales/zh_CN/translation.missing.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +161,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -87,54 +192,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/package.json&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;ca81945a2241e41c33818d61c7556f78&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\templates" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\constants" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\default" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\redux\components" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\java\com\iotwatch\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static\image" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\js" />
       <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS" />
-      <recent name="D:\Repositories\Java\IotWatch_Mongo_AWS\src\main\resources\static" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.iotwatch.auth.service.impl" />
@@ -154,7 +259,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Compound.Iotwatch-Autostart-dev">
+  <component name="RunManager" selected="Application.iotwatch">
     <configuration name="iotwatch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -313,6 +418,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="" />
@@ -366,6 +474,8 @@
       <workItem from="1709418697427" duration="226000" />
       <workItem from="1709418949999" duration="2778000" />
       <workItem from="1709512704286" duration="5398000" />
+      <workItem from="1709858352917" duration="1761000" />
+      <workItem from="1710008300373" duration="19113000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
