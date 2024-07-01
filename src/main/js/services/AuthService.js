@@ -1,16 +1,19 @@
-import axios from "../configuration/axios-config.js";
-import API_ROUTES from "../constants/apiRoutes.js";
-import ROUTES from "../constants/routes.json";
-import { signin, signout } from "../redux/components/login/loginSlice";
-import history from "Core/history";
-import { HttpStatusCode } from "axios";
-import { show } from "../redux/components/globalAlert/globalAlert";
-import responseStatus from "../constants/responseStatus.json";
+import axios from '../configuration/axios-config.js';
+import API_ROUTES from '../constants/apiRoutes.js';
+import ROUTES from '../constants/routes.json';
+import { signin, signout } from '../redux/components/login/loginSlice';
+import history from 'Core/history';
+import { HttpStatusCode } from 'axios';
+import { show } from '../redux/components/globalAlert/globalAlert';
+import responseStatus from '../constants/responseStatus.json';
+import { useTranslation } from 'react-i18next';
+
+const [t] = useTranslation();
 
 /**
  * Auth Service
  */
-class AuthService {
+const AuthService = () => ({
   /**
    * SingIn method
    *
@@ -18,7 +21,7 @@ class AuthService {
    * @return {*}
    * @memberof AuthService
    */
-  signin({ username, password, rememberMe, setLoading }) {
+  signin: ({ username, password, rememberMe, setLoading }) => {
     return (dispatch) => {
       setLoading(true);
       axios
@@ -30,16 +33,16 @@ class AuthService {
           },
           {
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
           },
         )
         .then(({ data, httpStatus }) => {
           if (data.status === responseStatus.SUCCESS && data.token) {
             if (rememberMe) {
-              localStorage.setItem("user", JSON.stringify(data));
+              localStorage.setItem('user', JSON.stringify(data));
             } else {
-              sessionStorage.setItem("user", JSON.stringify(data));
+              sessionStorage.setItem('user', JSON.stringify(data));
             }
 
             dispatch(
@@ -56,14 +59,14 @@ class AuthService {
           dispatch(
             show({
               open: true,
-              severity: "warning",
-              message: error.response.data.message,
+              severity: 'warning',
+              message: error?.response ? error.response.data?.message : t['default.server.error'],
             }),
           );
         })
         .finally(() => setLoading(false));
     };
-  }
+  },
 
   /**
    * SingOut Method
@@ -71,12 +74,12 @@ class AuthService {
    * @return {*}
    * @memberof AuthService
    */
-  signout() {
+  signout: () => {
     return (dispatch) => {
       const user = JSON.parse(
-        !!sessionStorage.getItem("user")
-          ? sessionStorage.getItem("user")
-          : localStorage.getItem("user"),
+        sessionStorage.getItem('user')
+          ? sessionStorage.getItem('user')
+          : localStorage.getItem('user'),
       );
 
       axios
@@ -85,7 +88,7 @@ class AuthService {
           { userId: user.id },
           {
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
           },
         )
@@ -93,7 +96,7 @@ class AuthService {
           dispatch(signout());
         });
     };
-  }
+  },
 
   /**
    * SignUp Method
@@ -102,21 +105,19 @@ class AuthService {
    * @return {*}
    * @memberof AuthService
    */
-  signup(data) {
+  signup: (data) => {
     return (dispatch) => {
       axios
         .post(API_ROUTES.SIGNUP, data, {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         })
         .then(({ data, httpStatus }) => {
           if (httpStatus === HttpStatusCode.Created) {
             history.push(ROUTES.SIGNIN);
           } else {
-            dispatch(
-              show({ open: true, severity: "error", message: data.message }),
-            );
+            dispatch(show({ open: true, severity: 'error', message: data.message }));
           }
         })
         .catch((error) => {
@@ -124,13 +125,13 @@ class AuthService {
           dispatch(
             show({
               open: true,
-              severity: "error",
+              severity: 'error',
               message: error.response.data.message,
             }),
           );
         });
     };
-  }
-}
+  },
+});
 
-export default new AuthService();
+export default AuthService;

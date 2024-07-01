@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((config) => {
   const user = JSON.parse(
-    !!sessionStorage.getItem("user")
+    sessionStorage.getItem("user")
       ? sessionStorage.getItem("user")
       : localStorage.getItem("user"),
   );
@@ -21,7 +21,7 @@ axiosInstance.interceptors.request.use((config) => {
 
 const refreshAccessToken = () => {
   const user = JSON.parse(
-    !!sessionStorage.getItem("user")
+    sessionStorage.getItem("user")
       ? sessionStorage.getItem("user")
       : localStorage.getItem("user"),
   );
@@ -61,7 +61,7 @@ axiosInstance.interceptors.response.use(
       return refreshAccessToken()
         .then((data) => {
           const user = JSON.parse(
-            !!sessionStorage.getItem("user")
+            sessionStorage.getItem("user")
               ? sessionStorage.getItem("user")
               : localStorage.getItem("user"),
           );

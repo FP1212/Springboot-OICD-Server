@@ -20,7 +20,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.header.HeaderWriterFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -38,7 +37,7 @@ public class WebSecurityConfig {
     private UserDetailsServiceImpl userDetailsService;
     private AuthEntryPointJwt unauthorizedHandler;
 
-    @Value("iotwatch.webpack.devserver.port")
+    @Value("${iotwatch.webpack.devserver.port}")
     private String webpackDevserverURL;
 
     @Bean
@@ -49,7 +48,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(request ->
                         request.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                 .permitAll()
-                                .requestMatchers("/", "/home", "/signup", "/signin", "/locales/*/**", "/error")
+                                .requestMatchers("/", "/index.html","/home", "/signup", "/signin", "/locales/*/**", "/error")
                                 .permitAll()
                                 .requestMatchers("/api/v1/auth/**", "{path:^(?!api|static|favicon\\.ico).*$}")
                                 .permitAll()
@@ -91,8 +90,8 @@ public class WebSecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(webpackDevserverURL, "http://localhost"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        configuration.setExposedHeaders(Arrays.asList("Authorization", "content-type"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "content-type"));
+        configuration.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

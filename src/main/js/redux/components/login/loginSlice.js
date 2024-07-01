@@ -6,7 +6,7 @@ const loginSlice = createCustomSliceWithStatus(
     authenticate:
       !!localStorage.getItem("user") || !!sessionStorage.getItem("user"),
     user: JSON.parse(
-      !!sessionStorage.getItem("user")
+      sessionStorage.getItem("user")
         ? sessionStorage.getItem("user")
         : localStorage.getItem("user"),
     ),

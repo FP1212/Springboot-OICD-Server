@@ -11,5 +11,6 @@
   "MONITOR": "/monitor",
   "SIMULATOR": "/simulator",
   "CONFIGURATION": "/configuration",
-  "ERROR": "/error"
+  "ERROR": "/error",
+  "404": "/404"
 }

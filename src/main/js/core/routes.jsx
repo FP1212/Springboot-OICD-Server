@@ -1,48 +1,39 @@
-import React, { useEffect, useMemo } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 // import { update } from "Redux/components/alarm/alarmSlice";
 // import { resuscribe, unsuscribe } from "Redux/components/broker/brokerSlice";
-import { Switch, Route, Redirect } from "react-router-dom";
-import ROUTES from "Constants/routes";
-import loadable from "@loadable/component";
+import { Switch, Route, Redirect } from 'react-router-dom';
+import ROUTES from 'Constants/routes';
+import loadable from '@loadable/component';
 // import Nav from "./nav";
 // import PermanentDrawer from "Components/drawer/permanentDrawer";
 // import styles from "Styles/routes.module.scss";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { selectDarkMode } from "Redux/components/dark/darkSlice";
-import CssBaseline from "@mui/material/CssBaseline";
-import { selectLogin } from "Redux/components/login/loginSlice";
-import PrivateRoute from "../components/PrivateRoute";
-import { selectGlobalAlert } from "Redux/components/globalAlert/globalAlert";
-import GlobalAlert from "../components/default/globalAlert";
-import LoadingBackdrop from "../components/default/loadingBackdrop";
-import CustomDrawer from "../components/default/CustomDrawer";
-import CustomAppBar from "../components/default/CustomAppBar";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { selectDarkMode } from 'Redux/components/dark/darkSlice';
+import CssBaseline from '@mui/material/CssBaseline';
+import { selectLogin } from 'Redux/components/login/loginSlice';
+import PrivateRoute from '../components/PrivateRoute';
+import { selectGlobalAlert } from 'Redux/components/globalAlert/globalAlert';
+import GlobalAlert from '../components/default/globalAlert';
+import LoadingBackdrop from '../components/default/loadingBackdrop';
+import CustomDrawer from '../components/default/CustomDrawer';
+import CustomAppBar from '../components/default/CustomAppBar';
 
 // Load bundles asynchronously so that the initial render happens faster
-const Home = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/home/home"),
-);
+const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home/home'));
 
-const Login = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/login/login"),
-);
+const Login = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/login/login'));
 
 const SignUp = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ "../pages/signup/signup"),
+  () => import(/* webpackChunkName: "LoginChunk" */ '../pages/signup/signup'),
 );
 
 const Dashboard = loadable(
-  () =>
-    import(
-      /* webpackChunkName: "DashboardChunk" */ "../pages/dashboard/dashboard"
-    ),
+  () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/dashboard/dashboard'),
 );
 
-const Error = loadable(
-  () => import(/* webpackChunkName: "StatusChunk" */ "../pages/error/error"),
-);
+const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pages/error/error'));
 
 // const Status = loadable(() =>
 //   import(/* webpackChunkName: "StatusChunk" */ "../pages/status/status")
@@ -86,29 +77,18 @@ const Routes = (props) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <GlobalAlert
-        openAlert={openAlert}
-        severity={severity}
-        message={message}
-      />
+      <GlobalAlert openAlert={openAlert} severity={severity} message={message} />
       <Switch>
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
-        <Route
-          exact
-          path={ROUTES.SIGNUP}
-          component={SignUp}
-          history={history}
-        />
+        <Route exact path={ROUTES.SIGNUP} component={SignUp} history={history} />
+        <Route path={ROUTES['404']} component={Error} />
+        <Route component={Error} />
         <Route
           exact
           path={ROUTES.SIGNIN}
           render={(routeProps) =>
-            loginState.authenticate ? (
-              <Redirect to={ROUTES.DASHBOARD} />
-            ) : (
-              <Login {...routeProps} />
-            )
+            loginState.authenticate ? <Redirect to={ROUTES.DASHBOARD} /> : <Login {...routeProps} />
           }
           history={history}
         />

@@ -1,142 +1,129 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
-const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const WarningsToErrorsPlugin = require("warnings-to-errors-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
-const { getNonce } = require("get-nonce");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
-const { v4: uuidv4 } = require("uuid");
-const dotenv = require("dotenv");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const { getNonce } = require('get-nonce');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin');
+const { v4: uuidv4 } = require('uuid');
+const dotenv = require('dotenv');
 
-__webpack_nonce__ = "ABCD1234";
+__webpack_nonce__ = 'ABCD1234';
 
 module.exports = (env, argv) => {
-  const isProd = argv.mode === "production";
-  const staticPath = path.resolve(__dirname, "../../../build/resources/main/");
+  const isProd = argv.mode === 'production';
+  const staticPath = path.resolve(__dirname, '../resources/static');
   const webpackDevServerPort = 8081;
+  const serverPort = 8080;
 
   return {
-    entry: "./app.jsx",
-    cache: false,
+    entry: './app.jsx',
+    cache: true,
     output: {
       path: staticPath, // Where all the output files get dropped after webpack is done with them
-      filename: "js/index_bundle.js", // The name of the webpack bundle that's generated
+      filename: 'js/index_bundle.js', // The name of the webpack bundle that's generated
       pathinfo: false,
     },
     devServer: {
-      port: webpackDevServerPort,
-      compress: true,
-      hot: true,
-      watchFiles: [
-        "src/main/js/**/*.js",
-        "src/main/js/**/*.jsx",
-        "src/main/js/styles/**/*.scss",
-      ],
-      headers: {
-        "Access-Control-Allow-Origin": "*",
+      static: {
+        directory: staticPath,
       },
-      // proxy: {
-      //   "/**": {
-      //     target: "http://localhost:8080",
-      //     secure: false,
-      //   },
-      // },
+      open: true,
+      port: webpackDevServerPort,
+      proxy: [
+        {
+          context: ['/api'],
+          target: 'http://localhost:8080',
+          secure: false,
+        },
+      ],
+      historyApiFallback: true,
+      compress: !!isProd,
+      hot: true,
+      watchFiles: ['src/main/js/**/*.js', 'src/main/js/**/*.jsx', 'src/main/js/styles/**/*.scss'],
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
       devMiddleware: {
         index: true,
-        mimeTypes: { phtml: "text/html" },
+        mimeTypes: { phtml: 'text/html' },
         publicPath: staticPath,
-        serverSideRender: true,
-        writeToDisk: true,
+        serverSideRender: false,
+        writeToDisk: false,
       },
     },
-    devtool: isProd ? false : "source-map",
+    devtool: isProd ? false : 'source-map',
     optimization: isProd
       ? {
           minimize: true,
           minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
         }
-      : {
-          removeAvailableModules: false,
-          removeEmptyChunks: false,
-          splitChunks: false,
-        },
+      : {},
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: "css/[name].[hash].css",
-        chunkFilename: "css/[id].[hash].css",
-      }),
+      isProd &&
+        new MiniCssExtractPlugin({
+          filename: 'css/[name].[hash].css',
+          chunkFilename: 'css/[id].[hash].css',
+        }),
       new WarningsToErrorsPlugin(),
       new Dotenv(),
       new NodePolyfillPlugin(),
       new HtmlWebpackPlugin({
-        template:
-          path.resolve(__dirname, "../resources/templates") + "/index.ejs",
-        filename: staticPath + "/templates/index.html",
-        title: "IotWatch",
+        template: path.resolve(__dirname, '../resources/templates') + '/index.ejs',
+        filename: staticPath + '/index.html',
+        title: 'IotWatch',
+        inject: true,
       }),
       new CspHtmlWebpackPlugin({
-        "script-src": "'self'",
-        "style-src": "'unsafe-inline'",
-        "connect-src": ["'self'", `ws://localhost:${webpackDevServerPort}`],
-        "worker-src": ["'self'", "blob:"],
+        'script-src': "'self'",
+        'style-src': "'unsafe-inline'",
+        'connect-src': [
+          "'self'",
+          `ws://localhost:${webpackDevServerPort}`,
+          `ws://localhost:${serverPort}`,
+          `http://localhost:${serverPort}`,
+        ],
+        'worker-src': ["'self'", 'blob:'],
       }),
-    ],
+    ].filter(Boolean),
     resolve: {
-      modules: [path.resolve(__dirname, "./"), "node_modules"],
+      modules: [path.resolve(__dirname, './'), 'node_modules'],
     },
     module: {
       rules: [
-        // {
-        //   // loads .html files
-        //   test: /\.(html)$/,
-        //   include: [path.resolve(__dirname, "../resources/templates")],
-        //   use: {
-        //     loader: "html-loader",
-        //     options: {
-        //       sources: {
-        //         list: [
-        //           {
-        //             tag: "img",
-        //             attribute: "data-src",
-        //             type: "src",
-        //           },
-        //         ],
-        //       },
-        //     },
-        //   },
-        // },
         // loads .js/jsx files
         {
           test: /\.jsx?$/,
-          include: [path.resolve(__dirname, "./")],
-          loader: "babel-loader",
+          include: [path.resolve(__dirname, './')],
+          exclude: /locales\//,
+          loader: 'babel-loader',
           resolve: {
-            extensions: [".js", ".jsx", ".json"],
+            extensions: ['.js', '.jsx', '.json'],
           },
         },
         // loads .css files
         {
           test: /\.css$/,
           include: [
-            path.resolve(__dirname, "./styles"),
-            path.resolve(__dirname, "./node_modules/"),
+            path.resolve(__dirname, './styles'),
+            path.resolve(__dirname, './node_modules/'),
           ],
           use: [
             {
-              loader: isProd ? MiniCssExtractPlugin.loader : "style-loader",
+              loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
               options: {
                 attributes: {
                   nonce: getNonce(),
                 },
               },
             },
-            "css-loader",
+            'css-loader',
           ],
           resolve: {
-            extensions: [".css"],
+            extensions: ['.css'],
           },
         },
         {
@@ -144,57 +131,58 @@ module.exports = (env, argv) => {
           exclude: /\.module\.scss$/,
           use: [
             {
-              loader: isProd ? MiniCssExtractPlugin.loader : "style-loader",
+              loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
               options: {
                 attributes: {
                   nonce: getNonce(),
                 },
               },
             },
-            ,
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 importLoaders: 1,
                 sourceMap: true,
               },
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
                 postcssOptions: {
-                  plugins: [require("autoprefixer")],
+                  plugins: [require('autoprefixer')],
                 },
                 sourceMap: true,
               },
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: { sourceMap: true },
             },
           ],
         },
         {
           test: /\.module\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-
         // loads common image formats
         {
           test: /\.(eot|woff|woff2|ttf|png|jpg|gif|stl)$/i,
-          type: "asset/inline",
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[name][ext]',
+          },
         },
-
-        // loads stl as resource
-        // {
-        //   test: /\.stl$/i,
-        //   type: "asset/resource",
-        // },
-
         // loads svgr
         {
           test: /\.svg$/i,
-          use: ["@svgr/webpack"],
+          use: ['@svgr/webpack'],
+        },
+        {
+          test: /locales\/.*\.json$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'locales/[name][ext]',
+          },
         },
       ],
     },
