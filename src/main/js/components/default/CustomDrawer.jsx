@@ -1,19 +1,19 @@
-import React from "react";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { styled, useTheme } from "@mui/material/styles";
-import DrawerHeader from "./drawerHeader";
-import AuthService from "../../services/AuthService";
-import { Logout } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { Divider, ListItemButton, ListItemIcon } from '@mui/material';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { styled, useTheme } from '@mui/material/styles';
+import DrawerHeader from './drawerHeader';
+import { signout } from '../../services/AuthService';
+import { Logout } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 
 const drawerWidth = 240;
 
@@ -26,9 +26,9 @@ const CustomDrawer = ({ isOpen, onClose }) => {
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        "& .MuiDrawer-paper": {
+        '& .MuiDrawer-paper': {
           width: drawerWidth,
-          boxSizing: "border-box",
+          boxSizing: 'border-box',
         },
       }}
       variant="persistent"
@@ -37,21 +37,15 @@ const CustomDrawer = ({ isOpen, onClose }) => {
     >
       <DrawerHeader>
         <IconButton onClick={onClose}>
-          {theme.direction === "ltr" ? (
-            <ChevronLeftIcon />
-          ) : (
-            <ChevronRightIcon />
-          )}
+          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </DrawerHeader>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
@@ -59,12 +53,10 @@ const CustomDrawer = ({ isOpen, onClose }) => {
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
@@ -72,12 +64,12 @@ const CustomDrawer = ({ isOpen, onClose }) => {
       </List>
       <Divider />
       <List>
-        <ListItem key={"Log Out"} disablePadding>
-          <ListItemButton onClick={() => dispatch(AuthService.signout())}>
+        <ListItem key={'Log Out'} disablePadding>
+          <ListItemButton onClick={() => dispatch(signout())}>
             <ListItemIcon>
               <Logout />
             </ListItemIcon>
-            <ListItemText primary={"Log Out"} />
+            <ListItemText primary={'Log Out'} />
           </ListItemButton>
         </ListItem>
       </List>

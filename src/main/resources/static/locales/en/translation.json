@@ -120,7 +120,7 @@
   },
   "common": {
     "sign": {
-      "in" : "Sign In",
+      "in": "Sign In",
       "out": "Sign Out"
     },
     "register": {
@@ -136,5 +136,8 @@
     "server": {
       "error": "Something went wrong"
     }
+  },
+  "dashboard": {
+    "cards.not.found.add.new": "It seems like you not have added a card yet, \n use the (+) button to add a new card."
   }
 }

@@ -1,19 +1,19 @@
 import axios from '../configuration/axios-config.js';
 import API_ROUTES from '../constants/apiRoutes.js';
 import ROUTES from '../constants/routes.json';
-import { signin, signout } from '../redux/components/login/loginSlice';
+import {
+  signin as signInSlice,
+  signout as signOutSlice,
+} from '../redux/components/login/loginSlice';
 import history from 'Core/history';
 import { HttpStatusCode } from 'axios';
 import { show } from '../redux/components/globalAlert/globalAlert';
 import responseStatus from '../constants/responseStatus.json';
-import { useTranslation } from 'react-i18next';
-
-const [t] = useTranslation();
 
 /**
  * Auth Service
  */
-const AuthService = () => ({
+const AuthService = Object.freeze({
   /**
    * SingIn method
    *
@@ -21,7 +21,7 @@ const AuthService = () => ({
    * @return {*}
    * @memberof AuthService
    */
-  signin: ({ username, password, rememberMe, setLoading }) => {
+  signin: function ({ username, password, rememberMe, setLoading }) {
     return (dispatch) => {
       setLoading(true);
       axios
@@ -46,12 +46,12 @@ const AuthService = () => ({
             }
 
             dispatch(
-              signin({
+              signInSlice({
                 user: data,
               }),
             );
           } else {
-            dispatch(signout(data));
+            dispatch(signOutSlice(data));
           }
         })
         .catch((error) => {
@@ -60,7 +60,7 @@ const AuthService = () => ({
             show({
               open: true,
               severity: 'warning',
-              message: error?.response ? error.response.data?.message : t['default.server.error'],
+              message: error?.response ? error.response.data?.message : 'default.server.error',
             }),
           );
         })
@@ -74,7 +74,7 @@ const AuthService = () => ({
    * @return {*}
    * @memberof AuthService
    */
-  signout: () => {
+  signout: function () {
     return (dispatch) => {
       const user = JSON.parse(
         sessionStorage.getItem('user')
@@ -93,7 +93,7 @@ const AuthService = () => ({
           },
         )
         .finally(() => {
-          dispatch(signout());
+          dispatch(signOutSlice());
         });
     };
   },
@@ -105,7 +105,7 @@ const AuthService = () => ({
    * @return {*}
    * @memberof AuthService
    */
-  signup: (data) => {
+  signup: function (data) {
     return (dispatch) => {
       axios
         .post(API_ROUTES.SIGNUP, data, {
@@ -134,4 +134,4 @@ const AuthService = () => ({
   },
 });
 
-export default AuthService;
+export const { signin, signout, signup } = AuthService;

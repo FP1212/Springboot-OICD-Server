@@ -25,6 +25,8 @@ $medium-height: 50%;
   padding: 0;
   margin: 0;
   flex-direction: $directon;
+  width: inherit;
+  height: inherit;
 }
 
 @mixin flex_1(
@@ -53,4 +55,9 @@ $medium-height: 50%;
   height: 100vh;
   margin: 0;
   padding: 0;
+  white-space: pre-line;
+}
+
+.flex_box_center {
+  @include default_flex(column, center, center);
 }

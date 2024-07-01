@@ -11,7 +11,7 @@ const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin');
 const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv');
 
-__webpack_nonce__ = 'ABCD1234';
+__webpack_nonce__ = uuidv4();
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
@@ -23,14 +23,11 @@ module.exports = (env, argv) => {
     entry: './app.jsx',
     cache: true,
     output: {
-      path: staticPath, // Where all the output files get dropped after webpack is done with them
-      filename: 'js/index_bundle.js', // The name of the webpack bundle that's generated
+      path: staticPath,
+      filename: 'js/index_bundle.js',
       pathinfo: false,
     },
     devServer: {
-      static: {
-        directory: staticPath,
-      },
       open: true,
       port: webpackDevServerPort,
       proxy: [
@@ -46,13 +43,6 @@ module.exports = (env, argv) => {
       watchFiles: ['src/main/js/**/*.js', 'src/main/js/**/*.jsx', 'src/main/js/styles/**/*.scss'],
       headers: {
         'Access-Control-Allow-Origin': '*',
-      },
-      devMiddleware: {
-        index: true,
-        mimeTypes: { phtml: 'text/html' },
-        publicPath: staticPath,
-        serverSideRender: false,
-        writeToDisk: false,
       },
     },
     devtool: isProd ? false : 'source-map',

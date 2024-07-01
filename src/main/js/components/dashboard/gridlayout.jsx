@@ -9,8 +9,6 @@ import CustomCard from "../card";
 import AddCard from "./AddCard";
 import { DEFAULT_CARD_LAYOUT_PROPS } from "../../constants";
 
-const defaultCols = { lg: 12, md: 10, sm: 6, xs: 3, xxs: 3 };
-
 const GridLayout = (props) => {
   const { data, tabIndex } = props;
   const [breakpoint, onBreakpointChange] = useState("ls");
@@ -68,6 +66,7 @@ const GridLayout = (props) => {
     <div
       style={{
         width: "100%",
+        height: "100%",
         maxHeight: "100vh",
       }}
     >

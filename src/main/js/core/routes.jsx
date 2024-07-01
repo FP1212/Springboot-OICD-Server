@@ -21,19 +21,21 @@ import CustomDrawer from '../components/default/CustomDrawer';
 import CustomAppBar from '../components/default/CustomAppBar';
 
 // Load bundles asynchronously so that the initial render happens faster
-const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home/home'));
+const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home'));
 
-const Login = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/login/login'));
+const Login = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/login'));
 
-const SignUp = loadable(
-  () => import(/* webpackChunkName: "LoginChunk" */ '../pages/signup/signup'),
-);
+const SignUp = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/signup'));
 
 const Dashboard = loadable(
-  () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/dashboard/dashboard'),
+  () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/dashboard'),
 );
 
-const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pages/error/error'));
+const TrackMap = loadable(
+  () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/trackMap'),
+);
+
+const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pages/error'));
 
 // const Status = loadable(() =>
 //   import(/* webpackChunkName: "StatusChunk" */ "../pages/status/status")
@@ -82,8 +84,6 @@ const Routes = (props) => {
         <Route exact path={ROUTES.INDEX} component={Home} history={history} />
         <Route exact path={ROUTES.HOME} component={Home} history={history} />
         <Route exact path={ROUTES.SIGNUP} component={SignUp} history={history} />
-        <Route path={ROUTES['404']} component={Error} />
-        <Route component={Error} />
         <Route
           exact
           path={ROUTES.SIGNIN}
@@ -99,8 +99,11 @@ const Routes = (props) => {
           auth={{ isAuthenticated: loginState?.authenticate || false }}
           history={history}
         >
-          <Dashboard />
+          <TrackMap />
         </PrivateRoute>
+      </Switch>
+      <Switch>
+        <Route path={ROUTES['404']} component={Error} />
       </Switch>
     </ThemeProvider>
   );
