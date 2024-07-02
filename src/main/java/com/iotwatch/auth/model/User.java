@@ -29,15 +29,15 @@ public class User {
     private String id;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 50)
     private String username;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 50)
     private String firstName;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(max = 50)
     private String lastName;
 
     @NotBlank
@@ -52,7 +52,7 @@ public class User {
 
     @DBRef
     @Builder.Default
-    private Set<Role> enumRoles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     private Date lastLogin;
 

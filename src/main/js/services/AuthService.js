@@ -37,7 +37,7 @@ const AuthService = Object.freeze({
             },
           },
         )
-        .then(({ data, httpStatus }) => {
+        .then(({ data }) => {
           if (data.status === responseStatus.SUCCESS && data.token) {
             if (rememberMe) {
               localStorage.setItem('user', JSON.stringify(data));

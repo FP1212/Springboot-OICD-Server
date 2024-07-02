@@ -1,7 +1,9 @@
 package com.iotwatch.auth.details;
 
+import com.iotwatch.auth.model.Role;
 import com.iotwatch.auth.model.User;
 import com.iotwatch.company.model.Company;
+import com.iotwatch.enums.EnumRole;
 import com.iotwatch.user.service.CustomUserDetails;
 import com.iotwatch.userCompany.model.UserCompany;
 import jakarta.validation.constraints.Email;
@@ -9,12 +11,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
@@ -35,25 +36,26 @@ public class UserDetailsImpl implements CustomUserDetails {
     @Size(min = 6, max = 60)
     private String password;
 
-    private String companyId;
-    private String companyName;
-
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserDetailsImpl build(UserCompany userCompany) {
-        User user = userCompany.getUser();
-        Company company = userCompany.getCompany();
-        List<GrantedAuthority> authorities = user.getEnumRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
-                .collect(Collectors.toList());
+    public static UserDetailsImpl build(User user) {
+        Set<Role> roles = user.getRoles();
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if (CollectionUtils.isNotEmpty(roles)) {
+            authorities = user.getRoles().stream()
+                    .flatMap(role -> role.getPrivileges().stream())
+                    .map(privilege -> new SimpleGrantedAuthority(privilege.getAuthority()))
+                    .collect(Collectors.toList());
+        } else {
+            authorities = List.of(new SimpleGrantedAuthority(EnumRole.GUEST.name()));
+        }
 
         return new UserDetailsImpl(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
-                Objects.isNull(company) ? null : company.getId(),
-                Objects.isNull(company) ? null : company.getName(),
                 authorities);
     }
 

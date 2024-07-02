@@ -9,6 +9,8 @@ import com.iotwatch.exceptions.RefreshTokenException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +30,12 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final MessageSource messageSource;
 
     @Override
     public RefreshToken createNewToken(String userId) {
         return refreshTokenRepository.save(RefreshToken.builder()
-                .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found")))
+                .user(userRepository.findById(userId).orElseThrow(() -> new RuntimeException(messageSource.getMessage("user.not.found", null, LocaleContextHolder.getLocale()))))
                 .token(UUID.randomUUID().toString())
                 .expirationDate(Instant.now().plus(refreshTokenDuration, ChronoUnit.DAYS))
                 .build());
@@ -42,7 +45,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
     public RefreshToken verifyExpiration(RefreshToken token) {
         if (token.getExpirationDate().compareTo(Instant.now()) < 0) {
             refreshTokenRepository.delete(token);
-            throw new RefreshTokenException(token.getToken(), "Refresh token was expired. Please make a new signin request");
+            throw new RefreshTokenException(token.getToken(), messageSource.getMessage("user.refresh.token.expired", null, LocaleContextHolder.getLocale()));
         }
 
         return token;
@@ -55,6 +58,6 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     @Override
     public void deleteByUserId(String userId) {
-        userRepository.findById(userId).ifPresent(refreshTokenRepository::deleteByUser);
+        userRepository.findById(userId).ifPresent(user -> refreshTokenRepository.deleteByUser(user));
     }
 }

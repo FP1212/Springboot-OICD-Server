@@ -28,6 +28,9 @@ module.exports = (env, argv) => {
       pathinfo: false,
     },
     devServer: {
+      static: {
+        directory: staticPath,
+      },
       open: true,
       port: webpackDevServerPort,
       proxy: [

@@ -230,7 +230,7 @@ var SignInSide = function SignInSide() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             username = _ref.username, password = _ref.password, rememberMe = _ref.rememberMe;
-            dispatch(_services_AuthService__WEBPACK_IMPORTED_MODULE_3__["default"].signin({
+            dispatch((0,_services_AuthService__WEBPACK_IMPORTED_MODULE_3__.signin)({
               username: username,
               password: password,
               rememberMe: rememberMe,
@@ -564,7 +564,7 @@ var SignUp = function SignUp() {
     });
   };
   var onSubmit = function onSubmit(e) {
-    dispatch(_services_AuthService__WEBPACK_IMPORTED_MODULE_3__["default"].signup(formDataWithoutConfirmPassword));
+    dispatch((0,_services_AuthService__WEBPACK_IMPORTED_MODULE_3__.signup)(formDataWithoutConfirmPassword));
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_styles__WEBPACK_IMPORTED_MODULE_11__["default"], {
     theme: defaultTheme

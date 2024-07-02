@@ -20,9 +20,10 @@ import com.iotwatch.enums.EnumStatusResponse;
 import com.iotwatch.exceptions.RefreshTokenException;
 import com.iotwatch.response.MessageResponse;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,27 +48,33 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final RefreshTokenService refreshTokenService;
     private final AuthenticationManager authenticationManager;
+    private final MessageSource messageSource;
 
     @Override
     public ResponseEntity<?> signUp(SignUpRequestDto signUpRequestDto) {
         try {
             if (userRepository.existsByUsername(signUpRequestDto.getUserName())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Username already in use", EnumStatusResponse.ERROR.getStatus()));
+                return ResponseEntity.badRequest().body(
+                        new MessageResponse(messageSource.getMessage("user.name.in.use", null, LocaleContextHolder.getLocale()),
+                                EnumStatusResponse.ERROR.getStatus()));
             }
 
             if (userRepository.existsByEmail(signUpRequestDto.getEmail())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Email already in use", EnumStatusResponse.ERROR.getStatus()));
+                return ResponseEntity.badRequest().body(new MessageResponse(messageSource.getMessage("user.email.in.use", null, LocaleContextHolder.getLocale()), EnumStatusResponse.ERROR.getStatus()));
             }
 
             Set<EnumRole> enumRoleSet = signUpRequestDto.getRoles();
             Set<Role> roleSet = new HashSet<>();
 
-            if (Objects.isNull(enumRoleSet)) {
-                Role userRole = roleRepository.findByRole(EnumRole.USER.name()).orElseThrow(() -> new RuntimeException("Role not found"));
+            if (false) { //Agregar una consulta para saber si el usuario es el que paga la suscripcion y este sera OWNER
+
+            }
+            else if (Objects.isNull(enumRoleSet)) {
+                Role userRole = roleRepository.findByRole(EnumRole.USER.name()).orElseThrow(() -> new RuntimeException(messageSource.getMessage("user.role.not.found", null, LocaleContextHolder.getLocale())));
                 roleSet.add(userRole);
             } else {
                 enumRoleSet.forEach(role -> {
-                    Role resultRole = roleRepository.findByRole(role.name()).orElseThrow(() -> new RuntimeException("Role not found"));
+                    Role resultRole = roleRepository.findByRole(role.name()).orElseThrow(() -> new RuntimeException(messageSource.getMessage("user.role.not.found", null, LocaleContextHolder.getLocale())));
                     roleSet.add(resultRole);
                 });
             }
@@ -78,11 +85,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .lastName(signUpRequestDto.getLastName())
                     .email(signUpRequestDto.getEmail())
                     .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
-                    .enumRoles(roleSet)
+                    .roles(roleSet)
                     .build();
 
             userRepository.save(user);
-            return new ResponseEntity<>("User successfully saved", HttpStatus.CREATED);
+            return new ResponseEntity<>(messageSource.getMessage("user.save.success", null, LocaleContextHolder.getLocale()), HttpStatus.CREATED);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage(), EnumStatusResponse.ERROR.getStatus()));
         }
@@ -115,7 +122,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .build());
         } catch (Exception e){
             logger.error("SignIn Exception: {}", e.getMessage());
-            return ResponseEntity.ok().body(new MessageResponse("Incorrect username or password", EnumStatusResponse.BAD_CREDENTIALS.getStatus()));
+            return ResponseEntity.ok().body(new MessageResponse(messageSource.getMessage("user.bad.credentials", null, LocaleContextHolder.getLocale()), EnumStatusResponse.BAD_CREDENTIALS.getStatus()));
         }
     }
 
@@ -123,7 +130,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public ResponseEntity<?> signOut(SignOutRequestDto signOutRequestDto) {
         refreshTokenService.deleteByUserId(signOutRequestDto.getUserId());
-        return ResponseEntity.ok(new MessageResponse("Log out successful!", EnumStatusResponse.SUCCESS.getStatus()));
+        return ResponseEntity.ok(new MessageResponse(messageSource.getMessage("user.log.out", null, LocaleContextHolder.getLocale()), EnumStatusResponse.SUCCESS.getStatus()));
     }
 
     @Override
@@ -139,7 +146,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                         return ResponseEntity.ok(new RefreshTokenResponse(token, requestRefreshToken));
                     })
                     .orElseThrow(() -> new RefreshTokenException(requestRefreshToken,
-                            "Refresh token is not in database!")
+                            messageSource.getMessage("user.refresh.token.not.found", null, LocaleContextHolder.getLocale()))
                     );
         } catch (Exception e){
             logger.error("Refresh Token Exception: {}", e.getMessage());
