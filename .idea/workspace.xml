@@ -5,57 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/default/ActionSpeedDial.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/styles/dashboard.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-016392.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-016392.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_LockOutlined_js-node_modules_mui_material_Avatar_Avat-7438a9.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_LockOutlined_js-node_modules_mui_material_Avatar_Avat-7438a9.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_Button_Button_js.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_Button_Button_js.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_Container_Container_js.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_Container_Container_js.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-b0a658.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-b0a658.index_bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/gridlayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/tabpanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/dashboard/subitem/tabpanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/alarms/alarms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/alarms.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/configuration/configuration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/configuration.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/dashboard/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/error/error.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/error.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/monitor/monitor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/monitor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/registerCompany/registerCompany.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/registerCompany.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/signup/signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/signup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/simulator/simulator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/simulator.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/status/status.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/status.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/styles/root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/root.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/utils/PasswordHash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/utils/PasswordHash.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/StatusChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/StatusChunk.index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/StatusChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/StatusChunk.index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/locales/en/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/locales/es/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/locales/es/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/i18n/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/i18n/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,37 +92,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Federico Pinilla/IdeaProjects/IotWatch/.gradle&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;ca81945a2241e41c33818d61c7556f78&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/.gradle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
@@ -217,7 +168,6 @@
       <shortenClasspath name="MANIFEST" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="LaunchBrowser.Before.Run" browser="37cae5b9-e8b2-4949-9172-aafa37fbc09c" url="http://localhost:8080" withDebugger="true" />
       </method>
     </configuration>
     <configuration name="IotWatch [buildApp]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -391,6 +341,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringGeneralSettings">
+    <option name="allowAutoConfigurationMode" value="true" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -458,6 +411,8 @@
       <workItem from="1719805060280" duration="1683000" />
       <workItem from="1719806759804" duration="2647000" />
       <workItem from="1719809564744" duration="3526000" />
+      <workItem from="1720321407403" duration="56000" />
+      <workItem from="1720321476219" duration="749000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
@@ -506,13 +461,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/js/pages/login.jsx</url>
           <line>49</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/js/services/AuthService.js</url>
           <line>127</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
