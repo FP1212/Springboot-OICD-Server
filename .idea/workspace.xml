@@ -5,45 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/Privilege.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/repository/PrivilegeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/MessageSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/MongoConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/constants/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/enums/EnumPrivileges.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_es.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/hooks/useWebSocket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/IotwatchApplication.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/IotwatchApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/details/UserDetailsImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/AuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/RefreshTokenServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/auth/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/ConfigurateJavaBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/config/JWTUtilsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/dashboard/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/enums/EnumRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/enums/EnumRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/service/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iotwatch/user/service/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/i18n/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/i18n/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/services/AuthService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/styles/root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/root.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b.index_bundle.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,41 +102,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build IotWatch.executor": "Run",
-    "Gradle.IotWatch [buildApp].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.IotwatchApplication.executor": "Debug",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Developer/Documents/Personal/IotWatch/src/main/resources/i18n",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Developer\\Documents\\Personal\\IotWatch\\src\\main\\js\\node_modules\\prettier",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "terminal",
-    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
-    "ts.external.directory.path": "C:\\Users\\Developer\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate 2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build IotWatch.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IotWatch [buildApp].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.IotwatchApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Developer/Documents/Personal/IotWatch/src/main/resources/i18n&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\IdeaProjects\\IotWatch\\src\\main\\js\\node_modules\\prettier&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ca81945a2241e41c33818d61c7556f78&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Developer\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate 2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
@@ -234,7 +204,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch [deleteNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -256,7 +226,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch [devServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -278,7 +248,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch [getNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -300,7 +270,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch [setNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -322,7 +292,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotWatch_Mongo_AWS [webpackDevServer]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -344,7 +314,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="IotwatchApplication JavaScript" type="JavascriptDebugType" uri="http://localhost:8080" useFirstLineBreakpoints="true">

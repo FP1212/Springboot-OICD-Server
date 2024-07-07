@@ -18,6 +18,7 @@ module.exports = (env, argv) => {
   const staticPath = path.resolve(__dirname, '../resources/static');
   const webpackDevServerPort = 8081;
   const serverPort = 8080;
+  const wsTraccarserverPort = 8082;
 
   return {
     entry: './app.jsx',
@@ -77,7 +78,9 @@ module.exports = (env, argv) => {
           "'self'",
           `ws://localhost:${webpackDevServerPort}`,
           `ws://localhost:${serverPort}`,
+          `ws://localhost:${wsTraccarserverPort}`,
           `http://localhost:${serverPort}`,
+          `http://localhost:${wsTraccarserverPort}`,
         ],
         'worker-src': ["'self'", 'blob:'],
       }),
