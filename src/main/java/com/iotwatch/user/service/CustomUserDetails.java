@@ -7,7 +7,5 @@ import java.util.Collection;
 
 public interface CustomUserDetails extends UserDetails {
     String getEmail();
-    String getCompanyId();
-    String getCompanyName();
     Collection<? extends GrantedAuthority> getAuthorities();
 }

@@ -65,7 +65,7 @@ const Home = () => {
       <section className="features">
         <Container>
           <Typography variant="h4" className="features-title">
-            Características destacadas asdasdasd
+            Características destacadas
           </Typography>
           {/* Agrega aquí información sobre las características de la aplicación */}
         </Container>

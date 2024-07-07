@@ -92,8 +92,6 @@ const Routes = (props) => {
           }
           history={history}
         />
-      </Switch>
-      <Switch>
         <PrivateRoute
           path={ROUTES.DASHBOARD}
           auth={{ isAuthenticated: loginState?.authenticate || false }}
@@ -101,9 +99,8 @@ const Routes = (props) => {
         >
           <TrackMap />
         </PrivateRoute>
-      </Switch>
-      <Switch>
         <Route path={ROUTES['404']} component={Error} />
+        <Route path={'*'} component={Error} />
       </Switch>
     </ThemeProvider>
   );

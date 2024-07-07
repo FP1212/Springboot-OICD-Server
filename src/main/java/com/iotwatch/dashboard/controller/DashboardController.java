@@ -18,7 +18,7 @@ public class DashboardController {
     @GetMapping
     public ResponseEntity<?> getAll(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return dashboardService.getAllByCompanyAndUser(userDetails.getId(), userDetails.getCompanyId());
+        return dashboardService.getAllByCompanyAndUser(userDetails.getId(), null);
     }
 
     @GetMapping("/{id}")
@@ -27,7 +27,7 @@ public class DashboardController {
                 DashboardRequest.builder()
                 .dashboardId(id)
                 .userId(userDetails.getId())
-                .companyId(userDetails.getCompanyId())
+                .companyId(null)
                 .build()
         );
     }
@@ -35,14 +35,14 @@ public class DashboardController {
     @PostMapping("/")
     public ResponseEntity<?> create(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody DashboardRequest dashboardRequest) {
         dashboardRequest.setUserId(userDetails.getId());
-        dashboardRequest.setCompanyId(userDetails.getCompanyId());
+        dashboardRequest.setCompanyId(null);
         return dashboardService.create(dashboardRequest);
     }
 
     @PatchMapping("/")
     public ResponseEntity<?> update(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody DashboardRequest dashboardRequest) {
         dashboardRequest.setUserId(userDetails.getId());
-        dashboardRequest.setCompanyId(userDetails.getCompanyId());
+        dashboardRequest.setCompanyId(null);
         return dashboardService.update(dashboardRequest);
     }
 
@@ -52,7 +52,7 @@ public class DashboardController {
                 DashboardRequest.builder()
                         .dashboardId(id)
                         .userId(userDetails.getId())
-                        .companyId(userDetails.getCompanyId())
+                        .companyId(null)
                         .build()
         );
     }
