@@ -578,6 +578,70 @@ var DEFAULT_CARD_LAYOUT_PROPS = Object.freeze({
 
 /***/ }),
 
+/***/ "./hooks/useWebSocket.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reconnecting_webSocket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/reconnecting-webSocket/dist/reconnecting-websocket-mjs.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/axios/lib/axios.js");
+/* provided dependency */ var console = __webpack_require__("./node_modules/console-browserify/index.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var useWebSocket = function useWebSocket(serverUrl) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    webSocket = _useState2[0],
+    setWebSocket = _useState2[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var params = new URLSearchParams();
+    params.append('email', 'fept1298@gmail.com');
+    params.append('password', '10514Faee2*');
+    axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://localhost:8082/api/session', params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }).then(function () {
+      var webSocketInstance = new reconnecting_webSocket__WEBPACK_IMPORTED_MODULE_1__["default"](serverUrl);
+      setWebSocket(webSocketInstance);
+    })["catch"](function (error) {
+      console.error(error);
+    });
+    return function () {
+      webSocket.close();
+    };
+  }, [serverUrl]);
+  var subscribeToEvent = function subscribeToEvent(eventName, callback) {
+    if (webSocket) {
+      webSocket.addEventListener(eventName, callback);
+    }
+  };
+  var unsubscribeFromEvent = function unsubscribeFromEvent(eventName) {
+    if (webSocket) {
+      webSocket.removeEventListener(eventName);
+    }
+  };
+  return {
+    webSocket: webSocket,
+    subscribeToEvent: subscribeToEvent,
+    unsubscribeFromEvent: unsubscribeFromEvent
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useWebSocket);
+
+/***/ }),
+
 /***/ "./pages/dashboard.jsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -748,11 +812,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/react-leaflet/lib/MapContainer.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/react-leaflet/lib/TileLayer.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-leaflet/lib/Marker.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/react-leaflet/lib/Popup.js");
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-leaflet/lib/hooks.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/react-leaflet/lib/Marker.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/react-leaflet/lib/Popup.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/react-leaflet/lib/MapContainer.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/react-leaflet/lib/TileLayer.js");
+/* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/leaflet/dist/leaflet.css");
+/* harmony import */ var _hooks_useWebSocket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./hooks/useWebSocket.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -763,22 +830,60 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
+
 var TrackMap = function TrackMap() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_2__.useTranslation)(),
-    _useTranslation2 = _slicedToArray(_useTranslation, 2),
-    t = _useTranslation2[0],
-    i18n = _useTranslation2[1];
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_3__.MapContainer, {
+  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_4__.useTranslation)(),
+    _useTranslation2 = _slicedToArray(_useTranslation, 1),
+    t = _useTranslation2[0];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    messageData = _useState2[0],
+    setMessageData = _useState2[1];
+  var _useWebSocket = (0,_hooks_useWebSocket__WEBPACK_IMPORTED_MODULE_3__["default"])('ws://localhost:8082/api/socket'),
+    webSocket = _useWebSocket.webSocket,
+    subscribeToEvent = _useWebSocket.subscribeToEvent,
+    unsubscribeFromEvent = _useWebSocket.unsubscribeFromEvent;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!webSocket) return;
+    subscribeToEvent('message', function (data) {
+      setMessageData(data);
+    });
+    return function () {
+      unsubscribeFromEvent('message');
+    };
+  }, [webSocket, subscribeToEvent, unsubscribeFromEvent]);
+  var LocationMarker = function LocationMarker() {
+    var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      position = _useState4[0],
+      setPosition = _useState4[1];
+    var map = (0,react_leaflet__WEBPACK_IMPORTED_MODULE_5__.useMapEvents)({
+      click: function click() {
+        map.locate();
+      },
+      locationfound: function locationfound(e) {
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      }
+    });
+    return position === null ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_6__.Marker, {
+      position: position
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_7__.Popup, null, "You are here"));
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "map-component"
+  }, JSON.stringify(messageData), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "map"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_8__.MapContainer, {
     center: [51.505, -0.09],
     zoom: 13,
-    scrollWheelZoom: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_4__.TileLayer, {
+    scrollWheelZoom: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_9__.TileLayer, {
     attribution: "\xA9 <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_5__.Marker, {
-    position: [51.505, -0.09]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_6__.Popup, null, "A pretty CSS3 popup. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " Easily customizable."))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationMarker, null))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TrackMap);
 
@@ -918,6 +1023,40 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#GbEG8ZM_m0jX6owJZVgV {
   height: inherit;
 }
 
+.AP_N7tSjIIcR4LUMwSuI {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.T1ipQtxKAoTPZSCFDd92 {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  background-color: rgb(125, 193, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.F3gSPYjxyAkBImzPYkLg {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.wRN3YfkdfCF4NwTIZ66d {
+  font-size: 10px;
+}
+
 .kn18CdT3kYCO7ii2OWky {
   width: 100%;
   height: 100%;
@@ -1055,11 +1194,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#GbEG8ZM_m0jX6owJZVgV {
   text-transform: uppercase;
   color: #2c2c2c;
   margin-top: 4;
-}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/card.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AAfA;EDQE,WCP2B;EDQ3B,YCRqB;EDSrB,mBAAA;EACA,eCV2B;EDkB3B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,sBCvBiC;EDwBjC,cAAA;EACA,eAAA;ECxBA,gBAAA;AA6BF;;AA1BA;EDGE,WARc;EASd,WCHqB;EDIrB,mBAAA;EACA,eAXc;EAmBd,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACoBF;;AArCA;EDDE,UAJa;EAKb,YAVe;EAWf,mBAAA;EACA,cAPa;EAeb,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACmCF;AAlDE;EDHA,UCI6B;EDH7B,eCGoB;EDFpB,mBAAA;EACA,cCC6B;AAuD/B;;AAnDA;EDRE,UCSwB;EDRxB,YCQkB;EDPlB,mBAAA;EACA,cCMwB;AAyD1B;;AAtDA;EDZE,UCa8B;EDZ9B,eCYqB;EDXrB,mBAAA;EACA,cCU8B;EDF9B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;AC+DF;;AAjEA;EDhBE,WCiB8B;EDhB9B,eCgBqB;EDfrB,mBAAA;EACA,eCc8B;EDN9B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;AC8EF;;AA5EA;EDpBE,UCqBwB;EDpBxB,YCoBkB;EDnBlB,mBAAA;EACA,cCkBwB;EACxB,eAAA;AAkFF;;AA/EA;EDzBE,WC0BwB;EDzBxB,YCyBkB;EDxBlB,mBAAA;EACA,eCuBwB;EACxB,gBAAA;EACA,eAAA;AAqFF;;AAlFA;EDEE,gBCDyB;EDEzB,kBCF4C;EDG5C,iBAAA;EACA,uBCJgC;EDKhC,iBCLoD;EDMpD,yBAAA;EACA,cCP0D;EAC1D,gCAAA;AA2FF;;AAxFA;EDHE,gBCIyB;EDHzB,kBCG4C;EDF5C,iBAAA;EACA,uBCCgC;EDAhC,iBAAA;EACA,yBAAA;EACA,cCF0D;EAC1D,iBAAA;AAiGF;;AA9FA;EDRE,cCSyB;EDRzB,kBCQ0C;EDP1C,iBAAA;EACA,uBCM8B;EDL9B,iBCKkD;EDJlD,yBAAA;EACA,cCGwD;EACxD,aAAA;AAuGF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n","@use \"root\";\r\n\r\n.card {\r\n  @include root.flex_1(100%, 100%, column);\r\n  overflow: hidden;\r\n}\r\n\r\n.card_content {\r\n  @include root.flex_1(95%, root.$default-width);\r\n}\r\n\r\n.card_stack_width {\r\n  @include root.flex_1(root.$default-height, root.$medium-width);\r\n  div {\r\n    @include root.box(inherit, 20%);\r\n  }\r\n}\r\n\r\n.card_stack_content {\r\n  @include root.box(auto, 50%);\r\n}\r\n\r\n.card_box_content {\r\n  @include root.flex_1(inherit, 55%);\r\n}\r\n\r\n.card_action {\r\n  @include root.flex_1(inherit, 100%);\r\n}\r\n\r\n.card_icon_small {\r\n  @include root.box(100%, 50%);\r\n  fill: royalblue;\r\n}\r\n\r\n.card_icon_big {\r\n  @include root.box(100%, 100%);\r\n  font-size: large;\r\n  fill: royalblue;\r\n}\r\n\r\n.title_1 {\r\n  @include root.typography(1.3vw, sans-serif, center, bold, #c4c4c4);\r\n  font-size-adjust: ex-height 0.58;\r\n}\r\n\r\n.title_2 {\r\n  @include root.typography(1.2vw, sans-serif, center, bold, #2c2c2c);\r\n  padding-top: 40px;\r\n}\r\n\r\n.content_1 {\r\n  @include root.typography(2vw, sans-serif, center, bold, #2c2c2c);\r\n  margin-top: 4;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/card.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AD+CA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,oCAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,UAAA;EACA,kBAAA;AC5CF;;AD+CA;EACE,eAAA;AC5CF;;AAjDA;EDQE,WCP2B;EDQ3B,YCRqB;EDSrB,mBAAA;EACA,eCV2B;EDkB3B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,sBCvBiC;EDwBjC,cAAA;EACA,eAAA;ECxBA,gBAAA;AA+DF;;AA5DA;EDGE,WARc;EASd,WCHqB;EDIrB,mBAAA;EACA,eAXc;EAmBd,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACsDF;;AAvEA;EDDE,UAJa;EAKb,YAVe;EAWf,mBAAA;EACA,cAPa;EAeb,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACqEF;AApFE;EDHA,UCI6B;EDH7B,eCGoB;EDFpB,mBAAA;EACA,cCC6B;AAyF/B;;AArFA;EDRE,UCSwB;EDRxB,YCQkB;EDPlB,mBAAA;EACA,cCMwB;AA2F1B;;AAxFA;EDZE,UCa8B;EDZ9B,eCYqB;EDXrB,mBAAA;EACA,cCU8B;EDF9B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACiGF;;AAnGA;EDhBE,WCiB8B;EDhB9B,eCgBqB;EDfrB,mBAAA;EACA,eCc8B;EDN9B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ACgHF;;AA9GA;EDpBE,UCqBwB;EDpBxB,YCoBkB;EDnBlB,mBAAA;EACA,cCkBwB;EACxB,eAAA;AAoHF;;AAjHA;EDzBE,WC0BwB;EDzBxB,YCyBkB;EDxBlB,mBAAA;EACA,eCuBwB;EACxB,gBAAA;EACA,eAAA;AAuHF;;AApHA;EDEE,gBCDyB;EDEzB,kBCF4C;EDG5C,iBAAA;EACA,uBCJgC;EDKhC,iBCLoD;EDMpD,yBAAA;EACA,cCP0D;EAC1D,gCAAA;AA6HF;;AA1HA;EDHE,gBCIyB;EDHzB,kBCG4C;EDF5C,iBAAA;EACA,uBCCgC;EDAhC,iBAAA;EACA,yBAAA;EACA,cCF0D;EAC1D,iBAAA;AAmIF;;AAhIA;EDRE,cCSyB;EDRzB,kBCQ0C;EDP1C,iBAAA;EACA,uBCM8B;EDL9B,iBCKkD;EDJlD,yBAAA;EACA,cCGwD;EACxD,aAAA;AAyIF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n\r\n.map-component {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n}\r\n\r\n.map {\r\n  width: 100%;\r\n  height: 100%;\r\n  border: 1px solid gray;\r\n  background-color: rgb(125, 193, 220);\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: whitesmoke;\r\n  border-radius: 5px;\r\n  padding: 0;\r\n}\r\n\r\n.leaflet-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  border-radius: 5px;\r\n}\r\n\r\n.leaflet-control-attribution {\r\n  font-size: 10px;\r\n}","@use \"root\";\r\n\r\n.card {\r\n  @include root.flex_1(100%, 100%, column);\r\n  overflow: hidden;\r\n}\r\n\r\n.card_content {\r\n  @include root.flex_1(95%, root.$default-width);\r\n}\r\n\r\n.card_stack_width {\r\n  @include root.flex_1(root.$default-height, root.$medium-width);\r\n  div {\r\n    @include root.box(inherit, 20%);\r\n  }\r\n}\r\n\r\n.card_stack_content {\r\n  @include root.box(auto, 50%);\r\n}\r\n\r\n.card_box_content {\r\n  @include root.flex_1(inherit, 55%);\r\n}\r\n\r\n.card_action {\r\n  @include root.flex_1(inherit, 100%);\r\n}\r\n\r\n.card_icon_small {\r\n  @include root.box(100%, 50%);\r\n  fill: royalblue;\r\n}\r\n\r\n.card_icon_big {\r\n  @include root.box(100%, 100%);\r\n  font-size: large;\r\n  fill: royalblue;\r\n}\r\n\r\n.title_1 {\r\n  @include root.typography(1.3vw, sans-serif, center, bold, #c4c4c4);\r\n  font-size-adjust: ex-height 0.58;\r\n}\r\n\r\n.title_2 {\r\n  @include root.typography(1.2vw, sans-serif, center, bold, #2c2c2c);\r\n  padding-top: 40px;\r\n}\r\n\r\n.content_1 {\r\n  @include root.typography(2vw, sans-serif, center, bold, #2c2c2c);\r\n  margin-top: 4;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"react": `GbEG8ZM_m0jX6owJZVgV`,
 	"flex_box_center": `eH5hOOvDMc_79h_VmWd1`,
+	"map-component": `AP_N7tSjIIcR4LUMwSuI`,
+	"map": `T1ipQtxKAoTPZSCFDd92`,
+	"leaflet-container": `F3gSPYjxyAkBImzPYkLg`,
+	"leaflet-control-attribution": `wRN3YfkdfCF4NwTIZ66d`,
 	"card": `kn18CdT3kYCO7ii2OWky`,
 	"card_content": `VwBqlJZa5fLLTw7OtjRJ`,
 	"card_stack_width": `TbXSfMsErnc35r2zxPvN`,
@@ -1110,11 +1253,49 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#FmhujRGwXJtslHnUhSc4 {
   flex-direction: column;
   width: inherit;
   height: inherit;
-}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/dashboard.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n","#react {\n  width: 100vw;\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  white-space: pre-line;\n}\n\n.flex_box_center {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n  margin: 0;\n  flex-direction: column;\n  width: inherit;\n  height: inherit;\n}"],"sourceRoot":""}]);
+}
+
+.j68GweQrdFFM52978M9c {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.F7q0nQzJaY4af9OeDZf5 {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  background-color: rgb(125, 193, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.HiZSvrsOucvsrQvvah7Q {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.Q0Pgbjv2Y4Tm_up7oaNz {
+  font-size: 10px;
+}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/dashboard.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AD+CA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,oCAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,UAAA;EACA,kBAAA;AC5CF;;AD+CA;EACE,eAAA;AC5CF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n\r\n.map-component {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n}\r\n\r\n.map {\r\n  width: 100%;\r\n  height: 100%;\r\n  border: 1px solid gray;\r\n  background-color: rgb(125, 193, 220);\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: whitesmoke;\r\n  border-radius: 5px;\r\n  padding: 0;\r\n}\r\n\r\n.leaflet-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  border-radius: 5px;\r\n}\r\n\r\n.leaflet-control-attribution {\r\n  font-size: 10px;\r\n}","#react {\n  width: 100vw;\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  white-space: pre-line;\n}\n\n.flex_box_center {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n  margin: 0;\n  flex-direction: column;\n  width: inherit;\n  height: inherit;\n}\n\n.map-component {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n}\n\n.map {\n  width: 100%;\n  height: 100%;\n  border: 1px solid gray;\n  background-color: rgb(125, 193, 220);\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: center;\n  color: whitesmoke;\n  border-radius: 5px;\n  padding: 0;\n}\n\n.leaflet-container {\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  border-radius: 5px;\n}\n\n.leaflet-control-attribution {\n  font-size: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"react": `FmhujRGwXJtslHnUhSc4`,
-	"flex_box_center": `OOQqvwxn2z1lv6VItE3w`
+	"flex_box_center": `OOQqvwxn2z1lv6VItE3w`,
+	"map-component": `j68GweQrdFFM52978M9c`,
+	"map": `F7q0nQzJaY4af9OeDZf5`,
+	"leaflet-container": `HiZSvrsOucvsrQvvah7Q`,
+	"leaflet-control-attribution": `Q0Pgbjv2Y4Tm_up7oaNz`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1154,6 +1335,40 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#DLyYjv1t7VZjyt1tCmTW {
   flex-direction: column;
   width: inherit;
   height: inherit;
+}
+
+.h7QGOVnkgBa4yMJ5vL25 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.R17zqCztts3JcQ70TLNI {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  background-color: rgb(125, 193, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.XO56XpgypQ8VRePuphZM {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.z1qB47_h1eClpQHCznzH {
+  font-size: 10px;
 }
 
 :root {
@@ -1213,11 +1428,15 @@ body {
   width: inherit;
   height: inherit;
   overflow: auto;
-}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/routes.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AAfA;EDQE,WARc;EASd,YAVe;EAWf,mBAAA;EACA,eAXc;ECEd,SAAA;EACA,UAAA;EACA,sBAAA;AAqBF;;AAlBA;EACE,WAAA;EACA,8BAAA;AAqBF;;AAlBA;EDJE,WARc;EASd,YAVe;EAWf,mBAAA;EACA,eAXc;EAmBd,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ECZA,mBAAA;AAgCF;;AA7BA;EACE,WAAA;EACA,UAAA;AAgCF;;AA7BA;EACE,WAAA;EACA,WAAA;EACA,YAAA;EACA,kED5BU;AC4DZ;;AA7BA;EDrBE,WCsB2B;EDrB3B,YCqBqB;EDpBrB,mBAAA;EACA,eCmB2B;EDX3B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,sBCMiC;EDLjC,cAAA;EACA,eAAA;ECKA,cAAA;AA2CF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n","@use \"root\";\r\n\r\n:root {\r\n  @include root.box();\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  margin: 0px;\r\n  height: -webkit-fill-available;\r\n}\r\n\r\n.main {\r\n  @include root.flex_1();\r\n  flex-direction: row;\r\n}\r\n\r\n.nav_space {\r\n  width: 100%;\r\n  height: 8%;\r\n}\r\n\r\n.workspace {\r\n  width: 100%;\r\n  height: 92%;\r\n  padding: 3px;\r\n  background-color: root.$nav-color;\r\n}\r\n\r\n.container {\r\n  @include root.flex_1(100%, 100%, column);\r\n  overflow: auto;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/routes.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AD+CA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,oCAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,UAAA;EACA,kBAAA;AC5CF;;AD+CA;EACE,eAAA;AC5CF;;AAjDA;EDQE,WARc;EASd,YAVe;EAWf,mBAAA;EACA,eAXc;ECEd,SAAA;EACA,UAAA;EACA,sBAAA;AAuDF;;AApDA;EACE,WAAA;EACA,8BAAA;AAuDF;;AApDA;EDJE,WARc;EASd,YAVe;EAWf,mBAAA;EACA,eAXc;EAmBd,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,mBAvBkB;EAwBlB,cAAA;EACA,eAAA;ECZA,mBAAA;AAkEF;;AA/DA;EACE,WAAA;EACA,UAAA;AAkEF;;AA/DA;EACE,WAAA;EACA,WAAA;EACA,YAAA;EACA,kED5BU;AC8FZ;;AA/DA;EDrBE,WCsB2B;EDrB3B,YCqBqB;EDpBrB,mBAAA;EACA,eCmB2B;EDX3B,aAAA;EACA,mBAlBc;EAmBd,uBAlBgB;EAmBhB,UAAA;EACA,SAAA;EACA,sBCMiC;EDLjC,cAAA;EACA,eAAA;ECKA,cAAA;AA6EF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n\r\n.map-component {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n}\r\n\r\n.map {\r\n  width: 100%;\r\n  height: 100%;\r\n  border: 1px solid gray;\r\n  background-color: rgb(125, 193, 220);\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: whitesmoke;\r\n  border-radius: 5px;\r\n  padding: 0;\r\n}\r\n\r\n.leaflet-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  border-radius: 5px;\r\n}\r\n\r\n.leaflet-control-attribution {\r\n  font-size: 10px;\r\n}","@use \"root\";\r\n\r\n:root {\r\n  @include root.box();\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  margin: 0px;\r\n  height: -webkit-fill-available;\r\n}\r\n\r\n.main {\r\n  @include root.flex_1();\r\n  flex-direction: row;\r\n}\r\n\r\n.nav_space {\r\n  width: 100%;\r\n  height: 8%;\r\n}\r\n\r\n.workspace {\r\n  width: 100%;\r\n  height: 92%;\r\n  padding: 3px;\r\n  background-color: root.$nav-color;\r\n}\r\n\r\n.container {\r\n  @include root.flex_1(100%, 100%, column);\r\n  overflow: auto;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"react": `DLyYjv1t7VZjyt1tCmTW`,
 	"flex_box_center": `UQfJeV3ozN04dPUjYFec`,
+	"map-component": `h7QGOVnkgBa4yMJ5vL25`,
+	"map": `R17zqCztts3JcQ70TLNI`,
+	"leaflet-container": `XO56XpgypQ8VRePuphZM`,
+	"leaflet-control-attribution": `z1qB47_h1eClpQHCznzH`,
 	"main": `q8B991GjMuZIv5tfiao7`,
 	"nav_space": `YMXBvInJvAje_q7noa9S`,
 	"workspace": `CEAz52Bs8p8nslumST7q`,

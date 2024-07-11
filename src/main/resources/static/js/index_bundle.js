@@ -113,69 +113,70 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 var drawerWidth = 240;
-var Search = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])("div")(function (_ref) {
+var Search = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])('div')(function (_ref) {
   var theme = _ref.theme;
   return _defineProperty({
-    position: "relative",
+    position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_4__.alpha)(theme.palette.common.white, 0.15),
-    "&:hover": {
+    '&:hover': {
       backgroundColor: (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_4__.alpha)(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: "100%"
-  }, theme.breakpoints.up("sm"), {
+    width: '100%'
+  }, theme.breakpoints.up('sm'), {
     marginLeft: theme.spacing(3),
-    width: "auto"
+    width: 'auto'
   });
 });
-var SearchIconWrapper = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])("div")(function (_ref3) {
+var SearchIconWrapper = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])('div')(function (_ref3) {
   var theme = _ref3.theme;
   return {
     padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   };
 });
 var StyledInputBase = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material_InputBase__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_ref4) {
   var theme = _ref4.theme;
   return {
-    color: "inherit",
-    "& .MuiInputBase-input": _defineProperty({
+    color: 'inherit',
+    '& .MuiInputBase-input': _defineProperty({
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: "calc(1em + ".concat(theme.spacing(4), ")"),
-      transition: theme.transitions.create("width"),
-      width: "100%"
-    }, theme.breakpoints.up("md"), {
-      width: "20ch"
+      transition: theme.transitions.create('width'),
+      width: '100%'
+    }, theme.breakpoints.up('md'), {
+      width: '20ch'
     })
   };
 });
-var Main = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])("main", {
+var Main = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])('main', {
   shouldForwardProp: function shouldForwardProp(prop) {
-    return prop !== "open";
+    return prop !== 'open';
   }
 })(function (_ref5) {
   var theme = _ref5.theme,
     open = _ref5.open;
   return _objectSpread({
     flexGrow: 1,
-    padding: theme.spacing(3),
-    width: "100%",
-    height: "100%",
-    transition: theme.transitions.create("margin", {
+    padding: 0,
+    //theme.spacing(3)
+    width: '100%',
+    height: '100%',
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
     marginLeft: "-".concat(drawerWidth, "px")
   }, open && {
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     }),
@@ -184,20 +185,20 @@ var Main = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])("mai
 });
 var AppBar = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material_AppBar__WEBPACK_IMPORTED_MODULE_6__["default"], {
   shouldForwardProp: function shouldForwardProp(prop) {
-    return prop !== "open";
+    return prop !== 'open';
   }
 })(function (_ref6) {
   var theme = _ref6.theme,
     open = _ref6.open;
   return _objectSpread({
-    transition: theme.transitions.create(["margin", "width"], {
+    transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   }, open && {
     width: "calc(100% - ".concat(drawerWidth, "px)"),
     marginLeft: "".concat(drawerWidth, "px"),
-    transition: theme.transitions.create(["margin", "width"], {
+    transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
@@ -238,18 +239,18 @@ function CustomAppBar(_ref7) {
   var handleMobileMenuOpen = function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-  var menuId = "primary-search-account-menu";
+  var menuId = 'primary-search-account-menu';
   var renderMenu = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Menu__WEBPACK_IMPORTED_MODULE_7__["default"], {
     anchorEl: anchorEl,
     anchorOrigin: {
-      vertical: "top",
-      horizontal: "right"
+      vertical: 'top',
+      horizontal: 'right'
     },
     id: menuId,
     keepMounted: true,
     transformOrigin: {
-      vertical: "top",
-      horizontal: "right"
+      vertical: 'top',
+      horizontal: 'right'
     },
     open: isMenuOpen,
     onClose: handleMenuClose
@@ -258,18 +259,18 @@ function CustomAppBar(_ref7) {
   }, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_8__["default"], {
     onClick: handleMenuClose
   }, "My account"));
-  var mobileMenuId = "primary-search-account-menu-mobile";
+  var mobileMenuId = 'primary-search-account-menu-mobile';
   var renderMobileMenu = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Menu__WEBPACK_IMPORTED_MODULE_7__["default"], {
     anchorEl: mobileMoreAnchorEl,
     anchorOrigin: {
-      vertical: "top",
-      horizontal: "right"
+      vertical: 'top',
+      horizontal: 'right'
     },
     id: mobileMenuId,
     keepMounted: true,
     transformOrigin: {
-      vertical: "top",
-      horizontal: "right"
+      vertical: 'top',
+      horizontal: 'right'
     },
     open: isMobileMenuOpen,
     onClose: handleMobileMenuClose
@@ -298,10 +299,10 @@ function CustomAppBar(_ref7) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_13__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Profile")));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_14__["default"], {
     sx: {
-      display: "flex",
+      display: 'flex',
       flexGrow: 1,
-      width: "inherit",
-      height: "inherit"
+      width: 'inherit',
+      height: 'inherit'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_15__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AppBar, {
     position: "fixed",
@@ -314,7 +315,7 @@ function CustomAppBar(_ref7) {
     sx: _objectSpread({
       mr: 2
     }, openDrawer && {
-      display: "none"
+      display: 'none'
     }),
     onClick: handleDrawerOpen
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Menu__WEBPACK_IMPORTED_MODULE_17__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Typography__WEBPACK_IMPORTED_MODULE_18__["default"], {
@@ -323,14 +324,14 @@ function CustomAppBar(_ref7) {
     component: "div",
     sx: {
       display: {
-        xs: "none",
-        sm: "block"
+        xs: 'none',
+        sm: 'block'
       }
     }
   }, "MUI"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Search, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SearchIconWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Search__WEBPACK_IMPORTED_MODULE_19__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInputBase, {
     placeholder: "Search\u2026",
     inputProps: {
-      "aria-label": "search"
+      'aria-label': 'search'
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_14__["default"], {
     sx: {
@@ -339,8 +340,8 @@ function CustomAppBar(_ref7) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_14__["default"], {
     sx: {
       display: {
-        xs: "none",
-        md: "flex"
+        xs: 'none',
+        md: 'flex'
       }
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -368,8 +369,8 @@ function CustomAppBar(_ref7) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_AccountCircle__WEBPACK_IMPORTED_MODULE_13__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_14__["default"], {
     sx: {
       display: {
-        xs: "flex",
-        md: "none"
+        xs: 'flex',
+        md: 'none'
       }
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -386,10 +387,10 @@ function CustomAppBar(_ref7) {
     open: openDrawer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_drawerHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Box__WEBPACK_IMPORTED_MODULE_14__["default"], {
     sx: {
-      display: "flex",
-      flexDirection: "column",
-      width: "inherit",
-      height: "calc(100% - 56px)"
+      display: 'flex',
+      flexDirection: 'column',
+      width: 'inherit',
+      height: 'calc(100% - 56px)'
     }
   }, children)));
 }
@@ -860,10 +861,10 @@ var SignUp = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__["default"])(fun
   return Promise.all(/* import() | LoginChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48"), __webpack_require__.e("vendors-node_modules_mui_material_Container_Container_js"), __webpack_require__.e("vendors-node_modules_mui_icons-material_LockOutlined_js-node_modules_mui_material_Avatar_Avat-7438a9"), __webpack_require__.e("LoginChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/signup.jsx"));
 });
 var Dashboard = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__["default"])(function () {
-  return Promise.all(/* import() | DashboardChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48"), __webpack_require__.e("vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b"), __webpack_require__.e("DashboardChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/dashboard.jsx"));
+  return Promise.all(/* import() | DashboardChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48"), __webpack_require__.e("vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a"), __webpack_require__.e("DashboardChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/dashboard.jsx"));
 });
 var TrackMap = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__["default"])(function () {
-  return Promise.all(/* import() | DashboardChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48"), __webpack_require__.e("vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-5c7d7b"), __webpack_require__.e("DashboardChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/trackMap.jsx"));
+  return Promise.all(/* import() | DashboardChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48"), __webpack_require__.e("vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a"), __webpack_require__.e("DashboardChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/trackMap.jsx"));
 });
 var Error = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__["default"])(function () {
   return Promise.all(/* import() | StatusChunk */[__webpack_require__.e("vendors-node_modules_mui_material_Button_Button_js"), __webpack_require__.e("vendors-node_modules_mui_material_Container_Container_js"), __webpack_require__.e("StatusChunk")]).then(__webpack_require__.bind(__webpack_require__, "./pages/error.jsx"));
@@ -973,10 +974,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// don't want to use this?
-// have a look at the Quick start guide
-// for passing in lng and translations on init
-
 i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(i18next_http_backend__WEBPACK_IMPORTED_MODULE_1__["default"])
 // detect user language
 // learn more: https://github.com/i18next/i18next-browser-languageDetector
@@ -986,13 +983,13 @@ i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(i18next_http_backend__WEBPAC
 // init i18next
 // for all options read: https://www.i18next.com/overview/configuration-options
 .init({
-  fallbackLng: "es",
+  fallbackLng: 'en',
   debug: true,
   interpolation: {
     escapeValue: false // not needed for react as it escapes by default
   },
   backend: {
-    loadPath: "locales/{{lng}}/{{ns}}.json"
+    loadPath: 'locales/{{lng}}/{{ns}}.json'
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (i18next__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -53740,7 +53737,41 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#react {
   flex-direction: column;
   width: inherit;
   height: inherit;
-}`, "",{"version":3,"sources":["webpack://./styles/root.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;AAnDF;;AAsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;AAXF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n"],"sourceRoot":""}]);
+}
+
+.map-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  background-color: rgb(125, 193, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}`, "",{"version":3,"sources":["webpack://./styles/root.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;AAnDF;;AAsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;AAXF;;AA+CA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;AA5CF;;AA+CA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,oCAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,UAAA;AA5CF;;AA+CA;EACE,WAAA;EACA,YAAA;EACA,UAAA;EACA,kBAAA;AA5CF;;AA+CA;EACE,eAAA;AA5CF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n\r\n.map-component {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n}\r\n\r\n.map {\r\n  width: 100%;\r\n  height: 100%;\r\n  border: 1px solid gray;\r\n  background-color: rgb(125, 193, 220);\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: whitesmoke;\r\n  border-radius: 5px;\r\n  padding: 0;\r\n}\r\n\r\n.leaflet-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  border-radius: 5px;\r\n}\r\n\r\n.leaflet-control-attribution {\r\n  font-size: 10px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -53779,7 +53810,7 @@ __webpack_require__.r(__webpack_exports__);
       
       
 
-var options = {"attributes":{"nonce":"d7d0100c-27ac-4c16-9800-d8b81f63b5d1"}};
+var options = {"attributes":{"nonce":"1155b09d-1216-4cea-b32f-c76ebe1d466c"}};
 
 options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
 options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithAttributesAndNonce_js__WEBPACK_IMPORTED_MODULE_3___default());

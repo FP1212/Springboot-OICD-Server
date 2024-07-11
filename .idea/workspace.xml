@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/src/main/js/hooks/useWebSocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/keycloak/keycloak.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/layers-2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/layers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/marker-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/traccar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/i18n/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/i18n/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/app.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/styles/root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/root.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +82,7 @@
         <option value="Interface" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -102,41 +114,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Gradle.Build IotWatch.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.IotWatch [buildApp].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.IotwatchApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Developer/Documents/Personal/IotWatch/src/main/resources/i18n&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\IdeaProjects\\IotWatch\\src\\main\\js\\node_modules\\prettier&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;ca81945a2241e41c33818d61c7556f78&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Developer\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate 2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build IotWatch.executor": "Run",
+    "Gradle.IotWatch [buildApp].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.IotwatchApplication.executor": "Debug",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/traccar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Federico Pinilla\\IdeaProjects\\IotWatch\\src\\main\\js\\node_modules\\prettier",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsDialog.application.dockerConsole",
+    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
+    "ts.external.directory.path": "C:\\Users\\Developer\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate 2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
@@ -173,7 +185,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.IotwatchApplication">
+  <component name="RunManager" selected="Gradle.IotWatch [buildApp]">
     <configuration name="iotwatch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -207,28 +219,6 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="IotWatch [deleteNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="deleteNPMBashShell" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
     <configuration name="IotWatch [devServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -244,50 +234,6 @@
           </list>
         </option>
         <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="IotWatch [getNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="getNPMBashShell" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="IotWatch [setNPMBashShell]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="setNPMBashShell" />
-          </list>
-        </option>
-        <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
@@ -320,6 +266,46 @@
     <configuration name="IotwatchApplication JavaScript" type="JavascriptDebugType" uri="http://localhost:8080" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.keycloak: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="keycloak" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml.traccar: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="traccar" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="devserver" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/src/main/js/package.json" />
       <command value="run" />
@@ -333,13 +319,13 @@
     <list>
       <item itemvalue="Application.iotwatch" />
       <item itemvalue="Compound.Iotwatch-Autostart-dev" />
+      <item itemvalue="Docker.docker-compose.yaml.keycloak: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yaml.traccar: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
       <item itemvalue="Gradle.IotWatch_Mongo_AWS_dev" />
       <item itemvalue="Gradle.IotWatch_Mongo_AWS_prod" />
       <item itemvalue="Gradle.IotWatch_Mongo_AWS [webpackDevServer]" />
       <item itemvalue="Gradle.IotWatch [buildApp]" />
-      <item itemvalue="Gradle.IotWatch [deleteNPMBashShell]" />
-      <item itemvalue="Gradle.IotWatch [getNPMBashShell]" />
-      <item itemvalue="Gradle.IotWatch [setNPMBashShell]" />
       <item itemvalue="Gradle.IotWatch [devServer]" />
       <item itemvalue="JavaScript Debug.IotwatchApplication JavaScript" />
       <item itemvalue="npm.devserver" />
@@ -348,10 +334,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.IotWatch [buildApp]" />
+        <item itemvalue="Docker.docker-compose.yaml.keycloak: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yaml.traccar: Compose Deployment" />
         <item itemvalue="Gradle.IotWatch [devServer]" />
-        <item itemvalue="Gradle.IotWatch [getNPMBashShell]" />
-        <item itemvalue="Gradle.IotWatch [deleteNPMBashShell]" />
-        <item itemvalue="Gradle.IotWatch [setNPMBashShell]" />
       </list>
     </recent_temporary>
   </component>
@@ -432,6 +418,11 @@
       <workItem from="1719806759804" duration="2647000" />
       <workItem from="1719809564744" duration="3526000" />
       <workItem from="1719853262465" duration="17537000" />
+      <workItem from="1720372995700" duration="69000" />
+      <workItem from="1720499916441" duration="9110000" />
+      <workItem from="1720544163326" duration="9406000" />
+      <workItem from="1720571417188" duration="8832000" />
+      <workItem from="1720640212799" duration="6464000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />

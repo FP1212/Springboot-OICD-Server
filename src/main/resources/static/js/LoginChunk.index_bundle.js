@@ -714,16 +714,54 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#LXb2ekHxY08UCslTPpMR {
   height: inherit;
 }
 
+.cCL99T9CpQorRwEHGaDM {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.hGHZ_4ykqUIArqjDktXG {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  background-color: rgb(125, 193, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.ECf_rTybrhmEK29n3mQR {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+._sgAqw85sWpk1ypeH1AB {
+  font-size: 10px;
+}
+
 .qH0TVHgFLTWiVNmTeS2Q {
   display: flex;
   margin-top: 8vh;
   flex-direction: column;
   align-items: center;
-}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/login.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AAfA;EACE,aAAA;EACA,eAAA;EACA,sBAAA;EACA,mBAAA;AAkBF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n","@use \"root\";\r\n\r\n.login_box {\r\n  display: flex;\r\n  margin-top: 8vh;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./styles/root.scss","webpack://./styles/login.module.scss"],"names":[],"mappings":"AAoDA;EACE,YAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,qBAAA;ACnDF;;ADsDA;EAvCE,aAAA;EACA,mBAuC8B;EAtC9B,uBAsCsC;EArCtC,UAAA;EACA,SAAA;EACA,sBAmCsB;EAlCtB,cAAA;EACA,eAAA;ACXF;;AD+CA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,sBAAA;EACA,oCAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,UAAA;AC5CF;;AD+CA;EACE,WAAA;EACA,YAAA;EACA,UAAA;EACA,kBAAA;AC5CF;;AD+CA;EACE,eAAA;AC5CF;;AAjDA;EACE,aAAA;EACA,eAAA;EACA,sBAAA;EACA,mBAAA;AAoDF","sourcesContent":["$nav-color: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);\r\n$default-height: 100%;\r\n$default-width: 100%;\r\n$default-direction: row;\r\n$default-align: center;\r\n$default-justify: center;\r\n$medium-width: 50%;\r\n$medium-height: 50%;\r\n\r\n@mixin box($height: $default-height, $width: $default-width) {\r\n  width: $width;\r\n  height: $height;\r\n  max-height: inherit;\r\n  max-width: $width;\r\n}\r\n\r\n@mixin default_flex(\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  display: flex;\r\n  align-items: $alignItems;\r\n  justify-content: $justifyContent;\r\n  padding: 0;\r\n  margin: 0;\r\n  flex-direction: $directon;\r\n  width: inherit;\r\n  height: inherit;\r\n}\r\n\r\n@mixin flex_1(\r\n  $height: $default-height,\r\n  $width: $default-width,\r\n  $directon: $default-direction,\r\n  $alignItems: $default-align,\r\n  $justifyContent: $default-justify\r\n) {\r\n  @include box($height, $width);\r\n  @include default_flex($directon, $alignItems, $justifyContent);\r\n}\r\n\r\n@mixin typography($font-size, $font-family, $text-align, $font-weight, $color) {\r\n  font-size: $font-size;\r\n  text-align: $text-align;\r\n  flex-wrap: nowrap;\r\n  font-family: $font-family;\r\n  font-weight: $font-weight;\r\n  text-transform: uppercase;\r\n  color: $color;\r\n}\r\n\r\n#react {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  margin: 0;\r\n  padding: 0;\r\n  white-space: pre-line;\r\n}\r\n\r\n.flex_box_center {\r\n  @include default_flex(column, center, center);\r\n}\r\n\r\n.map-component {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n}\r\n\r\n.map {\r\n  width: 100%;\r\n  height: 100%;\r\n  border: 1px solid gray;\r\n  background-color: rgb(125, 193, 220);\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: whitesmoke;\r\n  border-radius: 5px;\r\n  padding: 0;\r\n}\r\n\r\n.leaflet-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0;\r\n  border-radius: 5px;\r\n}\r\n\r\n.leaflet-control-attribution {\r\n  font-size: 10px;\r\n}","@use \"root\";\r\n\r\n.login_box {\r\n  display: flex;\r\n  margin-top: 8vh;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"react": `LXb2ekHxY08UCslTPpMR`,
 	"flex_box_center": `Jj91z4flAcebWUke8hnR`,
+	"map-component": `cCL99T9CpQorRwEHGaDM`,
+	"map": `hGHZ_4ykqUIArqjDktXG`,
+	"leaflet-container": `ECf_rTybrhmEK29n3mQR`,
+	"leaflet-control-attribution": `_sgAqw85sWpk1ypeH1AB`,
 	"login_box": `qH0TVHgFLTWiVNmTeS2Q`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
