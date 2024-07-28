@@ -6,36 +6,35 @@ import CustomAppBar from './default/CustomAppBar';
 import { useKeycloak } from '@react-keycloak/web';
 import LoadingBackdrop from './default/loadingBackdrop';
 
-const PrivateRoute = ({ path, history, children }) => {
+const PrivateRoute = ({ children, ...props }) => {
   const { keycloak, initialized } = useKeycloak();
-  const [isLoggedIn, setIsLoggedIn] = useState(keycloak.authenticated);
 
   useEffect(() => {
     if (initialized) {
-      setIsLoggedIn(keycloak.authenticated);
+      if (!keycloak.authenticated) {
+        keycloak.login();
+      }
     }
   }, [initialized]);
 
   return (
     <Route
-      exact
-      path={path}
+      {...props}
       render={(routeProps) =>
-        isLoggedIn ? (
+        keycloak.authenticated ? (
           <React.Fragment>
             <CustomAppBar>{React.cloneElement(children, { didComplete: routeProps })}</CustomAppBar>
           </React.Fragment>
         ) : (
-          <LoadingBackdrop open={!isLoggedIn} />
+          <LoadingBackdrop open={!keycloak.authenticated} />
         )
       }
-      history={history}
     />
   );
 };
 
 PrivateRoute.propTypes = {
-  path: PropTypes.string.isRequired,
+  path: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   history: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
 };

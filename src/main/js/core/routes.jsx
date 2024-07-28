@@ -84,10 +84,10 @@ const Routes = (props) => {
       <CssBaseline />
       <GlobalAlert openAlert={openAlert} severity={severity} message={message} />
       <Switch>
-        <PrivateRoute path={[ROUTES.INDEX, ROUTES.HOME]} history={history}>
+        <PrivateRoute exact path={[ROUTES.INDEX, ROUTES.HOME]} history={history}>
           <TrackMap />
         </PrivateRoute>
-        <Route path={[ROUTES['404'], '*']} component={Error} />
+        <Route path={'*'} component={Error} history={history} />
       </Switch>
     </ThemeProvider>
   );

@@ -7,7 +7,7 @@ const useWebSocket = (serverUrl) => {
   useEffect(() => {
     if (webSocketRef.current === null || webSocketRef.current.url !== serverUrl) {
       if (webSocketRef.current) {
-        webSocketRef.current.close(); // Cierra la instancia anterior si existe
+        webSocketRef.current.close();
       }
       try {
         webSocketRef.current = new ReconnectingWebSocket(serverUrl);
@@ -35,10 +35,13 @@ const useWebSocket = (serverUrl) => {
     }
   };
 
+  const close = () => webSocketRef.current.close();
+
   return {
     webSocket: webSocketRef.current,
     subscribeToEvent,
     unsubscribeFromEvent,
+    close,
   };
 };
 

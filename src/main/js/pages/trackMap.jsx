@@ -12,22 +12,35 @@ const TrackMap = () => {
   const [t] = useTranslation();
   const [messageData, setMessageData] = useState({});
   const { keycloak } = useKeycloak();
-
-  const traccarWSUrl = new URL('ws://localhost:8082/api/socket');
-  traccarWSUrl.searchParams.append('token', keycloak.token);
-
-  const { webSocket, subscribeToEvent, unsubscribeFromEvent } = useWebSocket(
-    traccarWSUrl.toString(),
+  const [websocketURL, setWebsocketURL] = useState(
+    `${process.env.TRACCAR_SOCKET_URL}?token=${keycloak?.token}`,
   );
+
+  const { webSocket, subscribeToEvent, unsubscribeFromEvent } = useWebSocket(websocketURL);
 
   useEffect(() => {
     if (!webSocket) return;
-    subscribeToEvent('message', (data) => {
+
+    subscribeToEvent('message', async (data) => {
       setMessageData(data);
+    });
+
+    subscribeToEvent('close', async (data) => {
+      console.log('WebSocket connection closed');
+
+      if (keycloak.token) {
+        try {
+          await keycloak.updateToken(10);
+          setWebsocketURL(`${process.env.TRACCAR_SOCKET_URL}?token=${keycloak?.token}`);
+        } catch (err) {
+          console.error('Failed to refresh token', err);
+        }
+      }
     });
 
     return () => {
       unsubscribeFromEvent('message');
+      unsubscribeFromEvent('close');
     };
   }, [webSocket, subscribeToEvent, unsubscribeFromEvent]);
 
