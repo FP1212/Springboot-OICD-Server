@@ -588,52 +588,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reconnecting_webSocket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/reconnecting-webSocket/dist/reconnecting-websocket-mjs.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/axios/lib/axios.js");
 /* provided dependency */ var console = __webpack_require__("./node_modules/console-browserify/index.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
 
 
 var useWebSocket = function useWebSocket(serverUrl) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState2 = _slicedToArray(_useState, 2),
-    webSocket = _useState2[0],
-    setWebSocket = _useState2[1];
+  var webSocketRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var params = new URLSearchParams();
-    params.append('email', 'fept1298@gmail.com');
-    params.append('password', '10514Faee2*');
-    axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://localhost:8082/api/session', params, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+    if (webSocketRef.current === null || webSocketRef.current.url !== serverUrl) {
+      if (webSocketRef.current) {
+        webSocketRef.current.close(); // Cierra la instancia anterior si existe
       }
-    }).then(function () {
-      var webSocketInstance = new reconnecting_webSocket__WEBPACK_IMPORTED_MODULE_1__["default"](serverUrl);
-      setWebSocket(webSocketInstance);
-    })["catch"](function (error) {
-      console.error(error);
-    });
+      try {
+        webSocketRef.current = new reconnecting_webSocket__WEBPACK_IMPORTED_MODULE_1__["default"](serverUrl);
+      } catch (error) {
+        console.error(error);
+      }
+    }
     return function () {
-      webSocket.close();
+      if (webSocketRef.current) {
+        webSocketRef.current.close();
+      }
     };
   }, [serverUrl]);
   var subscribeToEvent = function subscribeToEvent(eventName, callback) {
-    if (webSocket) {
-      webSocket.addEventListener(eventName, callback);
+    if (webSocketRef.current) {
+      webSocketRef.current.addEventListener(eventName, callback);
     }
   };
   var unsubscribeFromEvent = function unsubscribeFromEvent(eventName) {
-    if (webSocket) {
-      webSocket.removeEventListener(eventName);
+    if (webSocketRef.current) {
+      webSocketRef.current.removeEventListener(eventName);
     }
   };
   return {
-    webSocket: webSocket,
+    webSocket: webSocketRef.current,
     subscribeToEvent: subscribeToEvent,
     unsubscribeFromEvent: unsubscribeFromEvent
   };
@@ -812,14 +800,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-leaflet/lib/hooks.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/react-leaflet/lib/Marker.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/react-leaflet/lib/Popup.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/react-leaflet/lib/MapContainer.js");
-/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/react-leaflet/lib/TileLayer.js");
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/react-leaflet/lib/hooks.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/react-leaflet/lib/Marker.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/react-leaflet/lib/Popup.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/react-leaflet/lib/MapContainer.js");
+/* harmony import */ var react_leaflet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./node_modules/react-leaflet/lib/TileLayer.js");
 /* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/leaflet/dist/leaflet.css");
 /* harmony import */ var _hooks_useWebSocket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./hooks/useWebSocket.js");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -832,16 +821,21 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 var TrackMap = function TrackMap() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_4__.useTranslation)(),
+  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_5__.useTranslation)(),
     _useTranslation2 = _slicedToArray(_useTranslation, 1),
     t = _useTranslation2[0];
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
     messageData = _useState2[0],
     setMessageData = _useState2[1];
-  var _useWebSocket = (0,_hooks_useWebSocket__WEBPACK_IMPORTED_MODULE_3__["default"])('ws://localhost:8082/api/socket'),
+  var _useKeycloak = (0,_react_keycloak_web__WEBPACK_IMPORTED_MODULE_4__.useKeycloak)(),
+    keycloak = _useKeycloak.keycloak;
+  var traccarWSUrl = new URL('ws://localhost:8082/api/socket');
+  traccarWSUrl.searchParams.append('token', keycloak.token);
+  var _useWebSocket = (0,_hooks_useWebSocket__WEBPACK_IMPORTED_MODULE_3__["default"])(traccarWSUrl.toString()),
     webSocket = _useWebSocket.webSocket,
     subscribeToEvent = _useWebSocket.subscribeToEvent,
     unsubscribeFromEvent = _useWebSocket.unsubscribeFromEvent;
@@ -859,7 +853,7 @@ var TrackMap = function TrackMap() {
       _useState4 = _slicedToArray(_useState3, 2),
       position = _useState4[0],
       setPosition = _useState4[1];
-    var map = (0,react_leaflet__WEBPACK_IMPORTED_MODULE_5__.useMapEvents)({
+    var map = (0,react_leaflet__WEBPACK_IMPORTED_MODULE_6__.useMapEvents)({
       click: function click() {
         map.locate();
       },
@@ -868,19 +862,19 @@ var TrackMap = function TrackMap() {
         map.flyTo(e.latlng, map.getZoom());
       }
     });
-    return position === null ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_6__.Marker, {
+    return position === null ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_7__.Marker, {
       position: position
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_7__.Popup, null, "You are here"));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_8__.Popup, null, "You are here"));
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "map-component"
   }, JSON.stringify(messageData), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "map"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_8__.MapContainer, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_9__.MapContainer, {
     center: [51.505, -0.09],
     zoom: 13,
     scrollWheelZoom: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_9__.TileLayer, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_10__.TileLayer, {
     attribution: "\xA9 <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LocationMarker, null))));

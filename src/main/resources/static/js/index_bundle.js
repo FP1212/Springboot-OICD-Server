@@ -11,11 +11,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _constants_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./constants/routes.json");
 /* harmony import */ var _default_CustomAppBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./components/default/CustomAppBar.jsx");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
+/* harmony import */ var _default_loadingBackdrop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./components/default/loadingBackdrop.jsx");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
 
 
 
@@ -23,28 +33,37 @@ __webpack_require__.r(__webpack_exports__);
 
 var PrivateRoute = function PrivateRoute(_ref) {
   var path = _ref.path,
-    _ref$auth$isAuthentic = _ref.auth.isAuthenticated,
-    isAuthenticated = _ref$auth$isAuthentic === void 0 ? false : _ref$auth$isAuthentic,
     history = _ref.history,
     children = _ref.children;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+  var _useKeycloak = (0,_react_keycloak_web__WEBPACK_IMPORTED_MODULE_3__.useKeycloak)(),
+    keycloak = _useKeycloak.keycloak,
+    initialized = _useKeycloak.initialized;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(keycloak.authenticated),
+    _useState2 = _slicedToArray(_useState, 2),
+    isLoggedIn = _useState2[0],
+    setIsLoggedIn = _useState2[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (initialized) {
+      setIsLoggedIn(keycloak.authenticated);
+    }
+  }, [initialized]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
     exact: true,
     path: path,
     render: function render(routeProps) {
-      return isAuthenticated ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_default_CustomAppBar__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().cloneElement(children, {
+      return isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_default_CustomAppBar__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().cloneElement(children, {
         didComplete: routeProps
-      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
-        to: _constants_routes__WEBPACK_IMPORTED_MODULE_1__.SIGNIN
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+        to: "/"
       });
     },
     history: history
   });
 };
 PrivateRoute.propTypes = {
-  path: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string).isRequired,
-  auth: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object).isRequired,
-  history: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object).isRequired,
-  children: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node).isRequired
+  path: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string).isRequired,
+  history: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().object).isRequired,
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().node).isRequired
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PrivateRoute);
 
@@ -407,23 +426,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material_Drawer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/@mui/material/Drawer/Drawer.js");
-/* harmony import */ var _mui_material_List__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./node_modules/@mui/material/List/List.js");
-/* harmony import */ var _mui_material_ListItem__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./node_modules/@mui/material/ListItem/ListItem.js");
-/* harmony import */ var _mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./node_modules/@mui/material/ListItemText/ListItemText.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/@mui/material/Divider/Divider.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./node_modules/@mui/material/ListItemButton/ListItemButton.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./node_modules/@mui/material/ListItemIcon/ListItemIcon.js");
-/* harmony import */ var _mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./node_modules/@mui/icons-material/MoveToInbox.js");
-/* harmony import */ var _mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./node_modules/@mui/icons-material/Mail.js");
-/* harmony import */ var _mui_material_IconButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/@mui/material/IconButton/IconButton.js");
-/* harmony import */ var _mui_icons_material_ChevronLeft__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/@mui/icons-material/ChevronLeft.js");
-/* harmony import */ var _mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/@mui/icons-material/ChevronRight.js");
-/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/@mui/material/styles/useTheme.js");
+/* harmony import */ var _mui_material_Drawer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/@mui/material/Drawer/Drawer.js");
+/* harmony import */ var _mui_material_List__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./node_modules/@mui/material/List/List.js");
+/* harmony import */ var _mui_material_ListItem__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./node_modules/@mui/material/ListItem/ListItem.js");
+/* harmony import */ var _mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./node_modules/@mui/material/ListItemText/ListItemText.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./node_modules/@mui/material/Divider/Divider.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./node_modules/@mui/material/ListItemButton/ListItemButton.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./node_modules/@mui/material/ListItemIcon/ListItemIcon.js");
+/* harmony import */ var _mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./node_modules/@mui/icons-material/MoveToInbox.js");
+/* harmony import */ var _mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./node_modules/@mui/icons-material/Mail.js");
+/* harmony import */ var _mui_material_IconButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/@mui/material/IconButton/IconButton.js");
+/* harmony import */ var _mui_icons_material_ChevronLeft__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/@mui/icons-material/ChevronLeft.js");
+/* harmony import */ var _mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/@mui/icons-material/ChevronRight.js");
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/@mui/material/styles/useTheme.js");
 /* harmony import */ var _drawerHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./components/default/drawerHeader.jsx");
 /* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./services/AuthService.js");
-/* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./node_modules/@mui/icons-material/esm/Logout.js");
+/* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./node_modules/@mui/icons-material/esm/Logout.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/react-redux/es/index.js");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
+
 
 
 
@@ -444,9 +465,11 @@ var drawerWidth = 240;
 var CustomDrawer = function CustomDrawer(_ref) {
   var isOpen = _ref.isOpen,
     onClose = _ref.onClose;
-  var theme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  var theme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_Drawer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var _useKeycloak = (0,_react_keycloak_web__WEBPACK_IMPORTED_MODULE_4__.useKeycloak)(),
+    keycloak = _useKeycloak.keycloak;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_Drawer__WEBPACK_IMPORTED_MODULE_6__["default"], {
     sx: {
       width: drawerWidth,
       flexShrink: 0,
@@ -458,30 +481,32 @@ var CustomDrawer = function CustomDrawer(_ref) {
     variant: "persistent",
     anchor: "left",
     open: isOpen
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_drawerHeader__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_drawerHeader__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onClick: onClose
-  }, theme.direction === 'ltr' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronLeft__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_8__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_10__["default"], null, ['Inbox', 'Starred', 'Send email', 'Drafts'].map(function (text, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }, theme.direction === 'ltr' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronLeft__WEBPACK_IMPORTED_MODULE_8__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_9__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_11__["default"], null, ['Inbox', 'Starred', 'Send email', 'Drafts'].map(function (text, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_12__["default"], {
       key: text,
       disablePadding: true
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, index % 2 === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_14__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_15__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], null, index % 2 === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_16__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_17__["default"], {
       primary: text
     })));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_10__["default"], null, ['All mail', 'Trash', 'Spam'].map(function (text, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_11__["default"], null, ['All mail', 'Trash', 'Spam'].map(function (text, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_12__["default"], {
       key: text,
       disablePadding: true
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, index % 2 === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_14__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_15__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], null, index % 2 === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_MoveToInbox__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_Mail__WEBPACK_IMPORTED_MODULE_16__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_17__["default"], {
       primary: text
     })));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_List__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItem__WEBPACK_IMPORTED_MODULE_12__["default"], {
     key: 'Log Out',
     disablePadding: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
     onClick: function onClick() {
-      return dispatch((0,_services_AuthService__WEBPACK_IMPORTED_MODULE_2__.signout)());
+      return keycloak.logout({
+        redirectUri: 'http://localhost:8081'
+      });
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_17__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_16__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_18__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_17__["default"], {
     primary: 'Log Out'
   })))));
 };
@@ -811,16 +836,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_17__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _constants_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./constants/routes.json");
 /* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/@loadable/component/dist/esm/loadable.esm.mjs");
-/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./node_modules/@mui/material/styles/createTheme.js");
-/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./node_modules/@mui/material/styles/ThemeProvider.js");
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./node_modules/@mui/material/styles/createTheme.js");
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./node_modules/@mui/material/styles/ThemeProvider.js");
 /* harmony import */ var _redux_components_dark_darkSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./redux/components/dark/darkSlice.js");
-/* harmony import */ var _mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./node_modules/@mui/material/CssBaseline/CssBaseline.js");
+/* harmony import */ var _mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./node_modules/@mui/material/CssBaseline/CssBaseline.js");
 /* harmony import */ var _redux_components_login_loginSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./redux/components/login/loginSlice.js");
 /* harmony import */ var _components_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./components/PrivateRoute.jsx");
 /* harmony import */ var _redux_components_globalAlert_globalAlert__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./redux/components/globalAlert/globalAlert.js");
@@ -828,6 +853,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_default_loadingBackdrop__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./components/default/loadingBackdrop.jsx");
 /* harmony import */ var _components_default_CustomDrawer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./components/default/CustomDrawer.jsx");
 /* harmony import */ var _components_default_CustomAppBar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./components/default/CustomAppBar.jsx");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
 
 
 
@@ -839,6 +865,7 @@ __webpack_require__.r(__webpack_exports__);
 // import Nav from "./nav";
 // import PermanentDrawer from "Components/drawer/permanentDrawer";
 // import styles from "Styles/routes.module.scss";
+
 
 
 
@@ -896,46 +923,37 @@ var Routes = function Routes(props) {
   var history = props.history;
   var darkMode = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_redux_components_dark_darkSlice__WEBPACK_IMPORTED_MODULE_4__.selectDarkMode);
   var loginState = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_redux_components_login_loginSlice__WEBPACK_IMPORTED_MODULE_5__.selectLogin);
+  var _useKeycloak = (0,_react_keycloak_web__WEBPACK_IMPORTED_MODULE_12__.useKeycloak)(),
+    keycloak = _useKeycloak.keycloak,
+    initialized = _useKeycloak.initialized;
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_redux_components_globalAlert_globalAlert__WEBPACK_IMPORTED_MODULE_7__.selectGlobalAlert),
     openAlert = _useSelector.open,
     severity = _useSelector.severity,
     message = _useSelector.message;
   var darkTheme = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_12__["default"])({
+    return (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_13__["default"])({
       palette: {
         mode: darkMode
       }
     });
   }, [darkMode]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_styles__WEBPACK_IMPORTED_MODULE_13__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_styles__WEBPACK_IMPORTED_MODULE_14__["default"], {
     theme: darkTheme
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_14__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_default_globalAlert__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_CssBaseline__WEBPACK_IMPORTED_MODULE_15__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_default_globalAlert__WEBPACK_IMPORTED_MODULE_8__["default"], {
     openAlert: openAlert,
     severity: severity,
     message: message
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
-    exact: true,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__["default"], {
     path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.INDEX,
-    component: Home,
+    children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Home, null),
     history: history
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
-    exact: true,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__["default"], {
     path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.HOME,
-    component: Home,
+    children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Home, null),
     history: history
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
-    exact: true,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__["default"], {
     path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.SIGNUP,
-    component: SignUp,
-    history: history
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
-    exact: true,
-    path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.SIGNIN,
-    render: function render(routeProps) {
-      return loginState.authenticate ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Redirect, {
-        to: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.DASHBOARD
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Login, routeProps);
-    },
+    children: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SignUp, null),
     history: history
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__["default"], {
     path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__.DASHBOARD,
@@ -943,16 +961,16 @@ var Routes = function Routes(props) {
       isAuthenticated: (loginState === null || loginState === void 0 ? void 0 : loginState.authenticate) || false
     },
     history: history
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TrackMap, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TrackMap, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
     path: _constants_routes__WEBPACK_IMPORTED_MODULE_2__[404],
     component: Error
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
     path: '*',
     component: Error
   })));
 };
 Routes.propTypes = {
-  history: (prop_types__WEBPACK_IMPORTED_MODULE_16___default().object).isRequired
+  history: (prop_types__WEBPACK_IMPORTED_MODULE_17___default().object).isRequired
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Routes);
 
@@ -993,6 +1011,30 @@ i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(i18next_http_backend__WEBPAC
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (i18next__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./keycloak/index.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   initOptions: () => (/* binding */ initOptions)
+/* harmony export */ });
+/* harmony import */ var keycloak_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/keycloak-js/dist/keycloak.mjs");
+
+var keycloak = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  url: 'http://localhost:8083',
+  realm: 'iotwatch',
+  clientId: 'iotwatch-traccar'
+});
+var initOptions = {
+  onLoad: 'login-required',
+  redirectUri: 'http://localhost:8081/dashboard'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (keycloak);
 
 /***/ }),
 
@@ -23048,6 +23090,389 @@ const buildWarning = (message, gravity = 'warning') => {
 
 /***/ }),
 
+/***/ "./node_modules/@react-keycloak/core/lib/context.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createAuthContext: () => (/* binding */ createAuthContext),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+/**
+ * Create a React context containing an AuthClient instance.
+ *
+ * @param {IAuthContextProps} initialContext initial context value.
+ *
+ * @returns {React.Context} the ReactKeycloak context.
+ */
+function createAuthContext(initialContext) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(__assign({
+    initialized: false
+  }, initialContext));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAuthContext);
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/core/lib/index.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createAuthContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_0__.createAuthContext),
+/* harmony export */   createAuthProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_1__.createAuthProvider)
+/* harmony export */ });
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@react-keycloak/core/lib/context.js");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@react-keycloak/core/lib/provider.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/@react-keycloak/core/lib/types.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _types__WEBPACK_IMPORTED_MODULE_2__) if(["default","createAuthContext","createAuthProvider"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _types__WEBPACK_IMPORTED_MODULE_2__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+/* istanbul ignore file */
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/core/lib/provider.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createAuthProvider: () => (/* binding */ createAuthProvider),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_fast_compare__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/react-fast-compare/index.js");
+/* harmony import */ var react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_fast_compare__WEBPACK_IMPORTED_MODULE_1__);
+var __extends = undefined && undefined.__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function (d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+
+/**
+ * Create an AuthProvider component to wrap a React app with, it will take care of common AuthClient
+ * lifecycle handling (such as initialization and token refresh).
+ *
+ * @param AuthContext the Auth context to be used by the created AuthProvider
+ *
+ * @returns the AuthProvider component
+ */
+function createAuthProvider(AuthContext) {
+  var defaultInitOptions = {
+    onLoad: 'check-sso'
+  };
+  var initialState = {
+    initialized: false,
+    isAuthenticated: false,
+    isLoading: true
+  };
+  return /** @class */function (_super) {
+    __extends(KeycloakProvider, _super);
+    function KeycloakProvider() {
+      var _this = _super !== null && _super.apply(this, arguments) || this;
+      _this.state = __assign({}, initialState);
+      _this.onError = function (event) {
+        return function (error) {
+          var onEvent = _this.props.onEvent;
+          // Notify Events listener
+          onEvent && onEvent(event, error);
+        };
+      };
+      _this.updateState = function (event) {
+        return function () {
+          var _a = _this.props,
+            authClient = _a.authClient,
+            onEvent = _a.onEvent,
+            onTokens = _a.onTokens,
+            isLoadingCheck = _a.isLoadingCheck;
+          var _b = _this.state,
+            prevInitialized = _b.initialized,
+            prevAuthenticated = _b.isAuthenticated,
+            prevLoading = _b.isLoading;
+          // Notify Events listener
+          onEvent && onEvent(event);
+          // Check Loading state
+          var isLoading = isLoadingCheck ? isLoadingCheck(authClient) : false;
+          // Check if user is authenticated
+          var isAuthenticated = isUserAuthenticated(authClient);
+          // Avoid double-refresh if state hasn't changed
+          if (!prevInitialized || isAuthenticated !== prevAuthenticated || isLoading !== prevLoading) {
+            _this.setState({
+              initialized: true,
+              isAuthenticated: isAuthenticated,
+              isLoading: isLoading
+            });
+          }
+          // Notify token listener, if any
+          var idToken = authClient.idToken,
+            refreshToken = authClient.refreshToken,
+            token = authClient.token;
+          onTokens && onTokens({
+            idToken: idToken,
+            refreshToken: refreshToken,
+            token: token
+          });
+        };
+      };
+      _this.refreshToken = function (event) {
+        return function () {
+          var _a = _this.props,
+            autoRefreshToken = _a.autoRefreshToken,
+            authClient = _a.authClient,
+            onEvent = _a.onEvent;
+          // Notify Events listener
+          onEvent && onEvent(event);
+          if (autoRefreshToken !== false) {
+            // Refresh Keycloak token
+            authClient.updateToken(5);
+          }
+        };
+      };
+      return _this;
+    }
+    KeycloakProvider.prototype.componentDidMount = function () {
+      this.init();
+    };
+    KeycloakProvider.prototype.componentDidUpdate = function (_a) {
+      var prevAuthClient = _a.authClient,
+        prevInitOptions = _a.initOptions;
+      var _b = this.props,
+        initOptions = _b.initOptions,
+        authClient = _b.authClient;
+      if (authClient !== prevAuthClient || !react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(initOptions, prevInitOptions)) {
+        // De-init previous AuthClient instance
+        prevAuthClient.onReady = undefined;
+        prevAuthClient.onAuthSuccess = undefined;
+        prevAuthClient.onAuthError = undefined;
+        prevAuthClient.onAuthRefreshSuccess = undefined;
+        prevAuthClient.onAuthRefreshError = undefined;
+        prevAuthClient.onAuthLogout = undefined;
+        prevAuthClient.onTokenExpired = undefined;
+        // Reset state
+        this.setState(__assign({}, initialState));
+        // Init new AuthClient instance
+        this.init();
+      }
+    };
+    KeycloakProvider.prototype.init = function () {
+      var _a = this.props,
+        initOptions = _a.initOptions,
+        authClient = _a.authClient;
+      // Attach Keycloak listeners
+      authClient.onReady = this.updateState('onReady');
+      authClient.onAuthSuccess = this.updateState('onAuthSuccess');
+      authClient.onAuthError = this.onError('onAuthError');
+      authClient.onAuthRefreshSuccess = this.updateState('onAuthRefreshSuccess');
+      authClient.onAuthRefreshError = this.onError('onAuthRefreshError');
+      authClient.onAuthLogout = this.updateState('onAuthLogout');
+      authClient.onTokenExpired = this.refreshToken('onTokenExpired');
+      authClient.init(__assign(__assign({}, defaultInitOptions), initOptions)).catch(this.onError('onInitError'));
+    };
+    KeycloakProvider.prototype.render = function () {
+      var _a = this.props,
+        children = _a.children,
+        authClient = _a.authClient,
+        LoadingComponent = _a.LoadingComponent;
+      var _b = this.state,
+        initialized = _b.initialized,
+        isLoading = _b.isLoading;
+      if (!!LoadingComponent && (!initialized || isLoading)) {
+        return LoadingComponent;
+      }
+      return react__WEBPACK_IMPORTED_MODULE_0__.createElement(AuthContext.Provider, {
+        value: {
+          initialized: initialized,
+          authClient: authClient
+        }
+      }, children);
+    };
+    return KeycloakProvider;
+  }(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+}
+function isUserAuthenticated(authClient) {
+  return !!authClient.idToken && !!authClient.token;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAuthProvider);
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/core/lib/types.js":
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/web/lib/context.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactKeycloakWebContextConsumer: () => (/* binding */ ReactKeycloakWebContextConsumer),
+/* harmony export */   reactKeycloakWebContext: () => (/* binding */ reactKeycloakWebContext)
+/* harmony export */ });
+/* harmony import */ var _react_keycloak_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@react-keycloak/core/lib/index.js");
+
+var reactKeycloakWebContext = (0,_react_keycloak_core__WEBPACK_IMPORTED_MODULE_0__.createAuthContext)();
+var ReactKeycloakWebContextConsumer = reactKeycloakWebContext.Consumer;
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/web/lib/index.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactKeycloakProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_0__.ReactKeycloakProvider),
+/* harmony export */   useKeycloak: () => (/* reexport safe */ _useKeycloak__WEBPACK_IMPORTED_MODULE_1__.useKeycloak),
+/* harmony export */   withKeycloak: () => (/* reexport safe */ _withKeycloak__WEBPACK_IMPORTED_MODULE_2__.withKeycloak)
+/* harmony export */ });
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/provider.js");
+/* harmony import */ var _useKeycloak__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/useKeycloak.js");
+/* harmony import */ var _withKeycloak__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/withKeycloak.js");
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/web/lib/provider.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactKeycloakProvider: () => (/* binding */ ReactKeycloakProvider)
+/* harmony export */ });
+/* harmony import */ var _react_keycloak_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/@react-keycloak/core/lib/index.js");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/context.js");
+
+
+var ReactKeycloakProvider = (0,_react_keycloak_core__WEBPACK_IMPORTED_MODULE_0__.createAuthProvider)(_context__WEBPACK_IMPORTED_MODULE_1__.reactKeycloakWebContext);
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/web/lib/useKeycloak.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useKeycloak: () => (/* binding */ useKeycloak)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/context.js");
+
+
+function useKeycloak() {
+  var ctx = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context__WEBPACK_IMPORTED_MODULE_1__.reactKeycloakWebContext);
+  if (!ctx) {
+    throw new Error('useKeycloak hook must be used inside ReactKeycloakProvider context');
+  }
+  if (!ctx.authClient) {
+    throw new Error('authClient has not been assigned to ReactKeycloakProvider');
+  }
+  var authClient = ctx.authClient,
+    initialized = ctx.initialized;
+  return {
+    initialized: initialized,
+    keycloak: authClient
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/@react-keycloak/web/lib/withKeycloak.js":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   withKeycloak: () => (/* binding */ withKeycloak)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _useKeycloak__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/useKeycloak.js");
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+
+/**
+ * An HOC which injects the `keycloak` instance and the `keycloakInitialized` flag as props.
+ *
+ * @deprecated Please migrate to useKeycloak hook where/when possible.
+ */
+function withKeycloak(Component) {
+  return function WrappedComponent(props) {
+    var _a = (0,_useKeycloak__WEBPACK_IMPORTED_MODULE_1__.useKeycloak)(),
+      keycloak = _a.keycloak,
+      initialized = _a.initialized;
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, __assign({}, props, {
+      keycloakInitialized: initialized,
+      keycloak: keycloak
+    }));
+  };
+}
+
+/***/ }),
+
 /***/ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -34112,6 +34537,488 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
+/***/ "./node_modules/js-sha256/src/sha256.js":
+/***/ ((module, exports, __webpack_require__) => {
+
+/* provided dependency */ var process = __webpack_require__("./node_modules/process/browser.js");
+var __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * [js-sha256]{@link https://github.com/emn178/js-sha256}
+ *
+ * @version 0.11.0
+ * @author Chen, Yi-Cyuan [emn178@gmail.com]
+ * @copyright Chen, Yi-Cyuan 2014-2024
+ * @license MIT
+ */
+/*jslint bitwise: true */
+(function () {
+  'use strict';
+
+  var ERROR = 'input is invalid type';
+  var WINDOW = typeof window === 'object';
+  var root = WINDOW ? window : {};
+  if (root.JS_SHA256_NO_WINDOW) {
+    WINDOW = false;
+  }
+  var WEB_WORKER = !WINDOW && typeof self === 'object';
+  var NODE_JS = !root.JS_SHA256_NO_NODE_JS && typeof process === 'object' && process.versions && process.versions.node;
+  if (NODE_JS) {
+    root = __webpack_require__.g;
+  } else if (WEB_WORKER) {
+    root = self;
+  }
+  var COMMON_JS = !root.JS_SHA256_NO_COMMON_JS && "object" === 'object' && module.exports;
+  var AMD =  true && __webpack_require__.amdO;
+  var ARRAY_BUFFER = !root.JS_SHA256_NO_ARRAY_BUFFER && typeof ArrayBuffer !== 'undefined';
+  var HEX_CHARS = '0123456789abcdef'.split('');
+  var EXTRA = [-2147483648, 8388608, 32768, 128];
+  var SHIFT = [24, 16, 8, 0];
+  var K = [0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2];
+  var OUTPUT_TYPES = ['hex', 'array', 'digest', 'arrayBuffer'];
+  var blocks = [];
+  if (root.JS_SHA256_NO_NODE_JS || !Array.isArray) {
+    Array.isArray = function (obj) {
+      return Object.prototype.toString.call(obj) === '[object Array]';
+    };
+  }
+  if (ARRAY_BUFFER && (root.JS_SHA256_NO_ARRAY_BUFFER_IS_VIEW || !ArrayBuffer.isView)) {
+    ArrayBuffer.isView = function (obj) {
+      return typeof obj === 'object' && obj.buffer && obj.buffer.constructor === ArrayBuffer;
+    };
+  }
+  var createOutputMethod = function (outputType, is224) {
+    return function (message) {
+      return new Sha256(is224, true).update(message)[outputType]();
+    };
+  };
+  var createMethod = function (is224) {
+    var method = createOutputMethod('hex', is224);
+    if (NODE_JS) {
+      method = nodeWrap(method, is224);
+    }
+    method.create = function () {
+      return new Sha256(is224);
+    };
+    method.update = function (message) {
+      return method.create().update(message);
+    };
+    for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
+      var type = OUTPUT_TYPES[i];
+      method[type] = createOutputMethod(type, is224);
+    }
+    return method;
+  };
+  var nodeWrap = function (method, is224) {
+    var crypto = __webpack_require__("?abf2");
+    var Buffer = (__webpack_require__("?69d9").Buffer);
+    var algorithm = is224 ? 'sha224' : 'sha256';
+    var bufferFrom;
+    if (Buffer.from && !root.JS_SHA256_NO_BUFFER_FROM) {
+      bufferFrom = Buffer.from;
+    } else {
+      bufferFrom = function (message) {
+        return new Buffer(message);
+      };
+    }
+    var nodeMethod = function (message) {
+      if (typeof message === 'string') {
+        return crypto.createHash(algorithm).update(message, 'utf8').digest('hex');
+      } else {
+        if (message === null || message === undefined) {
+          throw new Error(ERROR);
+        } else if (message.constructor === ArrayBuffer) {
+          message = new Uint8Array(message);
+        }
+      }
+      if (Array.isArray(message) || ArrayBuffer.isView(message) || message.constructor === Buffer) {
+        return crypto.createHash(algorithm).update(bufferFrom(message)).digest('hex');
+      } else {
+        return method(message);
+      }
+    };
+    return nodeMethod;
+  };
+  var createHmacOutputMethod = function (outputType, is224) {
+    return function (key, message) {
+      return new HmacSha256(key, is224, true).update(message)[outputType]();
+    };
+  };
+  var createHmacMethod = function (is224) {
+    var method = createHmacOutputMethod('hex', is224);
+    method.create = function (key) {
+      return new HmacSha256(key, is224);
+    };
+    method.update = function (key, message) {
+      return method.create(key).update(message);
+    };
+    for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
+      var type = OUTPUT_TYPES[i];
+      method[type] = createHmacOutputMethod(type, is224);
+    }
+    return method;
+  };
+  function Sha256(is224, sharedMemory) {
+    if (sharedMemory) {
+      blocks[0] = blocks[16] = blocks[1] = blocks[2] = blocks[3] = blocks[4] = blocks[5] = blocks[6] = blocks[7] = blocks[8] = blocks[9] = blocks[10] = blocks[11] = blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+      this.blocks = blocks;
+    } else {
+      this.blocks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    }
+    if (is224) {
+      this.h0 = 0xc1059ed8;
+      this.h1 = 0x367cd507;
+      this.h2 = 0x3070dd17;
+      this.h3 = 0xf70e5939;
+      this.h4 = 0xffc00b31;
+      this.h5 = 0x68581511;
+      this.h6 = 0x64f98fa7;
+      this.h7 = 0xbefa4fa4;
+    } else {
+      // 256
+      this.h0 = 0x6a09e667;
+      this.h1 = 0xbb67ae85;
+      this.h2 = 0x3c6ef372;
+      this.h3 = 0xa54ff53a;
+      this.h4 = 0x510e527f;
+      this.h5 = 0x9b05688c;
+      this.h6 = 0x1f83d9ab;
+      this.h7 = 0x5be0cd19;
+    }
+    this.block = this.start = this.bytes = this.hBytes = 0;
+    this.finalized = this.hashed = false;
+    this.first = true;
+    this.is224 = is224;
+  }
+  Sha256.prototype.update = function (message) {
+    if (this.finalized) {
+      return;
+    }
+    var notString,
+      type = typeof message;
+    if (type !== 'string') {
+      if (type === 'object') {
+        if (message === null) {
+          throw new Error(ERROR);
+        } else if (ARRAY_BUFFER && message.constructor === ArrayBuffer) {
+          message = new Uint8Array(message);
+        } else if (!Array.isArray(message)) {
+          if (!ARRAY_BUFFER || !ArrayBuffer.isView(message)) {
+            throw new Error(ERROR);
+          }
+        }
+      } else {
+        throw new Error(ERROR);
+      }
+      notString = true;
+    }
+    var code,
+      index = 0,
+      i,
+      length = message.length,
+      blocks = this.blocks;
+    while (index < length) {
+      if (this.hashed) {
+        this.hashed = false;
+        blocks[0] = this.block;
+        this.block = blocks[16] = blocks[1] = blocks[2] = blocks[3] = blocks[4] = blocks[5] = blocks[6] = blocks[7] = blocks[8] = blocks[9] = blocks[10] = blocks[11] = blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+      }
+      if (notString) {
+        for (i = this.start; index < length && i < 64; ++index) {
+          blocks[i >>> 2] |= message[index] << SHIFT[i++ & 3];
+        }
+      } else {
+        for (i = this.start; index < length && i < 64; ++index) {
+          code = message.charCodeAt(index);
+          if (code < 0x80) {
+            blocks[i >>> 2] |= code << SHIFT[i++ & 3];
+          } else if (code < 0x800) {
+            blocks[i >>> 2] |= (0xc0 | code >>> 6) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code & 0x3f) << SHIFT[i++ & 3];
+          } else if (code < 0xd800 || code >= 0xe000) {
+            blocks[i >>> 2] |= (0xe0 | code >>> 12) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code >>> 6 & 0x3f) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code & 0x3f) << SHIFT[i++ & 3];
+          } else {
+            code = 0x10000 + ((code & 0x3ff) << 10 | message.charCodeAt(++index) & 0x3ff);
+            blocks[i >>> 2] |= (0xf0 | code >>> 18) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code >>> 12 & 0x3f) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code >>> 6 & 0x3f) << SHIFT[i++ & 3];
+            blocks[i >>> 2] |= (0x80 | code & 0x3f) << SHIFT[i++ & 3];
+          }
+        }
+      }
+      this.lastByteIndex = i;
+      this.bytes += i - this.start;
+      if (i >= 64) {
+        this.block = blocks[16];
+        this.start = i - 64;
+        this.hash();
+        this.hashed = true;
+      } else {
+        this.start = i;
+      }
+    }
+    if (this.bytes > 4294967295) {
+      this.hBytes += this.bytes / 4294967296 << 0;
+      this.bytes = this.bytes % 4294967296;
+    }
+    return this;
+  };
+  Sha256.prototype.finalize = function () {
+    if (this.finalized) {
+      return;
+    }
+    this.finalized = true;
+    var blocks = this.blocks,
+      i = this.lastByteIndex;
+    blocks[16] = this.block;
+    blocks[i >>> 2] |= EXTRA[i & 3];
+    this.block = blocks[16];
+    if (i >= 56) {
+      if (!this.hashed) {
+        this.hash();
+      }
+      blocks[0] = this.block;
+      blocks[16] = blocks[1] = blocks[2] = blocks[3] = blocks[4] = blocks[5] = blocks[6] = blocks[7] = blocks[8] = blocks[9] = blocks[10] = blocks[11] = blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
+    }
+    blocks[14] = this.hBytes << 3 | this.bytes >>> 29;
+    blocks[15] = this.bytes << 3;
+    this.hash();
+  };
+  Sha256.prototype.hash = function () {
+    var a = this.h0,
+      b = this.h1,
+      c = this.h2,
+      d = this.h3,
+      e = this.h4,
+      f = this.h5,
+      g = this.h6,
+      h = this.h7,
+      blocks = this.blocks,
+      j,
+      s0,
+      s1,
+      maj,
+      t1,
+      t2,
+      ch,
+      ab,
+      da,
+      cd,
+      bc;
+    for (j = 16; j < 64; ++j) {
+      // rightrotate
+      t1 = blocks[j - 15];
+      s0 = (t1 >>> 7 | t1 << 25) ^ (t1 >>> 18 | t1 << 14) ^ t1 >>> 3;
+      t1 = blocks[j - 2];
+      s1 = (t1 >>> 17 | t1 << 15) ^ (t1 >>> 19 | t1 << 13) ^ t1 >>> 10;
+      blocks[j] = blocks[j - 16] + s0 + blocks[j - 7] + s1 << 0;
+    }
+    bc = b & c;
+    for (j = 0; j < 64; j += 4) {
+      if (this.first) {
+        if (this.is224) {
+          ab = 300032;
+          t1 = blocks[0] - 1413257819;
+          h = t1 - 150054599 << 0;
+          d = t1 + 24177077 << 0;
+        } else {
+          ab = 704751109;
+          t1 = blocks[0] - 210244248;
+          h = t1 - 1521486534 << 0;
+          d = t1 + 143694565 << 0;
+        }
+        this.first = false;
+      } else {
+        s0 = (a >>> 2 | a << 30) ^ (a >>> 13 | a << 19) ^ (a >>> 22 | a << 10);
+        s1 = (e >>> 6 | e << 26) ^ (e >>> 11 | e << 21) ^ (e >>> 25 | e << 7);
+        ab = a & b;
+        maj = ab ^ a & c ^ bc;
+        ch = e & f ^ ~e & g;
+        t1 = h + s1 + ch + K[j] + blocks[j];
+        t2 = s0 + maj;
+        h = d + t1 << 0;
+        d = t1 + t2 << 0;
+      }
+      s0 = (d >>> 2 | d << 30) ^ (d >>> 13 | d << 19) ^ (d >>> 22 | d << 10);
+      s1 = (h >>> 6 | h << 26) ^ (h >>> 11 | h << 21) ^ (h >>> 25 | h << 7);
+      da = d & a;
+      maj = da ^ d & b ^ ab;
+      ch = h & e ^ ~h & f;
+      t1 = g + s1 + ch + K[j + 1] + blocks[j + 1];
+      t2 = s0 + maj;
+      g = c + t1 << 0;
+      c = t1 + t2 << 0;
+      s0 = (c >>> 2 | c << 30) ^ (c >>> 13 | c << 19) ^ (c >>> 22 | c << 10);
+      s1 = (g >>> 6 | g << 26) ^ (g >>> 11 | g << 21) ^ (g >>> 25 | g << 7);
+      cd = c & d;
+      maj = cd ^ c & a ^ da;
+      ch = g & h ^ ~g & e;
+      t1 = f + s1 + ch + K[j + 2] + blocks[j + 2];
+      t2 = s0 + maj;
+      f = b + t1 << 0;
+      b = t1 + t2 << 0;
+      s0 = (b >>> 2 | b << 30) ^ (b >>> 13 | b << 19) ^ (b >>> 22 | b << 10);
+      s1 = (f >>> 6 | f << 26) ^ (f >>> 11 | f << 21) ^ (f >>> 25 | f << 7);
+      bc = b & c;
+      maj = bc ^ b & d ^ cd;
+      ch = f & g ^ ~f & h;
+      t1 = e + s1 + ch + K[j + 3] + blocks[j + 3];
+      t2 = s0 + maj;
+      e = a + t1 << 0;
+      a = t1 + t2 << 0;
+      this.chromeBugWorkAround = true;
+    }
+    this.h0 = this.h0 + a << 0;
+    this.h1 = this.h1 + b << 0;
+    this.h2 = this.h2 + c << 0;
+    this.h3 = this.h3 + d << 0;
+    this.h4 = this.h4 + e << 0;
+    this.h5 = this.h5 + f << 0;
+    this.h6 = this.h6 + g << 0;
+    this.h7 = this.h7 + h << 0;
+  };
+  Sha256.prototype.hex = function () {
+    this.finalize();
+    var h0 = this.h0,
+      h1 = this.h1,
+      h2 = this.h2,
+      h3 = this.h3,
+      h4 = this.h4,
+      h5 = this.h5,
+      h6 = this.h6,
+      h7 = this.h7;
+    var hex = HEX_CHARS[h0 >>> 28 & 0x0F] + HEX_CHARS[h0 >>> 24 & 0x0F] + HEX_CHARS[h0 >>> 20 & 0x0F] + HEX_CHARS[h0 >>> 16 & 0x0F] + HEX_CHARS[h0 >>> 12 & 0x0F] + HEX_CHARS[h0 >>> 8 & 0x0F] + HEX_CHARS[h0 >>> 4 & 0x0F] + HEX_CHARS[h0 & 0x0F] + HEX_CHARS[h1 >>> 28 & 0x0F] + HEX_CHARS[h1 >>> 24 & 0x0F] + HEX_CHARS[h1 >>> 20 & 0x0F] + HEX_CHARS[h1 >>> 16 & 0x0F] + HEX_CHARS[h1 >>> 12 & 0x0F] + HEX_CHARS[h1 >>> 8 & 0x0F] + HEX_CHARS[h1 >>> 4 & 0x0F] + HEX_CHARS[h1 & 0x0F] + HEX_CHARS[h2 >>> 28 & 0x0F] + HEX_CHARS[h2 >>> 24 & 0x0F] + HEX_CHARS[h2 >>> 20 & 0x0F] + HEX_CHARS[h2 >>> 16 & 0x0F] + HEX_CHARS[h2 >>> 12 & 0x0F] + HEX_CHARS[h2 >>> 8 & 0x0F] + HEX_CHARS[h2 >>> 4 & 0x0F] + HEX_CHARS[h2 & 0x0F] + HEX_CHARS[h3 >>> 28 & 0x0F] + HEX_CHARS[h3 >>> 24 & 0x0F] + HEX_CHARS[h3 >>> 20 & 0x0F] + HEX_CHARS[h3 >>> 16 & 0x0F] + HEX_CHARS[h3 >>> 12 & 0x0F] + HEX_CHARS[h3 >>> 8 & 0x0F] + HEX_CHARS[h3 >>> 4 & 0x0F] + HEX_CHARS[h3 & 0x0F] + HEX_CHARS[h4 >>> 28 & 0x0F] + HEX_CHARS[h4 >>> 24 & 0x0F] + HEX_CHARS[h4 >>> 20 & 0x0F] + HEX_CHARS[h4 >>> 16 & 0x0F] + HEX_CHARS[h4 >>> 12 & 0x0F] + HEX_CHARS[h4 >>> 8 & 0x0F] + HEX_CHARS[h4 >>> 4 & 0x0F] + HEX_CHARS[h4 & 0x0F] + HEX_CHARS[h5 >>> 28 & 0x0F] + HEX_CHARS[h5 >>> 24 & 0x0F] + HEX_CHARS[h5 >>> 20 & 0x0F] + HEX_CHARS[h5 >>> 16 & 0x0F] + HEX_CHARS[h5 >>> 12 & 0x0F] + HEX_CHARS[h5 >>> 8 & 0x0F] + HEX_CHARS[h5 >>> 4 & 0x0F] + HEX_CHARS[h5 & 0x0F] + HEX_CHARS[h6 >>> 28 & 0x0F] + HEX_CHARS[h6 >>> 24 & 0x0F] + HEX_CHARS[h6 >>> 20 & 0x0F] + HEX_CHARS[h6 >>> 16 & 0x0F] + HEX_CHARS[h6 >>> 12 & 0x0F] + HEX_CHARS[h6 >>> 8 & 0x0F] + HEX_CHARS[h6 >>> 4 & 0x0F] + HEX_CHARS[h6 & 0x0F];
+    if (!this.is224) {
+      hex += HEX_CHARS[h7 >>> 28 & 0x0F] + HEX_CHARS[h7 >>> 24 & 0x0F] + HEX_CHARS[h7 >>> 20 & 0x0F] + HEX_CHARS[h7 >>> 16 & 0x0F] + HEX_CHARS[h7 >>> 12 & 0x0F] + HEX_CHARS[h7 >>> 8 & 0x0F] + HEX_CHARS[h7 >>> 4 & 0x0F] + HEX_CHARS[h7 & 0x0F];
+    }
+    return hex;
+  };
+  Sha256.prototype.toString = Sha256.prototype.hex;
+  Sha256.prototype.digest = function () {
+    this.finalize();
+    var h0 = this.h0,
+      h1 = this.h1,
+      h2 = this.h2,
+      h3 = this.h3,
+      h4 = this.h4,
+      h5 = this.h5,
+      h6 = this.h6,
+      h7 = this.h7;
+    var arr = [h0 >>> 24 & 0xFF, h0 >>> 16 & 0xFF, h0 >>> 8 & 0xFF, h0 & 0xFF, h1 >>> 24 & 0xFF, h1 >>> 16 & 0xFF, h1 >>> 8 & 0xFF, h1 & 0xFF, h2 >>> 24 & 0xFF, h2 >>> 16 & 0xFF, h2 >>> 8 & 0xFF, h2 & 0xFF, h3 >>> 24 & 0xFF, h3 >>> 16 & 0xFF, h3 >>> 8 & 0xFF, h3 & 0xFF, h4 >>> 24 & 0xFF, h4 >>> 16 & 0xFF, h4 >>> 8 & 0xFF, h4 & 0xFF, h5 >>> 24 & 0xFF, h5 >>> 16 & 0xFF, h5 >>> 8 & 0xFF, h5 & 0xFF, h6 >>> 24 & 0xFF, h6 >>> 16 & 0xFF, h6 >>> 8 & 0xFF, h6 & 0xFF];
+    if (!this.is224) {
+      arr.push(h7 >>> 24 & 0xFF, h7 >>> 16 & 0xFF, h7 >>> 8 & 0xFF, h7 & 0xFF);
+    }
+    return arr;
+  };
+  Sha256.prototype.array = Sha256.prototype.digest;
+  Sha256.prototype.arrayBuffer = function () {
+    this.finalize();
+    var buffer = new ArrayBuffer(this.is224 ? 28 : 32);
+    var dataView = new DataView(buffer);
+    dataView.setUint32(0, this.h0);
+    dataView.setUint32(4, this.h1);
+    dataView.setUint32(8, this.h2);
+    dataView.setUint32(12, this.h3);
+    dataView.setUint32(16, this.h4);
+    dataView.setUint32(20, this.h5);
+    dataView.setUint32(24, this.h6);
+    if (!this.is224) {
+      dataView.setUint32(28, this.h7);
+    }
+    return buffer;
+  };
+  function HmacSha256(key, is224, sharedMemory) {
+    var i,
+      type = typeof key;
+    if (type === 'string') {
+      var bytes = [],
+        length = key.length,
+        index = 0,
+        code;
+      for (i = 0; i < length; ++i) {
+        code = key.charCodeAt(i);
+        if (code < 0x80) {
+          bytes[index++] = code;
+        } else if (code < 0x800) {
+          bytes[index++] = 0xc0 | code >>> 6;
+          bytes[index++] = 0x80 | code & 0x3f;
+        } else if (code < 0xd800 || code >= 0xe000) {
+          bytes[index++] = 0xe0 | code >>> 12;
+          bytes[index++] = 0x80 | code >>> 6 & 0x3f;
+          bytes[index++] = 0x80 | code & 0x3f;
+        } else {
+          code = 0x10000 + ((code & 0x3ff) << 10 | key.charCodeAt(++i) & 0x3ff);
+          bytes[index++] = 0xf0 | code >>> 18;
+          bytes[index++] = 0x80 | code >>> 12 & 0x3f;
+          bytes[index++] = 0x80 | code >>> 6 & 0x3f;
+          bytes[index++] = 0x80 | code & 0x3f;
+        }
+      }
+      key = bytes;
+    } else {
+      if (type === 'object') {
+        if (key === null) {
+          throw new Error(ERROR);
+        } else if (ARRAY_BUFFER && key.constructor === ArrayBuffer) {
+          key = new Uint8Array(key);
+        } else if (!Array.isArray(key)) {
+          if (!ARRAY_BUFFER || !ArrayBuffer.isView(key)) {
+            throw new Error(ERROR);
+          }
+        }
+      } else {
+        throw new Error(ERROR);
+      }
+    }
+    if (key.length > 64) {
+      key = new Sha256(is224, true).update(key).array();
+    }
+    var oKeyPad = [],
+      iKeyPad = [];
+    for (i = 0; i < 64; ++i) {
+      var b = key[i] || 0;
+      oKeyPad[i] = 0x5c ^ b;
+      iKeyPad[i] = 0x36 ^ b;
+    }
+    Sha256.call(this, is224, sharedMemory);
+    this.update(iKeyPad);
+    this.oKeyPad = oKeyPad;
+    this.inner = true;
+    this.sharedMemory = sharedMemory;
+  }
+  HmacSha256.prototype = new Sha256();
+  HmacSha256.prototype.finalize = function () {
+    Sha256.prototype.finalize.call(this);
+    if (this.inner) {
+      this.inner = false;
+      var innerHash = this.array();
+      Sha256.call(this, this.is224, this.sharedMemory);
+      this.update(this.oKeyPad);
+      this.update(innerHash);
+      Sha256.prototype.finalize.call(this);
+    }
+  };
+  var exports = createMethod();
+  exports.sha256 = exports;
+  exports.sha224 = createMethod(true);
+  exports.sha256.hmac = createHmacMethod();
+  exports.sha224.hmac = createHmacMethod(true);
+  if (COMMON_JS) {
+    module.exports = exports;
+  } else {
+    root.sha256 = exports.sha256;
+    root.sha224 = exports.sha224;
+    if (AMD) {
+      !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+        return exports;
+      }).call(exports, __webpack_require__, exports, module),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    }
+  }
+})();
+
+/***/ }),
+
 /***/ "./node_modules/lodash.isequalwith/index.js":
 /***/ ((module, exports, __webpack_require__) => {
 
@@ -43187,6 +44094,140 @@ if (true) {
 if (false) {} else {
   module.exports = __webpack_require__("./node_modules/react-dom/node_modules/scheduler/cjs/scheduler.development.js");
 }
+
+/***/ }),
+
+/***/ "./node_modules/react-fast-compare/index.js":
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var console = __webpack_require__("./node_modules/console-browserify/index.js");
+/* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
+
+var hasElementType = typeof Element !== 'undefined';
+var hasMap = typeof Map === 'function';
+var hasSet = typeof Set === 'function';
+var hasArrayBuffer = typeof ArrayBuffer === 'function' && !!ArrayBuffer.isView;
+
+// Note: We **don't** need `envHasBigInt64Array` in fde es6/index.js
+
+function equal(a, b) {
+  // START: fast-deep-equal es6/index.js 3.1.3
+  if (a === b) return true;
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    if (a.constructor !== b.constructor) return false;
+    var length, i, keys;
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;) if (!equal(a[i], b[i])) return false;
+      return true;
+    }
+
+    // START: Modifications:
+    // 1. Extra `has<Type> &&` helpers in initial condition allow es6 code
+    //    to co-exist with es5.
+    // 2. Replace `for of` with es5 compliant iteration using `for`.
+    //    Basically, take:
+    //
+    //    ```js
+    //    for (i of a.entries())
+    //      if (!b.has(i[0])) return false;
+    //    ```
+    //
+    //    ... and convert to:
+    //
+    //    ```js
+    //    it = a.entries();
+    //    while (!(i = it.next()).done)
+    //      if (!b.has(i.value[0])) return false;
+    //    ```
+    //
+    //    **Note**: `i` access switches to `i.value`.
+    var it;
+    if (hasMap && a instanceof Map && b instanceof Map) {
+      if (a.size !== b.size) return false;
+      it = a.entries();
+      while (!(i = it.next()).done) if (!b.has(i.value[0])) return false;
+      it = a.entries();
+      while (!(i = it.next()).done) if (!equal(i.value[1], b.get(i.value[0]))) return false;
+      return true;
+    }
+    if (hasSet && a instanceof Set && b instanceof Set) {
+      if (a.size !== b.size) return false;
+      it = a.entries();
+      while (!(i = it.next()).done) if (!b.has(i.value[0])) return false;
+      return true;
+    }
+    // END: Modifications
+
+    if (hasArrayBuffer && ArrayBuffer.isView(a) && ArrayBuffer.isView(b)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;) if (a[i] !== b[i]) return false;
+      return true;
+    }
+    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+    // START: Modifications:
+    // Apply guards for `Object.create(null)` handling. See:
+    // - https://github.com/FormidableLabs/react-fast-compare/issues/64
+    // - https://github.com/epoberezkin/fast-deep-equal/issues/49
+    if (a.valueOf !== Object.prototype.valueOf && typeof a.valueOf === 'function' && typeof b.valueOf === 'function') return a.valueOf() === b.valueOf();
+    if (a.toString !== Object.prototype.toString && typeof a.toString === 'function' && typeof b.toString === 'function') return a.toString() === b.toString();
+    // END: Modifications
+
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) return false;
+    for (i = length; i-- !== 0;) if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+    // END: fast-deep-equal
+
+    // START: react-fast-compare
+    // custom handling for DOM elements
+    if (hasElementType && a instanceof Element) return false;
+
+    // custom handling for React/Preact
+    for (i = length; i-- !== 0;) {
+      if ((keys[i] === '_owner' || keys[i] === '__v' || keys[i] === '__o') && a.$$typeof) {
+        // React-specific: avoid traversing React elements' _owner
+        // Preact-specific: avoid traversing Preact elements' __v and __o
+        //    __v = $_original / $_vnode
+        //    __o = $_owner
+        // These properties contain circular references and are not needed when
+        // comparing the actual elements (and not their owners)
+        // .$$typeof and ._store on just reasonable markers of elements
+
+        continue;
+      }
+
+      // all other properties should be traversed as usual
+      if (!equal(a[keys[i]], b[keys[i]])) return false;
+    }
+    // END: react-fast-compare
+
+    // START: fast-deep-equal
+    return true;
+  }
+  return a !== a && b !== b;
+}
+// end fast-deep-equal
+
+module.exports = function isEqual(a, b) {
+  try {
+    return equal(a, b);
+  } catch (error) {
+    if ((error.message || '').match(/stack|recursion/i)) {
+      // warn on circular references, don't crash
+      // browsers give this different errors name and messages:
+      // chrome/safari: "RangeError", "Maximum call stack size exceeded"
+      // firefox: "InternalError", too much recursion"
+      // edge: "Error", "Out of stack space"
+      console.warn('react-fast-compare cannot handle circular refs');
+      return false;
+    }
+    // some other error. we should definitely know about these
+    throw error;
+  }
+};
 
 /***/ }),
 
@@ -53810,7 +54851,7 @@ __webpack_require__.r(__webpack_exports__);
       
       
 
-var options = {"attributes":{"nonce":"1155b09d-1216-4cea-b32f-c76ebe1d466c"}};
+var options = {"attributes":{"nonce":"276c0be9-4e32-4385-87c8-5e60601720ce"}};
 
 options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
 options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithAttributesAndNonce_js__WEBPACK_IMPORTED_MODULE_3___default());
@@ -54081,6 +55122,20 @@ function styleTagTransform(css, styleElement) {
   }
 }
 module.exports = styleTagTransform;
+
+/***/ }),
+
+/***/ "?69d9":
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ "?abf2":
+/***/ (() => {
+
+/* (ignored) */
 
 /***/ }),
 
@@ -62378,6 +63433,71 @@ const loadLanguages = instance.loadLanguages;
 
 /***/ }),
 
+/***/ "./node_modules/jwt-decode/build/esm/index.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InvalidTokenError: () => (/* binding */ InvalidTokenError),
+/* harmony export */   jwtDecode: () => (/* binding */ jwtDecode)
+/* harmony export */ });
+class InvalidTokenError extends Error {}
+InvalidTokenError.prototype.name = "InvalidTokenError";
+function b64DecodeUnicode(str) {
+  return decodeURIComponent(atob(str).replace(/(.)/g, (m, p) => {
+    let code = p.charCodeAt(0).toString(16).toUpperCase();
+    if (code.length < 2) {
+      code = "0" + code;
+    }
+    return "%" + code;
+  }));
+}
+function base64UrlDecode(str) {
+  let output = str.replace(/-/g, "+").replace(/_/g, "/");
+  switch (output.length % 4) {
+    case 0:
+      break;
+    case 2:
+      output += "==";
+      break;
+    case 3:
+      output += "=";
+      break;
+    default:
+      throw new Error("base64 string is not of the correct length");
+  }
+  try {
+    return b64DecodeUnicode(output);
+  } catch (err) {
+    return atob(output);
+  }
+}
+function jwtDecode(token, options) {
+  if (typeof token !== "string") {
+    throw new InvalidTokenError("Invalid token specified: must be a string");
+  }
+  options || (options = {});
+  const pos = options.header === true ? 0 : 1;
+  const part = token.split(".")[pos];
+  if (typeof part !== "string") {
+    throw new InvalidTokenError(`Invalid token specified: missing part #${pos + 1}`);
+  }
+  let decoded;
+  try {
+    decoded = base64UrlDecode(part);
+  } catch (e) {
+    throw new InvalidTokenError(`Invalid token specified: invalid base64 for part #${pos + 1} (${e.message})`);
+  }
+  try {
+    return JSON.parse(decoded);
+  } catch (e) {
+    throw new InvalidTokenError(`Invalid token specified: invalid json for part #${pos + 1} (${e.message})`);
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/stylis/src/Enum.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
@@ -63504,6 +64624,1787 @@ function n(n){for(var r=arguments.length,t=Array(r>1?r-1:0),e=1;e<r;e++)t[e-1]=a
 
 /***/ }),
 
+/***/ "./node_modules/keycloak-js/dist/keycloak.mjs":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Keycloak)
+/* harmony export */ });
+/* harmony import */ var js_sha256__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/js-sha256/src/sha256.js");
+/* harmony import */ var jwt_decode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/jwt-decode/build/esm/index.js");
+/* provided dependency */ var console = __webpack_require__("./node_modules/console-browserify/index.js");
+
+
+
+/*
+ * Copyright 2016 Red Hat, Inc. and/or its affiliates
+ * and other contributors as indicated by the @author tags.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+if (typeof Promise === 'undefined') {
+    throw Error('Keycloak requires an environment that supports Promises. Make sure that you include the appropriate polyfill.');
+}
+
+function Keycloak (config) {
+    if (!(this instanceof Keycloak)) {
+        throw new Error("The 'Keycloak' constructor must be invoked with 'new'.")
+    }
+
+    var kc = this;
+    var adapter;
+    var refreshQueue = [];
+    var callbackStorage;
+
+    var loginIframe = {
+        enable: true,
+        callbackList: [],
+        interval: 5
+    };
+
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+        if ((scripts[i].src.indexOf('keycloak.js') !== -1 || scripts[i].src.indexOf('keycloak.min.js') !== -1) && scripts[i].src.indexOf('version=') !== -1) {
+            kc.iframeVersion = scripts[i].src.substring(scripts[i].src.indexOf('version=') + 8).split('&')[0];
+        }
+    }
+
+    var useNonce = true;
+    var logInfo = createLogger(console.info);
+    var logWarn = createLogger(console.warn);
+
+    kc.init = function (initOptions) {
+        if (kc.didInitialize) {
+            throw new Error("A 'Keycloak' instance can only be initialized once.");
+        }
+
+        kc.didInitialize = true;
+
+        kc.authenticated = false;
+
+        callbackStorage = createCallbackStorage();
+        var adapters = ['default', 'cordova', 'cordova-native'];
+
+        if (initOptions && adapters.indexOf(initOptions.adapter) > -1) {
+            adapter = loadAdapter(initOptions.adapter);
+        } else if (initOptions && typeof initOptions.adapter === "object") {
+            adapter = initOptions.adapter;
+        } else {
+            if (window.Cordova || window.cordova) {
+                adapter = loadAdapter('cordova');
+            } else {
+                adapter = loadAdapter();
+            }
+        }
+
+        if (initOptions) {
+            if (typeof initOptions.useNonce !== 'undefined') {
+                useNonce = initOptions.useNonce;
+            }
+
+            if (typeof initOptions.checkLoginIframe !== 'undefined') {
+                loginIframe.enable = initOptions.checkLoginIframe;
+            }
+
+            if (initOptions.checkLoginIframeInterval) {
+                loginIframe.interval = initOptions.checkLoginIframeInterval;
+            }
+
+            if (initOptions.onLoad === 'login-required') {
+                kc.loginRequired = true;
+            }
+
+            if (initOptions.responseMode) {
+                if (initOptions.responseMode === 'query' || initOptions.responseMode === 'fragment') {
+                    kc.responseMode = initOptions.responseMode;
+                } else {
+                    throw 'Invalid value for responseMode';
+                }
+            }
+
+            if (initOptions.flow) {
+                switch (initOptions.flow) {
+                    case 'standard':
+                        kc.responseType = 'code';
+                        break;
+                    case 'implicit':
+                        kc.responseType = 'id_token token';
+                        break;
+                    case 'hybrid':
+                        kc.responseType = 'code id_token token';
+                        break;
+                    default:
+                        throw 'Invalid value for flow';
+                }
+                kc.flow = initOptions.flow;
+            }
+
+            if (initOptions.timeSkew != null) {
+                kc.timeSkew = initOptions.timeSkew;
+            }
+
+            if(initOptions.redirectUri) {
+                kc.redirectUri = initOptions.redirectUri;
+            }
+
+            if (initOptions.silentCheckSsoRedirectUri) {
+                kc.silentCheckSsoRedirectUri = initOptions.silentCheckSsoRedirectUri;
+            }
+
+            if (typeof initOptions.silentCheckSsoFallback === 'boolean') {
+                kc.silentCheckSsoFallback = initOptions.silentCheckSsoFallback;
+            } else {
+                kc.silentCheckSsoFallback = true;
+            }
+
+            if (typeof initOptions.pkceMethod !== "undefined") {
+                if (initOptions.pkceMethod !== "S256" && initOptions.pkceMethod !== false) {
+                    throw new TypeError(`Invalid value for pkceMethod', expected 'S256' or false but got ${initOptions.pkceMethod}.`);
+                }
+
+                kc.pkceMethod = initOptions.pkceMethod;
+            } else {
+                kc.pkceMethod = "S256";
+            }
+
+            if (typeof initOptions.enableLogging === 'boolean') {
+                kc.enableLogging = initOptions.enableLogging;
+            } else {
+                kc.enableLogging = false;
+            }
+
+            if (initOptions.logoutMethod === 'POST') {
+                kc.logoutMethod = 'POST';
+            } else {
+                kc.logoutMethod = 'GET';
+            }
+
+            if (typeof initOptions.scope === 'string') {
+                kc.scope = initOptions.scope;
+            }
+
+            if (typeof initOptions.acrValues === 'string') {
+                kc.acrValues = initOptions.acrValues;
+            }
+
+            if (typeof initOptions.messageReceiveTimeout === 'number' && initOptions.messageReceiveTimeout > 0) {
+                kc.messageReceiveTimeout = initOptions.messageReceiveTimeout;
+            } else {
+                kc.messageReceiveTimeout = 10000;
+            }
+        }
+
+        if (!kc.responseMode) {
+            kc.responseMode = 'fragment';
+        }
+        if (!kc.responseType) {
+            kc.responseType = 'code';
+            kc.flow = 'standard';
+        }
+
+        var promise = createPromise();
+
+        var initPromise = createPromise();
+        initPromise.promise.then(function() {
+            kc.onReady && kc.onReady(kc.authenticated);
+            promise.setSuccess(kc.authenticated);
+        }).catch(function(error) {
+            promise.setError(error);
+        });
+
+        var configPromise = loadConfig();
+
+        function onLoad() {
+            var doLogin = function(prompt) {
+                if (!prompt) {
+                    options.prompt = 'none';
+                }
+
+                if (initOptions && initOptions.locale) {
+                    options.locale = initOptions.locale;
+                }
+                kc.login(options).then(function () {
+                    initPromise.setSuccess();
+                }).catch(function (error) {
+                    initPromise.setError(error);
+                });
+            };
+
+            var checkSsoSilently = function() {
+                var ifrm = document.createElement("iframe");
+                var src = kc.createLoginUrl({prompt: 'none', redirectUri: kc.silentCheckSsoRedirectUri});
+                ifrm.setAttribute("src", src);
+                ifrm.setAttribute("sandbox", "allow-storage-access-by-user-activation allow-scripts allow-same-origin");
+                ifrm.setAttribute("title", "keycloak-silent-check-sso");
+                ifrm.style.display = "none";
+                document.body.appendChild(ifrm);
+
+                var messageCallback = function(event) {
+                    if (event.origin !== window.location.origin || ifrm.contentWindow !== event.source) {
+                        return;
+                    }
+
+                    var oauth = parseCallback(event.data);
+                    processCallback(oauth, initPromise);
+
+                    document.body.removeChild(ifrm);
+                    window.removeEventListener("message", messageCallback);
+                };
+
+                window.addEventListener("message", messageCallback);
+            };
+
+            var options = {};
+            switch (initOptions.onLoad) {
+                case 'check-sso':
+                    if (loginIframe.enable) {
+                        setupCheckLoginIframe().then(function() {
+                            checkLoginIframe().then(function (unchanged) {
+                                if (!unchanged) {
+                                    kc.silentCheckSsoRedirectUri ? checkSsoSilently() : doLogin(false);
+                                } else {
+                                    initPromise.setSuccess();
+                                }
+                            }).catch(function (error) {
+                                initPromise.setError(error);
+                            });
+                        });
+                    } else {
+                        kc.silentCheckSsoRedirectUri ? checkSsoSilently() : doLogin(false);
+                    }
+                    break;
+                case 'login-required':
+                    doLogin(true);
+                    break;
+                default:
+                    throw 'Invalid value for onLoad';
+            }
+        }
+
+        function processInit() {
+            var callback = parseCallback(window.location.href);
+
+            if (callback) {
+                window.history.replaceState(window.history.state, null, callback.newUrl);
+            }
+
+            if (callback && callback.valid) {
+                return setupCheckLoginIframe().then(function() {
+                    processCallback(callback, initPromise);
+                }).catch(function (error) {
+                    initPromise.setError(error);
+                });
+            } else if (initOptions) {
+                if (initOptions.token && initOptions.refreshToken) {
+                    setToken(initOptions.token, initOptions.refreshToken, initOptions.idToken);
+
+                    if (loginIframe.enable) {
+                        setupCheckLoginIframe().then(function() {
+                            checkLoginIframe().then(function (unchanged) {
+                                if (unchanged) {
+                                    kc.onAuthSuccess && kc.onAuthSuccess();
+                                    initPromise.setSuccess();
+                                    scheduleCheckIframe();
+                                } else {
+                                    initPromise.setSuccess();
+                                }
+                            }).catch(function (error) {
+                                initPromise.setError(error);
+                            });
+                        });
+                    } else {
+                        kc.updateToken(-1).then(function() {
+                            kc.onAuthSuccess && kc.onAuthSuccess();
+                            initPromise.setSuccess();
+                        }).catch(function(error) {
+                            kc.onAuthError && kc.onAuthError();
+                            if (initOptions.onLoad) {
+                                onLoad();
+                            } else {
+                                initPromise.setError(error);
+                            }
+                        });
+                    }
+                } else if (initOptions.onLoad) {
+                    onLoad();
+                } else {
+                    initPromise.setSuccess();
+                }
+            } else {
+                initPromise.setSuccess();
+            }
+        }
+
+        function domReady() {
+            var promise = createPromise();
+
+            var checkReadyState = function () {
+                if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                    document.removeEventListener('readystatechange', checkReadyState);
+                    promise.setSuccess();
+                }
+            };
+            document.addEventListener('readystatechange', checkReadyState);
+
+            checkReadyState(); // just in case the event was already fired and we missed it (in case the init is done later than at the load time, i.e. it's done from code)
+
+            return promise.promise;
+        }
+
+        configPromise.then(function () {
+            domReady()
+                .then(check3pCookiesSupported)
+                .then(processInit)
+                .catch(function (error) {
+                    promise.setError(error);
+                });
+        });
+        configPromise.catch(function (error) {
+            promise.setError(error);
+        });
+
+        return promise.promise;
+    };
+
+    kc.login = function (options) {
+        return adapter.login(options);
+    };
+
+    function generateRandomData(len) {
+        // use web crypto APIs if possible
+        var array = null;
+        var crypto = window.crypto || window.msCrypto;
+        if (crypto && crypto.getRandomValues && window.Uint8Array) {
+            array = new Uint8Array(len);
+            crypto.getRandomValues(array);
+            return array;
+        }
+
+        // fallback to Math random
+        array = new Array(len);
+        for (var j = 0; j < array.length; j++) {
+            array[j] = Math.floor(256 * Math.random());
+        }
+        return array;
+    }
+
+    function generateCodeVerifier(len) {
+        return generateRandomString(len, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
+    }
+
+    function generateRandomString(len, alphabet){
+        var randomData = generateRandomData(len);
+        var chars = new Array(len);
+        for (var i = 0; i < len; i++) {
+            chars[i] = alphabet.charCodeAt(randomData[i] % alphabet.length);
+        }
+        return String.fromCharCode.apply(null, chars);
+    }
+
+    function generatePkceChallenge(pkceMethod, codeVerifier) {
+        if (pkceMethod !== "S256") {
+            throw new TypeError(`Invalid value for 'pkceMethod', expected 'S256' but got '${pkceMethod}'.`);
+        }
+
+        // hash codeVerifier, then encode as url-safe base64 without padding
+        const hashBytes = new Uint8Array(js_sha256__WEBPACK_IMPORTED_MODULE_0__.arrayBuffer(codeVerifier));
+        const encodedHash = bytesToBase64(hashBytes)
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/\=/g, '');
+
+        return encodedHash;
+    }
+
+    function buildClaimsParameter(requestedAcr){
+        var claims = {
+            id_token: {
+                acr: requestedAcr
+            }
+        };
+        return JSON.stringify(claims);
+    }
+
+    kc.createLoginUrl = function(options) {
+        var state = createUUID();
+        var nonce = createUUID();
+
+        var redirectUri = adapter.redirectUri(options);
+
+        var callbackState = {
+            state: state,
+            nonce: nonce,
+            redirectUri: encodeURIComponent(redirectUri),
+            loginOptions: options
+        };
+
+        if (options && options.prompt) {
+            callbackState.prompt = options.prompt;
+        }
+
+        var baseUrl;
+        if (options && options.action == 'register') {
+            baseUrl = kc.endpoints.register();
+        } else {
+            baseUrl = kc.endpoints.authorize();
+        }
+
+        var scope = options && options.scope || kc.scope;
+        if (!scope) {
+            // if scope is not set, default to "openid"
+            scope = "openid";
+        } else if (scope.indexOf("openid") === -1) {
+            // if openid scope is missing, prefix the given scopes with it
+            scope = "openid " + scope;
+        }
+
+        var url = baseUrl
+            + '?client_id=' + encodeURIComponent(kc.clientId)
+            + '&redirect_uri=' + encodeURIComponent(redirectUri)
+            + '&state=' + encodeURIComponent(state)
+            + '&response_mode=' + encodeURIComponent(kc.responseMode)
+            + '&response_type=' + encodeURIComponent(kc.responseType)
+            + '&scope=' + encodeURIComponent(scope);
+        if (useNonce) {
+            url = url + '&nonce=' + encodeURIComponent(nonce);
+        }
+
+        if (options && options.prompt) {
+            url += '&prompt=' + encodeURIComponent(options.prompt);
+        }
+
+        if (options && options.maxAge) {
+            url += '&max_age=' + encodeURIComponent(options.maxAge);
+        }
+
+        if (options && options.loginHint) {
+            url += '&login_hint=' + encodeURIComponent(options.loginHint);
+        }
+
+        if (options && options.idpHint) {
+            url += '&kc_idp_hint=' + encodeURIComponent(options.idpHint);
+        }
+
+        if (options && options.action && options.action != 'register') {
+            url += '&kc_action=' + encodeURIComponent(options.action);
+        }
+
+        if (options && options.locale) {
+            url += '&ui_locales=' + encodeURIComponent(options.locale);
+        }
+
+        if (options && options.acr) {
+            var claimsParameter = buildClaimsParameter(options.acr);
+            url += '&claims=' + encodeURIComponent(claimsParameter);
+        }
+
+        if ((options && options.acrValues) || kc.acrValues) {
+            url += '&acr_values=' + encodeURIComponent(options.acrValues || kc.acrValues);
+        }
+
+        if (kc.pkceMethod) {
+            var codeVerifier = generateCodeVerifier(96);
+            callbackState.pkceCodeVerifier = codeVerifier;
+            var pkceChallenge = generatePkceChallenge(kc.pkceMethod, codeVerifier);
+            url += '&code_challenge=' + pkceChallenge;
+            url += '&code_challenge_method=' + kc.pkceMethod;
+        }
+
+        callbackStorage.add(callbackState);
+
+        return url;
+    };
+
+    kc.logout = function(options) {
+        return adapter.logout(options);
+    };
+
+    kc.createLogoutUrl = function(options) {
+
+        const logoutMethod = options?.logoutMethod ?? kc.logoutMethod;
+        if (logoutMethod === 'POST') {
+            return kc.endpoints.logout();
+        }
+
+        var url = kc.endpoints.logout()
+            + '?client_id=' + encodeURIComponent(kc.clientId)
+            + '&post_logout_redirect_uri=' + encodeURIComponent(adapter.redirectUri(options, false));
+
+        if (kc.idToken) {
+            url += '&id_token_hint=' + encodeURIComponent(kc.idToken);
+        }
+
+        return url;
+    };
+
+    kc.register = function (options) {
+        return adapter.register(options);
+    };
+
+    kc.createRegisterUrl = function(options) {
+        if (!options) {
+            options = {};
+        }
+        options.action = 'register';
+        return kc.createLoginUrl(options);
+    };
+
+    kc.createAccountUrl = function(options) {
+        var realm = getRealmUrl();
+        var url = undefined;
+        if (typeof realm !== 'undefined') {
+            url = realm
+            + '/account'
+            + '?referrer=' + encodeURIComponent(kc.clientId)
+            + '&referrer_uri=' + encodeURIComponent(adapter.redirectUri(options));
+        }
+        return url;
+    };
+
+    kc.accountManagement = function() {
+        return adapter.accountManagement();
+    };
+
+    kc.hasRealmRole = function (role) {
+        var access = kc.realmAccess;
+        return !!access && access.roles.indexOf(role) >= 0;
+    };
+
+    kc.hasResourceRole = function(role, resource) {
+        if (!kc.resourceAccess) {
+            return false;
+        }
+
+        var access = kc.resourceAccess[resource || kc.clientId];
+        return !!access && access.roles.indexOf(role) >= 0;
+    };
+
+    kc.loadUserProfile = function() {
+        var url = getRealmUrl() + '/account';
+        var req = new XMLHttpRequest();
+        req.open('GET', url, true);
+        req.setRequestHeader('Accept', 'application/json');
+        req.setRequestHeader('Authorization', 'bearer ' + kc.token);
+
+        var promise = createPromise();
+
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    kc.profile = JSON.parse(req.responseText);
+                    promise.setSuccess(kc.profile);
+                } else {
+                    promise.setError();
+                }
+            }
+        };
+
+        req.send();
+
+        return promise.promise;
+    };
+
+    kc.loadUserInfo = function() {
+        var url = kc.endpoints.userinfo();
+        var req = new XMLHttpRequest();
+        req.open('GET', url, true);
+        req.setRequestHeader('Accept', 'application/json');
+        req.setRequestHeader('Authorization', 'bearer ' + kc.token);
+
+        var promise = createPromise();
+
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    kc.userInfo = JSON.parse(req.responseText);
+                    promise.setSuccess(kc.userInfo);
+                } else {
+                    promise.setError();
+                }
+            }
+        };
+
+        req.send();
+
+        return promise.promise;
+    };
+
+    kc.isTokenExpired = function(minValidity) {
+        if (!kc.tokenParsed || (!kc.refreshToken && kc.flow != 'implicit' )) {
+            throw 'Not authenticated';
+        }
+
+        if (kc.timeSkew == null) {
+            logInfo('[KEYCLOAK] Unable to determine if token is expired as timeskew is not set');
+            return true;
+        }
+
+        var expiresIn = kc.tokenParsed['exp'] - Math.ceil(new Date().getTime() / 1000) + kc.timeSkew;
+        if (minValidity) {
+            if (isNaN(minValidity)) {
+                throw 'Invalid minValidity';
+            }
+            expiresIn -= minValidity;
+        }
+        return expiresIn < 0;
+    };
+
+    kc.updateToken = function(minValidity) {
+        var promise = createPromise();
+
+        if (!kc.refreshToken) {
+            promise.setError();
+            return promise.promise;
+        }
+
+        minValidity = minValidity || 5;
+
+        var exec = function() {
+            var refreshToken = false;
+            if (minValidity == -1) {
+                refreshToken = true;
+                logInfo('[KEYCLOAK] Refreshing token: forced refresh');
+            } else if (!kc.tokenParsed || kc.isTokenExpired(minValidity)) {
+                refreshToken = true;
+                logInfo('[KEYCLOAK] Refreshing token: token expired');
+            }
+
+            if (!refreshToken) {
+                promise.setSuccess(false);
+            } else {
+                var params = 'grant_type=refresh_token&' + 'refresh_token=' + kc.refreshToken;
+                var url = kc.endpoints.token();
+
+                refreshQueue.push(promise);
+
+                if (refreshQueue.length == 1) {
+                    var req = new XMLHttpRequest();
+                    req.open('POST', url, true);
+                    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    req.withCredentials = true;
+
+                    params += '&client_id=' + encodeURIComponent(kc.clientId);
+
+                    var timeLocal = new Date().getTime();
+
+                    req.onreadystatechange = function () {
+                        if (req.readyState == 4) {
+                            if (req.status == 200) {
+                                logInfo('[KEYCLOAK] Token refreshed');
+
+                                timeLocal = (timeLocal + new Date().getTime()) / 2;
+
+                                var tokenResponse = JSON.parse(req.responseText);
+
+                                setToken(tokenResponse['access_token'], tokenResponse['refresh_token'], tokenResponse['id_token'], timeLocal);
+
+                                kc.onAuthRefreshSuccess && kc.onAuthRefreshSuccess();
+                                for (var p = refreshQueue.pop(); p != null; p = refreshQueue.pop()) {
+                                    p.setSuccess(true);
+                                }
+                            } else {
+                                logWarn('[KEYCLOAK] Failed to refresh token');
+
+                                if (req.status == 400) {
+                                    kc.clearToken();
+                                }
+
+                                kc.onAuthRefreshError && kc.onAuthRefreshError();
+                                for (var p = refreshQueue.pop(); p != null; p = refreshQueue.pop()) {
+                                    p.setError(true);
+                                }
+                            }
+                        }
+                    };
+
+                    req.send(params);
+                }
+            }
+        };
+
+        if (loginIframe.enable) {
+            var iframePromise = checkLoginIframe();
+            iframePromise.then(function() {
+                exec();
+            }).catch(function(error) {
+                promise.setError(error);
+            });
+        } else {
+            exec();
+        }
+
+        return promise.promise;
+    };
+
+    kc.clearToken = function() {
+        if (kc.token) {
+            setToken(null, null, null);
+            kc.onAuthLogout && kc.onAuthLogout();
+            if (kc.loginRequired) {
+                kc.login();
+            }
+        }
+    };
+
+    function getRealmUrl() {
+        if (typeof kc.authServerUrl !== 'undefined') {
+            if (kc.authServerUrl.charAt(kc.authServerUrl.length - 1) == '/') {
+                return kc.authServerUrl + 'realms/' + encodeURIComponent(kc.realm);
+            } else {
+                return kc.authServerUrl + '/realms/' + encodeURIComponent(kc.realm);
+            }
+        } else {
+            return undefined;
+        }
+    }
+
+    function getOrigin() {
+        if (!window.location.origin) {
+            return window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+        } else {
+            return window.location.origin;
+        }
+    }
+
+    function processCallback(oauth, promise) {
+        var code = oauth.code;
+        var error = oauth.error;
+        var prompt = oauth.prompt;
+
+        var timeLocal = new Date().getTime();
+
+        if (oauth['kc_action_status']) {
+            kc.onActionUpdate && kc.onActionUpdate(oauth['kc_action_status']);
+        }
+
+        if (error) {
+            if (prompt != 'none') {
+                if (oauth.error_description && oauth.error_description === "authentication_expired") {
+                    kc.login(oauth.loginOptions);
+                } else {
+                    var errorData = { error: error, error_description: oauth.error_description };
+                    kc.onAuthError && kc.onAuthError(errorData);
+                    promise && promise.setError(errorData);
+                }
+            } else {
+                promise && promise.setSuccess();
+            }
+            return;
+        } else if ((kc.flow != 'standard') && (oauth.access_token || oauth.id_token)) {
+            authSuccess(oauth.access_token, null, oauth.id_token, true);
+        }
+
+        if ((kc.flow != 'implicit') && code) {
+            var params = 'code=' + code + '&grant_type=authorization_code';
+            var url = kc.endpoints.token();
+
+            var req = new XMLHttpRequest();
+            req.open('POST', url, true);
+            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            params += '&client_id=' + encodeURIComponent(kc.clientId);
+            params += '&redirect_uri=' + oauth.redirectUri;
+
+            if (oauth.pkceCodeVerifier) {
+                params += '&code_verifier=' + oauth.pkceCodeVerifier;
+            }
+
+            req.withCredentials = true;
+
+            req.onreadystatechange = function() {
+                if (req.readyState == 4) {
+                    if (req.status == 200) {
+
+                        var tokenResponse = JSON.parse(req.responseText);
+                        authSuccess(tokenResponse['access_token'], tokenResponse['refresh_token'], tokenResponse['id_token'], kc.flow === 'standard');
+                        scheduleCheckIframe();
+                    } else {
+                        kc.onAuthError && kc.onAuthError();
+                        promise && promise.setError();
+                    }
+                }
+            };
+
+            req.send(params);
+        }
+
+        function authSuccess(accessToken, refreshToken, idToken, fulfillPromise) {
+            timeLocal = (timeLocal + new Date().getTime()) / 2;
+
+            setToken(accessToken, refreshToken, idToken, timeLocal);
+
+            if (useNonce && (kc.idTokenParsed && kc.idTokenParsed.nonce != oauth.storedNonce)) {
+                logInfo('[KEYCLOAK] Invalid nonce, clearing token');
+                kc.clearToken();
+                promise && promise.setError();
+            } else {
+                if (fulfillPromise) {
+                    kc.onAuthSuccess && kc.onAuthSuccess();
+                    promise && promise.setSuccess();
+                }
+            }
+        }
+
+    }
+
+    function loadConfig(url) {
+        var promise = createPromise();
+        var configUrl;
+
+        if (!config) {
+            configUrl = 'keycloak.json';
+        } else if (typeof config === 'string') {
+            configUrl = config;
+        }
+
+        function setupOidcEndoints(oidcConfiguration) {
+            if (! oidcConfiguration) {
+                kc.endpoints = {
+                    authorize: function() {
+                        return getRealmUrl() + '/protocol/openid-connect/auth';
+                    },
+                    token: function() {
+                        return getRealmUrl() + '/protocol/openid-connect/token';
+                    },
+                    logout: function() {
+                        return getRealmUrl() + '/protocol/openid-connect/logout';
+                    },
+                    checkSessionIframe: function() {
+                        var src = getRealmUrl() + '/protocol/openid-connect/login-status-iframe.html';
+                        if (kc.iframeVersion) {
+                            src = src + '?version=' + kc.iframeVersion;
+                        }
+                        return src;
+                    },
+                    thirdPartyCookiesIframe: function() {
+                        var src = getRealmUrl() + '/protocol/openid-connect/3p-cookies/step1.html';
+                        if (kc.iframeVersion) {
+                            src = src + '?version=' + kc.iframeVersion;
+                        }
+                        return src;
+                    },
+                    register: function() {
+                        return getRealmUrl() + '/protocol/openid-connect/registrations';
+                    },
+                    userinfo: function() {
+                        return getRealmUrl() + '/protocol/openid-connect/userinfo';
+                    }
+                };
+            } else {
+                kc.endpoints = {
+                    authorize: function() {
+                        return oidcConfiguration.authorization_endpoint;
+                    },
+                    token: function() {
+                        return oidcConfiguration.token_endpoint;
+                    },
+                    logout: function() {
+                        if (!oidcConfiguration.end_session_endpoint) {
+                            throw "Not supported by the OIDC server";
+                        }
+                        return oidcConfiguration.end_session_endpoint;
+                    },
+                    checkSessionIframe: function() {
+                        if (!oidcConfiguration.check_session_iframe) {
+                            throw "Not supported by the OIDC server";
+                        }
+                        return oidcConfiguration.check_session_iframe;
+                    },
+                    register: function() {
+                        throw 'Redirection to "Register user" page not supported in standard OIDC mode';
+                    },
+                    userinfo: function() {
+                        if (!oidcConfiguration.userinfo_endpoint) {
+                            throw "Not supported by the OIDC server";
+                        }
+                        return oidcConfiguration.userinfo_endpoint;
+                    }
+                };
+            }
+        }
+
+        if (configUrl) {
+            var req = new XMLHttpRequest();
+            req.open('GET', configUrl, true);
+            req.setRequestHeader('Accept', 'application/json');
+
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    if (req.status == 200 || fileLoaded(req)) {
+                        var config = JSON.parse(req.responseText);
+
+                        kc.authServerUrl = config['auth-server-url'];
+                        kc.realm = config['realm'];
+                        kc.clientId = config['resource'];
+                        setupOidcEndoints(null);
+                        promise.setSuccess();
+                    } else {
+                        promise.setError();
+                    }
+                }
+            };
+
+            req.send();
+        } else {
+            if (!config.clientId) {
+                throw 'clientId missing';
+            }
+
+            kc.clientId = config.clientId;
+
+            var oidcProvider = config['oidcProvider'];
+            if (!oidcProvider) {
+                if (!config['url']) {
+                    var scripts = document.getElementsByTagName('script');
+                    for (var i = 0; i < scripts.length; i++) {
+                        if (scripts[i].src.match(/.*keycloak\.js/)) {
+                            config.url = scripts[i].src.substr(0, scripts[i].src.indexOf('/js/keycloak.js'));
+                            break;
+                        }
+                    }
+                }
+                if (!config.realm) {
+                    throw 'realm missing';
+                }
+
+                kc.authServerUrl = config.url;
+                kc.realm = config.realm;
+                setupOidcEndoints(null);
+                promise.setSuccess();
+            } else {
+                if (typeof oidcProvider === 'string') {
+                    var oidcProviderConfigUrl;
+                    if (oidcProvider.charAt(oidcProvider.length - 1) == '/') {
+                        oidcProviderConfigUrl = oidcProvider + '.well-known/openid-configuration';
+                    } else {
+                        oidcProviderConfigUrl = oidcProvider + '/.well-known/openid-configuration';
+                    }
+                    var req = new XMLHttpRequest();
+                    req.open('GET', oidcProviderConfigUrl, true);
+                    req.setRequestHeader('Accept', 'application/json');
+
+                    req.onreadystatechange = function () {
+                        if (req.readyState == 4) {
+                            if (req.status == 200 || fileLoaded(req)) {
+                                var oidcProviderConfig = JSON.parse(req.responseText);
+                                setupOidcEndoints(oidcProviderConfig);
+                                promise.setSuccess();
+                            } else {
+                                promise.setError();
+                            }
+                        }
+                    };
+
+                    req.send();
+                } else {
+                    setupOidcEndoints(oidcProvider);
+                    promise.setSuccess();
+                }
+            }
+        }
+
+        return promise.promise;
+    }
+
+    function fileLoaded(xhr) {
+        return xhr.status == 0 && xhr.responseText && xhr.responseURL.startsWith('file:');
+    }
+
+    function setToken(token, refreshToken, idToken, timeLocal) {
+        if (kc.tokenTimeoutHandle) {
+            clearTimeout(kc.tokenTimeoutHandle);
+            kc.tokenTimeoutHandle = null;
+        }
+
+        if (refreshToken) {
+            kc.refreshToken = refreshToken;
+            kc.refreshTokenParsed = (0,jwt_decode__WEBPACK_IMPORTED_MODULE_1__.jwtDecode)(refreshToken);
+        } else {
+            delete kc.refreshToken;
+            delete kc.refreshTokenParsed;
+        }
+
+        if (idToken) {
+            kc.idToken = idToken;
+            kc.idTokenParsed = (0,jwt_decode__WEBPACK_IMPORTED_MODULE_1__.jwtDecode)(idToken);
+        } else {
+            delete kc.idToken;
+            delete kc.idTokenParsed;
+        }
+
+        if (token) {
+            kc.token = token;
+            kc.tokenParsed = (0,jwt_decode__WEBPACK_IMPORTED_MODULE_1__.jwtDecode)(token);
+            kc.sessionId = kc.tokenParsed.sid;
+            kc.authenticated = true;
+            kc.subject = kc.tokenParsed.sub;
+            kc.realmAccess = kc.tokenParsed.realm_access;
+            kc.resourceAccess = kc.tokenParsed.resource_access;
+
+            if (timeLocal) {
+                kc.timeSkew = Math.floor(timeLocal / 1000) - kc.tokenParsed.iat;
+            }
+
+            if (kc.timeSkew != null) {
+                logInfo('[KEYCLOAK] Estimated time difference between browser and server is ' + kc.timeSkew + ' seconds');
+
+                if (kc.onTokenExpired) {
+                    var expiresIn = (kc.tokenParsed['exp'] - (new Date().getTime() / 1000) + kc.timeSkew) * 1000;
+                    logInfo('[KEYCLOAK] Token expires in ' + Math.round(expiresIn / 1000) + ' s');
+                    if (expiresIn <= 0) {
+                        kc.onTokenExpired();
+                    } else {
+                        kc.tokenTimeoutHandle = setTimeout(kc.onTokenExpired, expiresIn);
+                    }
+                }
+            }
+        } else {
+            delete kc.token;
+            delete kc.tokenParsed;
+            delete kc.subject;
+            delete kc.realmAccess;
+            delete kc.resourceAccess;
+
+            kc.authenticated = false;
+        }
+    }
+
+    function createUUID() {
+        var hexDigits = '0123456789abcdef';
+        var s = generateRandomString(36, hexDigits).split("");
+        s[14] = '4';
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
+        s[8] = s[13] = s[18] = s[23] = '-';
+        var uuid = s.join('');
+        return uuid;
+    }
+
+    function parseCallback(url) {
+        var oauth = parseCallbackUrl(url);
+        if (!oauth) {
+            return;
+        }
+
+        var oauthState = callbackStorage.get(oauth.state);
+
+        if (oauthState) {
+            oauth.valid = true;
+            oauth.redirectUri = oauthState.redirectUri;
+            oauth.storedNonce = oauthState.nonce;
+            oauth.prompt = oauthState.prompt;
+            oauth.pkceCodeVerifier = oauthState.pkceCodeVerifier;
+            oauth.loginOptions = oauthState.loginOptions;
+        }
+
+        return oauth;
+    }
+
+    function parseCallbackUrl(url) {
+        var supportedParams;
+        switch (kc.flow) {
+            case 'standard':
+                supportedParams = ['code', 'state', 'session_state', 'kc_action_status', 'iss'];
+                break;
+            case 'implicit':
+                supportedParams = ['access_token', 'token_type', 'id_token', 'state', 'session_state', 'expires_in', 'kc_action_status', 'iss'];
+                break;
+            case 'hybrid':
+                supportedParams = ['access_token', 'token_type', 'id_token', 'code', 'state', 'session_state', 'expires_in', 'kc_action_status', 'iss'];
+                break;
+        }
+
+        supportedParams.push('error');
+        supportedParams.push('error_description');
+        supportedParams.push('error_uri');
+
+        var queryIndex = url.indexOf('?');
+        var fragmentIndex = url.indexOf('#');
+
+        var newUrl;
+        var parsed;
+
+        if (kc.responseMode === 'query' && queryIndex !== -1) {
+            newUrl = url.substring(0, queryIndex);
+            parsed = parseCallbackParams(url.substring(queryIndex + 1, fragmentIndex !== -1 ? fragmentIndex : url.length), supportedParams);
+            if (parsed.paramsString !== '') {
+                newUrl += '?' + parsed.paramsString;
+            }
+            if (fragmentIndex !== -1) {
+                newUrl += url.substring(fragmentIndex);
+            }
+        } else if (kc.responseMode === 'fragment' && fragmentIndex !== -1) {
+            newUrl = url.substring(0, fragmentIndex);
+            parsed = parseCallbackParams(url.substring(fragmentIndex + 1), supportedParams);
+            if (parsed.paramsString !== '') {
+                newUrl += '#' + parsed.paramsString;
+            }
+        }
+
+        if (parsed && parsed.oauthParams) {
+            if (kc.flow === 'standard' || kc.flow === 'hybrid') {
+                if ((parsed.oauthParams.code || parsed.oauthParams.error) && parsed.oauthParams.state) {
+                    parsed.oauthParams.newUrl = newUrl;
+                    return parsed.oauthParams;
+                }
+            } else if (kc.flow === 'implicit') {
+                if ((parsed.oauthParams.access_token || parsed.oauthParams.error) && parsed.oauthParams.state) {
+                    parsed.oauthParams.newUrl = newUrl;
+                    return parsed.oauthParams;
+                }
+            }
+        }
+    }
+
+    function parseCallbackParams(paramsString, supportedParams) {
+        var p = paramsString.split('&');
+        var result = {
+            paramsString: '',
+            oauthParams: {}
+        };
+        for (var i = 0; i < p.length; i++) {
+            var split = p[i].indexOf("=");
+            var key = p[i].slice(0, split);
+            if (supportedParams.indexOf(key) !== -1) {
+                result.oauthParams[key] = p[i].slice(split + 1);
+            } else {
+                if (result.paramsString !== '') {
+                    result.paramsString += '&';
+                }
+                result.paramsString += p[i];
+            }
+        }
+        return result;
+    }
+
+    function createPromise() {
+        // Need to create a native Promise which also preserves the
+        // interface of the custom promise type previously used by the API
+        var p = {
+            setSuccess: function(result) {
+                p.resolve(result);
+            },
+
+            setError: function(result) {
+                p.reject(result);
+            }
+        };
+        p.promise = new Promise(function(resolve, reject) {
+            p.resolve = resolve;
+            p.reject = reject;
+        });
+
+        return p;
+    }
+
+    // Function to extend existing native Promise with timeout
+    function applyTimeoutToPromise(promise, timeout, errorMessage) {
+        var timeoutHandle = null;
+        var timeoutPromise = new Promise(function (resolve, reject) {
+            timeoutHandle = setTimeout(function () {
+                reject({ "error": errorMessage  });
+            }, timeout);
+        });
+
+        return Promise.race([promise, timeoutPromise]).finally(function () {
+            clearTimeout(timeoutHandle);
+        });
+    }
+
+    function setupCheckLoginIframe() {
+        var promise = createPromise();
+
+        if (!loginIframe.enable) {
+            promise.setSuccess();
+            return promise.promise;
+        }
+
+        if (loginIframe.iframe) {
+            promise.setSuccess();
+            return promise.promise;
+        }
+
+        var iframe = document.createElement('iframe');
+        loginIframe.iframe = iframe;
+
+        iframe.onload = function() {
+            var authUrl = kc.endpoints.authorize();
+            if (authUrl.charAt(0) === '/') {
+                loginIframe.iframeOrigin = getOrigin();
+            } else {
+                loginIframe.iframeOrigin = authUrl.substring(0, authUrl.indexOf('/', 8));
+            }
+            promise.setSuccess();
+        };
+
+        var src = kc.endpoints.checkSessionIframe();
+        iframe.setAttribute('src', src );
+        iframe.setAttribute('sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin');
+        iframe.setAttribute('title', 'keycloak-session-iframe' );
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        var messageCallback = function(event) {
+            if ((event.origin !== loginIframe.iframeOrigin) || (loginIframe.iframe.contentWindow !== event.source)) {
+                return;
+            }
+
+            if (!(event.data == 'unchanged' || event.data == 'changed' || event.data == 'error')) {
+                return;
+            }
+
+
+            if (event.data != 'unchanged') {
+                kc.clearToken();
+            }
+
+            var callbacks = loginIframe.callbackList.splice(0, loginIframe.callbackList.length);
+
+            for (var i = callbacks.length - 1; i >= 0; --i) {
+                var promise = callbacks[i];
+                if (event.data == 'error') {
+                    promise.setError();
+                } else {
+                    promise.setSuccess(event.data == 'unchanged');
+                }
+            }
+        };
+
+        window.addEventListener('message', messageCallback, false);
+
+        return promise.promise;
+    }
+
+    function scheduleCheckIframe() {
+        if (loginIframe.enable) {
+            if (kc.token) {
+                setTimeout(function() {
+                    checkLoginIframe().then(function(unchanged) {
+                        if (unchanged) {
+                            scheduleCheckIframe();
+                        }
+                    });
+                }, loginIframe.interval * 1000);
+            }
+        }
+    }
+
+    function checkLoginIframe() {
+        var promise = createPromise();
+
+        if (loginIframe.iframe && loginIframe.iframeOrigin ) {
+            var msg = kc.clientId + ' ' + (kc.sessionId ? kc.sessionId : '');
+            loginIframe.callbackList.push(promise);
+            var origin = loginIframe.iframeOrigin;
+            if (loginIframe.callbackList.length == 1) {
+                loginIframe.iframe.contentWindow.postMessage(msg, origin);
+            }
+        } else {
+            promise.setSuccess();
+        }
+
+        return promise.promise;
+    }
+
+    function check3pCookiesSupported() {
+        var promise = createPromise();
+
+        if (loginIframe.enable || kc.silentCheckSsoRedirectUri) {
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', kc.endpoints.thirdPartyCookiesIframe());
+            iframe.setAttribute('sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin');
+            iframe.setAttribute('title', 'keycloak-3p-check-iframe' );
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+
+            var messageCallback = function(event) {
+                if (iframe.contentWindow !== event.source) {
+                    return;
+                }
+
+                if (event.data !== "supported" && event.data !== "unsupported") {
+                    return;
+                } else if (event.data === "unsupported") {
+                    logWarn(
+                        "[KEYCLOAK] Your browser is blocking access to 3rd-party cookies, this means:\n\n" +
+                        " - It is not possible to retrieve tokens without redirecting to the Keycloak server (a.k.a. no support for silent authentication).\n" +
+                        " - It is not possible to automatically detect changes to the session status (such as the user logging out in another tab).\n\n" +
+                        "For more information see: https://www.keycloak.org/docs/latest/securing_apps/#_modern_browsers"
+                    );
+
+                    loginIframe.enable = false;
+                    if (kc.silentCheckSsoFallback) {
+                        kc.silentCheckSsoRedirectUri = false;
+                    }
+                }
+
+                document.body.removeChild(iframe);
+                window.removeEventListener("message", messageCallback);
+                promise.setSuccess();
+            };
+
+            window.addEventListener('message', messageCallback, false);
+        } else {
+            promise.setSuccess();
+        }
+
+        return applyTimeoutToPromise(promise.promise, kc.messageReceiveTimeout, "Timeout when waiting for 3rd party check iframe message.");
+    }
+
+    function loadAdapter(type) {
+        if (!type || type == 'default') {
+            return {
+                login: function(options) {
+                    window.location.assign(kc.createLoginUrl(options));
+                    return createPromise().promise;
+                },
+
+                logout: async function(options) {
+
+                    const logoutMethod = options?.logoutMethod ?? kc.logoutMethod;
+                    if (logoutMethod === "GET") {
+                        window.location.replace(kc.createLogoutUrl(options));
+                        return;
+                    }
+
+                    const logoutUrl = kc.createLogoutUrl(options);
+                    const response = await fetch(logoutUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: new URLSearchParams({
+                            id_token_hint: kc.idToken,
+                            client_id: kc.clientId,
+                            post_logout_redirect_uri: adapter.redirectUri(options, false)
+                        })
+                    });
+
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                        return;
+                    }
+
+                    if (response.ok) {
+                        window.location.reload();
+                        return;
+                    }
+
+                    throw new Error("Logout failed, request returned an error code.");
+                },
+
+                register: function(options) {
+                    window.location.assign(kc.createRegisterUrl(options));
+                    return createPromise().promise;
+                },
+
+                accountManagement : function() {
+                    var accountUrl = kc.createAccountUrl();
+                    if (typeof accountUrl !== 'undefined') {
+                        window.location.href = accountUrl;
+                    } else {
+                        throw "Not supported by the OIDC server";
+                    }
+                    return createPromise().promise;
+                },
+
+                redirectUri: function(options, encodeHash) {
+
+                    if (options && options.redirectUri) {
+                        return options.redirectUri;
+                    } else if (kc.redirectUri) {
+                        return kc.redirectUri;
+                    } else {
+                        return location.href;
+                    }
+                }
+            };
+        }
+
+        if (type == 'cordova') {
+            loginIframe.enable = false;
+            var cordovaOpenWindowWrapper = function(loginUrl, target, options) {
+                if (window.cordova && window.cordova.InAppBrowser) {
+                    // Use inappbrowser for IOS and Android if available
+                    return window.cordova.InAppBrowser.open(loginUrl, target, options);
+                } else {
+                    return window.open(loginUrl, target, options);
+                }
+            };
+
+            var shallowCloneCordovaOptions = function (userOptions) {
+                if (userOptions && userOptions.cordovaOptions) {
+                    return Object.keys(userOptions.cordovaOptions).reduce(function (options, optionName) {
+                        options[optionName] = userOptions.cordovaOptions[optionName];
+                        return options;
+                    }, {});
+                } else {
+                    return {};
+                }
+            };
+
+            var formatCordovaOptions = function (cordovaOptions) {
+                return Object.keys(cordovaOptions).reduce(function (options, optionName) {
+                    options.push(optionName+"="+cordovaOptions[optionName]);
+                    return options;
+                }, []).join(",");
+            };
+
+            var createCordovaOptions = function (userOptions) {
+                var cordovaOptions = shallowCloneCordovaOptions(userOptions);
+                cordovaOptions.location = 'no';
+                if (userOptions && userOptions.prompt == 'none') {
+                    cordovaOptions.hidden = 'yes';
+                }
+                return formatCordovaOptions(cordovaOptions);
+            };
+
+            var getCordovaRedirectUri = function() {
+                return kc.redirectUri || 'http://localhost';
+            };
+            
+            return {
+                login: function(options) {
+                    var promise = createPromise();
+
+                    var cordovaOptions = createCordovaOptions(options);
+                    var loginUrl = kc.createLoginUrl(options);
+                    var ref = cordovaOpenWindowWrapper(loginUrl, '_blank', cordovaOptions);
+                    var completed = false;
+
+                    var closed = false;
+                    var closeBrowser = function() {
+                        closed = true;
+                        ref.close();
+                    };
+
+                    ref.addEventListener('loadstart', function(event) {
+                        if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                            var callback = parseCallback(event.url);
+                            processCallback(callback, promise);
+                            closeBrowser();
+                            completed = true;
+                        }
+                    });
+
+                    ref.addEventListener('loaderror', function(event) {
+                        if (!completed) {
+                            if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                                var callback = parseCallback(event.url);
+                                processCallback(callback, promise);
+                                closeBrowser();
+                                completed = true;
+                            } else {
+                                promise.setError();
+                                closeBrowser();
+                            }
+                        }
+                    });
+
+                    ref.addEventListener('exit', function(event) {
+                        if (!closed) {
+                            promise.setError({
+                                reason: "closed_by_user"
+                            });
+                        }
+                    });
+
+                    return promise.promise;
+                },
+
+                logout: function(options) {
+                    var promise = createPromise();
+
+                    var logoutUrl = kc.createLogoutUrl(options);
+                    var ref = cordovaOpenWindowWrapper(logoutUrl, '_blank', 'location=no,hidden=yes,clearcache=yes');
+
+                    var error;
+
+                    ref.addEventListener('loadstart', function(event) {
+                        if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                            ref.close();
+                        }
+                    });
+
+                    ref.addEventListener('loaderror', function(event) {
+                        if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                            ref.close();
+                        } else {
+                            error = true;
+                            ref.close();
+                        }
+                    });
+
+                    ref.addEventListener('exit', function(event) {
+                        if (error) {
+                            promise.setError();
+                        } else {
+                            kc.clearToken();
+                            promise.setSuccess();
+                        }
+                    });
+
+                    return promise.promise;
+                },
+
+                register : function(options) {
+                    var promise = createPromise();
+                    var registerUrl = kc.createRegisterUrl();
+                    var cordovaOptions = createCordovaOptions(options);
+                    var ref = cordovaOpenWindowWrapper(registerUrl, '_blank', cordovaOptions);
+                    ref.addEventListener('loadstart', function(event) {
+                        if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                            ref.close();
+                            var oauth = parseCallback(event.url);
+                            processCallback(oauth, promise);
+                        }
+                    });
+                    return promise.promise;
+                },
+
+                accountManagement : function() {
+                    var accountUrl = kc.createAccountUrl();
+                    if (typeof accountUrl !== 'undefined') {
+                        var ref = cordovaOpenWindowWrapper(accountUrl, '_blank', 'location=no');
+                        ref.addEventListener('loadstart', function(event) {
+                            if (event.url.indexOf(getCordovaRedirectUri()) == 0) {
+                                ref.close();
+                            }
+                        });
+                    } else {
+                        throw "Not supported by the OIDC server";
+                    }
+                },
+
+                redirectUri: function(options) {
+                    return getCordovaRedirectUri();
+                }
+            }
+        }
+
+        if (type == 'cordova-native') {
+            loginIframe.enable = false;
+
+            return {
+                login: function(options) {
+                    var promise = createPromise();
+                    var loginUrl = kc.createLoginUrl(options);
+
+                    universalLinks.subscribe('keycloak', function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        var oauth = parseCallback(event.url);
+                        processCallback(oauth, promise);
+                    });
+
+                    window.cordova.plugins.browsertab.openUrl(loginUrl);
+                    return promise.promise;
+                },
+
+                logout: function(options) {
+                    var promise = createPromise();
+                    var logoutUrl = kc.createLogoutUrl(options);
+
+                    universalLinks.subscribe('keycloak', function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        kc.clearToken();
+                        promise.setSuccess();
+                    });
+
+                    window.cordova.plugins.browsertab.openUrl(logoutUrl);
+                    return promise.promise;
+                },
+
+                register : function(options) {
+                    var promise = createPromise();
+                    var registerUrl = kc.createRegisterUrl(options);
+                    universalLinks.subscribe('keycloak' , function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        var oauth = parseCallback(event.url);
+                        processCallback(oauth, promise);
+                    });
+                    window.cordova.plugins.browsertab.openUrl(registerUrl);
+                    return promise.promise;
+
+                },
+
+                accountManagement : function() {
+                    var accountUrl = kc.createAccountUrl();
+                    if (typeof accountUrl !== 'undefined') {
+                        window.cordova.plugins.browsertab.openUrl(accountUrl);
+                    } else {
+                        throw "Not supported by the OIDC server";
+                    }
+                },
+
+                redirectUri: function(options) {
+                    if (options && options.redirectUri) {
+                        return options.redirectUri;
+                    } else if (kc.redirectUri) {
+                        return kc.redirectUri;
+                    } else {
+                        return "http://localhost";
+                    }
+                }
+            }
+        }
+
+        throw 'invalid adapter type: ' + type;
+    }
+
+    var LocalStorage = function() {
+        if (!(this instanceof LocalStorage)) {
+            return new LocalStorage();
+        }
+
+        localStorage.setItem('kc-test', 'test');
+        localStorage.removeItem('kc-test');
+
+        var cs = this;
+
+        function clearExpired() {
+            var time = new Date().getTime();
+            for (var i = 0; i < localStorage.length; i++)  {
+                var key = localStorage.key(i);
+                if (key && key.indexOf('kc-callback-') == 0) {
+                    var value = localStorage.getItem(key);
+                    if (value) {
+                        try {
+                            var expires = JSON.parse(value).expires;
+                            if (!expires || expires < time) {
+                                localStorage.removeItem(key);
+                            }
+                        } catch (err) {
+                            localStorage.removeItem(key);
+                        }
+                    }
+                }
+            }
+        }
+
+        cs.get = function(state) {
+            if (!state) {
+                return;
+            }
+
+            var key = 'kc-callback-' + state;
+            var value = localStorage.getItem(key);
+            if (value) {
+                localStorage.removeItem(key);
+                value = JSON.parse(value);
+            }
+
+            clearExpired();
+            return value;
+        };
+
+        cs.add = function(state) {
+            clearExpired();
+
+            var key = 'kc-callback-' + state.state;
+            state.expires = new Date().getTime() + (60 * 60 * 1000);
+            localStorage.setItem(key, JSON.stringify(state));
+        };
+    };
+
+    var CookieStorage = function() {
+        if (!(this instanceof CookieStorage)) {
+            return new CookieStorage();
+        }
+
+        var cs = this;
+
+        cs.get = function(state) {
+            if (!state) {
+                return;
+            }
+
+            var value = getCookie('kc-callback-' + state);
+            setCookie('kc-callback-' + state, '', cookieExpiration(-100));
+            if (value) {
+                return JSON.parse(value);
+            }
+        };
+
+        cs.add = function(state) {
+            setCookie('kc-callback-' + state.state, JSON.stringify(state), cookieExpiration(60));
+        };
+
+        cs.removeItem = function(key) {
+            setCookie(key, '', cookieExpiration(-100));
+        };
+
+        var cookieExpiration = function (minutes) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() + (minutes*60*1000));
+            return exp;
+        };
+
+        var getCookie = function (key) {
+            var name = key + '=';
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return '';
+        };
+
+        var setCookie = function (key, value, expirationDate) {
+            var cookie = key + '=' + value + '; '
+                + 'expires=' + expirationDate.toUTCString() + '; ';
+            document.cookie = cookie;
+        };
+    };
+
+    function createCallbackStorage() {
+        try {
+            return new LocalStorage();
+        } catch (err) {
+        }
+
+        return new CookieStorage();
+    }
+
+    function createLogger(fn) {
+        return function() {
+            if (kc.enableLogging) {
+                fn.apply(console, Array.prototype.slice.call(arguments));
+            }
+        };
+    }
+}
+
+// See: https://developer.mozilla.org/en-US/docs/Glossary/Base64#the_unicode_problem
+function bytesToBase64(bytes) {
+    const binString = String.fromCodePoint(...bytes);
+    return btoa(binString);
+}
+
+
+
+
+/***/ }),
+
 /***/ "./constants/responseStatus.json":
 /***/ ((module) => {
 
@@ -63553,6 +66454,11 @@ module.exports = /*#__PURE__*/JSON.parse('{"404":"/404","INDEX":"/","HOME":"/hom
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/amd options */
+/******/ 	(() => {
+/******/ 		__webpack_require__.amdO = {};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -63839,12 +66745,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/react-dom/client.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/react-i18next/dist/es/I18nextProvider.js");
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/react-i18next/dist/es/I18nextProvider.js");
 /* harmony import */ var _core_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./core/root.jsx");
 /* harmony import */ var _redux_store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./redux/store/store.js");
 /* harmony import */ var _core_history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./core/history.js");
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./i18n/index.js");
-/* harmony import */ var _styles_root_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./styles/root.scss");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
+/* harmony import */ var _keycloak__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./keycloak/index.js");
+/* harmony import */ var _styles_root_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./styles/root.scss");
 
 
 
@@ -63853,14 +66761,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById("react")).render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_i18next__WEBPACK_IMPORTED_MODULE_7__.I18nextProvider, {
+
+
+react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('react')).render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_i18next__WEBPACK_IMPORTED_MODULE_9__.I18nextProvider, {
   i18n: _i18n__WEBPACK_IMPORTED_MODULE_5__["default"]
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_react_keycloak_web__WEBPACK_IMPORTED_MODULE_6__.ReactKeycloakProvider, {
+  authClient: _keycloak__WEBPACK_IMPORTED_MODULE_7__["default"],
+  initOptions: _keycloak__WEBPACK_IMPORTED_MODULE_7__.initOptions
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
   fallback: "loading"
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_core_root__WEBPACK_IMPORTED_MODULE_2__["default"], {
   store: _redux_store_store__WEBPACK_IMPORTED_MODULE_3__["default"],
   history: _core_history__WEBPACK_IMPORTED_MODULE_4__["default"]
-})))));
+}))))));
 })();
 
 /******/ })()

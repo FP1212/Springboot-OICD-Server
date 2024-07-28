@@ -5,14 +5,19 @@ import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 're
 
 import 'leaflet/dist/leaflet.css';
 import useWebSocket from '../hooks/useWebSocket';
+import { useKeycloak } from '@react-keycloak/web';
 
 const TrackMap = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
   const [messageData, setMessageData] = useState({});
+  const { keycloak } = useKeycloak();
+
+  const traccarWSUrl = new URL('ws://localhost:8082/api/socket');
+  traccarWSUrl.searchParams.append('token', keycloak.token);
 
   const { webSocket, subscribeToEvent, unsubscribeFromEvent } = useWebSocket(
-    'ws://localhost:8082/api/socket',
+    traccarWSUrl.toString(),
   );
 
   useEffect(() => {

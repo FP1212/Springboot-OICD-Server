@@ -6,14 +6,14 @@ import store from 'Redux/store/store';
 import history from 'Core/history';
 import i18n from 'I18n';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
-import keycloak from './Keycloak';
+import keycloak, { initOptions } from './keycloak';
 
 import 'Styles/root.scss';
 
 ReactDOM.createRoot(document.getElementById('react')).render(
   <React.Fragment>
     <I18nextProvider i18n={i18n}>
-      <ReactKeycloakProvider authClient={keycloak}>
+      <ReactKeycloakProvider authClient={keycloak} initOptions={initOptions}>
         <Suspense fallback="loading">
           <Root store={store} history={history}></Root>
         </Suspense>

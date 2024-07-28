@@ -14,12 +14,14 @@ import DrawerHeader from './drawerHeader';
 import { signout } from '../../services/AuthService';
 import { Logout } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
+import { useKeycloak } from '@react-keycloak/web';
 
 const drawerWidth = 240;
 
 const CustomDrawer = ({ isOpen, onClose }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const { keycloak } = useKeycloak();
 
   return (
     <Drawer
@@ -65,7 +67,13 @@ const CustomDrawer = ({ isOpen, onClose }) => {
       <Divider />
       <List>
         <ListItem key={'Log Out'} disablePadding>
-          <ListItemButton onClick={() => dispatch(signout())}>
+          <ListItemButton
+            onClick={() =>
+              keycloak.logout({
+                redirectUri: 'http://localhost:8081',
+              })
+            }
+          >
             <ListItemIcon>
               <Logout />
             </ListItemIcon>

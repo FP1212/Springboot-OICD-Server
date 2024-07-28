@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/keycloak/keycloak.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/layers-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/layers.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/marker-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/traccar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/index.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/silent-check-sso.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Iotwatch-Autostart-dev.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Iotwatch-Autostart-dev.run.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomDrawer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/drawer/drawer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/drawer/drawer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/hooks/useWebSocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/hooks/useWebSocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/keycloak/keycloak.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/keycloak/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/pages/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/trackMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/DashboardChunk.index_bundle.js.map" afterDir="false" />
@@ -24,7 +26,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/LoginChunk.index_bundle.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/index_bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_material_TextField_TextField_js-node_modules_clsx_dist_clsx_m_js-nod-fa7f48.index_bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/vendors-node_modules_mui_icons-material_DashboardCustomize_js-node_modules_mui_material_CardC-642f0a.index_bundle.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +134,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/traccar",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -143,22 +146,30 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsDialog.application.dockerConsole",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
-    "ts.external.directory.path": "C:\\Users\\Developer\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate 2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js" />
       <recent name="C:\Users\Developer\Documents\Personal\IotWatch\src\main\resources\i18n" />
       <recent name="C:\Users\Developer\Documents\Personal\IotWatch\src\main\js\i18n" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\styles" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\templates" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\constants" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Developer\Documents\Personal\IotWatch\src\main\resources\static" />
@@ -185,7 +196,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.IotWatch [buildApp]">
+  <component name="RunManager" selected="Compound.Iotwatch-Autostart-dev">
     <configuration name="iotwatch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -266,6 +277,39 @@
     <configuration name="IotwatchApplication JavaScript" type="JavascriptDebugType" uri="http://localhost:8080" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
+    <configuration name="keycloak" type="ShConfigurationType" activateToolWindowBeforeRun="false">
+      <option name="SCRIPT_TEXT" value="./bin/kc.bat start-dev --db=mysql --http-port=8083 --verbose" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/../keycloak-25.0.1" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs>
+        <env name="KC_DB_PASSWORD" value=":u0=0TI^3@lI" />
+        <env name="KC_DB_USERNAME" value="dev" />
+      </envs>
+      <method v="2" />
+    </configuration>
+    <configuration name="traccar" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="java -jar ./target/tracker-server.jar" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/../traccar2" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -329,6 +373,8 @@
       <item itemvalue="Gradle.IotWatch [devServer]" />
       <item itemvalue="JavaScript Debug.IotwatchApplication JavaScript" />
       <item itemvalue="npm.devserver" />
+      <item itemvalue="Shell Script.keycloak" />
+      <item itemvalue="Shell Script.traccar" />
       <item itemvalue="Spring Boot.IotwatchApplication" />
     </list>
     <recent_temporary>
@@ -422,7 +468,12 @@
       <workItem from="1720499916441" duration="9110000" />
       <workItem from="1720544163326" duration="9406000" />
       <workItem from="1720571417188" duration="8832000" />
-      <workItem from="1720640212799" duration="6464000" />
+      <workItem from="1720640212799" duration="10338000" />
+      <workItem from="1720666928741" duration="1415000" />
+      <workItem from="1721329627009" duration="5188000" />
+      <workItem from="1721356638911" duration="1874000" />
+      <workItem from="1722128592366" duration="1888000" />
+      <workItem from="1722130495900" duration="10474000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />
@@ -482,6 +533,11 @@
           <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/6.0.11/a7b10f3d3c1492bfc4e6d7c966cd2e21f4d441f5/spring-context-6.0.11.jar!/org/springframework/context/support/AbstractMessageSource.class</url>
           <line>39</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/iotwatch/auth/handler/AuthEntryPointJwt.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,28 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Redirect, Route } from "react-router-dom";
-import ROUTES from "Constants/routes";
-import CustomAppBar from "./default/CustomAppBar";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Redirect, Route } from 'react-router-dom';
+import ROUTES from 'Constants/routes';
+import CustomAppBar from './default/CustomAppBar';
+import { useKeycloak } from '@react-keycloak/web';
+import LoadingBackdrop from './default/loadingBackdrop';
 
-const PrivateRoute = ({
-  path,
-  auth: { isAuthenticated = false },
-  history,
-  children,
-}) => {
+const PrivateRoute = ({ path, history, children }) => {
+  const { keycloak, initialized } = useKeycloak();
+  const [isLoggedIn, setIsLoggedIn] = useState(keycloak.authenticated);
+
+  useEffect(() => {
+    if (initialized) {
+      setIsLoggedIn(keycloak.authenticated);
+    }
+  }, [initialized]);
+
   return (
     <Route
       exact
       path={path}
       render={(routeProps) =>
-        isAuthenticated ? (
+        isLoggedIn ? (
           <React.Fragment>
-            <CustomAppBar>
-              {React.cloneElement(children, { didComplete: routeProps })}
-            </CustomAppBar>
+            <CustomAppBar>{React.cloneElement(children, { didComplete: routeProps })}</CustomAppBar>
           </React.Fragment>
         ) : (
-          <Redirect to={ROUTES.SIGNIN} />
+          <LoadingBackdrop open={!isLoggedIn} />
         )
       }
       history={history}
@@ -32,7 +36,6 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   path: PropTypes.string.isRequired,
-  auth: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
 };

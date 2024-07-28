@@ -19,6 +19,8 @@ import GlobalAlert from '../components/default/globalAlert';
 import LoadingBackdrop from '../components/default/loadingBackdrop';
 import CustomDrawer from '../components/default/CustomDrawer';
 import CustomAppBar from '../components/default/CustomAppBar';
+import { useKeycloak } from '@react-keycloak/web';
+import TrackMap from '../pages/trackMap';
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home'));
@@ -31,9 +33,9 @@ const Dashboard = loadable(
   () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/dashboard'),
 );
 
-const TrackMap = loadable(
-  () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/trackMap'),
-);
+// const TrackMap = loadable(
+//   () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/trackMap'),
+// );
 
 const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pages/error'));
 
@@ -63,6 +65,7 @@ const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
   const loginState = useSelector(selectLogin);
+  const { keycloak, initialized } = useKeycloak();
 
   const { open: openAlert, severity, message } = useSelector(selectGlobalAlert);
 
@@ -81,26 +84,10 @@ const Routes = (props) => {
       <CssBaseline />
       <GlobalAlert openAlert={openAlert} severity={severity} message={message} />
       <Switch>
-        <Route exact path={ROUTES.INDEX} component={Home} history={history} />
-        <Route exact path={ROUTES.HOME} component={Home} history={history} />
-        <Route exact path={ROUTES.SIGNUP} component={SignUp} history={history} />
-        <Route
-          exact
-          path={ROUTES.SIGNIN}
-          render={(routeProps) =>
-            loginState.authenticate ? <Redirect to={ROUTES.DASHBOARD} /> : <Login {...routeProps} />
-          }
-          history={history}
-        />
-        <PrivateRoute
-          path={ROUTES.DASHBOARD}
-          auth={{ isAuthenticated: loginState?.authenticate || false }}
-          history={history}
-        >
+        <PrivateRoute path={[ROUTES.INDEX, ROUTES.HOME]} history={history}>
           <TrackMap />
         </PrivateRoute>
-        <Route path={ROUTES['404']} component={Error} />
-        <Route path={'*'} component={Error} />
+        <Route path={[ROUTES['404'], '*']} component={Error} />
       </Switch>
     </ThemeProvider>
   );

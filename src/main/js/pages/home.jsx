@@ -4,82 +4,13 @@ import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import ROUTES from '../constants/routes.json';
 import '../styles/login.module.scss';
+import { useKeycloak } from '@react-keycloak/web';
 
 const Home = () => {
   const history = useHistory();
   const [t] = useTranslation();
-
-  return (
-    <div className="home-container">
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="h6" className="app-title">
-            IotWatch
-          </Typography>
-          <Button
-            variant="outlined"
-            color="inherit"
-            onClick={() => history.push(ROUTES.SIGNUP)}
-            sx={{
-              width: 'auto',
-              textTransform: 'capitalize',
-              fontSize: 'clamp(0.5rem,1vw,1rem)',
-              fontWeight: '400',
-            }}
-          >
-            {t('common.sign.up')}
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => history.push(ROUTES.SIGNIN)}
-            sx={{
-              width: 'auto',
-              textTransform: 'capitalize',
-              fontSize: 'clamp(0.5rem,1vw,1rem)',
-              fontWeight: '400',
-            }}
-          >
-            {t('common.sign.in')}
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <section className="banner">
-        <Container>
-          <Typography variant="h2" className="banner-title">
-            Bienvenido a IotWatch
-          </Typography>
-          <Button
-            color="inherit"
-            onClick={() => history.push(ROUTES.ERROR)}
-            sx={{
-              width: 'auto',
-              textTransform: 'capitalize',
-              fontSize: 'clamp(0.5rem,1vw,1rem)',
-              fontWeight: '400',
-            }}
-          >
-            Error
-          </Button>
-        </Container>
-      </section>
-      <section className="features">
-        <Container>
-          <Typography variant="h4" className="features-title">
-            Características destacadas
-          </Typography>
-          {/* Agrega aquí información sobre las características de la aplicación */}
-        </Container>
-      </section>
-      <section className="contact">
-        <Container>
-          <Typography variant="h4" className="contact-title">
-            Contáctenos
-          </Typography>
-          {/* Agrega aquí información de contacto */}
-        </Container>
-      </section>
-    </div>
-  );
+  const { keycloak, initialized } = useKeycloak();
+  return <div className="home-container">Home</div>;
 };
 
 export default Home;

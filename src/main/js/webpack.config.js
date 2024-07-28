@@ -19,6 +19,7 @@ module.exports = (env, argv) => {
   const webpackDevServerPort = 8081;
   const serverPort = 8080;
   const wsTraccarserverPort = 8082;
+  const keycloakServerPort = 8083;
 
   return {
     entry: './app.jsx',
@@ -66,7 +67,7 @@ module.exports = (env, argv) => {
       new Dotenv(),
       new NodePolyfillPlugin(),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../resources/templates') + '/index.ejs',
+        template: path.resolve(__dirname) + '/index.ejs',
         filename: staticPath + '/index.html',
         title: 'IotWatch',
         inject: true,
@@ -81,6 +82,7 @@ module.exports = (env, argv) => {
           `ws://localhost:${wsTraccarserverPort}`,
           `http://localhost:${serverPort}`,
           `http://localhost:${wsTraccarserverPort}`,
+          `http://localhost:${keycloakServerPort}`,
         ],
         'worker-src': ["'self'", 'blob:'],
       }),
@@ -179,6 +181,14 @@ module.exports = (env, argv) => {
           generator: {
             filename: 'locales/[name][ext]',
           },
+        },
+        {
+          test: /\.html$/,
+          use: [
+            {
+              loader: 'html-loader',
+            },
+          ],
         },
       ],
     },

@@ -39,15 +39,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/@mui/material/AppBar/AppBar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/@mui/material/Toolbar/Toolbar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./node_modules/@mui/material/Typography/Typography.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./node_modules/@mui/material/Container/Container.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/react-i18next/dist/es/useTranslation.js");
 /* harmony import */ var _constants_routes_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./constants/routes.json");
 /* harmony import */ var _styles_login_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./styles/login.module.scss");
+/* harmony import */ var _react_keycloak_web__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/@react-keycloak/web/lib/index.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -60,68 +56,18 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 var Home = function Home() {
-  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
-  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_4__.useTranslation)(),
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
+  var _useTranslation = (0,react_i18next__WEBPACK_IMPORTED_MODULE_5__.useTranslation)(),
     _useTranslation2 = _slicedToArray(_useTranslation, 1),
     t = _useTranslation2[0];
+  var _useKeycloak = (0,_react_keycloak_web__WEBPACK_IMPORTED_MODULE_3__.useKeycloak)(),
+    keycloak = _useKeycloak.keycloak,
+    initialized = _useKeycloak.initialized;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    position: "sticky"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    variant: "h6",
-    className: "app-title"
-  }, "IotWatch"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    variant: "outlined",
-    color: "inherit",
-    onClick: function onClick() {
-      return history.push(_constants_routes_json__WEBPACK_IMPORTED_MODULE_1__.SIGNUP);
-    },
-    sx: {
-      width: 'auto',
-      textTransform: 'capitalize',
-      fontSize: 'clamp(0.5rem,1vw,1rem)',
-      fontWeight: '400'
-    }
-  }, t('common.sign.up')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    color: "inherit",
-    onClick: function onClick() {
-      return history.push(_constants_routes_json__WEBPACK_IMPORTED_MODULE_1__.SIGNIN);
-    },
-    sx: {
-      width: 'auto',
-      textTransform: 'capitalize',
-      fontSize: 'clamp(0.5rem,1vw,1rem)',
-      fontWeight: '400'
-    }
-  }, t('common.sign.in')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "banner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    variant: "h2",
-    className: "banner-title"
-  }, "Bienvenido a IotWatch"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    color: "inherit",
-    onClick: function onClick() {
-      return history.push(_constants_routes_json__WEBPACK_IMPORTED_MODULE_1__.ERROR);
-    },
-    sx: {
-      width: 'auto',
-      textTransform: 'capitalize',
-      fontSize: 'clamp(0.5rem,1vw,1rem)',
-      fontWeight: '400'
-    }
-  }, "Error"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "features"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    variant: "h4",
-    className: "features-title"
-  }, "Caracter\xEDsticas destacadas"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "contact"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    variant: "h4",
-    className: "contact-title"
-  }, "Cont\xE1ctenos"))));
+  }, "Home");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 

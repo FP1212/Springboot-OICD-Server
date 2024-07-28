@@ -1,48 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import ReconnectingWebSocket from 'reconnecting-webSocket';
-import axios from 'axios';
 
 const useWebSocket = (serverUrl) => {
-  const [webSocket, setWebSocket] = useState(null);
+  const webSocketRef = useRef(null);
 
   useEffect(() => {
-    const params = new URLSearchParams();
-    params.append('email', 'fept1298@gmail.com');
-    params.append('password', '10514Faee2*');
-
-    axios
-      .post('http://localhost:8082/api/session', params, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      })
-      .then(() => {
-        const webSocketInstance = new ReconnectingWebSocket(serverUrl);
-        setWebSocket(webSocketInstance);
-      })
-      .catch((error) => {
+    if (webSocketRef.current === null || webSocketRef.current.url !== serverUrl) {
+      if (webSocketRef.current) {
+        webSocketRef.current.close(); // Cierra la instancia anterior si existe
+      }
+      try {
+        webSocketRef.current = new ReconnectingWebSocket(serverUrl);
+      } catch (error) {
         console.error(error);
-      });
+      }
+    }
 
     return () => {
-      webSocket.close();
+      if (webSocketRef.current) {
+        webSocketRef.current.close();
+      }
     };
   }, [serverUrl]);
 
   const subscribeToEvent = (eventName, callback) => {
-    if (webSocket) {
-      webSocket.addEventListener(eventName, callback);
+    if (webSocketRef.current) {
+      webSocketRef.current.addEventListener(eventName, callback);
     }
   };
 
   const unsubscribeFromEvent = (eventName) => {
-    if (webSocket) {
-      webSocket.removeEventListener(eventName);
+    if (webSocketRef.current) {
+      webSocketRef.current.removeEventListener(eventName);
     }
   };
 
   return {
-    webSocket,
+    webSocket: webSocketRef.current,
     subscribeToEvent,
     unsubscribeFromEvent,
   };
