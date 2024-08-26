@@ -8,6 +8,7 @@ const keycloak = new Keycloak({
 
 export const initOptions = {
   onLoad: 'login-required',
+  autoRefreshToken: true,
 };
 
 export default keycloak;

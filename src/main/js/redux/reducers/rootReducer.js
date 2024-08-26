@@ -1,17 +1,18 @@
-import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router";
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 //import dashboardReducer from "Redux/components/dashboard/dashboardSlice";
-import globalAlertReducer from "Redux/components/globalAlert/globalAlert";
-import loginReducer from "Redux/components/login/loginSlice";
-import navReducer from "Redux/components/nav/navSlice";
-import statusReducer from "Redux/components/status/statusSlice";
-import drawerReducer from "Redux/components/drawer/drawerSlice";
-import darkReducer from "Redux/components/dark/darkSlice";
-import history from "Core/history";
+import globalAlertReducer from 'Redux/components/globalAlert/globalAlert';
+import loginReducer from 'Redux/components/login/loginSlice';
+import navReducer from 'Redux/components/nav/navSlice';
+import statusReducer from 'Redux/components/status/statusSlice';
+import drawerReducer from 'Redux/components/drawer/drawerSlice';
+import darkReducer from 'Redux/components/dark/darkSlice';
+import mapReducer from 'Redux/components/map/mapSlice';
+import history from 'Core/history';
 
 const initialState = {
   // Don't reset router here
-  nav: { openDrawer: false, anchor: "right", tabIndex: 0 },
+  nav: { openDrawer: false, anchor: 'right', tabIndex: 0 },
   status: {},
   drawer: {},
 };
@@ -25,6 +26,7 @@ const combinedReducers = combineReducers({
   drawer: drawerReducer,
   dark: darkReducer,
   globalAlert: globalAlertReducer,
+  map: mapReducer,
 });
 
 const rootReducer = (state, action) => {

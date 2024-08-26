@@ -21,6 +21,8 @@ import CustomDrawer from '../components/default/CustomDrawer';
 import CustomAppBar from '../components/default/CustomAppBar';
 import { useKeycloak } from '@react-keycloak/web';
 import TrackMap from '../pages/trackMap';
+import { setPositions } from '../redux/components/traccar/positions/positionsSlice';
+import { useWebSocket } from '../hooks/useWebSocket';
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home'));
@@ -78,6 +80,28 @@ const Routes = (props) => {
       }),
     [darkMode],
   );
+
+  const { webSocket, subscribeToEvent, unsubscribeFromEvent } = useWebSocket();
+
+  useEffect(() => {
+    if (!webSocket) return;
+
+    subscribeToEvent('message', async (response) => {
+      const data = JSON.parse(response.data);
+      const updatedPositions = {};
+      data.positions?.forEach((position) => (updatedPositions[position.deviceId] = position));
+      setPositions(updatedPositions);
+    });
+
+    subscribeToEvent('close', async (data) => {
+      console.log('WebSocket connection closed');
+    });
+
+    return () => {
+      unsubscribeFromEvent('message');
+      unsubscribeFromEvent('close');
+    };
+  }, [webSocket]);
 
   return (
     <ThemeProvider theme={darkTheme}>

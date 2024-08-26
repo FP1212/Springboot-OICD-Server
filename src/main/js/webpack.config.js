@@ -83,6 +83,7 @@ module.exports = (env, argv) => {
           `http://localhost:${serverPort}`,
           `http://localhost:${wsTraccarserverPort}`,
           `http://localhost:${keycloakServerPort}`,
+          'https://api.maptiler.com/',
         ],
         'worker-src': ["'self'", 'blob:'],
       }),
