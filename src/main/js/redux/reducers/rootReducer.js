@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-//import dashboardReducer from "Redux/components/dashboard/dashboardSlice";
 import globalAlertReducer from 'Redux/components/globalAlert/globalAlert';
 import loginReducer from 'Redux/components/login/loginSlice';
 import navReducer from 'Redux/components/nav/navSlice';
@@ -8,18 +7,13 @@ import statusReducer from 'Redux/components/status/statusSlice';
 import drawerReducer from 'Redux/components/drawer/drawerSlice';
 import darkReducer from 'Redux/components/dark/darkSlice';
 import mapReducer from 'Redux/components/map/mapSlice';
+import positionsReducer from 'Redux/components/traccar/positions/positionsSlice';
+import devicesReducer from 'Redux/components/traccar/devices/devicesSlice';
+import eventsReducer from 'Redux/components/traccar/events/eventsSlice';
 import history from 'Core/history';
-
-const initialState = {
-  // Don't reset router here
-  nav: { openDrawer: false, anchor: 'right', tabIndex: 0 },
-  status: {},
-  drawer: {},
-};
 
 const combinedReducers = combineReducers({
   router: connectRouter(history),
-  //dashboard: dashboardReducer,
   login: loginReducer,
   nav: navReducer,
   status: statusReducer,
@@ -27,6 +21,9 @@ const combinedReducers = combineReducers({
   dark: darkReducer,
   globalAlert: globalAlertReducer,
   map: mapReducer,
+  positions: positionsReducer,
+  devices: devicesReducer,
+  events: eventsReducer,
 });
 
 const rootReducer = (state, action) => {

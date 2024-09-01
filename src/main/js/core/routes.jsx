@@ -20,9 +20,8 @@ import LoadingBackdrop from '../components/default/loadingBackdrop';
 import CustomDrawer from '../components/default/CustomDrawer';
 import CustomAppBar from '../components/default/CustomAppBar';
 import { useKeycloak } from '@react-keycloak/web';
-import TrackMap from '../pages/trackMap';
-import { setPositions } from '../redux/components/traccar/positions/positionsSlice';
-import { useWebSocket } from '../hooks/useWebSocket';
+import Map from '../pages/map';
+import WebSocketHandler from '../components/handlers/WebSocketHandler';
 
 // Load bundles asynchronously so that the initial render happens faster
 const Home = loadable(() => import(/* webpackChunkName: "LoginChunk" */ '../pages/home'));
@@ -35,7 +34,7 @@ const Dashboard = loadable(
   () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/dashboard'),
 );
 
-// const TrackMap = loadable(
+// const Map = loadable(
 //   () => import(/* webpackChunkName: "DashboardChunk" */ '../pages/trackMap'),
 // );
 
@@ -63,6 +62,8 @@ const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pa
 //   )
 // );
 
+const serverUrl = `${process.env.TRACCAR_SOCKET_URL}`;
+
 const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
@@ -81,35 +82,14 @@ const Routes = (props) => {
     [darkMode],
   );
 
-  const { webSocket, subscribeToEvent, unsubscribeFromEvent } = useWebSocket();
-
-  useEffect(() => {
-    if (!webSocket) return;
-
-    subscribeToEvent('message', async (response) => {
-      const data = JSON.parse(response.data);
-      const updatedPositions = {};
-      data.positions?.forEach((position) => (updatedPositions[position.deviceId] = position));
-      setPositions(updatedPositions);
-    });
-
-    subscribeToEvent('close', async (data) => {
-      console.log('WebSocket connection closed');
-    });
-
-    return () => {
-      unsubscribeFromEvent('message');
-      unsubscribeFromEvent('close');
-    };
-  }, [webSocket]);
-
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <GlobalAlert openAlert={openAlert} severity={severity} message={message} />
+      <WebSocketHandler serverUrl={serverUrl} />
       <Switch>
         <PrivateRoute exact path={[ROUTES.INDEX, ROUTES.HOME]} history={history}>
-          <TrackMap />
+          <Map />
         </PrivateRoute>
         <Route path={'*'} component={Error} history={history} />
       </Switch>

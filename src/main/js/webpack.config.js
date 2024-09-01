@@ -73,7 +73,7 @@ module.exports = (env, argv) => {
         inject: true,
       }),
       new CspHtmlWebpackPlugin({
-        'script-src': "'self'",
+        'script-src': ["'self'", 'https://api.mapbox.com'],
         'style-src': "'unsafe-inline'",
         'connect-src': [
           "'self'",
@@ -84,12 +84,16 @@ module.exports = (env, argv) => {
           `http://localhost:${wsTraccarserverPort}`,
           `http://localhost:${keycloakServerPort}`,
           'https://api.maptiler.com/',
+          'https://api.mapbox.com/',
         ],
         'worker-src': ["'self'", 'blob:'],
       }),
     ].filter(Boolean),
     resolve: {
       modules: [path.resolve(__dirname, './'), 'node_modules'],
+      alias: {
+        'mapbox-gl': 'maplibre-gl',
+      },
     },
     module: {
       rules: [
