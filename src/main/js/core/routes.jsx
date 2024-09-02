@@ -62,8 +62,6 @@ const Error = loadable(() => import(/* webpackChunkName: "StatusChunk" */ '../pa
 //   )
 // );
 
-const serverUrl = `${process.env.TRACCAR_SOCKET_URL}`;
-
 const Routes = (props) => {
   const { history } = props;
   const darkMode = useSelector(selectDarkMode);
@@ -86,7 +84,6 @@ const Routes = (props) => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <GlobalAlert openAlert={openAlert} severity={severity} message={message} />
-      <WebSocketHandler serverUrl={serverUrl} />
       <Switch>
         <PrivateRoute exact path={[ROUTES.INDEX, ROUTES.HOME]} history={history}>
           <Map />

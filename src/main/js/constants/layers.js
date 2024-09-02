@@ -1,5 +1,13 @@
 export const traccarDeviceLayer = Object.freeze({
   id: 'traccarDeviceLayer',
-  type: 'circle',
-  paint: { 'circle-radius': 6, 'circle-color': '#B42222' },
+  type: 'symbol',
+  source: 'points',
+  layout: {
+    'icon-image': 'carSvg', // Usa un icono predefinido
+    'icon-size': 1.5,
+    'icon-allow-overlap': true,
+  },
+  paint: {
+    'icon-color': '#ff0000', // Color del icono
+  },
 });

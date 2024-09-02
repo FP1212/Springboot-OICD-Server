@@ -85,8 +85,10 @@ module.exports = (env, argv) => {
           `http://localhost:${keycloakServerPort}`,
           'https://api.maptiler.com/',
           'https://api.mapbox.com/',
+          'data:',
         ],
         'worker-src': ["'self'", 'blob:'],
+        'img-src': ["'self'", `http://localhost:${serverPort}`, 'data:'],
       }),
     ].filter(Boolean),
     resolve: {
@@ -169,17 +171,17 @@ module.exports = (env, argv) => {
         },
         // loads common image formats
         {
-          test: /\.(eot|woff|woff2|ttf|png|jpg|gif|stl)$/i,
+          test: /\.(eot|woff|woff2|ttf|png|jpg|gif|stl|svg)$/i,
           type: 'asset/resource',
           generator: {
             filename: 'images/[name][ext]',
           },
         },
         // loads svgr
-        {
-          test: /\.svg$/i,
-          use: ['@svgr/webpack'],
-        },
+        // {
+        //   test: /\.svg$/i,
+        //   use: ['@svgr/webpack'],
+        // },
         {
           test: /locales\/.*\.json$/,
           type: 'asset/resource',
