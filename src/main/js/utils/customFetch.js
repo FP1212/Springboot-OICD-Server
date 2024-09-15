@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from '../configuration/axios-config';
-import { useDispatch } from 'react-redux';
-import { show } from '../redux/components/globalAlert/globalAlert';
 import PropTypes from 'prop-types';
 
 /**
@@ -11,49 +9,31 @@ import PropTypes from 'prop-types';
  * @param body
  * @param headers
  * @param skip
+ * @param onSuccess
  * @param onError
  * @returns {(boolean|refresh)[]}
  */
-const useApi = ({
+const customFetch = ({
   url = '',
   method = 'GET',
   body = {},
   headers = {},
   skip = false,
+  onSuccess = () => {},
   onError = () => {},
 }) => {
-  const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState();
   const [refreshIndex, setRefreshIndex] = useState(0);
-  const dispatch = useDispatch();
 
   const refresh = () => {
     setRefreshIndex(refreshIndex + 1);
   };
 
   useEffect(() => {
-    if (error && !onError) {
-      dispatch(
-        show({
-          open: true,
-          showLoading: false,
-          severity: 'error',
-          message: error?.message,
-        }),
-      );
-    } else {
-      onError(error);
-    }
-  }, [error]);
-
-  useEffect(() => {
     let cancelled = false;
     if (skip) {
-      setData(null);
+      onSuccess({});
       setLoading(false);
-      setLoaded(false);
     } else {
       setLoading(true);
 
@@ -66,18 +46,13 @@ const useApi = ({
       })
         .then((response) => {
           if (!cancelled) {
-            setData(response.data);
+            onSuccess(response.data);
             setLoading(false);
-            setLoaded(true);
           }
         })
         .catch((error) => {
           setLoading(false);
-          if (error.response) {
-            setError(error.response.data);
-          } else {
-            setError(error.message);
-          }
+          onError(error);
         });
     }
     return () => {
@@ -85,16 +60,17 @@ const useApi = ({
     };
   }, [url, refreshIndex]);
 
-  return [data, loading, loaded, error, refresh, setData];
+  return [loading, refresh];
 };
 
-useApi.propTypes = {
+customFetch.propTypes = {
   url: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
   body: PropTypes.object,
   headers: PropTypes.object,
   skip: PropTypes.bool,
+  onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-export default useApi;
+export default customFetch;

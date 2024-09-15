@@ -6,6 +6,10 @@ const API_ROUTES = {
   SIGNOUT: `${process.env.REACT_APP_API_URL}/auth/signout`,
   REFRESH_TOKEN: `${process.env.REACT_APP_API_URL}/auth/refresh-token`,
   DASHBOARD: `${process.env.REACT_APP_API_URL}/dashboard`,
+  TRACCAR: {
+    SOCKET: `${process.env.TRACCAR_API_URL}/socket`,
+    DEVICES: `${process.env.TRACCAR_API_URL}/devices`,
+  },
 };
 
 export default Object.freeze(API_ROUTES);

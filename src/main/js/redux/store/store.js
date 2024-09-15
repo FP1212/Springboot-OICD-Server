@@ -1,8 +1,8 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import history from "Core/history";
-import { routerMiddleware } from "connected-react-router";
-import rootReducer from "../reducers/rootReducer";
-import statusMiddleware from "../middleware/statusMiddleware";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import history from 'Core/history';
+import { routerMiddleware } from 'connected-react-router';
+import rootReducer from '../reducers/rootReducer';
+import statusMiddleware from '../middleware/statusMiddleware';
 
 const store = configureStore(
   {
@@ -20,3 +20,4 @@ const store = configureStore(
 );
 
 export default store;
+export const getState = () => store.getState();

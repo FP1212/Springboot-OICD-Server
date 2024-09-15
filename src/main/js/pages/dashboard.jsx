@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 import { Tab, Tabs, Box, AppBar, Button, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useApi } from '../utils/useApi';
+import useApi from '../utils/useApi';
 import API_ROUTES from '../constants/apiRoutes';
 import CreateDashboardModal from '../components/dashboard/CreateDashboardModal';
 import GridLayout from '../components/dashboard/gridlayout';
@@ -18,7 +18,11 @@ import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 const Dashboard = () => {
   const [t] = useTranslation();
   const theme = useTheme();
-  const [result = {}, loaded, refresh] = useApi(API_ROUTES.DASHBOARD, false);
+  const [result = {}, loaded, refresh] = useApi({
+    url: API_ROUTES.DASHBOARD,
+    method: 'GET',
+    skip: false,
+  });
   const [openDashboardModal, setOpenDashboardModal] = useState(false);
   const dispatch = useDispatch();
 

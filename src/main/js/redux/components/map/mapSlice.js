@@ -12,7 +12,7 @@ const mapSlice = createSlice({
   },
   reducers: {
     setViewState: (state, { payload }) => {
-      state.viewState = payload;
+      state.viewState = { ...state.viewState, ...payload };
     },
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from '../../styles/MapOverlay.module.scss';
 import {
   AppBar,
@@ -14,19 +14,42 @@ import {
   Stack,
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { SearchRounded, MenuRounded } from '@mui/icons-material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { SearchRounded, MenuRounded, LocationOn, DirectionsCar } from '@mui/icons-material';
 import Paper from '@mui/material/Paper';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectDevices } from '../../redux/components/traccar/devices/devicesSlice';
+import { selectPositionByDeviceId } from '../../redux/components/traccar/positions/positionsSlice';
+import { selectMapViewState, setViewState } from '../../redux/components/map/mapSlice';
+import { getState } from '../../redux/store/store';
+import { useMap } from 'react-map-gl';
 
 const MapOverlay = () => {
   const [openContextualBar, setOpenContextualBar] = useState(false);
   const devices = useSelector(selectDevices);
-  const handleOpenContextualBar = () => setOpenContextualBar(!openContextualBar);
+  const dispatch = useDispatch();
+  const { current: map } = useMap();
+
+  const handleOpenContextualBar = () => {
+    setOpenContextualBar(!openContextualBar);
+  };
+
+  const handleSelectDevice = useCallback(
+    (device) => {
+      if (map && device) {
+        const position = getState()?.positions[device.id];
+        map.flyTo({
+          center: [position.longitude, position.latitude],
+          zoom: 14,
+          duration: 1300,
+          easing: (t) => t,
+        });
+      }
+    },
+    [map],
+  );
 
   return (
-    <Container className={styles['map-overlay']}>
+    <div className={styles['map-overlay']}>
       <AppBar className={styles['app-bar-devices']}>
         <IconButton
           size="large"
@@ -50,17 +73,24 @@ const MapOverlay = () => {
           <Stack>
             <List>
               {devices && devices.length > 0 ? (
-                <>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <InboxIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Inbox" />
-                    </ListItemButton>
-                  </ListItem>
-                  <Divider />
-                </>
+                devices.map((device, i) => {
+                  return (
+                    <ListItem disablePadding key={device.uniqueId}>
+                      <ListItemButton
+                        disabled={device.disabled}
+                        onClick={() => handleSelectDevice(device)}
+                      >
+                        <ListItemIcon>
+                          <DirectionsCar />
+                        </ListItemIcon>
+                        <ListItemText primary={device.name} />
+                        <ListItemIcon>
+                          <LocationOn />
+                        </ListItemIcon>
+                      </ListItemButton>
+                    </ListItem>
+                  );
+                })
               ) : (
                 <ListItemText primary="There's no devices found" />
               )}
@@ -68,7 +98,7 @@ const MapOverlay = () => {
           </Stack>
         </Paper>
       </Collapse>
-    </Container>
+    </div>
   );
 };
 

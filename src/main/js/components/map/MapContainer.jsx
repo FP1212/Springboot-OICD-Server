@@ -19,11 +19,7 @@ import {
 import TraccarDevicePositionSource from './sources/TraccarDevicePositionSource';
 import { traccarDeviceLayer } from '../../constants/layers';
 import PreloadAssetsHandler from '../handlers/PreloadAssertsHandler';
-import WebSocketHandler from '../handlers/WebSocketHandler';
-import { useMap } from 'react-map-gl';
-import mapIcons from '../../constants/mapIcons';
-import { svgToCanvas } from '../../utils/ImageUtility';
-const serverUrl = `${process.env.TRACCAR_SOCKET_URL}`;
+import MapOverlay from './MapOverlay';
 
 const MapContainer = () => {
   const dispatch = useDispatch();
@@ -31,7 +27,6 @@ const MapContainer = () => {
   const mapStyle = useSelector(selectMapStyle);
   const viewState = useSelector(selectMapViewState);
   const [preloaded, setIsPreloaded] = useState(false);
-  const { current: map } = useMap();
 
   const onMove = useCallback((evt) => {
     dispatch(setViewState(evt.viewState));
@@ -39,7 +34,6 @@ const MapContainer = () => {
 
   return (
     <>
-      <WebSocketHandler serverUrl={serverUrl} />
       <MapProvider>
         <Map
           {...viewState}
@@ -59,9 +53,12 @@ const MapContainer = () => {
           <AttributionControl />
           <FullscreenControl />
           {preloaded && (
-            <TraccarDevicePositionSource>
-              <Layer {...traccarDeviceLayer} />
-            </TraccarDevicePositionSource>
+            <>
+              <MapOverlay />
+              <TraccarDevicePositionSource>
+                <Layer {...traccarDeviceLayer} />
+              </TraccarDevicePositionSource>
+            </>
           )}
         </Map>
       </MapProvider>
