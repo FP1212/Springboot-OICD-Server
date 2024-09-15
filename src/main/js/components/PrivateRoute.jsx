@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, Route } from 'react-router-dom';
-import ROUTES from 'Constants/routes';
-import CustomAppBar from './default/CustomAppBar';
+import { Route } from 'react-router-dom';
+import Main from './default/Main';
 import { useKeycloak } from '@react-keycloak/web';
 import LoadingBackdrop from './default/loadingBackdrop';
 
@@ -23,7 +22,7 @@ const PrivateRoute = ({ children, ...props }) => {
       render={(routeProps) =>
         keycloak.authenticated ? (
           <React.Fragment>
-            <CustomAppBar>{React.cloneElement(children, { didComplete: routeProps })}</CustomAppBar>
+            <Main>{React.cloneElement(children, { didComplete: routeProps })}</Main>
           </React.Fragment>
         ) : (
           <LoadingBackdrop open={!keycloak.authenticated} />

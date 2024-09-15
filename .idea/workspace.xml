@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/src/main/js/asserts/icons/directions_car_24dp_78A75A.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/asserts/icons/directions_car_24dp_F9DB78.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/asserts/icons/two_wheeler.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/components/handlers/PreloadAssertsHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/constants/mapIcons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/ImageUtility.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/directions_car_24dp_F9DB78.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/two_wheeler.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/default/Main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/components/map/MapOverlay.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/js/styles/MapOverlay.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/handlers/WebSocketHandler.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/handlers/WebSocketHandler.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/map/MapContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/map/MapContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/constants/layers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/constants/layers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/PrivateRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/CustomAppBar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/js/components/handlers/PreloadAssertsHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/handlers/PreloadAssertsHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/js/core/routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/core/routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +119,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/asserts/icons",
+    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/styles",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -160,11 +151,11 @@
       <recent name="com.iotwatch.user.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\styles" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\asserts\icons" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static\images" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\map\layers" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\handlers" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\map" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\redux\components\traccar" />
@@ -191,7 +182,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.iotwatch">
+  <component name="RunManager" selected="Shell Script.keycloak">
     <configuration name="iotwatch" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -481,7 +472,8 @@
       <workItem from="1724983957031" duration="2986000" />
       <workItem from="1725126709966" duration="7289000" />
       <workItem from="1725157273620" duration="8487000" />
-      <workItem from="1725211222848" duration="13245000" />
+      <workItem from="1725211222848" duration="13844000" />
+      <workItem from="1726364494463" duration="10511000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />

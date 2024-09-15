@@ -18,7 +18,7 @@ import { selectGlobalAlert } from 'Redux/components/globalAlert/globalAlert';
 import GlobalAlert from '../components/default/globalAlert';
 import LoadingBackdrop from '../components/default/loadingBackdrop';
 import CustomDrawer from '../components/default/CustomDrawer';
-import CustomAppBar from '../components/default/CustomAppBar';
+import CustomAppBar from '../components/default/Main';
 import { useKeycloak } from '@react-keycloak/web';
 import Map from '../pages/map';
 import WebSocketHandler from '../components/handlers/WebSocketHandler';

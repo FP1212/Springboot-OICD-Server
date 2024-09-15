@@ -5,7 +5,7 @@ import { svgToCanvas } from '../../utils/ImageUtility';
 import PropTypes from 'prop-types';
 
 function PreloadAssetsHandler({ setIsPreloaded }) {
-  const { current: map } = useMap(); // Obtiene la instancia actual del mapa
+  const { current: map } = useMap();
 
   useEffect(() => {
     if (!map) return;
