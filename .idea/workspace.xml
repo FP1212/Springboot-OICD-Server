@@ -5,18 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c1756ae-d144-45be-987a-01572b5ec8b0" name="Changes" comment="Spring Boot project starting">
-      <change afterPath="$PROJECT_DIR$/src/main/js/utils/customFetch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/MainApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/constants/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/enums/EnumPrivileges.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/enums/EnumRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/enums/EnumStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/home/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com.iotwatch.app/oidc/resource/server/response/MessageResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/default/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/default/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/map/MapContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/map/MapContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/components/map/MapOverlay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/components/map/MapOverlay.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/constants/apiRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/constants/apiRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/pages/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/pages/dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/map/mapSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/map/mapSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/redux/components/traccar/devices/devicesSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/components/traccar/devices/devicesSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/redux/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/redux/store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/styles/MapOverlay.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/styles/MapOverlay.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/js/utils/useApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/js/utils/useApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/MainApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/constants/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/enums/EnumPrivileges.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/enums/EnumRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/enums/EnumStatusResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/home/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oidc/resource/server/response/MessageResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/oidc/resource/server/KeycloakServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/oidc/resource/server/KeycloakServerApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,41 +115,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build IotWatch.executor": "Run",
-    "Gradle.IotWatch [buildApp].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.IotwatchApplication.executor": "Debug",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Federico Pinilla\\IdeaProjects\\IotWatch\\src\\main\\js\\node_modules\\prettier",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "spring.configuration.checksum": "ca81945a2241e41c33818d61c7556f78",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build IotWatch.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IotWatch [buildApp].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.IotwatchApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Federico Pinilla/IdeaProjects/IotWatch/src/main/js/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Federico Pinilla\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;82aec7d3e2bf1b80eee421bb0fe33e28&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -149,6 +159,9 @@
         <entry key="com.haulmont.rcb.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -162,11 +175,11 @@
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\components\map\layers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\Templates\spring-boot-keycloak-server\docker\spring-boot-keycloak-server" />
+      <recent name="C:\Users\Federico Pinilla\IdeaProjects\Templates\spring-boot-keycloak-server\docker" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\redux\components\traccar" />
       <recent name="C:\Users\Developer\Documents\Personal\IotWatch\src\main\resources\static" />
       <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\js\pages" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources" />
-      <recent name="C:\Users\Federico Pinilla\IdeaProjects\IotWatch\src\main\resources\static" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.iotwatch.auth.service.impl" />
@@ -186,52 +199,19 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test-generator">
-    <configuration name="iotwatch" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.iotwatch.IotwatchApplication" />
-      <module name="iotwatch.main" />
-      <shortenClasspath name="MANIFEST" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="LaunchBrowser.Before.Run" browser="37cae5b9-e8b2-4949-9172-aafa37fbc09c" url="http://localhost:8080" withDebugger="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.OIDCResourceServerApplication">
     <configuration name="IotWatch [buildApp]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value="buildApp" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="IotWatch_Mongo_AWS [webpackDevServer]" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="webpackDevServer" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -307,17 +287,10 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="docker-compose.yaml.keycloak: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
           <option name="services">
             <list>
               <option value="keycloak" />
@@ -328,15 +301,18 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yaml.traccar: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="traccar" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yaml" />
+          <option name="sourceFilePath" value="docker/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-boot-keycloak-server/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker/spring-boot-keycloak-server/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -352,29 +328,24 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.iotwatch" />
-      <item itemvalue="Compound.Iotwatch-Autostart-dev" />
+      <item itemvalue="Docker.docker/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.spring-boot-keycloak-server/docker-compose.yaml: Compose Deployment" />
       <item itemvalue="Docker.docker-compose.yaml.keycloak: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yaml.traccar: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
-      <item itemvalue="Gradle.IotWatch_Mongo_AWS_dev" />
-      <item itemvalue="Gradle.IotWatch_Mongo_AWS_prod" />
-      <item itemvalue="Gradle.IotWatch_Mongo_AWS [webpackDevServer]" />
       <item itemvalue="Gradle.IotWatch [buildApp]" />
       <item itemvalue="JavaScript Debug.IotwatchApplication JavaScript" />
       <item itemvalue="npm.devserver" />
       <item itemvalue="Python.test-generator" />
       <item itemvalue="Shell Script.keycloak" />
       <item itemvalue="Shell Script.traccar" />
-      <item itemvalue="Spring Boot.IotwatchApplication" />
+      <item itemvalue="Spring Boot.OIDCResourceServerApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.spring-boot-keycloak-server/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker/docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Python.test-generator" />
         <item itemvalue="Gradle.IotWatch [buildApp]" />
         <item itemvalue="Docker.docker-compose.yaml.keycloak: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yaml.traccar: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -478,7 +449,16 @@
       <workItem from="1725157273620" duration="8487000" />
       <workItem from="1725211222848" duration="13844000" />
       <workItem from="1726364494463" duration="10511000" />
-      <workItem from="1726419928775" duration="10544000" />
+      <workItem from="1726419928775" duration="10989000" />
+      <workItem from="1726962485192" duration="1809000" />
+      <workItem from="1737934716638" duration="1394000" />
+      <workItem from="1737937313685" duration="1164000" />
+      <workItem from="1737938510146" duration="3814000" />
+      <workItem from="1737942344694" duration="26000" />
+      <workItem from="1743902022037" duration="710000" />
+      <workItem from="1744505339338" duration="85000" />
+      <workItem from="1744505550034" duration="502000" />
+      <workItem from="1744511959255" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="Spring Boot project starting">
       <option name="closed" value="true" />

@@ -1,4 +1,4 @@
-package com.keycloak.server;
+package com.oidc.resource.server;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.keycloak.server.config;
+package com.oidc.resource.server.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;

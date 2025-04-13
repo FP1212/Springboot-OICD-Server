@@ -1,6 +1,6 @@
-package com.keycloak.server.response;
+package com.oidc.resource.server.response;
 
-import com.keycloak.server.enums.EnumStatusResponse;
+import com.oidc.resource.server.enums.EnumStatusResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

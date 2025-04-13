@@ -1,4 +1,4 @@
-package com.keycloak.server.enums;
+package com.oidc.resource.server.enums;
 
 public enum EnumRole {
     ADMIN,

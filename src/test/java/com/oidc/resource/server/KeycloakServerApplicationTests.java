@@ -1,4 +1,4 @@
-package com.keycloak.server;
+package com.oidc.resource.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
