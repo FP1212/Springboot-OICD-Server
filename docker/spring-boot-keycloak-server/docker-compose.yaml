@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: true
+      KC_LOG_LEVEL: debug
+      DB_VENDOR: mysql
+      DB_ADDR: keycloak-db
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+    healthcheck:
+      test:   [
+        "CMD-SHELL",
+        'exec 3<>/dev/tcp/localhost/8080; echo -e "GET /health/ready HTTP/1.1\nhost: localhost:8080\n" >&3; timeout --preserve-status 1 cat <&3 | grep -m 1 status | grep -m 1 UP; ERROR=$?; exec 3<&-; exec 3>&-; exit $ERROR'
+      ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    command: ["start-dev"]
+    volumes:
+      - keycloak:/opt/jboss/keycloak/standalone/data
+    ports:
+      - "8081:8080"
+      - "8442:8443"
+    networks:
+      - local_network
+    depends_on:
+      keycloak-db:
+        condition: service_healthy
+  keycloak-db:
+    image: 'mysql:latest'
+    container_name: keycloak-db
+    environment:
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak_mysql
+      MYSQL_PASSWORD: keycloak_mysql
+      MYSQL_ROOT_PASSWORD: keycloak_mysql_root
+    ports:
+      - '3306'
+    volumes:
+      - keycloak_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: '10s'
+      timeout: '5s'
+      retries: 3
+    networks:
+      - local_network
+
+volumes:
+  keycloak:
+  keycloak_db:
+networks:
+  local_network:
+    driver: bridge
